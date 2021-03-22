@@ -1,7 +1,7 @@
 <template>
   <view class="shop">
     <view class="cover-wrapper">
-      <image :src="shop.cover"></image>
+      <image class="image" :src="shop.cover"></image>
     </view>
     <view class="name-wrapper">
       {{ shop.name }}
@@ -29,4 +29,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.shop {
+  .cover-wrapper {
+    .image {
+      width: 100rpx;
+      height: 90rpx;
+    }
+  }
+}
+</style>

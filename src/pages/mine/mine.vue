@@ -64,18 +64,23 @@
           :current="currentSwiper"
           :duration="360"
           @change="swiperChange"
-          style="background-color: rgb(249 249 250);"
+          :style="{ height: swiperHeight + 'px' }"
+          style="background-color: rgb(249 249 250); padding: 35rpx 20rpx 0 20rpx;"
         >
-          <swiper-item>
-            <view class="swiper-item">
-              <template v-for="(shop, index) in shops">
-                <shop :key="index" :shop="shop"></shop>
+          <template v-for="(item, index) in tabs">
+            <swiper-item :key="index" :id="'swiper-item-' + index">
+              <template v-if="item.type === 'shops'">
+                <shop
+                  v-for="(shop, i) in item.items"
+                  :key="i"
+                  :shop="shop"
+                ></shop>
               </template>
-            </view>
-          </swiper-item>
-          <swiper-item>
-            <view class="swiper-item">2</view>
-          </swiper-item>
+              <template v-else>
+                <view v-for="item in 200" :key="item">{{ item }}</view>
+              </template>
+            </swiper-item>
+          </template>
         </swiper>
       </view>
     </view>
@@ -91,34 +96,71 @@ export default {
     return {
       tabs: [
         {
-          name: '订阅店铺'
+          name: '订阅店铺',
+          type: 'shops',
+          items: [
+            {
+              cover: require('../../static/mine/mexican.jpg'),
+              name: '稻草人'
+            },
+            {
+              cover: require('../../static/mine/a21.jpg'),
+              name: 'A21'
+            },
+            {
+              cover: require('../../static/mine/a21.jpg'),
+              name: 'A21'
+            },
+            {
+              cover: require('../../static/mine/a21.jpg'),
+              name: 'A21'
+            },
+            {
+              cover: require('../../static/mine/a21.jpg'),
+              name: 'A21'
+            }
+          ]
         },
         {
-          name: '收藏书籍'
-        }
-      ],
-      shops: [
-        {
-          cover: '',
-          name: '稻草人'
-        },
-        {
-          cover: '',
-          name: 'A21'
+          name: '收藏书籍',
+          type: 'books',
+          items: []
         }
       ],
       currentTab: 0,
-      currentSwiper: 0
+      currentSwiper: 0,
+      swiperHeight: 0
     }
   },
+  onReady() {
+    uni.getSystemInfo({
+      success: res => {
+        let height = res.windowHeight
+        this.swiperHeight = height
+      }
+    })
+  },
   methods: {
+    initSwiperHeight(index) {
+      const query = uni.createSelectorQuery().in(this)
+      query
+        .select('#swiper-item-' + index)
+        .boundingClientRect(data => {
+          this.swiperHeight = data.height
+          console.log('！！！data.height！！！' + data.height)
+          console.log(data)
+        })
+        .exec()
+    },
     tuiTabsChange(event) {
       this.currentTab = event.index
       this.currentSwiper = event.index
+      this.initSwiperHeight(event.index)
     },
     swiperChange(event) {
       this.currentSwiper = event.detail.current
       this.currentTab = event.detail.current
+      this.initSwiperHeight(event.detail.current)
     }
   }
 }
@@ -208,12 +250,6 @@ export default {
 
       .row-2 {
         padding-bottom: 25rpx;
-      }
-    }
-
-    .body-wrapper {
-      .swiper-item {
-        padding: 35rpx 20rpx 0 20rpx;
       }
     }
   }
