@@ -67,20 +67,22 @@
           :style="{ height: swiperHeight + 'px' }"
           style="background-color: rgb(249 249 250); padding: 35rpx 20rpx 0 20rpx;"
         >
-          <template v-for="(item, index) in tabs">
-            <swiper-item :key="index" :id="'swiper-item-' + index">
-              <template v-if="item.type === 'shops'">
+          <swiper-item v-for="(item, index) in tabs" :key="index">
+            <template v-if="item.type === 'shops'">
+              <view :id="'swiper-item-' + index">
                 <shop
                   v-for="(shop, i) in item.items"
                   :key="i"
                   :shop="shop"
                 ></shop>
-              </template>
-              <template v-else>
+              </view>
+            </template>
+            <template v-else>
+              <view :id="'swiper-item-' + index">
                 <view v-for="item in 200" :key="item">{{ item }}</view>
-              </template>
-            </swiper-item>
-          </template>
+              </view>
+            </template>
+          </swiper-item>
         </swiper>
       </view>
     </view>
@@ -133,22 +135,16 @@ export default {
     }
   },
   onReady() {
-    uni.getSystemInfo({
-      success: res => {
-        let height = res.windowHeight
-        this.swiperHeight = height
-      }
-    })
+    this.initSwiperHeight('0')
   },
   methods: {
     initSwiperHeight(index) {
-      const query = uni.createSelectorQuery().in(this)
-      query
+      uni
+        .createSelectorQuery()
+        .in(this)
         .select('#swiper-item-' + index)
         .boundingClientRect(data => {
-          this.swiperHeight = data.height
-          console.log('！！！data.height！！！' + data.height)
-          console.log(data)
+          this.swiperHeight = data.height + 50
         })
         .exec()
     },
@@ -158,8 +154,8 @@ export default {
       this.initSwiperHeight(event.index)
     },
     swiperChange(event) {
-      this.currentSwiper = event.detail.current
       this.currentTab = event.detail.current
+      this.currentSwiper = event.detail.current
       this.initSwiperHeight(event.detail.current)
     }
   }
