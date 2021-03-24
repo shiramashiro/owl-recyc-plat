@@ -65,21 +65,21 @@
           :duration="360"
           @change="swiperChange"
           :style="{ height: swiperHeight + 'px' }"
-          style="background-color: rgb(249 249 250); padding: 35rpx 20rpx 0 20rpx;"
+          style="padding: 35rpx 20rpx 0 20rpx;"
         >
           <swiper-item v-for="(item, index) in tabs" :key="index">
-            <template v-if="item.type === 'shops'">
+            <template v-if="item.type !== 'shops'">
+              <view :id="'swiper-item-' + index">
+                <view v-for="item in 200" :key="item">{{ item }}</view>
+              </view>
+            </template>
+            <template v-else>
               <view :id="'swiper-item-' + index">
                 <shop
                   v-for="(shop, i) in item.items"
                   :key="i"
                   :shop="shop"
                 ></shop>
-              </view>
-            </template>
-            <template v-else>
-              <view :id="'swiper-item-' + index">
-                <view v-for="item in 200" :key="item">{{ item }}</view>
               </view>
             </template>
           </swiper-item>
@@ -98,35 +98,82 @@ export default {
     return {
       tabs: [
         {
+          name: '收藏书籍',
+          type: 'books',
+          items: []
+        },
+        {
           name: '订阅店铺',
           type: 'shops',
           items: [
             {
               cover: require('../../static/mine/mexican.jpg'),
-              name: '稻草人'
+              name: '稻草人',
+              star: 5,
+              likes: 10.9,
+              tags: [
+                {
+                  label: '促销',
+                  style:
+                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                },
+                {
+                  label: '券',
+                  style:
+                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                }
+              ]
             },
             {
               cover: require('../../static/mine/a21.jpg'),
-              name: 'A21'
+              name: 'A21',
+              star: 4,
+              likes: 8.9,
+              tags: [
+                {
+                  label: '券',
+                  style:
+                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                },
+                {
+                  label: '上新',
+                  style:
+                    'background-color: rgb(230,249,243); color: rgb(77,202,161)'
+                }
+              ]
             },
             {
               cover: require('../../static/mine/a21.jpg'),
-              name: 'A21'
+              name: 'A21',
+              star: 4,
+              likes: 8.9,
+              tags: [
+                {
+                  label: '促销',
+                  style:
+                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                },
+                {
+                  label: '上新',
+                  style:
+                    'background-color: rgb(230,249,243); color: rgb(77,202,161)'
+                }
+              ]
             },
             {
               cover: require('../../static/mine/a21.jpg'),
-              name: 'A21'
-            },
-            {
-              cover: require('../../static/mine/a21.jpg'),
-              name: 'A21'
+              name: 'A21',
+              star: 4,
+              likes: 8.9,
+              tags: [
+                {
+                  label: '券',
+                  style:
+                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                }
+              ]
             }
           ]
-        },
-        {
-          name: '收藏书籍',
-          type: 'books',
-          items: []
         }
       ],
       currentTab: 0,
@@ -144,7 +191,7 @@ export default {
         .in(this)
         .select('#swiper-item-' + index)
         .boundingClientRect(data => {
-          this.swiperHeight = data.height + 50
+          this.swiperHeight = data.height + 30
         })
         .exec()
     },

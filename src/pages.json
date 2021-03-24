@@ -7,10 +7,14 @@
       }
     }
   ],
+
   "easycom": {
     "autoscan": true,
     "custom": {
       "tui-(.*)": "@/components/thorui/tui-$1/tui-$1.vue"
+    },
+    "usingComponents": {
+      "tui-icon": "@/components/thorui/tui-icon/tui-icon"
     }
   },
   "globalStyle": {
