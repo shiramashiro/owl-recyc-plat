@@ -1,5 +1,9 @@
 <template>
-  <tui-swipe-action :actions="actions" :open="isOpen">
+  <tui-swipe-action
+    :actions="actions"
+    :open="isOpen"
+    style="margin-bottom: 30rpx; border-radius: 20rpx;"
+  >
     <template v-slot:content>
       <view class="shop">
         <view class="col-1">
@@ -81,7 +85,7 @@ export default {
   flex-direction: row;
   align-items: center;
   align-content: center;
-  padding-bottom: 20rpx;
+  padding: 14rpx;
 
   .col-1 {
     margin-right: 30rpx;

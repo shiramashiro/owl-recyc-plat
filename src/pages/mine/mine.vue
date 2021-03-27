@@ -45,7 +45,7 @@
           <view class="col-1">kongsam</view>
         </view>
         <view class="row-2">
-          <view style="color: #a7a7a7; font-size: 25rpx; font-weight: normal">
+          <view class="col-1">
             Time tick away, dream faded away!
           </view>
         </view>
@@ -55,22 +55,26 @@
           style="width: 100%"
           selectedColor="#87cefa"
           sliderBgColor="#87cefa"
-          :tabs="tabs"
           itemWidth="50%"
+          :tabs="tabs"
           :currentTab="currentTab"
           @change="tuiTabsChange"
         ></tui-tabs>
         <swiper
-          :current="currentSwiper"
-          :duration="360"
-          @change="swiperChange"
           :style="{ height: swiperHeight + 'px' }"
-          style="padding: 35rpx 20rpx 0 20rpx;"
+          style="padding: 35rpx 20rpx 0 20rpx; background-color: rgb(248, 248, 248)"
+          :duration="360"
+          :current="currentSwiper"
+          @change="swiperChange"
         >
           <swiper-item v-for="(item, index) in tabs" :key="index">
-            <template v-if="item.type !== 'shops'">
+            <template v-if="item.type === 'books'">
               <view :id="'swiper-item-' + index">
-                <view v-for="item in 200" :key="item">{{ item }}</view>
+                <book
+                  v-for="(book, i) in item.items"
+                  :key="i"
+                  :book="book"
+                ></book>
               </view>
             </template>
             <template v-else>
@@ -91,16 +95,42 @@
 
 <script>
 import shop from '@/components/mine/shop.vue'
+import book from '@/components/mine/book.vue'
 
 export default {
-  components: { shop },
+  components: { shop, book },
   data() {
     return {
       tabs: [
         {
           name: '收藏书籍',
           type: 'books',
-          items: []
+          items: [
+            {
+              cover: require('../../static/mine/28495225-1_w_3.jpg'),
+              name: '深入理解Java虚拟机',
+              shopName: '传智书城自营',
+              price: 67,
+              desc:
+                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+            },
+            {
+              cover: require('../../static/mine/28495225-1_w_3.jpg'),
+              name: '深入理解Java虚拟机',
+              shopName: '传智书城自营',
+              price: 67,
+              desc:
+                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+            },
+            {
+              cover: require('../../static/mine/28495225-1_w_3.jpg'),
+              name: '深入理解Java虚拟机',
+              shopName: '传智书城自营',
+              price: 67,
+              desc:
+                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+            }
+          ]
         },
         {
           name: '订阅店铺',
@@ -176,13 +206,13 @@ export default {
           ]
         }
       ],
+      swiperHeight: 0,
       currentTab: 0,
-      currentSwiper: 0,
-      swiperHeight: 0
+      currentSwiper: 0
     }
   },
   onReady() {
-    this.initSwiperHeight('0')
+    this.initSwiperHeight(0)
   },
   methods: {
     initSwiperHeight(index) {
@@ -293,6 +323,12 @@ export default {
 
       .row-2 {
         padding-bottom: 25rpx;
+
+        .col-1 {
+          color: #a7a7a7;
+          font-size: 25rpx;
+          font-weight: normal;
+        }
       }
     }
   }
