@@ -4,7 +4,7 @@
       <image
         class="image"
         mode="aspectFill"
-        src="../../static/mine/88441329_p0.jpg"
+        src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg"
       ></image>
     </view>
     <view class="wrapper">
@@ -13,7 +13,7 @@
           <image
             class="avatar"
             model="aspectFit"
-            src="../../static/mine/avatar.jpg"
+            src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg"
           ></image>
         </view>
         <view class="col-2">
@@ -103,7 +103,8 @@ export default {
           type: 'books',
           items: [
             {
-              cover: require('../../static/mine/28495225-1_w_3.jpg'),
+              cover:
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
               name: '深入理解Java虚拟机',
               shopName: '传智书城自营',
               price: 67,
@@ -111,7 +112,8 @@ export default {
                 '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
             },
             {
-              cover: require('../../static/mine/28495225-1_w_3.jpg'),
+              cover:
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
               name: '深入理解Java虚拟机',
               shopName: '传智书城自营',
               price: 67,
@@ -119,7 +121,8 @@ export default {
                 '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
             },
             {
-              cover: require('../../static/screenshot20210327182704.png'),
+              cover:
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
               name: '深入理解Java虚拟机',
               shopName: '传智书城自营',
               price: 67,
