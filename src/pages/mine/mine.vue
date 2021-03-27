@@ -4,7 +4,7 @@
       <image
         class="image"
         mode="aspectFill"
-        src="../../static/mine/background.png"
+        src="../../static/mine/88441329_p0.jpg"
       ></image>
     </view>
     <view class="wrapper">
@@ -243,7 +243,7 @@ export default {
 
     .image {
       width: 100%;
-      height: 235rpx;
+      height: 305rpx;
     }
   }
 
