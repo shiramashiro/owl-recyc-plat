@@ -267,7 +267,6 @@
 	}
 
 	.tui-swipeout-content {
-		white-space: nowrap;
 		overflow: hidden;
 	}
 

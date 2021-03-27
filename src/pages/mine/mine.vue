@@ -1,9 +1,5 @@
 <template>
   <view class="mine">
-    <cu-custom bgColor="bg-gradual-blue" :isBack="true">
-      <block slot="backText">返回</block>
-      <block slot="content">导航栏</block>
-    </cu-custom>
     <view class="background">
       <image
         class="image"
@@ -123,7 +119,7 @@ export default {
                 '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
             },
             {
-              cover: require('../../static/mine/28495225-1_w_3.jpg'),
+              cover: require('../../static/screenshot20210327182704.png'),
               name: '深入理解Java虚拟机',
               shopName: '传智书城自营',
               price: 67,
@@ -302,7 +298,7 @@ export default {
           .editor {
             width: 100%;
             color: #87cefa;
-            border: #87cefa 5rpx solid;
+            border: #87cefa 1rpx solid;
           }
         }
       }

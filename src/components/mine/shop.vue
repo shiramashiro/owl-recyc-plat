@@ -107,7 +107,7 @@ export default {
 
     .col-2-1 {
       .row-1 {
-        font-size: 30rpx;
+        font-size: 32rpx;
         display: -webkit-box;
         word-break: break-all;
         width: 300rpx;
@@ -124,8 +124,8 @@ export default {
         align-content: center;
 
         .likes {
+          font-size: 24rpx;
           margin-left: 8rpx;
-          font-size: 8rpx;
           color: #a7a7a7;
         }
       }
@@ -135,7 +135,7 @@ export default {
         flex-direction: row;
 
         .tag {
-          font-size: 10rpx;
+          font-size: 22rpx;
           margin-right: 13rpx;
           padding: 2rpx 15rpx;
           text-align: center;
