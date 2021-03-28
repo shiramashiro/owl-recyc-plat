@@ -81,7 +81,8 @@ export default {
                 selectedColor: '#87cefa',
                 sliderBgColor: '#87cefa',
                 itemWidth: '50%',
-                isWhiteSpace: false
+                isWhiteSpace: false,
+                tabType: 'tuiTabs'
             },
             swiperTabs: [
                 {

@@ -190,15 +190,6 @@ export default {
             })
         }, 0)
     },
-    mounted() {
-        uni.createSelectorQuery()
-            .in(this)
-            .select('.tui-tabs-view')
-            .boundingClientRect(data => {
-                console.log(data)
-            })
-            .exec()
-    },
     data() {
         return {
             winWidth: 0,

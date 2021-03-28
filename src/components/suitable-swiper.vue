@@ -1,11 +1,6 @@
 <template>
     <view class="suitable-swiper">
-        <scroll-view
-            scroll-x
-            :style="{
-                whiteSpace: configs.isWhiteSpace === true ? 'nowrap' : 'normal'
-            }"
-        >
+        <template v-if="configs.tabType === 'tuiTabs'">
             <tui-tabs
                 :selectedColor="configs.selectedColor"
                 :sliderBgColor="configs.sliderBgColor"
@@ -14,7 +9,17 @@
                 @slideTuiTab="slideTuiTab"
                 :swiperTabs="swiperTabs"
             ></tui-tabs>
-        </scroll-view>
+        </template>
+        <template v-else-if="configs.tabType === 'tuiTab'">
+            <tui-tab
+                :scroll="true"
+                :selectedColor="configs.selectedColor"
+                :sliderBgColor="configs.sliderBgColor"
+                :current="currentTuiTab"
+                @slideTuiTab="slideTuiTab"
+                :swiperTabs="swiperTabs"
+            ></tui-tab>
+        </template>
         <swiper
             :style="{
                 height: swiperHeight + 'px',
