@@ -1,16 +1,16 @@
 {
   "pages": [
     {
-      "path": "pages/mine/mine"
+      "path": "pages/index/index"
     },
     {
-      "path": "pages/index/index"
+      "path": "pages/filter/filter"
     },
     {
       "path": "pages/cart/cart"
     },
     {
-      "path": "pages/filter/filter"
+      "path": "pages/mine/mine"
     }
   ],
   "easycom": {

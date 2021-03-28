@@ -7,20 +7,20 @@
     <template v-slot:content>
       <view class="book">
         <view class="row-1 shop-name">
-          {{ book.shopName }}
+          {{ item.shopName }}
         </view>
         <view class="row-2">
           <view class="col-1">
-            <image class="cover" mode="aspectFill" :src="book.cover"></image>
+            <image class="cover" mode="aspectFill" :src="item.cover"></image>
           </view>
           <view class="col-2">
             <view class="row-1">
-              <view class="name">{{ book.name }}</view>
+              <view class="name">{{ item.name }}</view>
             </view>
-            <view class="row-2">{{ book.desc }}</view>
+            <view class="row-2">{{ item.desc }}</view>
             <view class="row-3">
               <text class="label">¥</text>
-              <text class="price">{{ book.price }}</text>
+              <text class="price">{{ item.price }}</text>
             </view>
             <view class="row-4">
               <tui-icon
@@ -47,7 +47,7 @@
 <script>
 export default {
   props: {
-    book: {
+    item: {
       type: Object,
       required: true
     }

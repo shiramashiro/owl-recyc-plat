@@ -7,23 +7,23 @@
     <template v-slot:content>
       <view class="shop">
         <view class="col-1">
-          <image class="cover" :src="shop.cover"></image>
+          <image class="cover" :src="item.cover"></image>
         </view>
         <view class="col-2">
           <view class="col-2-1">
             <view class="row-1">
-              {{ shop.name }}
+              {{ item.name }}
             </view>
             <view class="row-2">
               <view class="star">
-                <tui-rate :size="14" :current="shop.star" disabled></tui-rate>
+                <tui-rate :size="14" :current="item.star" disabled></tui-rate>
               </view>
-              <view class="likes">{{ shop.likes }}万人关注</view>
+              <view class="likes">{{ item.likes }}万人关注</view>
             </view>
             <view class="row-3">
               <view
                 class="tag"
-                v-for="(tag, index) in shop.tags"
+                v-for="(tag, index) in item.tags"
                 :key="index"
                 :style="tag.style"
               >
@@ -48,7 +48,7 @@
 <script>
 export default {
   props: {
-    shop: {
+    item: {
       type: Object,
       required: true
     }

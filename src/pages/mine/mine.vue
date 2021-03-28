@@ -1,14 +1,14 @@
 <template>
   <view class="mine">
-    <view class="background">
+    <view class="row-1">
       <image
         class="image"
         mode="aspectFill"
         src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg"
       ></image>
     </view>
-    <view class="wrapper">
-      <view class="top-wrapper">
+    <view class="row-2">
+      <view class="row-2-1">
         <view class="col-1">
           <image
             class="avatar"
@@ -18,15 +18,15 @@
         </view>
         <view class="col-2">
           <view class="row-1">
-            <view class="col-1">
+            <view class="cols">
               <view class="num">180</view>
               <view class="desc">粉丝</view>
             </view>
-            <view class="col-1">
+            <view class="cols">
               <view class="num">124</view>
               <view class="desc">关注</view>
             </view>
-            <view class="col-1">
+            <view class="cols">
               <view class="num">44</view>
               <view class="desc">获赞</view>
             </view>
@@ -36,54 +36,20 @@
           </view>
         </view>
       </view>
-      <view class="header-wrapper">
-        <view class="row-1">
-          <view class="col-1">kongsam</view>
-        </view>
-        <view class="row-2">
-          <view class="col-1">
-            Time tick away, dream faded away!
-          </view>
-        </view>
+      <view class="row-2-2">
+        <view class="row-1">kongsam</view>
+        <view class="row-2">Time tick away, dream faded away!</view>
       </view>
-      <view class="body-wrapper">
-        <tui-tabs
-          style="width: 100%"
-          selectedColor="#87cefa"
-          sliderBgColor="#87cefa"
-          itemWidth="50%"
-          :tabs="tabs"
-          :currentTab="currentTab"
-          @change="tuiTabsChange"
-        ></tui-tabs>
-        <swiper
-          :style="{ height: swiperHeight + 'px' }"
-          style="padding: 35rpx 20rpx 0 20rpx; background-color: rgb(248, 248, 248)"
-          :duration="360"
-          :current="currentSwiper"
-          @change="swiperChange"
-        >
-          <swiper-item v-for="(item, index) in tabs" :key="index">
-            <template v-if="item.type === 'books'">
-              <view :id="'swiper-item-' + index">
-                <book
-                  v-for="(book, i) in item.items"
-                  :key="i"
-                  :book="book"
-                ></book>
+      <view class="row-2-3">
+        <suitable-swiper :configs="configs" :swiperTabs="swiperTabs">
+          <swiper-item v-for="(swiperTab, index) in swiperTabs" :key="index">
+            <view :id="'swiper-item-' + index">
+              <view v-for="(item, itemIndex) in swiperTab.items" :key="itemIndex">
+                <component :is="swiperTab.componentName" :item="item"></component>
               </view>
-            </template>
-            <template v-else>
-              <view :id="'swiper-item-' + index">
-                <shop
-                  v-for="(shop, i) in item.items"
-                  :key="i"
-                  :shop="shop"
-                ></shop>
-              </view>
-            </template>
+            </view>
           </swiper-item>
-        </swiper>
+        </suitable-swiper>
       </view>
     </view>
   </view>
@@ -92,15 +58,21 @@
 <script>
 import shop from '@/components/mine/shop.vue'
 import book from '@/components/mine/book.vue'
+import suitableSwiper from '@/components/suitable-swiper.vue'
 
 export default {
-  components: { shop, book },
+  components: { shop, book, suitableSwiper },
   data() {
     return {
-      tabs: [
+      configs: {
+        selectedColor: '#87cefa',
+        sliderBgColor: '#87cefa',
+        itemWidth: '50%'
+      },
+      swiperTabs: [
         {
           name: '收藏书籍',
-          type: 'books',
+          componentName: 'book',
           items: [
             {
               cover:
@@ -133,7 +105,7 @@ export default {
         },
         {
           name: '订阅店铺',
-          type: 'shops',
+          componentName: 'shop',
           items: [
             {
               cover: require('../../static/mine/mexican.jpg'),
@@ -204,35 +176,7 @@ export default {
             }
           ]
         }
-      ],
-      swiperHeight: 0,
-      currentTab: 0,
-      currentSwiper: 0
-    }
-  },
-  onReady() {
-    this.initSwiperHeight(0)
-  },
-  methods: {
-    initSwiperHeight(index) {
-      uni
-        .createSelectorQuery()
-        .in(this)
-        .select('#swiper-item-' + index)
-        .boundingClientRect(data => {
-          this.swiperHeight = data.height + 30
-        })
-        .exec()
-    },
-    tuiTabsChange(event) {
-      this.currentTab = event.index
-      this.currentSwiper = event.index
-      this.initSwiperHeight(event.index)
-    },
-    swiperChange(event) {
-      this.currentTab = event.detail.current
-      this.currentSwiper = event.detail.current
-      this.initSwiperHeight(event.detail.current)
+      ]
     }
   }
 }
@@ -240,7 +184,7 @@ export default {
 
 <style lang="scss" scoped>
 .mine {
-  .background {
+  .row-1 {
     width: 100%;
     height: 100%;
 
@@ -250,8 +194,8 @@ export default {
     }
   }
 
-  .wrapper {
-    .top-wrapper {
+  .row-2 {
+    .row-2-1 {
       padding: 0 20rpx;
       display: flex;
       flex-direction: row;
@@ -282,7 +226,7 @@ export default {
           align-content: center;
           justify-content: space-between;
 
-          .col-1 {
+          .cols {
             text-align: center;
             margin-right: 0;
             margin: 0 0 10rpx 0;
@@ -307,27 +251,21 @@ export default {
       }
     }
 
-    .header-wrapper {
+    .row-2-2 {
       padding: 0 20rpx;
       border-bottom: 1rpx solid #e8e8e8;
 
       .row-1 {
         margin-bottom: 13rpx;
-
-        .col-1 {
-          font-size: 34rpx;
-          color: #87cefa;
-        }
+        font-size: 34rpx;
+        color: #87cefa;
       }
 
       .row-2 {
         padding-bottom: 25rpx;
-
-        .col-1 {
-          color: #a7a7a7;
-          font-size: 25rpx;
-          font-weight: normal;
-        }
+        color: #a7a7a7;
+        font-size: 25rpx;
+        font-weight: normal;
       }
     }
   }
