@@ -7,5 +7,6 @@ module.exports = {
   trailingComma: 'none',
   // 花括号两边加空格
   bracketSpacing: true,
-  jsxBracketSameLine: true
+  jsxBracketSameLine: true,
+  tabWidth: 4
 }

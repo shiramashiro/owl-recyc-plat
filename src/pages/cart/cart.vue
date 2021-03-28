@@ -1,5 +1,5 @@
 <template>
-  <view class="cart">购物车页</view>
+    <view class="cart">购物车页</view>
 </template>
 
 <script>
