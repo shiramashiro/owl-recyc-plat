@@ -1,11 +1,7 @@
 <template>
     <view class="mine">
         <view class="row-1">
-            <image
-                class="image"
-                mode="aspectFill"
-                src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg"
-            ></image>
+            <image class="image" mode="aspectFill" :src="user.bgImage"></image>
         </view>
         <view class="row-2">
             <view class="row-2-1">
@@ -13,22 +9,22 @@
                     <image
                         class="avatar"
                         model="aspectFit"
-                        src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg"
+                        :src="user.avatar"
                     ></image>
                 </view>
                 <view class="col-2">
                     <view class="row-1 flex justify-between align-center">
                         <view class="cols text-center">
-                            <view class="num text-lg">180</view>
-                            <view class="desc text-sm text-gray">粉丝</view>
+                            <view class="text-lg">{{ user.fans }}</view>
+                            <view class="text-sm text-gray">粉丝</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="num text-lg">124</view>
-                            <view class="desc text-sm text-gray">关注</view>
+                            <view class="text-lg">{{ user.follows }}</view>
+                            <view class="text-sm text-gray">关注</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="num text-lg">44</view>
-                            <view class="desc text-sm text-gray">获赞</view>
+                            <view class="text-lg">{{ user.praise }}</view>
+                            <view class="text-sm text-gray">获赞</view>
                         </view>
                     </view>
                     <view class="row-2">
@@ -39,10 +35,8 @@
                 </view>
             </view>
             <view class="row-2-2">
-                <view class="row-1 text-lg">kongsam</view>
-                <view class="row-2 text-sm text-gray"
-                    >Time tick away, dream faded away!</view
-                >
+                <view class="row-1 text-lg">{{ user.username }}</view>
+                <view class="row-2 text-sm text-gray">{{ user.profile }}</view>
             </view>
             <view class="row-2-3">
                 <suitable-swiper :configs="configs" :swiperTabs="swiperTabs">
@@ -51,15 +45,12 @@
                         :key="index"
                     >
                         <view :id="'swiper-item-' + index">
-                            <view
+                            <component
                                 v-for="(item, itemIndex) in swiperTab.items"
                                 :key="itemIndex"
-                            >
-                                <component
-                                    :is="swiperTab.componentName"
-                                    :item="item"
-                                ></component>
-                            </view>
+                                :is="swiperTab.componentName"
+                                :item="item"
+                            ></component>
                         </view>
                     </swiper-item>
                 </suitable-swiper>
@@ -69,12 +60,16 @@
 </template>
 
 <script>
-import shop from '@/components/mine/shop.vue'
-import book from '@/components/mine/book.vue'
+import favoriteShop from '@/components/mine/favorite-shop.vue'
+import favoriteBook from '@/components/mine/favorite-book.vue'
 import suitableSwiper from '@/components/suitable-swiper.vue'
 
 export default {
-    components: { shop, book, suitableSwiper },
+    components: {
+        favoriteShop,
+        favoriteBook,
+        suitableSwiper
+    },
     data() {
         return {
             configs: {
@@ -84,10 +79,21 @@ export default {
                 isWhiteSpace: false,
                 tabType: 'tuiTabs'
             },
+            user: {
+                fans: 180,
+                praise: 44,
+                follows: 124,
+                username: 'kongsam',
+                profile: 'Time tick away, dream faded away!',
+                bgImage:
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg',
+                avatar:
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
+            },
             swiperTabs: [
                 {
                     name: '收藏书籍',
-                    componentName: 'book',
+                    componentName: 'favoriteBook',
                     items: [
                         {
                             cover:
@@ -120,7 +126,7 @@ export default {
                 },
                 {
                     name: '订阅店铺',
-                    componentName: 'shop',
+                    componentName: 'favoriteShop',
                     items: [
                         {
                             cover: require('../../static/mine/mexican.jpg'),
