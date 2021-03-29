@@ -6,7 +6,7 @@
         style="border-radius: 20rpx;"
     >
         <template v-slot:content>
-            <view class="shop flex align-center padding-xs">
+            <view class="favorite-shop flex align-center padding-xs">
                 <view class="col-1 margin-right-sm">
                     <image class="cover" :src="item.cover"></image>
                 </view>
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.shop {
+.favorite-shop {
     .col-1 {
         .cover {
             width: 130rpx;
