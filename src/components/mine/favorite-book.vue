@@ -6,7 +6,7 @@
         style="border-radius: 20rpx; white-space: normal"
     >
         <template v-slot:content>
-            <view class="book padding">
+            <view class="favorite-book padding">
                 <view class="row-1 shop-name text-lg">
                     {{ item.shopName }}
                 </view>
@@ -21,9 +21,8 @@
                     <view class="col-2">
                         <view class="row-1 text-df">{{ item.name }}</view>
                         <view class="row-2 text-sm">{{ item.desc }}</view>
-                        <view class="row-3">
-                            <text class="mark text-sm">¥</text>
-                            <text class="text-xl">{{ item.price }}</text>
+                        <view class="row-3 text-red">
+                            <text class="col-1 text-xl">{{ item.price }}</text>
                         </view>
                         <view class="row-4">
                             <tui-icon
@@ -82,7 +81,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.book {
+.favorite-book {
     background-color: white;
 
     .row-1.shop-name {
@@ -121,10 +120,10 @@ export default {
             }
 
             .row-3 {
-                color: red;
-
-                .mark {
-                    margin-right: 6rpx;
+                .col-1::before {
+                    content: '¥';
+                    font-size: 80%;
+                    margin-right: 4rpx;
                 }
             }
 

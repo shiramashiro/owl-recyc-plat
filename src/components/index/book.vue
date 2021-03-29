@@ -1,16 +1,26 @@
 <template>
-    <view class="book margin-xs padding-sm">
-        <view class="row-1 margin-bottom-xs">
-            <image mode="aspectFill" :src="book.cover"></image>
-        </view>
-        <view class="row-2 margin-bottom-xs text-df">{{ book.name }}</view>
-        <view class="row-3 margin-bottom-xs text-gray">{{ book.author }}</view>
-        <view class="row-4 margin-bottom-xs flex align-center justify-between">
-            <view class="discount-price text-red text-lg">
-                {{ book.price }}
+    <view class="book margin-xs" @click="viewDetails()">
+        <view class="row-1">
+            <view class="col-1 margin-bottom-xs">
+                <image mode="aspectFill" :src="item.cover"></image>
             </view>
-            <view class="origin-price text-gray text-lg">
-                {{ book.originPrice }}
+        </view>
+        <view class="row-2 padding-sm">
+            <view class="col-1 margin-bottom-xs text-df">
+                {{ item.name }}
+            </view>
+            <view class="col-2 margin-bottom-xs text-gray">
+                {{ item.author }}
+            </view>
+            <view
+                class="col-3 margin-bottom-xs flex align-center justify-between"
+            >
+                <view class="col-3-1 text-red text-lg">
+                    {{ item.price }}
+                </view>
+                <view class="col-3-2 text-gray text-lg">
+                    {{ item.originPrice }}
+                </view>
             </view>
         </view>
     </view>
@@ -19,9 +29,17 @@
 <script>
 export default {
     props: {
-        book: {
+        item: {
             type: Object,
             required: true
+        }
+    },
+    data() {
+        return {}
+    },
+    methods: {
+        viewDetails() {
+            console.log('查看详细 --> ' + this.item.id)
         }
     }
 }
@@ -31,40 +49,43 @@ export default {
 .book {
     background-color: white;
     border-radius: 20rpx;
+    width: 47%;
 
     .row-2 {
-        display: -webkit-box;
-        word-break: break-all;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .row-3 {
-        display: -webkit-box;
-        word-break: break-all;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .row-4 {
-        .discount-price::before {
-            content: '¥';
-            font-size: 80%;
-            margin-right: 4rpx;
+        .col-1 {
+            display: -webkit-box;
+            word-break: break-all;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .origin-price {
-            text-decoration: line-through;
+        .col-2 {
+            display: -webkit-box;
+            word-break: break-all;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .origin-price::before {
-            content: '¥';
-            font-size: 80%;
-            margin-right: 4rpx;
+        .col-3 {
+            .col-3-1::before {
+                content: '¥';
+                font-size: 80%;
+                margin-right: 4rpx;
+            }
+
+            .col-3-2::before {
+                content: '¥';
+                font-size: 80%;
+                margin-right: 4rpx;
+            }
+
+            .col-3-2 {
+                text-decoration: line-through;
+            }
         }
     }
 }
