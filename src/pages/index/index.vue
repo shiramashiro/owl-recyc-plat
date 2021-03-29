@@ -36,7 +36,7 @@ export default {
                 sliderBgColor: '#87cefa',
                 itemWidth: '100%',
                 isWhiteSpace: true,
-                tabType: 'tuiTab'
+                isScroll: true
             },
             swiperTabs: [
                 {

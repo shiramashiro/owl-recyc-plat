@@ -77,7 +77,7 @@ export default {
                 sliderBgColor: '#87cefa',
                 itemWidth: '50%',
                 isWhiteSpace: false,
-                tabType: 'tuiTabs'
+                isScroll: false
             },
             user: {
                 fans: 180,
