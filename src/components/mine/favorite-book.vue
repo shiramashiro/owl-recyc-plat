@@ -2,7 +2,7 @@
     <tui-swipe-action
         :actions="actions"
         :open="isOpen"
-        class="margin-bottom-lg"
+        class="margin-bottom-lg margin-top-lg margin-right-sm margin-left-sm"
         style="border-radius: 20rpx; white-space: normal"
     >
         <template v-slot:content>
@@ -48,7 +48,7 @@
 
 <script>
 export default {
-    name: 'favoriteBook',
+    name: 'FavoriteBook',
     props: {
         item: {
             type: Object,

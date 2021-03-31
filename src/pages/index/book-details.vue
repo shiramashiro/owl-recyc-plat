@@ -1,5 +1,6 @@
 <template>
     <view class="book-details">
+        <view class="status_bar"> </view>
         {{ id }}
         <view class="sss" v-for="(item, index) in 110" :key="index">
             {{ item }}
@@ -9,7 +10,7 @@
 
 <script>
 export default {
-    name: 'bookDetails',
+    name: 'BookDetails',
     data() {
         return {
             id: 0,
@@ -27,4 +28,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.status_bar {
+    height: var(--status-bar-height);
+    width: 100%;
+}
 </style>

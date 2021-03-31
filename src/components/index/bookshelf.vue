@@ -1,15 +1,20 @@
 <template>
-    <view class="flex bookshelf">
-        <book v-for="(item, index) in items" :key="index" :item="item"></book>
+    <view class="bookshelf padding-left-xs padding-right-xs">
+        <book
+            class="rows"
+            v-for="(item, index) in items"
+            :key="index"
+            :item="item"
+        ></book>
     </view>
 </template>
 
 <script>
-import book from '@/components/index/book.vue'
+import Book from '@/components/index/book.vue'
 
 export default {
-    name: 'bookshelf',
-    components: { book },
+    name: 'Bookshelf',
+    components: { Book },
     props: {
         bookshelf: {
             type: Object,
@@ -213,5 +218,12 @@ export default {
 <style lang="scss" scoped>
 .bookshelf {
     flex-flow: wrap;
+    display: flex;
+
+    .rows {
+        /* #ifdef MP-QQ || MP-WEIXIN */
+        width: 100% !important;
+        /* #endif */
+    }
 }
 </style>

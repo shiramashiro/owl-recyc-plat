@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: 'kongNavigation',
+    name: 'KongNavigation',
     props: {
         navConfigs: {
             type: Object,

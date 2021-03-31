@@ -19,7 +19,7 @@
 import bookshelf from '@/components/index/bookshelf.vue'
 
 export default {
-    name: 'homeTab',
+    name: 'HomeTab',
     props: {
         bookshelf: {
             type: Object,

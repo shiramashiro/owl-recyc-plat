@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    name: 'book',
+    name: 'Book',
     props: {
         item: {
             type: Object,
@@ -52,7 +52,9 @@ export default {
 .book {
     background-color: white;
     border-radius: 20rpx;
+    /* #ifdef H5 */
     width: 47%;
+    /* #endif */
 
     .row-2 {
         .col-1 {
@@ -62,6 +64,7 @@ export default {
             -webkit-line-clamp: 2;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: center;
         }
 
         .col-2 {

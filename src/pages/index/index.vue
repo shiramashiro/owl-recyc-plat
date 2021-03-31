@@ -1,5 +1,6 @@
 <template>
     <view class="index">
+        <view class="status_bar"> </view>
         <kong-navigation :navConfigs="navConfigs">
             <view
                 class="nav-wrap margin-right-lg margin-left-lg flex justify-between"
@@ -10,7 +11,7 @@
                 <view class="col-2 flex align-center justify-center">
                     <view class="input-wrap flex align-center">
                         <input
-                            class="input text-xs"
+                            class="input text-sm"
                             v-model="search"
                             placeholder="请输入搜索关键字"
                             type="text"
@@ -27,47 +28,67 @@
             </view>
         </kong-navigation>
         <view class="rows">
-            <kong-swiper :configs="configs" :swiperTabs="swiperTabs">
+            <tui-tab
+                :scroll="true"
+                selectedColor="#87cefa"
+                sliderBgColor="#87cefa"
+                :current="currentTuiTab"
+                @slideTuiTab="slideTuiTab"
+                :swiperTabs="swiperTabs"
+            ></tui-tab>
+            <swiper
+                style="background-color: rgb(248,248,248)"
+                :style="{ height: swiperHeight + 'px' }"
+                :current="currentSwiper"
+                @change="slideSwiper"
+                :duration="360"
+            >
                 <swiper-item
                     v-for="(swiperTab, index) in swiperTabs"
                     :key="index"
                 >
                     <view :id="'swiper-item-' + index">
+                        <!-- #ifdef H5 -->
                         <component
                             :bookshelf="swiperTab"
                             :is="swiperTab.componentName"
                         ></component>
+                        <!-- #endif -->
+                        <!-- #ifdef MP-WEIXIN || MP-QQ-->
+                        <template v-if="swiperTab.name === '全部'">
+                            <home-tab :bookshelf="swiperTab"></home-tab>
+                        </template>
+                        <template v-else>
+                            <bookshelf :bookshelf="swiperTab"></bookshelf>
+                        </template>
+                        <!-- #endif -->
                     </view>
                 </swiper-item>
-            </kong-swiper>
+            </swiper>
         </view>
     </view>
 </template>
 
 <script>
-import kongSwiper from '@/components/kong-swiper.vue'
-import bookshelf from '@/components/index/bookshelf.vue'
-import homeTab from '@/components/index/home-tab.vue'
-import kongAvatar from '@/components/kong-avatar.vue'
-import kongNavigation from '@/components/kong-navigation.vue'
+import KongAvatar from '@/components/kong-avatar.vue'
+import KongNavigation from '@/components/kong-navigation.vue'
+import HomeTab from '@/components/index/home-tab.vue'
+import Bookshelf from '@/components/index/bookshelf.vue'
 
 export default {
-    name: 'index',
+    name: 'Index',
     components: {
-        kongSwiper,
-        kongNavigation,
-        bookshelf,
-        homeTab,
-        kongAvatar
+        KongAvatar,
+        KongNavigation,
+        Bookshelf,
+        HomeTab
     },
     data() {
         return {
-            configs: {
-                selectedColor: '#87cefa',
-                sliderBgColor: '#87cefa',
-                itemWidth: '100%',
-                isScroll: true
-            },
+            search: '',
+            swiperHeight: 0,
+            currentSwiper: 0,
+            currentTuiTab: 0,
             navConfigs: {
                 splitLine: false,
                 isFixed: false,
@@ -79,19 +100,17 @@ export default {
             swiperTabs: [
                 {
                     name: '全部',
-                    componentName: 'homeTab'
+                    componentName: 'HomeTab'
                 },
                 {
                     name: '计算机/网络',
-                    componentName: 'bookshelf'
+                    componentName: 'Bookshelf'
                 },
                 {
                     name: '教育',
-                    componentName: 'bookshelf'
+                    componentName: 'Bookshelf'
                 }
             ],
-            title: '首页',
-            search: '',
             user: {
                 fans: 180,
                 praise: 44,
@@ -105,7 +124,31 @@ export default {
             }
         }
     },
+    mounted() {
+        setTimeout(() => {
+            this.initSwiperHeight(0)
+        }, 0)
+    },
     methods: {
+        initSwiperHeight(index) {
+            uni.createSelectorQuery()
+                .in(this)
+                .select('#swiper-item-' + index)
+                .boundingClientRect(data => {
+                    this.swiperHeight = data.height + 30
+                })
+                .exec()
+        },
+        slideTuiTab(event) {
+            this.initSwiperHeight(event.index)
+            this.currentTuiTab = event.index
+            this.currentSwiper = event.index
+        },
+        slideSwiper(event) {
+            this.initSwiperHeight(event.detail.current)
+            this.currentTuiTab = event.detail.current
+            this.currentSwiper = event.detail.current
+        },
         openMessage() {
             console.log('open message center!')
         }
@@ -113,8 +156,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .index {
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
+
     .nav-wrap {
         height: 100%;
 
