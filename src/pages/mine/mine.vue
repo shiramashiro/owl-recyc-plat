@@ -1,332 +1,276 @@
 <template>
-  <view class="mine">
-    <view class="background">
-      <image
-        class="image"
-        mode="aspectFill"
-        src="../../static/mine/88441329_p0.jpg"
-      ></image>
-    </view>
-    <view class="wrapper">
-      <view class="top-wrapper">
-        <view class="col-1">
-          <image
-            class="avatar"
-            model="aspectFit"
-            src="../../static/mine/avatar.jpg"
-          ></image>
-        </view>
-        <view class="col-2">
-          <view class="row-1">
-            <view class="col-1">
-              <view class="num">180</view>
-              <view class="desc">粉丝</view>
-            </view>
-            <view class="col-1">
-              <view class="num">124</view>
-              <view class="desc">关注</view>
-            </view>
-            <view class="col-1">
-              <view class="num">44</view>
-              <view class="desc">获赞</view>
-            </view>
-          </view>
-          <view class="row-2">
-            <button class="editor" size="mini" :plain="true">编辑资料</button>
-          </view>
-        </view>
-      </view>
-      <view class="header-wrapper">
+    <view class="mine">
         <view class="row-1">
-          <view class="col-1">kongsam</view>
+            <image class="image" mode="aspectFill" :src="user.bgImage"></image>
         </view>
         <view class="row-2">
-          <view class="col-1">
-            Time tick away, dream faded away!
-          </view>
+            <view class="row-2-1">
+                <view class="col-1">
+                    <image
+                        class="avatar"
+                        model="aspectFit"
+                        :src="user.avatar"
+                    ></image>
+                </view>
+                <view class="col-2">
+                    <view class="row-1 flex justify-between align-center">
+                        <view class="cols text-center">
+                            <view class="text-lg">{{ user.fans }}</view>
+                            <view class="text-sm text-gray">粉丝</view>
+                        </view>
+                        <view class="cols text-center">
+                            <view class="text-lg">{{ user.follows }}</view>
+                            <view class="text-sm text-gray">关注</view>
+                        </view>
+                        <view class="cols text-center">
+                            <view class="text-lg">{{ user.praise }}</view>
+                            <view class="text-sm text-gray">获赞</view>
+                        </view>
+                    </view>
+                    <view class="row-2">
+                        <button class="editor" size="mini" :plain="true">
+                            编辑资料
+                        </button>
+                    </view>
+                </view>
+            </view>
+            <view class="row-2-2">
+                <view class="row-1 text-lg">{{ user.username }}</view>
+                <view class="row-2 text-sm text-gray">{{ user.profile }}</view>
+            </view>
+            <view class="row-2-3">
+                <kong-swiper :configs="configs" :swiperTabs="swiperTabs">
+                    <swiper-item
+                        v-for="(swiperTab, index) in swiperTabs"
+                        :key="index"
+                    >
+                        <view :id="'swiper-item-' + index">
+                            <component
+                                v-for="(item, itemIndex) in swiperTab.items"
+                                :key="itemIndex"
+                                :is="swiperTab.componentName"
+                                :item="item"
+                            ></component>
+                        </view>
+                    </swiper-item>
+                </kong-swiper>
+            </view>
         </view>
-      </view>
-      <view class="body-wrapper">
-        <tui-tabs
-          style="width: 100%"
-          selectedColor="#87cefa"
-          sliderBgColor="#87cefa"
-          itemWidth="50%"
-          :tabs="tabs"
-          :currentTab="currentTab"
-          @change="tuiTabsChange"
-        ></tui-tabs>
-        <swiper
-          :style="{ height: swiperHeight + 'px' }"
-          style="padding: 35rpx 20rpx 0 20rpx; background-color: rgb(248, 248, 248)"
-          :duration="360"
-          :current="currentSwiper"
-          @change="swiperChange"
-        >
-          <swiper-item v-for="(item, index) in tabs" :key="index">
-            <template v-if="item.type === 'books'">
-              <view :id="'swiper-item-' + index">
-                <book
-                  v-for="(book, i) in item.items"
-                  :key="i"
-                  :book="book"
-                ></book>
-              </view>
-            </template>
-            <template v-else>
-              <view :id="'swiper-item-' + index">
-                <shop
-                  v-for="(shop, i) in item.items"
-                  :key="i"
-                  :shop="shop"
-                ></shop>
-              </view>
-            </template>
-          </swiper-item>
-        </swiper>
-      </view>
     </view>
-  </view>
 </template>
 
 <script>
-import shop from '@/components/mine/shop.vue'
-import book from '@/components/mine/book.vue'
+import favoriteShop from '@/components/mine/favorite-shop.vue'
+import favoriteBook from '@/components/mine/favorite-book.vue'
+import kongSwiper from '@/components/kong-swiper.vue'
 
 export default {
-  components: { shop, book },
-  data() {
-    return {
-      tabs: [
-        {
-          name: '收藏书籍',
-          type: 'books',
-          items: [
-            {
-              cover: require('../../static/mine/28495225-1_w_3.jpg'),
-              name: '深入理解Java虚拟机',
-              shopName: '传智书城自营',
-              price: 67,
-              desc:
-                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+    name: 'mine',
+    components: {
+        favoriteShop,
+        favoriteBook,
+        kongSwiper
+    },
+    data() {
+        return {
+            configs: {
+                selectedColor: '#87cefa',
+                sliderBgColor: '#87cefa',
+                itemWidth: '50%',
+                isWhiteSpace: false,
+                isScroll: false
             },
-            {
-              cover: require('../../static/mine/28495225-1_w_3.jpg'),
-              name: '深入理解Java虚拟机',
-              shopName: '传智书城自营',
-              price: 67,
-              desc:
-                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+            user: {
+                fans: 180,
+                praise: 44,
+                follows: 124,
+                username: 'kongsam',
+                profile: 'Time tick away, dream faded away!',
+                bgImage:
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg',
+                avatar:
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
             },
-            {
-              cover: require('../../static/screenshot20210327182704.png'),
-              name: '深入理解Java虚拟机',
-              shopName: '传智书城自营',
-              price: 67,
-              desc:
-                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
-            }
-          ]
-        },
-        {
-          name: '订阅店铺',
-          type: 'shops',
-          items: [
-            {
-              cover: require('../../static/mine/mexican.jpg'),
-              name: '稻草人',
-              star: 5,
-              likes: 10.9,
-              tags: [
+            swiperTabs: [
                 {
-                  label: '促销',
-                  style:
-                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                    name: '收藏书籍',
+                    componentName: 'favoriteBook',
+                    items: [
+                        {
+                            cover:
+                                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
+                            name: '深入理解Java虚拟机',
+                            shopName: '传智书城自营',
+                            price: 67,
+                            desc:
+                                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+                        },
+                        {
+                            cover:
+                                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
+                            name: '深入理解Java虚拟机',
+                            shopName: '传智书城自营',
+                            price: 67,
+                            desc:
+                                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+                        },
+                        {
+                            cover:
+                                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
+                            name: '深入理解Java虚拟机',
+                            shopName: '传智书城自营',
+                            price: 67,
+                            desc:
+                                '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
+                        }
+                    ]
                 },
                 {
-                  label: '券',
-                  style:
-                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                    name: '订阅店铺',
+                    componentName: 'favoriteShop',
+                    items: [
+                        {
+                            cover: require('../../static/mine/mexican.jpg'),
+                            name: '稻草人',
+                            star: 5,
+                            likes: 10.9,
+                            tags: [
+                                {
+                                    label: '促销',
+                                    style:
+                                        'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                                },
+                                {
+                                    label: '券',
+                                    style:
+                                        'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                                }
+                            ]
+                        },
+                        {
+                            cover: require('../../static/mine/a21.jpg'),
+                            name: 'A21',
+                            star: 4,
+                            likes: 8.9,
+                            tags: [
+                                {
+                                    label: '券',
+                                    style:
+                                        'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                                },
+                                {
+                                    label: '上新',
+                                    style:
+                                        'background-color: rgb(230,249,243); color: rgb(77,202,161)'
+                                }
+                            ]
+                        },
+                        {
+                            cover: require('../../static/mine/a21.jpg'),
+                            name: 'A21',
+                            star: 4,
+                            likes: 8.9,
+                            tags: [
+                                {
+                                    label: '促销',
+                                    style:
+                                        'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                                },
+                                {
+                                    label: '上新',
+                                    style:
+                                        'background-color: rgb(230,249,243); color: rgb(77,202,161)'
+                                }
+                            ]
+                        },
+                        {
+                            cover: require('../../static/mine/a21.jpg'),
+                            name: 'A21',
+                            star: 4,
+                            likes: 8.9,
+                            tags: [
+                                {
+                                    label: '券',
+                                    style:
+                                        'background-color: rgb(255,245,244); color: rgb(234,73,56)'
+                                }
+                            ]
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              cover: require('../../static/mine/a21.jpg'),
-              name: 'A21',
-              star: 4,
-              likes: 8.9,
-              tags: [
-                {
-                  label: '券',
-                  style:
-                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
-                },
-                {
-                  label: '上新',
-                  style:
-                    'background-color: rgb(230,249,243); color: rgb(77,202,161)'
-                }
-              ]
-            },
-            {
-              cover: require('../../static/mine/a21.jpg'),
-              name: 'A21',
-              star: 4,
-              likes: 8.9,
-              tags: [
-                {
-                  label: '促销',
-                  style:
-                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
-                },
-                {
-                  label: '上新',
-                  style:
-                    'background-color: rgb(230,249,243); color: rgb(77,202,161)'
-                }
-              ]
-            },
-            {
-              cover: require('../../static/mine/a21.jpg'),
-              name: 'A21',
-              star: 4,
-              likes: 8.9,
-              tags: [
-                {
-                  label: '券',
-                  style:
-                    'background-color: rgb(255,245,244); color: rgb(234,73,56)'
-                }
-              ]
-            }
-          ]
+            ]
         }
-      ],
-      swiperHeight: 0,
-      currentTab: 0,
-      currentSwiper: 0
     }
-  },
-  onReady() {
-    this.initSwiperHeight(0)
-  },
-  methods: {
-    initSwiperHeight(index) {
-      uni
-        .createSelectorQuery()
-        .in(this)
-        .select('#swiper-item-' + index)
-        .boundingClientRect(data => {
-          this.swiperHeight = data.height + 30
-        })
-        .exec()
-    },
-    tuiTabsChange(event) {
-      this.currentTab = event.index
-      this.currentSwiper = event.index
-      this.initSwiperHeight(event.index)
-    },
-    swiperChange(event) {
-      this.currentTab = event.detail.current
-      this.currentSwiper = event.detail.current
-      this.initSwiperHeight(event.detail.current)
-    }
-  }
 }
 </script>
 
 <style lang="scss" scoped>
 .mine {
-  .background {
-    width: 100%;
-    height: 100%;
-
-    .image {
-      width: 100%;
-      height: 305rpx;
-    }
-  }
-
-  .wrapper {
-    .top-wrapper {
-      padding: 0 20rpx;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      align-content: center;
-
-      .col-1 {
-        margin-right: 60rpx;
-        position: relative;
-
-        .avatar {
-          position: inherit;
-          border: 10rpx solid white;
-          border-radius: 100%;
-          width: 180rpx;
-          height: 180rpx;
-          top: -15rpx;
-        }
-      }
-
-      .col-2 {
+    .row-1 {
         width: 100%;
+        height: 100%;
 
-        .row-1 {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          align-content: center;
-          justify-content: space-between;
-
-          .col-1 {
-            text-align: center;
-            margin-right: 0;
-            margin: 0 0 10rpx 0;
-
-            .num {
-              font-size: 30rpx;
-            }
-
-            .desc {
-              color: #a7a7a7;
-            }
-          }
-        }
-
-        .row-2 {
-          .editor {
+        .image {
             width: 100%;
-            color: #87cefa;
-            border: #87cefa 1rpx solid;
-          }
+            height: 305rpx;
         }
-      }
     }
 
-    .header-wrapper {
-      padding: 0 20rpx;
-      border-bottom: 1rpx solid #e8e8e8;
+    .row-2 {
+        .row-2-1 {
+            padding: 0 20rpx;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
 
-      .row-1 {
-        margin-bottom: 13rpx;
+            .col-1 {
+                margin-right: 60rpx;
+                position: relative;
 
-        .col-1 {
-          font-size: 34rpx;
-          color: #87cefa;
+                .avatar {
+                    position: inherit;
+                    border: 10rpx solid white;
+                    border-radius: 100%;
+                    width: 180rpx;
+                    height: 180rpx;
+                    top: -15rpx;
+                }
+            }
+
+            .col-2 {
+                width: 100%;
+
+                .row-1 {
+                    .cols {
+                        margin-right: 0;
+                        margin: 0 0 10rpx 0;
+                    }
+                }
+
+                .row-2 {
+                    .editor {
+                        width: 100%;
+                        color: #87cefa;
+                        border: #87cefa 1rpx solid;
+                    }
+                }
+            }
         }
-      }
 
-      .row-2 {
-        padding-bottom: 25rpx;
+        .row-2-2 {
+            padding: 0 20rpx;
+            border-bottom: 1rpx solid #e8e8e8;
 
-        .col-1 {
-          color: #a7a7a7;
-          font-size: 25rpx;
-          font-weight: normal;
+            .row-1 {
+                margin-bottom: 13rpx;
+                color: #87cefa;
+            }
+
+            .row-2 {
+                padding-bottom: 25rpx;
+            }
         }
-      }
     }
-  }
 }
 </style>
