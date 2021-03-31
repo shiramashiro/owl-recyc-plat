@@ -39,7 +39,7 @@
                 <view class="row-2 text-sm text-gray">{{ user.profile }}</view>
             </view>
             <view class="row-2-3">
-                <suitable-swiper :configs="configs" :swiperTabs="swiperTabs">
+                <kong-swiper :configs="configs" :swiperTabs="swiperTabs">
                     <swiper-item
                         v-for="(swiperTab, index) in swiperTabs"
                         :key="index"
@@ -53,7 +53,7 @@
                             ></component>
                         </view>
                     </swiper-item>
-                </suitable-swiper>
+                </kong-swiper>
             </view>
         </view>
     </view>
@@ -62,13 +62,14 @@
 <script>
 import favoriteShop from '@/components/mine/favorite-shop.vue'
 import favoriteBook from '@/components/mine/favorite-book.vue'
-import suitableSwiper from '@/components/suitable-swiper.vue'
+import kongSwiper from '@/components/kong-swiper.vue'
 
 export default {
+    name: 'mine',
     components: {
         favoriteShop,
         favoriteBook,
-        suitableSwiper
+        kongSwiper
     },
     data() {
         return {
@@ -77,7 +78,7 @@ export default {
                 sliderBgColor: '#87cefa',
                 itemWidth: '50%',
                 isWhiteSpace: false,
-                tabType: 'tuiTabs'
+                isScroll: false
             },
             user: {
                 fans: 180,

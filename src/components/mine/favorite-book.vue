@@ -48,6 +48,7 @@
 
 <script>
 export default {
+    name: 'favoriteBook',
     props: {
         item: {
             type: Object,

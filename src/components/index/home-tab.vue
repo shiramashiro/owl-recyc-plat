@@ -19,6 +19,7 @@
 import bookshelf from '@/components/index/bookshelf.vue'
 
 export default {
+    name: 'homeTab',
     props: {
         bookshelf: {
             type: Object,
@@ -40,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home-tab {
     .row-1 {
         .slide-show {

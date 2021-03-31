@@ -1,7 +1,7 @@
 <template>
     <view class="book margin-xs" @click="viewDetails()">
-        <view class="row-1">
-            <view class="col-1 margin-bottom-xs">
+        <view class="row-1 margin-bottom-xs padding-top-xs">
+            <view class="col-1">
                 <image mode="aspectFill" :src="item.cover"></image>
             </view>
         </view>
@@ -28,6 +28,7 @@
 
 <script>
 export default {
+    name: 'book',
     props: {
         item: {
             type: Object,
@@ -39,7 +40,9 @@ export default {
     },
     methods: {
         viewDetails() {
-            console.log('查看详细 --> ' + this.item.id)
+            uni.navigateTo({
+                url: '/pages/index/book-details?id=' + this.item.id
+            })
         }
     }
 }
