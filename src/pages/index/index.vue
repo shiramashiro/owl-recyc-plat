@@ -4,7 +4,7 @@
             <view
                 class="nav-wrap margin-right-lg margin-left-lg flex justify-between"
             >
-                <view class="col-1 flex align-center justify-center">
+                <view class="col-1 flex align-center">
                     <kong-avatar :src="user.avatar" :size="33"></kong-avatar>
                 </view>
                 <view class="col-2 flex align-center justify-center">
