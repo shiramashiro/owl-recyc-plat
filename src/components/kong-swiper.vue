@@ -1,25 +1,13 @@
 <template>
-    <view class="suitable-swiper">
-        <template v-if="configs.tabType === 'tuiTabs'">
-            <tui-tabs
-                :selectedColor="configs.selectedColor"
-                :sliderBgColor="configs.sliderBgColor"
-                :itemWidth="configs.itemWidth"
-                :currentTab="currentTuiTab"
-                @slideTuiTab="slideTuiTab"
-                :swiperTabs="swiperTabs"
-            ></tui-tabs>
-        </template>
-        <template v-else-if="configs.tabType === 'tuiTab'">
-            <tui-tab
-                :scroll="true"
-                :selectedColor="configs.selectedColor"
-                :sliderBgColor="configs.sliderBgColor"
-                :current="currentTuiTab"
-                @slideTuiTab="slideTuiTab"
-                :swiperTabs="swiperTabs"
-            ></tui-tab>
-        </template>
+    <view class="kong-swiper">
+        <tui-tab
+            :scroll="configs.isScroll"
+            :selectedColor="configs.selectedColor"
+            :sliderBgColor="configs.sliderBgColor"
+            :current="currentTuiTab"
+            @slideTuiTab="slideTuiTab"
+            :swiperTabs="swiperTabs"
+        ></tui-tab>
         <swiper
             :style="{
                 height: swiperHeight + 'px',
@@ -37,6 +25,7 @@
 
 <script>
 export default {
+    name: 'kongSwiper',
     props: {
         configs: {
             type: Object,
@@ -63,7 +52,9 @@ export default {
         }
     },
     mounted() {
-        this.initSwiperHeight(0)
+        setTimeout(() => {
+            this.initSwiperHeight(0)
+        }, 0)
     },
     methods: {
         initSwiperHeight(index) {
