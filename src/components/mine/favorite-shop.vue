@@ -54,6 +54,7 @@
 
 <script>
 export default {
+    name: 'favoriteShop',
     props: {
         item: {
             type: Object,

@@ -8,6 +8,7 @@
 import book from '@/components/index/book.vue'
 
 export default {
+    name: 'bookshelf',
     components: { book },
     props: {
         bookshelf: {
@@ -212,9 +213,5 @@ export default {
 <style lang="scss" scoped>
 .bookshelf {
     flex-flow: wrap;
-
-    .book {
-        width: 47%;
-    }
 }
 </style>

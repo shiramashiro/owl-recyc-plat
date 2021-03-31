@@ -1,5 +1,5 @@
 <template>
-    <view class="suitable-swiper">
+    <view class="kong-swiper">
         <tui-tab
             :scroll="configs.isScroll"
             :selectedColor="configs.selectedColor"
@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'kongSwiper',
     props: {
         configs: {
             type: Object,
@@ -53,7 +54,7 @@ export default {
     mounted() {
         setTimeout(() => {
             this.initSwiperHeight(0)
-        }, 100)
+        }, 0)
     },
     methods: {
         initSwiperHeight(index) {
