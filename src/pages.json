@@ -13,7 +13,7 @@
             "path": "pages/mine/mine"
         },
         {
-            "path": "pages/index/book-details"
+            "path": "pages/index/sub-index"
         }
     ],
     "easycom": {

@@ -59,16 +59,11 @@
                         :key="index"
                     >
                         <view :id="'swiper-item-' + index">
-                            <!-- #ifdef H5 -->
-                            <component
-                                v-for="(item, itemIndex) in swiperTab.items"
-                                :key="itemIndex"
-                                :is="swiperTab.componentName"
-                                :item="item"
-                            ></component>
-                            <!-- #endif -->
-                            <!-- #ifdef MP-WEIXIN || MP-QQ-->
-                            <template v-if="swiperTab.name === '收藏书籍'">
+                            <template
+                                v-if="
+                                    swiperTab.componentName === 'FavoriteBook'
+                                "
+                            >
                                 <favorite-book
                                     v-for="(item, itemIndex) in swiperTab.items"
                                     :key="itemIndex"
@@ -82,7 +77,6 @@
                                     :item="item"
                                 ></favorite-shop>
                             </template>
-                            <!-- #endif -->
                         </view>
                     </swiper-item>
                 </swiper>

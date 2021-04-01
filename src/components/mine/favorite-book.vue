@@ -7,7 +7,7 @@
     >
         <template v-slot:content>
             <view class="favorite-book padding">
-                <view class="row-1 shop-name text-lg">
+                <view class="row-1 margin-bottom-sm text-lg">
                     {{ item.shopName }}
                 </view>
                 <view class="row-2 flex align-center">
@@ -59,7 +59,7 @@ export default {
         return {
             actions: [
                 {
-                    name: '取消收藏',
+                    name: '取消',
                     color: '#fff',
                     fontsize: 30,
                     width: 70,
@@ -84,10 +84,6 @@ export default {
 <style lang="scss" scoped>
 .favorite-book {
     background-color: white;
-
-    .row-1.shop-name {
-        margin-bottom: 25rpx;
-    }
 
     .row-2 {
         .col-1 {

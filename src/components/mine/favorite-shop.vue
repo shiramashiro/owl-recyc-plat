@@ -65,7 +65,7 @@ export default {
         return {
             actions: [
                 {
-                    name: '取消订阅',
+                    name: '取消',
                     color: '#fff',
                     fontsize: 30,
                     width: 70,

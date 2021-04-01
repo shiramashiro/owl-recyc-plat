@@ -1,12 +1,12 @@
 <template>
     <view class="index">
         <view class="status_bar"> </view>
-        <kong-navigation :navConfigs="navConfigs">
+        <navbar :navConfigs="navConfigs">
             <view
                 class="nav-wrap margin-right-lg margin-left-lg flex justify-between"
             >
                 <view class="col-1 flex align-center">
-                    <kong-avatar :src="user.avatar" :size="33"></kong-avatar>
+                    <avatar :src="user.avatar" :size="33"></avatar>
                 </view>
                 <view class="col-2 flex align-center justify-center">
                     <view class="input-wrap flex align-center">
@@ -26,7 +26,7 @@
                     <i class="el-icon-third-xiaoxixinxi" plain="true"></i>
                 </view>
             </view>
-        </kong-navigation>
+        </navbar>
         <view class="rows">
             <tui-tab
                 :scroll="true"
@@ -43,25 +43,9 @@
                 @change="slideSwiper"
                 :duration="360"
             >
-                <swiper-item
-                    v-for="(swiperTab, index) in swiperTabs"
-                    :key="index"
-                >
+                <swiper-item v-for="(tab, index) in swiperTabs" :key="index">
                     <view :id="'swiper-item-' + index">
-                        <!-- #ifdef H5 -->
-                        <component
-                            :bookshelf="swiperTab"
-                            :is="swiperTab.componentName"
-                        ></component>
-                        <!-- #endif -->
-                        <!-- #ifdef MP-WEIXIN || MP-QQ-->
-                        <template v-if="swiperTab.name === '全部'">
-                            <home-tab :bookshelf="swiperTab"></home-tab>
-                        </template>
-                        <template v-else>
-                            <bookshelf :bookshelf="swiperTab"></bookshelf>
-                        </template>
-                        <!-- #endif -->
+                        <swiper-content :tabName="tab.name"></swiper-content>
                     </view>
                 </swiper-item>
             </swiper>
@@ -70,19 +54,11 @@
 </template>
 
 <script>
-import KongAvatar from '@/components/kong-avatar.vue'
-import KongNavigation from '@/components/kong-navigation.vue'
-import HomeTab from '@/components/index/home-tab.vue'
-import Bookshelf from '@/components/index/bookshelf.vue'
+import SwiperContent from '@/components/index/swiper-content.vue'
 
 export default {
     name: 'Index',
-    components: {
-        KongAvatar,
-        KongNavigation,
-        Bookshelf,
-        HomeTab
-    },
+    components: { SwiperContent },
     data() {
         return {
             search: '',
@@ -98,18 +74,9 @@ export default {
                 isImmersive: false
             },
             swiperTabs: [
-                {
-                    name: '全部',
-                    componentName: 'HomeTab'
-                },
-                {
-                    name: '计算机/网络',
-                    componentName: 'Bookshelf'
-                },
-                {
-                    name: '教育',
-                    componentName: 'Bookshelf'
-                }
+                { name: '全部' },
+                { name: '计算机/网络' },
+                { name: '教育' }
             ],
             user: {
                 fans: 180,
@@ -125,29 +92,42 @@ export default {
         }
     },
     mounted() {
+        // 获取第一个tab的高度内容，为swiper设置初始高度
         setTimeout(() => {
-            this.initSwiperHeight(0)
+            this.setSwiperItem(0)
         }, 0)
     },
     methods: {
-        initSwiperHeight(index) {
+        /**
+         * 当用户切换tab，此时就会执行此方法重新获取tab所在的swiper-item-[index]的高度。
+         * 默认会在得到的高度再加30px，原因是为底部拉开一点距离。
+         *
+         * 问题：不论是滑动tab还是swiper-item-[index]都会执行两次setSwiperItem。
+         */
+        setSwiperItem(index) {
             uni.createSelectorQuery()
                 .in(this)
                 .select('#swiper-item-' + index)
                 .boundingClientRect(data => {
-                    this.swiperHeight = data.height + 30
+                    this.swiperHeight = data.height + 25
                 })
                 .exec()
         },
-        slideTuiTab(event) {
-            this.initSwiperHeight(event.index)
-            this.currentTuiTab = event.index
-            this.currentSwiper = event.index
+        /**
+         * 用户切换tab时
+         */
+        slideTuiTab(data) {
+            this.setSwiperItem(data.index)
+            this.currentTuiTab = data.index
+            this.currentSwiper = data.index
         },
-        slideSwiper(event) {
-            this.initSwiperHeight(event.detail.current)
-            this.currentTuiTab = event.detail.current
-            this.currentSwiper = event.detail.current
+        /**
+         * 用户切换swiper-item-[index]时
+         */
+        slideSwiper(data) {
+            this.setSwiperItem(data.detail.current)
+            this.currentTuiTab = data.detail.current
+            this.currentSwiper = data.detail.current
         },
         openMessage() {
             console.log('open message center!')
@@ -176,9 +156,9 @@ export default {
             .input-wrap {
                 width: 100%;
                 border-radius: 50rpx;
-                background-color: rgba(240, 240, 240, 0.8);
+                background-color: rgb(244, 244, 244);
                 padding: 0 20rpx;
-                height: 44rpx;
+                height: 58rpx;
             }
 
             .input-wrap::before {
@@ -194,6 +174,12 @@ export default {
 
         .col-1 {
             width: 10%;
+        }
+    }
+
+    .rows {
+        .other-tab {
+            flex-flow: row;
         }
     }
 }
