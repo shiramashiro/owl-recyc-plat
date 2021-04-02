@@ -2,24 +2,24 @@
     <view class="book margin-xs" @click="viewDetails()">
         <view class="row-1 margin-bottom-xs padding-top-xs">
             <view class="col-1">
-                <image mode="aspectFill" :src="item.cover"></image>
+                <image mode="aspectFill" :src="data.cover"></image>
             </view>
         </view>
         <view class="row-2 padding-sm">
             <view class="col-1 margin-bottom-xs text-df">
-                {{ item.name }}
+                {{ data.name }}
             </view>
             <view class="col-2 margin-bottom-xs text-gray">
-                {{ item.author }}
+                {{ data.author }}
             </view>
             <view
                 class="col-3 margin-bottom-xs flex align-center justify-between"
             >
                 <view class="col-3-1 text-red text-lg">
-                    {{ item.price }}
+                    {{ data.price }}
                 </view>
                 <view class="col-3-2 text-gray text-lg">
-                    {{ item.originPrice }}
+                    {{ data.originPrice }}
                 </view>
             </view>
         </view>
@@ -28,9 +28,9 @@
 
 <script>
 export default {
-    name: 'book',
+    name: 'Book',
     props: {
-        item: {
+        data: {
             type: Object,
             required: true
         }
@@ -41,7 +41,7 @@ export default {
     methods: {
         viewDetails() {
             uni.navigateTo({
-                url: '/pages/index/book-details?id=' + this.item.id
+                url: '/pages/index/sub-index?id=' + this.data.id
             })
         }
     }
@@ -52,7 +52,15 @@ export default {
 .book {
     background-color: white;
     border-radius: 20rpx;
+    /* #ifdef H5 */
     width: 47%;
+    /* #endif */
+
+    .row-1 {
+        .col-1 {
+            text-align: center;
+        }
+    }
 
     .row-2 {
         .col-1 {
