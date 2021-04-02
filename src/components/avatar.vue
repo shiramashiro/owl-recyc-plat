@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: 'kongAvatar',
+    name: 'Avatar',
     props: {
         src: {
             type: String,

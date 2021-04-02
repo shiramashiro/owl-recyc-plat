@@ -39,47 +39,67 @@
                 <view class="row-2 text-sm text-gray">{{ user.profile }}</view>
             </view>
             <view class="row-2-3">
-                <kong-swiper :configs="configs" :swiperTabs="swiperTabs">
+                <tui-tab
+                    :scroll="false"
+                    selectedColor="#87cefa"
+                    sliderBgColor="#87cefa"
+                    :current="currentTuiTab"
+                    @slideTuiTab="slideTuiTab"
+                    :swiperTabs="swiperTabs"
+                ></tui-tab>
+                <swiper
+                    style="background-color: rgb(248,248,248)"
+                    :style="{ height: swiperHeight + 'px' }"
+                    :current="currentSwiper"
+                    @change="slideSwiper"
+                    :duration="360"
+                >
                     <swiper-item
                         v-for="(swiperTab, index) in swiperTabs"
                         :key="index"
                     >
                         <view :id="'swiper-item-' + index">
-                            <component
-                                v-for="(item, itemIndex) in swiperTab.items"
-                                :key="itemIndex"
-                                :is="swiperTab.componentName"
-                                :item="item"
-                            ></component>
+                            <template
+                                v-if="
+                                    swiperTab.componentName === 'FavoriteBook'
+                                "
+                            >
+                                <favorite-book
+                                    v-for="(item, itemIndex) in swiperTab.items"
+                                    :key="itemIndex"
+                                    :item="item"
+                                ></favorite-book>
+                            </template>
+                            <template v-else>
+                                <favorite-shop
+                                    v-for="(item, itemIndex) in swiperTab.items"
+                                    :key="itemIndex"
+                                    :item="item"
+                                ></favorite-shop>
+                            </template>
                         </view>
                     </swiper-item>
-                </kong-swiper>
+                </swiper>
             </view>
         </view>
     </view>
 </template>
 
 <script>
-import favoriteShop from '@/components/mine/favorite-shop.vue'
-import favoriteBook from '@/components/mine/favorite-book.vue'
-import kongSwiper from '@/components/kong-swiper.vue'
+import FavoriteShop from '@/components/mine/favorite-shop.vue'
+import FavoriteBook from '@/components/mine/favorite-book.vue'
 
 export default {
-    name: 'mine',
+    name: 'Mine',
     components: {
-        favoriteShop,
-        favoriteBook,
-        kongSwiper
+        FavoriteShop,
+        FavoriteBook
     },
     data() {
         return {
-            configs: {
-                selectedColor: '#87cefa',
-                sliderBgColor: '#87cefa',
-                itemWidth: '50%',
-                isWhiteSpace: false,
-                isScroll: false
-            },
+            swiperHeight: 0,
+            currentSwiper: 0,
+            currentTuiTab: 0,
             user: {
                 fans: 180,
                 praise: 44,
@@ -94,7 +114,7 @@ export default {
             swiperTabs: [
                 {
                     name: '收藏书籍',
-                    componentName: 'favoriteBook',
+                    componentName: 'FavoriteBook',
                     items: [
                         {
                             cover:
@@ -127,7 +147,7 @@ export default {
                 },
                 {
                     name: '订阅店铺',
-                    componentName: 'favoriteShop',
+                    componentName: 'FavoriteShop',
                     items: [
                         {
                             cover: require('../../static/mine/mexican.jpg'),
@@ -199,6 +219,32 @@ export default {
                     ]
                 }
             ]
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.initSwiperHeight(0)
+        }, 0)
+    },
+    methods: {
+        initSwiperHeight(index) {
+            uni.createSelectorQuery()
+                .in(this)
+                .select('#swiper-item-' + index)
+                .boundingClientRect(data => {
+                    this.swiperHeight = data.height + 30
+                })
+                .exec()
+        },
+        slideTuiTab(event) {
+            this.initSwiperHeight(event.index)
+            this.currentTuiTab = event.index
+            this.currentSwiper = event.index
+        },
+        slideSwiper(event) {
+            this.initSwiperHeight(event.detail.current)
+            this.currentTuiTab = event.detail.current
+            this.currentSwiper = event.detail.current
         }
     }
 }

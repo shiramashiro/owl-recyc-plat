@@ -10,7 +10,7 @@
         backgroundColor="black"
         color="#87cefa"
     >
-        <view class="tui-content-box">
+        <view class="navbar-content-box">
             <slot></slot>
         </view>
     </tui-navigation-bar>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: 'kongNavigation',
+    name: 'Navbar',
     props: {
         navConfigs: {
             type: Object,
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tui-content-box {
+.navbar-content-box {
     width: 100%;
     height: 100%;
 }

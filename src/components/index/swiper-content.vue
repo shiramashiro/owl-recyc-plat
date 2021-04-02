@@ -1,25 +1,37 @@
 <template>
-    <view class="flex bookshelf">
-        <book v-for="(item, index) in items" :key="index" :item="item"></book>
+    <view class="swiper-content">
+        <view class="custom-content">
+            <template v-if="this.tabName === '全部'">
+                <home-tab></home-tab>
+            </template>
+        </view>
+        <view class="public-content flex">
+            <book
+                v-for="(item, index) in items"
+                :key="index"
+                :data="item"
+            ></book>
+        </view>
     </view>
 </template>
 
 <script>
-import book from '@/components/index/book.vue'
+import Book from '@/components/index/book.vue'
+import HomeTab from '@/components/index/home-tab.vue'
 
 export default {
-    name: 'bookshelf',
-    components: { book },
+    name: 'SwiperContent',
+    components: { Book, HomeTab },
     props: {
-        bookshelf: {
-            type: Object,
+        tabName: {
+            type: String,
             required: true
         }
     },
     mounted() {
-        if (this.bookshelf.name === '全部') {
+        if (this.tabName === '全部') {
             this.items = this.items1
-        } else if (this.bookshelf.name === '计算机/网络') {
+        } else if (this.tabName === '计算机/网络') {
             this.items = this.items2
         } else {
             this.items = this.items3
@@ -27,6 +39,7 @@ export default {
     },
     data() {
         return {
+            // 做一个假数据，根据tabName选取一个items给book
             items: [
                 {
                     id: 0,
@@ -211,7 +224,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bookshelf {
-    flex-flow: wrap;
+.swiper-content {
+    .public-content {
+        flex-flow: wrap;
+    }
 }
 </style>

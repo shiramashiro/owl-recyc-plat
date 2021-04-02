@@ -1,16 +1,17 @@
 <template>
     <view class="index">
-        <kong-navigation :navConfigs="navConfigs">
+        <view class="status_bar"> </view>
+        <navbar :navConfigs="navConfigs">
             <view
                 class="nav-wrap margin-right-lg margin-left-lg flex justify-between"
             >
                 <view class="col-1 flex align-center">
-                    <kong-avatar :src="user.avatar" :size="33"></kong-avatar>
+                    <avatar :src="user.avatar" :size="33"></avatar>
                 </view>
                 <view class="col-2 flex align-center justify-center">
                     <view class="input-wrap flex align-center">
                         <input
-                            class="input text-xs"
+                            class="input text-sm"
                             v-model="search"
                             placeholder="请输入搜索关键字"
                             type="text"
@@ -25,49 +26,45 @@
                     <i class="el-icon-third-xiaoxixinxi" plain="true"></i>
                 </view>
             </view>
-        </kong-navigation>
+        </navbar>
         <view class="rows">
-            <kong-swiper :configs="configs" :swiperTabs="swiperTabs">
-                <swiper-item
-                    v-for="(swiperTab, index) in swiperTabs"
-                    :key="index"
-                >
+            <tui-tab
+                :scroll="true"
+                selectedColor="#87cefa"
+                sliderBgColor="#87cefa"
+                :current="currentTuiTab"
+                @slideTuiTab="slideTuiTab"
+                :swiperTabs="swiperTabs"
+            ></tui-tab>
+            <swiper
+                style="background-color: rgb(248,248,248)"
+                :style="{ height: swiperHeight + 'px' }"
+                :current="currentSwiper"
+                @change="slideSwiper"
+                :duration="360"
+            >
+                <swiper-item v-for="(tab, index) in swiperTabs" :key="index">
                     <view :id="'swiper-item-' + index">
-                        <component
-                            :bookshelf="swiperTab"
-                            :is="swiperTab.componentName"
-                        ></component>
+                        <swiper-content :tabName="tab.name"></swiper-content>
                     </view>
                 </swiper-item>
-            </kong-swiper>
+            </swiper>
         </view>
     </view>
 </template>
 
 <script>
-import kongSwiper from '@/components/kong-swiper.vue'
-import bookshelf from '@/components/index/bookshelf.vue'
-import homeTab from '@/components/index/home-tab.vue'
-import kongAvatar from '@/components/kong-avatar.vue'
-import kongNavigation from '@/components/kong-navigation.vue'
+import SwiperContent from '@/components/index/swiper-content.vue'
 
 export default {
-    name: 'index',
-    components: {
-        kongSwiper,
-        kongNavigation,
-        bookshelf,
-        homeTab,
-        kongAvatar
-    },
+    name: 'Index',
+    components: { SwiperContent },
     data() {
         return {
-            configs: {
-                selectedColor: '#87cefa',
-                sliderBgColor: '#87cefa',
-                itemWidth: '100%',
-                isScroll: true
-            },
+            search: '',
+            swiperHeight: 0,
+            currentSwiper: 0,
+            currentTuiTab: 0,
             navConfigs: {
                 splitLine: false,
                 isFixed: false,
@@ -77,21 +74,10 @@ export default {
                 isImmersive: false
             },
             swiperTabs: [
-                {
-                    name: '全部',
-                    componentName: 'homeTab'
-                },
-                {
-                    name: '计算机/网络',
-                    componentName: 'bookshelf'
-                },
-                {
-                    name: '教育',
-                    componentName: 'bookshelf'
-                }
+                { name: '全部' },
+                { name: '计算机/网络' },
+                { name: '教育' }
             ],
-            title: '首页',
-            search: '',
             user: {
                 fans: 180,
                 praise: 44,
@@ -105,7 +91,44 @@ export default {
             }
         }
     },
+    mounted() {
+        // 获取第一个tab的高度内容，为swiper设置初始高度
+        setTimeout(() => {
+            this.setSwiperItem(0)
+        }, 0)
+    },
     methods: {
+        /**
+         * 当用户切换tab，此时就会执行此方法重新获取tab所在的swiper-item-[index]的高度。
+         * 默认会在得到的高度再加30px，原因是为底部拉开一点距离。
+         *
+         * 问题：不论是滑动tab还是swiper-item-[index]都会执行两次setSwiperItem。
+         */
+        setSwiperItem(index) {
+            uni.createSelectorQuery()
+                .in(this)
+                .select('#swiper-item-' + index)
+                .boundingClientRect(data => {
+                    this.swiperHeight = data.height + 25
+                })
+                .exec()
+        },
+        /**
+         * 用户切换tab时
+         */
+        slideTuiTab(data) {
+            this.setSwiperItem(data.index)
+            this.currentTuiTab = data.index
+            this.currentSwiper = data.index
+        },
+        /**
+         * 用户切换swiper-item-[index]时
+         */
+        slideSwiper(data) {
+            this.setSwiperItem(data.detail.current)
+            this.currentTuiTab = data.detail.current
+            this.currentSwiper = data.detail.current
+        },
         openMessage() {
             console.log('open message center!')
         }
@@ -113,8 +136,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .index {
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
+
     .nav-wrap {
         height: 100%;
 
@@ -128,9 +156,9 @@ export default {
             .input-wrap {
                 width: 100%;
                 border-radius: 50rpx;
-                background-color: rgba(240, 240, 240, 0.8);
+                background-color: rgb(244, 244, 244);
                 padding: 0 20rpx;
-                height: 44rpx;
+                height: 58rpx;
             }
 
             .input-wrap::before {
@@ -146,6 +174,12 @@ export default {
 
         .col-1 {
             width: 10%;
+        }
+    }
+
+    .rows {
+        .other-tab {
+            flex-flow: row;
         }
     }
 }
