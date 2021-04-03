@@ -1,5 +1,6 @@
 <template>
     <view class="recommendation">
+        <view class="status_bar"> </view>
         <view class="slide-show margin-xs">
             <swiper autoplay>
                 <swiper-item v-for="(item, index) in slideShow" :key="index">
@@ -195,6 +196,11 @@ export default {
 <style lang="scss" scoped>
 .recommendation {
     background-color: rgb(248, 248, 248);
+
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
 
     .slide-show {
         .slide-show-image {

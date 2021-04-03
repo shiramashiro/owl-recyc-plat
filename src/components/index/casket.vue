@@ -10,9 +10,7 @@
             >
                 {{ data.cnTitle }}
             </view>
-            <view class="row-2 text-xs text-gray">
-                {{ data.enTitle }}
-            </view>
+            <view class="row-2 text-xs text-gray">{{ data.enTitle }}</view>
         </view>
         <view class="col-2">
             <image mode="aspectFit" class="image" :src="data.cover"></image>
@@ -41,8 +39,11 @@ export default {
 
 <style lang="scss" scoped>
 .casket {
-    width: 31.5%;
     height: 120rpx;
+    width: 31.5%;
+    /* #ifdef MP */
+    width: 230rpx;
+    /* #endif */
     background-color: white;
     border-radius: 16rpx;
 

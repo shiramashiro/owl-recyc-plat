@@ -28,7 +28,7 @@
         <view class="rows">
             <recommendation></recommendation>
             <tui-tab
-                :isSticky="true"
+                :isSticky="isSticky"
                 :scroll="true"
                 selectedColor="#87cefa"
                 sliderBgColor="#87cefa"
@@ -62,6 +62,9 @@ export default {
     components: { SwiperContent, Recommendation },
     data() {
         return {
+            // #ifdef H5
+            isSticky: true,
+            // #endif
             search: '',
             swiperHeight: 0,
             currentSwiper: 0,
