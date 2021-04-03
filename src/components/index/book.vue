@@ -27,24 +27,11 @@
 </template>
 
 <script>
+import { viewDetails } from '@/mixins/view-details.js'
+
 export default {
     name: 'Book',
-    props: {
-        data: {
-            type: Object,
-            required: true
-        }
-    },
-    data() {
-        return {}
-    },
-    methods: {
-        viewDetails() {
-            uni.navigateTo({
-                url: '/pages/index/sub-index?id=' + this.data.id
-            })
-        }
-    }
+    mixins: [viewDetails]
 }
 </script>
 

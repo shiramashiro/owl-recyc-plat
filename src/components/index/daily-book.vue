@@ -16,24 +16,11 @@
 </template>
 
 <script>
+import { viewDetails } from '@/mixins/view-details.js'
+
 export default {
     name: 'DailyBook',
-    data() {
-        return {}
-    },
-    props: {
-        data: {
-            type: Object,
-            required: true
-        }
-    },
-    methods: {
-        viewDetails() {
-            uni.navigateTo({
-                url: '/pages/index/sub-index?id=' + this.data.id
-            })
-        }
-    }
+    mixins: [viewDetails]
 }
 </script>
 
