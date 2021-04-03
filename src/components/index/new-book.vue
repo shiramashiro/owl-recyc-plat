@@ -1,7 +1,7 @@
 <template>
     <view
         @click="viewMore()"
-        class="daily-book margin-right-sm margin-left-sm padding-sm"
+        class="daily-book margin-lr-xs margin-tb-xs padding-xs"
     >
         <view class="row-1">
             <image mode="aspectFill" class="cover" :src="data.cover"></image>
@@ -19,7 +19,7 @@
 import { viewDetails } from '@/mixins/view-details.js'
 
 export default {
-    name: 'DailyBook',
+    name: 'NewBook',
     mixins: [viewDetails]
 }
 </script>

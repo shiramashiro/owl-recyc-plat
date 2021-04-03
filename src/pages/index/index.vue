@@ -3,7 +3,7 @@
         <view class="status_bar"> </view>
         <navbar :cfg="cfg">
             <view
-                class="nav-wrap margin-right-lg margin-left-lg flex justify-between"
+                class="nav-wrap margin-lr-lg flex justify-between"
             >
                 <view class="col-1 flex align-center">
                     <avatar :src="user.avatar" :size="33"></avatar>

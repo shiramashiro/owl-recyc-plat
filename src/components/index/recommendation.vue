@@ -1,26 +1,26 @@
 <template>
     <view class="recommendation">
-        <view class="row-1 margin-bottom-xs">
+        <view class="slide-show margin-xs">
             <swiper autoplay>
                 <swiper-item v-for="(item, index) in slideShow" :key="index">
                     <image
-                        class="slide-show"
+                        class="slide-show-image"
                         mode="aspectFit"
                         :src="item"
                     ></image>
                 </swiper-item>
             </swiper>
         </view>
-        <view class="row-2">
+        <view class="new-book margin-top-xs">
             <view
-                class="text-white row-2-1 margin-left-xs margin-right-xs padding-top-lg padding-bottom-lg padding-left-sm padding-right-sm flex justify-between align-center"
+                class="text-black row-2-1 margin-lr-xs padding-tb-lg padding-lr-sm flex justify-between align-center"
             >
                 <view class="col-1 flex text-lg">
                     <view class="col-1-1 text-lg">
-                        最受欢迎书籍日榜
+                        新书上架
                     </view>
                     <view class="col-1-2 flex align-end margin-left-xs text-xs">
-                        人气品牌·每日更新
+                        新鲜出炉·抢先一读
                     </view>
                 </view>
                 <view class="col-2">
@@ -29,25 +29,53 @@
                     </view>
                 </view>
             </view>
-            <scroll-view scroll-x="true" class="row-2-2 margin-bottom-lg">
+            <scroll-view scroll-x="true">
                 <view class="rows flex">
-                    <daily-book
-                        v-for="(book, index) in dailyBooks"
+                    <new-book
+                        v-for="(book, index) in newBooks"
                         :key="index"
                         :data="book"
-                    ></daily-book>
+                    ></new-book>
                 </view>
             </scroll-view>
+        </view>
+        <view class="daily-rank">
+            <view
+                class="text-black row-2-1 margin-lr-xs padding-tb-lg padding-lr-sm flex justify-between align-center"
+            >
+                <view class="col-1 flex text-lg">
+                    <view class="col-1-1 text-lg">
+                        最受欢迎的书籍
+                    </view>
+                    <view class="col-1-2 flex align-end margin-left-xs text-xs">
+                        人气书籍·每周更新
+                    </view>
+                </view>
+                <view class="col-2">
+                    <view class="col-2-1 text-xs">
+                        更多
+                    </view>
+                </view>
+            </view>
+            <view class="sudoku flex justify-between margin-lr-xs">
+                <casket
+                    v-for="(item, index) in caskets"
+                    :key="index"
+                    :data="item"
+                >
+                </casket>
+            </view>
         </view>
     </view>
 </template>
 
 <script>
-import DailyBook from './daily-book.vue'
+import NewBook from './new-book.vue'
+import Casket from './casket.vue'
 
 export default {
     name: 'Recommendation',
-    components: { DailyBook },
+    components: { NewBook, Casket },
     data() {
         return {
             slideShow: [
@@ -55,7 +83,7 @@ export default {
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032619353510220.jpg'
             ],
-            dailyBooks: [
+            newBooks: [
                 {
                     id: 7,
                     cover:
@@ -91,6 +119,80 @@ export default {
                     name: 'Spring 5 设计模式',
                     originPrice: '79.00'
                 }
+            ],
+            caskets: [
+                {
+                    id: 1,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/22894393-1_w_1.jpg',
+                    icon: 'el-icon-third-guanjun',
+                    cnTitle: '总榜',
+                    enTitle: 'General List'
+                },
+                {
+                    id: 2,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29197803-1_w_3.jpg',
+                    icon: 'el-icon-third-shiwu',
+                    cnTitle: '生活榜',
+                    enTitle: 'Living'
+                },
+                {
+                    id: 3,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27920509-1_w_26.jpg',
+                    icon: 'el-icon-third-keji',
+                    cnTitle: '科技榜',
+                    enTitle: 'Technology'
+                },
+                {
+                    id: 4,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/25157989-1_u_5.jpg',
+                    icon: 'el-icon-third-shehui',
+                    cnTitle: '社会榜',
+                    enTitle: 'Social Sciences'
+                },
+                {
+                    id: 5,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27932536-1_u_3.jpg',
+                    icon: 'el-icon-third-qiandai',
+                    cnTitle: '经管榜',
+                    enTitle: 'Business'
+                },
+                {
+                    id: 6,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/1901258135_ii_cover.jpg',
+                    icon: 'el-icon-third-wenxue',
+                    cnTitle: '文学榜',
+                    enTitle: 'Literature'
+                },
+                {
+                    id: 7,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28470862-1_u_3.jpg',
+                    icon: 'el-icon-third-yishu',
+                    cnTitle: '艺术榜',
+                    enTitle: 'Art'
+                },
+                {
+                    id: 8,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
+                    icon: 'el-icon-third-xueshimaoxuexibiye',
+                    cnTitle: '辅教榜',
+                    enTitle: 'Education'
+                },
+                {
+                    id: 9,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23684605-1_w_1.jpg',
+                    icon: 'el-icon-third-ertong',
+                    cnTitle: '童书榜',
+                    enTitle: "Children's Books"
+                }
             ]
         }
     }
@@ -99,37 +201,42 @@ export default {
 
 <style lang="scss" scoped>
 .recommendation {
-    .row-1 {
-        .slide-show {
+    .slide-show {
+        .slide-show-image {
             width: 100%;
             height: 100%;
         }
     }
 
-    .row-2 {
-        .row-2-1 {
-            background-color: rgb(106, 173, 252);
-            border-radius: 24rpx 24rpx 2rpx 2rpx;
+    .row-2-1 {
+        border-radius: 24rpx 24rpx 2rpx 2rpx;
+        background-color: white;
 
-            .col-2 {
-                .col-2-1 {
-                    border-radius: 50rpx;
-                    border: 1px solid rgb(103, 160, 249);
-                    padding: 4rpx 40rpx;
-                    background-color: rgb(103, 160, 249);
-                }
+        .col-2 {
+            .col-2-1 {
+                border: 1rpx solid #cccc;
+                border-radius: 50rpx;
+                padding: 4rpx 40rpx;
+            }
 
-                .col-2-1::after {
-                    font-family: 'iconfont' !important;
-                    font-style: normal;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                    content: '\e78a';
-                }
+            .col-2-1::after {
+                font-family: 'iconfont' !important;
+                font-style: normal;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                content: '\e78a';
             }
         }
+    }
 
-        .row-2-1 {
+    .new-book,
+    .daily-rank {
+        background-color: rgb(248, 248, 248);
+    }
+
+    .daily-rank {
+        .sudoku {
+            flex-flow: wrap;
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <view class="sub-index">
         <view class="status_bar"> </view>
-        <navbar :navConfigs="navConfigs">
+        <navbar :cfg="cfg">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             </view>
@@ -23,7 +23,7 @@ export default {
     name: 'MoreInfo',
     data() {
         return {
-            navConfigs: {
+            cfg: {
                 splitLine: false,
                 isFixed: false,
                 isOpacity: false,
