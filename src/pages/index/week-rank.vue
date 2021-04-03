@@ -1,9 +1,11 @@
 <template>
-    <view class="daily-rank"></view>
+    <view class="week-rank"></view>
 </template>
 
 <script>
-export default {}
+export default {
+    name: 'WeekRank'
+}
 </script>
 
 <style lang="scss" scoped></style>

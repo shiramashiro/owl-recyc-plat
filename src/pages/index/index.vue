@@ -2,9 +2,7 @@
     <view class="index">
         <view class="status_bar"> </view>
         <navbar :cfg="cfg">
-            <view
-                class="nav-wrap margin-lr-lg flex justify-between"
-            >
+            <view class="nav-wrap margin-lr-lg flex justify-between">
                 <view class="col-1 flex align-center">
                     <avatar :src="user.avatar" :size="33"></avatar>
                 </view>
@@ -30,6 +28,7 @@
         <view class="rows">
             <recommendation></recommendation>
             <tui-tab
+                :isSticky="true"
                 :scroll="true"
                 selectedColor="#87cefa"
                 sliderBgColor="#87cefa"

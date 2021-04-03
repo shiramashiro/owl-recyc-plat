@@ -23,11 +23,6 @@
                         新鲜出炉·抢先一读
                     </view>
                 </view>
-                <view class="col-2">
-                    <view class="col-2-1 text-xs">
-                        更多
-                    </view>
-                </view>
             </view>
             <scroll-view scroll-x="true">
                 <view class="rows flex">
@@ -49,11 +44,6 @@
                     </view>
                     <view class="col-1-2 flex align-end margin-left-xs text-xs">
                         人气书籍·每周更新
-                    </view>
-                </view>
-                <view class="col-2">
-                    <view class="col-2-1 text-xs">
-                        更多
                     </view>
                 </view>
             </view>
@@ -195,12 +185,17 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        viewMore() {}
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .recommendation {
+    background-color: rgb(248, 248, 248);
+
     .slide-show {
         .slide-show-image {
             width: 100%;
@@ -227,11 +222,6 @@ export default {
                 content: '\e78a';
             }
         }
-    }
-
-    .new-book,
-    .daily-rank {
-        background-color: rgb(248, 248, 248);
     }
 
     .daily-rank {

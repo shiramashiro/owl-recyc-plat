@@ -16,7 +16,7 @@
             "path": "pages/index/more-info"
         },
         {
-            "path": "pages/index/daily-rank"
+            "path": "pages/index/week-rank"
         }
     ],
     "easycom": {

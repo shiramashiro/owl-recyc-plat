@@ -1,5 +1,6 @@
 <template>
     <view
+        @click="viewMore()"
         class="casket flex padding-lr-xs justify-between align-center margin-tb-xs"
     >
         <view class="col-1">
@@ -26,6 +27,13 @@ export default {
         data: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        viewMore() {
+            uni.navigateTo({
+                url: '/pages/index/week-rank?id=' + this.data.id
+            })
         }
     }
 }
