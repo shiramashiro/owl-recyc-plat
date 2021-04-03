@@ -15,16 +15,16 @@
                 <view class="col-2">
                     <view class="row-1 flex justify-between align-center">
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.fans }}</view>
-                            <view class="text-sm text-gray">粉丝</view>
+                            <view class="text-sm">{{ user.fans }}</view>
+                            <view class="text-xs text-gray">粉丝</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.follows }}</view>
-                            <view class="text-sm text-gray">关注</view>
+                            <view class="text-sm">{{ user.follows }}</view>
+                            <view class="text-xs text-gray">关注</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.praise }}</view>
-                            <view class="text-sm text-gray">获赞</view>
+                            <view class="text-sm">{{ user.praise }}</view>
+                            <view class="text-xs text-gray">获赞</view>
                         </view>
                     </view>
                     <view class="row-2">

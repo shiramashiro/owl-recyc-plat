@@ -1,12 +1,12 @@
 <template>
     <tui-navigation-bar
-        :splitLine="navConfigs.splitLine"
+        :splitLine="cfg.splitLine"
         @init="initNavigation"
-        :isFixed="navConfigs.isFixed"
-        :isOpacity="navConfigs.isOpacity"
-        :isCustom="navConfigs.isCustom"
-        :transparent="navConfigs.transparent"
-        :isImmersive="navConfigs.isImmersive"
+        :isFixed="cfg.isFixed"
+        :isOpacity="cfg.isOpacity"
+        :isCustom="cfg.isCustom"
+        :transparent="cfg.transparent"
+        :isImmersive="cfg.isImmersive"
         backgroundColor="black"
         color="#87cefa"
     >
@@ -20,7 +20,7 @@
 export default {
     name: 'Navbar',
     props: {
-        navConfigs: {
+        cfg: {
             type: Object,
             required: true
         }

@@ -1,6 +1,6 @@
 <template>
-    <view class="book margin-xs" @click="viewDetails()">
-        <view class="row-1 margin-bottom-xs padding-top-xs">
+    <view class="book margin-xs" @click="viewMore()">
+        <view class="row-1 margin-tb-xs">
             <view class="col-1">
                 <image mode="aspectFill" :src="data.cover"></image>
             </view>
@@ -27,24 +27,11 @@
 </template>
 
 <script>
+import { viewDetails } from '@/mixins/view-details.js'
+
 export default {
     name: 'Book',
-    props: {
-        data: {
-            type: Object,
-            required: true
-        }
-    },
-    data() {
-        return {}
-    },
-    methods: {
-        viewDetails() {
-            uni.navigateTo({
-                url: '/pages/index/sub-index?id=' + this.data.id
-            })
-        }
-    }
+    mixins: [viewDetails]
 }
 </script>
 

@@ -13,7 +13,10 @@
             "path": "pages/mine/mine"
         },
         {
-            "path": "pages/index/sub-index"
+            "path": "pages/index/more-info"
+        },
+        {
+            "path": "pages/index/week-rank"
         }
     ],
     "easycom": {

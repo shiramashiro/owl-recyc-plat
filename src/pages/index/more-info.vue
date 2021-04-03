@@ -1,7 +1,7 @@
 <template>
     <view class="sub-index">
         <view class="status_bar"> </view>
-        <navbar :navConfigs="navConfigs">
+        <navbar :cfg="cfg">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             </view>
@@ -20,10 +20,10 @@
 
 <script>
 export default {
-    name: 'SubIndex',
+    name: 'MoreInfo',
     data() {
         return {
-            navConfigs: {
+            cfg: {
                 splitLine: false,
                 isFixed: false,
                 isOpacity: false,
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sub-index {
+.more-info {
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
