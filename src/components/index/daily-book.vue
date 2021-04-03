@@ -1,6 +1,6 @@
 <template>
     <view
-        @click="viewDetails()"
+        @click="viewMore()"
         class="daily-book margin-right-sm margin-left-sm padding-sm"
     >
         <view class="row-1">

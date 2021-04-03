@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    name: 'SubIndex',
+    name: 'MoreInfo',
     data() {
         return {
             navConfigs: {
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sub-index {
+.more-info {
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;

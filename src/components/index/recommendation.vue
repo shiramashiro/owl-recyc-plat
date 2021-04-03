@@ -1,5 +1,5 @@
 <template>
-    <view class="home-tab">
+    <view class="recommendation">
         <view class="row-1 margin-bottom-xs">
             <swiper autoplay>
                 <swiper-item v-for="(item, index) in slideShow" :key="index">
@@ -46,7 +46,7 @@
 import DailyBook from './daily-book.vue'
 
 export default {
-    name: 'HomeTab',
+    name: 'Recommendation',
     components: { DailyBook },
     data() {
         return {
@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home-tab {
+.recommendation {
     .row-1 {
         .slide-show {
             width: 100%;

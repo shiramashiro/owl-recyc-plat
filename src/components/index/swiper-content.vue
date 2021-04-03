@@ -1,10 +1,5 @@
 <template>
     <view class="swiper-content">
-        <view class="custom-content">
-            <template v-if="this.tabName === '全部'">
-                <home-tab></home-tab>
-            </template>
-        </view>
         <view class="public-content flex">
             <book
                 v-for="(item, index) in items"
@@ -17,11 +12,10 @@
 
 <script>
 import Book from '@/components/index/book.vue'
-import HomeTab from '@/components/index/home-tab.vue'
 
 export default {
     name: 'SwiperContent',
-    components: { Book, HomeTab },
+    components: { Book },
     props: {
         tabName: {
             type: String,

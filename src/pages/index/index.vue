@@ -1,7 +1,7 @@
 <template>
     <view class="index">
         <view class="status_bar"> </view>
-        <navbar :navConfigs="navConfigs">
+        <navbar :cfg="cfg">
             <view
                 class="nav-wrap margin-right-lg margin-left-lg flex justify-between"
             >
@@ -21,13 +21,14 @@
                 </view>
                 <view
                     class="col-3 flex align-center justify-center"
-                    @click="openMessage()"
+                    @click="openMsg()"
                 >
                     <i class="el-icon-third-xiaoxixinxi" plain="true"></i>
                 </view>
             </view>
         </navbar>
         <view class="rows">
+            <recommendation></recommendation>
             <tui-tab
                 :scroll="true"
                 selectedColor="#87cefa"
@@ -55,17 +56,18 @@
 
 <script>
 import SwiperContent from '@/components/index/swiper-content.vue'
+import Recommendation from '@/components/index/recommendation.vue'
 
 export default {
     name: 'Index',
-    components: { SwiperContent },
+    components: { SwiperContent, Recommendation },
     data() {
         return {
             search: '',
             swiperHeight: 0,
             currentSwiper: 0,
             currentTuiTab: 0,
-            navConfigs: {
+            cfg: {
                 splitLine: false,
                 isFixed: false,
                 isOpacity: false,
@@ -92,18 +94,11 @@ export default {
         }
     },
     mounted() {
-        // 获取第一个tab的高度内容，为swiper设置初始高度
         setTimeout(() => {
             this.setSwiperItem(0)
         }, 0)
     },
     methods: {
-        /**
-         * 当用户切换tab，此时就会执行此方法重新获取tab所在的swiper-item-[index]的高度。
-         * 默认会在得到的高度再加30px，原因是为底部拉开一点距离。
-         *
-         * 问题：不论是滑动tab还是swiper-item-[index]都会执行两次setSwiperItem。
-         */
         setSwiperItem(index) {
             uni.createSelectorQuery()
                 .in(this)
@@ -113,23 +108,17 @@ export default {
                 })
                 .exec()
         },
-        /**
-         * 用户切换tab时
-         */
         slideTuiTab(data) {
             this.setSwiperItem(data.index)
             this.currentTuiTab = data.index
             this.currentSwiper = data.index
         },
-        /**
-         * 用户切换swiper-item-[index]时
-         */
         slideSwiper(data) {
             this.setSwiperItem(data.detail.current)
             this.currentTuiTab = data.detail.current
             this.currentSwiper = data.detail.current
         },
-        openMessage() {
+        openMsg() {
             console.log('open message center!')
         }
     }

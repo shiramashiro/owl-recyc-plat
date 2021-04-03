@@ -1,5 +1,5 @@
 <template>
-    <view class="book margin-xs" @click="viewDetails()">
+    <view class="book margin-xs" @click="viewMore()">
         <view class="row-1 margin-bottom-xs padding-top-xs">
             <view class="col-1">
                 <image mode="aspectFill" :src="data.cover"></image>

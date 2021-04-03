@@ -6,9 +6,9 @@ export const viewDetails = {
         }
     },
     methods: {
-        viewDetails() {
+        viewMore() {
             uni.navigateTo({
-                url: '/pages/index/sub-index?id=' + this.data.id
+                url: '/pages/index/more-info?id=' + this.data.id
             })
         }
     }
