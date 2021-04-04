@@ -15,16 +15,16 @@
                 <view class="col-2">
                     <view class="row-1 flex justify-between align-center">
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.fans }}</view>
-                            <view class="text-sm text-gray">粉丝</view>
+                            <view class="text-sm">{{ user.fans }}</view>
+                            <view class="text-xs text-gray">粉丝</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.follows }}</view>
-                            <view class="text-sm text-gray">关注</view>
+                            <view class="text-sm">{{ user.follows }}</view>
+                            <view class="text-xs text-gray">关注</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.praise }}</view>
-                            <view class="text-sm text-gray">获赞</view>
+                            <view class="text-sm">{{ user.praise }}</view>
+                            <view class="text-xs text-gray">获赞</view>
                         </view>
                     </view>
                     <view class="row-2">
@@ -88,18 +88,17 @@
 <script>
 import FavoriteShop from '@/components/mine/favorite-shop.vue'
 import FavoriteBook from '@/components/mine/favorite-book.vue'
+import { suitSwiper } from '@/mixins/suit-swiper.js'
 
 export default {
     name: 'Mine',
+    mixins: [suitSwiper],
     components: {
         FavoriteShop,
         FavoriteBook
     },
     data() {
         return {
-            swiperHeight: 0,
-            currentSwiper: 0,
-            currentTuiTab: 0,
             user: {
                 fans: 180,
                 praise: 44,
@@ -221,32 +220,7 @@ export default {
             ]
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.initSwiperHeight(0)
-        }, 0)
-    },
-    methods: {
-        initSwiperHeight(index) {
-            uni.createSelectorQuery()
-                .in(this)
-                .select('#swiper-item-' + index)
-                .boundingClientRect(data => {
-                    this.swiperHeight = data.height + 30
-                })
-                .exec()
-        },
-        slideTuiTab(event) {
-            this.initSwiperHeight(event.index)
-            this.currentTuiTab = event.index
-            this.currentSwiper = event.index
-        },
-        slideSwiper(event) {
-            this.initSwiperHeight(event.detail.current)
-            this.currentTuiTab = event.detail.current
-            this.currentSwiper = event.detail.current
-        }
-    }
+    methods: {}
 }
 </script>
 

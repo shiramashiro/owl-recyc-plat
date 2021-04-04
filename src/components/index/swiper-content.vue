@@ -1,10 +1,5 @@
 <template>
     <view class="swiper-content">
-        <view class="custom-content">
-            <template v-if="this.tabName === '全部'">
-                <home-tab></home-tab>
-            </template>
-        </view>
         <view class="public-content flex">
             <book
                 v-for="(item, index) in items"
@@ -16,12 +11,11 @@
 </template>
 
 <script>
-import Book from '@/components/index/book.vue'
-import HomeTab from '@/components/index/home-tab.vue'
+import Book from './book.vue'
 
 export default {
     name: 'SwiperContent',
-    components: { Book, HomeTab },
+    components: { Book },
     props: {
         tabName: {
             type: String,
@@ -131,6 +125,96 @@ export default {
                     author: '冯蒸',
                     price: '24.00',
                     originPrice: '32.00'
+                },
+                {
+                    id: 10,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/22894393-1_w_1.jpg',
+                    name: '编码：隐匿在计算机软硬件背后的语言',
+                    author: '(美)佩措尔德',
+                    price: '56.60',
+                    originPrice: '59.00'
+                },
+                {
+                    id: 11,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23989588-1_w_6.jpg',
+                    name: 'TCP/IP详解 卷1：协议',
+                    author: '凯文 R.福尔',
+                    price: '101.90',
+                    originPrice: '129.00'
+                },
+                {
+                    id: 12,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29197803-1_w_3.jpg',
+                    name: '高效减脂 打败停滞期',
+                    author: '李姿仪',
+                    price: '46.90',
+                    originPrice: '49.80'
+                },
+                {
+                    id: 13,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29201877-1_u_12.jpg',
+                    name: '粗茶淡饭：梅子金黄杏子肥',
+                    author: '高维生',
+                    price: '18.00',
+                    originPrice: '36.00'
+                },
+                {
+                    id: 14,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27920509-1_w_26.jpg',
+                    name: '从一到无穷大',
+                    author: '乔治·伽莫夫',
+                    price: '55.70',
+                    originPrice: '58.00'
+                },
+                {
+                    id: 15,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/25157989-1_u_5.jpg',
+                    name: '果麦经典：了凡四训',
+                    author: '袁了凡',
+                    price: '15.80',
+                    originPrice: '32.00'
+                },
+                {
+                    id: 16,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23684605-1_w_1.jpg',
+                    name: '里娅传奇',
+                    author: '虹影',
+                    price: '9.50',
+                    originPrice: '32.80'
+                },
+                {
+                    id: 16,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/1901258135_ii_cover.jpg',
+                    name: '李清照传',
+                    author: '杨雨',
+                    price: '14.99',
+                    originPrice: '16.00'
+                },
+                {
+                    id: 17,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27932536-1_u_3.jpg',
+                    name: '会计基础',
+                    author: '中华会计网校',
+                    price: '22.90',
+                    originPrice: '45.80'
+                },
+                {
+                    id: 18,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28470862-1_u_3.jpg',
+                    name: '零基础绘画入门教程',
+                    author: '程焰；凤凰空间',
+                    price: '29.90',
+                    originPrice: '49.80'
                 }
             ],
             items2: [

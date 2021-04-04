@@ -1,58 +1,63 @@
 <template>
-    <scroll-view
-        class="tui-scroll__view"
-        :class="[isFixed ? 'tui-tabs__fixed' : '']"
-        :style="{
-            height: height + 'rpx',
-            background: backgroundColor,
-            top: isFixed ? top + 'px' : 'auto',
-            zIndex: isFixed ? zIndex : 'auto'
-        }"
-        :scroll-x="scrolling"
-        :scroll-with-animation="scrolling"
-        :scroll-left="scrollLeft"
-    >
-        <view class="tui-tabs__wrap">
-            <view
-                class="tui-tabs__list"
-                :class="[scroll ? 'tui-tabs__scroll' : '']"
-                :style="{ height: height + 'rpx' }"
-            >
+    <view class="tui-tab" :class="[isSticky ? 'tui-tab-sticky' : '']">
+        <scroll-view
+            class="tui-scroll__view"
+            :class="[isFixed ? 'tui-tabs__fixed' : '']"
+            :style="{
+                height: height + 'rpx',
+                background: backgroundColor,
+                top: isFixed ? top + 'px' : 'auto',
+                zIndex: isFixed ? zIndex : 'auto'
+            }"
+            :scroll-x="scrolling"
+            :scroll-with-animation="scrolling"
+            :scroll-left="scrollLeft"
+        >
+            <view class="tui-tabs__wrap">
                 <view
-                    class="tui-tabs__item"
+                    class="tui-tabs__list"
+                    :class="[scroll ? 'tui-tabs__scroll' : '']"
                     :style="{ height: height + 'rpx' }"
-                    v-for="(item, index) in swiperTabs"
-                    :key="index"
-                    @tap="handleClick"
-                    :data-index="index"
                 >
                     <view
-                        class="tui-item__child"
-                        :style="{
-                            color: currentTab == index ? selectedColor : color,
-                            fontSize: size + 'rpx',
-                            lineHeight: size + 'rpx',
-                            fontWeight:
-                                bold && currentTab == index ? 'bold' : 'normal'
-                        }"
-                        >{{ item.name }}</view
+                        class="tui-tabs__item"
+                        :style="{ height: height + 'rpx' }"
+                        v-for="(item, index) in swiperTabs"
+                        :key="index"
+                        @tap="handleClick"
+                        :data-index="index"
                     >
+                        <view
+                            class="tui-item__child"
+                            :style="{
+                                color:
+                                    currentTab == index ? selectedColor : color,
+                                fontSize: size + 'rpx',
+                                lineHeight: size + 'rpx',
+                                fontWeight:
+                                    bold && currentTab == index
+                                        ? 'bold'
+                                        : 'normal'
+                            }"
+                            >{{ item.name }}</view
+                        >
+                    </view>
+                    <view
+                        class="tui-tabs__line"
+                        :class="[needTransition ? 'tui-transition' : '']"
+                        :style="{
+                            background: sliderBgColor,
+                            height: sliderHeight,
+                            borderRadius: sliderRadius,
+                            bottom: bottom,
+                            width: lineWidth + 'px',
+                            transform: `translateX(${translateX}px)`
+                        }"
+                    ></view>
                 </view>
-                <view
-                    class="tui-tabs__line"
-                    :class="[needTransition ? 'tui-transition' : '']"
-                    :style="{
-                        background: sliderBgColor,
-                        height: sliderHeight,
-                        borderRadius: sliderRadius,
-                        bottom: bottom,
-                        width: lineWidth + 'px',
-                        transform: `translateX(${translateX}px)`
-                    }"
-                ></view>
             </view>
-        </view>
-    </scroll-view>
+        </scroll-view>
+    </view>
 </template>
 
 <script>
@@ -143,6 +148,11 @@ export default {
         zIndex: {
             type: [Number, String],
             default: 996
+        },
+        //是否开启粘性布局
+        isSticky: {
+            type: Boolean,
+            default: true
         }
     },
     watch: {
@@ -239,6 +249,12 @@ export default {
 </script>
 
 <style scoped>
+.tui-tab-sticky {
+    position: sticky;
+    top: -1rpx;
+    z-index: 100;
+}
+
 .tui-scroll__view {
     width: 100%;
     height: 80rpx;

@@ -1,18 +1,117 @@
 @font-face {
-    font-family: 'iconfont'; /* project id 2354943 */
-    src: url('//at.alicdn.com/t/font_2354943_irq4r4pscy.eot');
-    src: url('//at.alicdn.com/t/font_2354943_irq4r4pscy.eot?#iefix')
-            format('embedded-opentype'),
-        url('//at.alicdn.com/t/font_2354943_irq4r4pscy.woff2') format('woff2'),
-        url('//at.alicdn.com/t/font_2354943_irq4r4pscy.woff') format('woff'),
-        url('//at.alicdn.com/t/font_2354943_irq4r4pscy.ttf') format('truetype'),
-        url('//at.alicdn.com/t/font_2354943_irq4r4pscy.svg#iconfont')
-            format('svg');
+    font-family: 'iconfont';  /* project id 2354943 */
+    src: url('//at.alicdn.com/t/font_2354943_8qc502nbn5p.eot');
+    src: url('//at.alicdn.com/t/font_2354943_8qc502nbn5p.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2354943_8qc502nbn5p.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2354943_8qc502nbn5p.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2354943_8qc502nbn5p.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2354943_8qc502nbn5p.svg#iconfont') format('svg');
 }
 
 .iconfont {
     font-family: 'iconfont' !important;
     font-size: 16px;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-shehui:before {
+    content: '\e643';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-wenxue:before {
+    content: '\e607';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-yishu:before {
+    content: '\e608';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-shiwu:before {
+    content: '\ebd4';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-keji:before {
+    content: '\e616';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-ertong:before {
+    content: '\e60b';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-xueshimaoxuexibiye:before {
+    content: '\e62a';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-qiandai:before {
+    content: '\e625';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-guanjun:before {
+    content: '\f0fd';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-third-gengduo:before {
+    content: '\e78a';
+    font-family: 'iconfont' !important;
+    font-size: 30rpx;
+    margin-right: 6rpx;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -27,7 +126,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.el-icon-third-weimingmingwenjianjia_jiantou::before {
+.el-icon-third-weimingmingwenjianjia_jiantou:before {
     content: '\e637';
     font-family: 'iconfont' !important;
     margin-left: 12rpx;
