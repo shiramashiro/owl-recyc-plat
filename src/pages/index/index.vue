@@ -64,9 +64,7 @@ export default {
     components: { SwiperContent, Recommendation },
     data() {
         return {
-            // #ifdef H5
             isSticky: true,
-            // #endif
             search: '',
             cfg: {
                 splitLine: false,
@@ -104,10 +102,12 @@ export default {
 
 <style lang="scss" scoped>
 .index {
+    // #ifdef H5
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
     }
+    // #endif
 
     .nav-wrap {
         height: 100%;

@@ -1,11 +1,13 @@
 <template>
-    <view class="sub-index">
+    <view class="more-info">
+        <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
         <navbar :cfg="cfg">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             </view>
         </navbar>
+        <!-- #endif -->
         <view class="rows">
             <view class="row-1"></view>
             <view class="row-2"></view>
@@ -49,10 +51,12 @@ export default {
 
 <style lang="scss" scoped>
 .more-info {
+    // #ifdef H5
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
     }
+    // #endif
 
     .navi-content {
         height: 100%;

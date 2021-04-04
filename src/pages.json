@@ -26,7 +26,10 @@
         }
     },
     "globalStyle": {
-        "navigationStyle": "custom"
+        // #ifdef H5
+        "navigationStyle": "custom",
+        // #endif
+        "navigationBarBackgroundColor": "#87cefa"
     },
     "tabBar": {
         "color": "#7A7E83",
