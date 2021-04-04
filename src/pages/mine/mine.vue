@@ -88,18 +88,17 @@
 <script>
 import FavoriteShop from '@/components/mine/favorite-shop.vue'
 import FavoriteBook from '@/components/mine/favorite-book.vue'
+import { suitSwiper } from '@/mixins/suit-swiper.js'
 
 export default {
     name: 'Mine',
+    mixins: [suitSwiper],
     components: {
         FavoriteShop,
         FavoriteBook
     },
     data() {
         return {
-            swiperHeight: 0,
-            currentSwiper: 0,
-            currentTuiTab: 0,
             user: {
                 fans: 180,
                 praise: 44,
@@ -221,32 +220,7 @@ export default {
             ]
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.initSwiperHeight(0)
-        }, 0)
-    },
-    methods: {
-        initSwiperHeight(index) {
-            uni.createSelectorQuery()
-                .in(this)
-                .select('#swiper-item-' + index)
-                .boundingClientRect(data => {
-                    this.swiperHeight = data.height + 30
-                })
-                .exec()
-        },
-        slideTuiTab(event) {
-            this.initSwiperHeight(event.index)
-            this.currentTuiTab = event.index
-            this.currentSwiper = event.index
-        },
-        slideSwiper(event) {
-            this.initSwiperHeight(event.detail.current)
-            this.currentTuiTab = event.detail.current
-            this.currentSwiper = event.detail.current
-        }
-    }
+    methods: {}
 }
 </script>
 
