@@ -7,6 +7,7 @@
         :isCustom="cfg.isCustom"
         :transparent="cfg.transparent"
         :isImmersive="cfg.isImmersive"
+        :isCustomImmerse="cfg.isCustomImmerse"
         backgroundColor="black"
         color="#87cefa"
     >

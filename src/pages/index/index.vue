@@ -1,6 +1,6 @@
 <template>
     <view class="index">
-        <view class="status_bar"> </view>
+        <view class="status_bar"></view>
         <navbar :cfg="cfg">
             <view class="nav-wrap margin-lr-lg flex justify-between">
                 <view class="col-1 flex align-center">
