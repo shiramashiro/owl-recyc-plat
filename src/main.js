@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import App from './App'
 import Vuex from './store/index'
-import cuCustom from './colorui/components/cu-custom.vue'
 import './static/icon/iconfont.css'
 
-Vue.component('cu-custom', cuCustom)
+// 注册全局组件
+import Navbar from '@/components/navbar.vue'
+import Avatar from '@/components/avatar.vue'
+Vue.component('navbar', Navbar)
+Vue.component('avatar', Avatar)
 
 Vue.config.productionTip = false
 

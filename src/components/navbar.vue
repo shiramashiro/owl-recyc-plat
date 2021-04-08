@@ -1,16 +1,17 @@
 <template>
     <tui-navigation-bar
-        :splitLine="navConfigs.splitLine"
+        :splitLine="cfg.splitLine"
         @init="initNavigation"
-        :isFixed="navConfigs.isFixed"
-        :isOpacity="navConfigs.isOpacity"
-        :isCustom="navConfigs.isCustom"
-        :transparent="navConfigs.transparent"
-        :isImmersive="navConfigs.isImmersive"
+        :isFixed="cfg.isFixed"
+        :isOpacity="cfg.isOpacity"
+        :isCustom="cfg.isCustom"
+        :transparent="cfg.transparent"
+        :isImmersive="cfg.isImmersive"
+        :isCustomImmerse="cfg.isCustomImmerse"
         backgroundColor="black"
         color="#87cefa"
     >
-        <view class="tui-content-box">
+        <view class="navbar-content-box">
             <slot></slot>
         </view>
     </tui-navigation-bar>
@@ -18,9 +19,9 @@
 
 <script>
 export default {
-    name: 'kongNavigation',
+    name: 'Navbar',
     props: {
-        navConfigs: {
+        cfg: {
             type: Object,
             required: true
         }
@@ -34,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tui-content-box {
+.navbar-content-box {
     width: 100%;
     height: 100%;
 }

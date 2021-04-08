@@ -2,7 +2,7 @@
     <tui-swipe-action
         :actions="actions"
         :open="isOpen"
-        class="margin-bottom-lg"
+        class="margin-bottom-lg margin-top-lg margin-right-sm margin-left-sm"
         style="border-radius: 20rpx;"
     >
         <template v-slot:content>
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-    name: 'favoriteShop',
+    name: 'FavoriteShop',
     props: {
         item: {
             type: Object,
@@ -65,7 +65,7 @@ export default {
         return {
             actions: [
                 {
-                    name: '取消订阅',
+                    name: '取消',
                     color: '#fff',
                     fontsize: 30,
                     width: 70,

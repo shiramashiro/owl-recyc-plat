@@ -15,16 +15,16 @@
                 <view class="col-2">
                     <view class="row-1 flex justify-between align-center">
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.fans }}</view>
-                            <view class="text-sm text-gray">粉丝</view>
+                            <view class="text-sm">{{ user.fans }}</view>
+                            <view class="text-xs text-gray">粉丝</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.follows }}</view>
-                            <view class="text-sm text-gray">关注</view>
+                            <view class="text-sm">{{ user.follows }}</view>
+                            <view class="text-xs text-gray">关注</view>
                         </view>
                         <view class="cols text-center">
-                            <view class="text-lg">{{ user.praise }}</view>
-                            <view class="text-sm text-gray">获赞</view>
+                            <view class="text-sm">{{ user.praise }}</view>
+                            <view class="text-xs text-gray">获赞</view>
                         </view>
                     </view>
                     <view class="row-2">
@@ -39,47 +39,66 @@
                 <view class="row-2 text-sm text-gray">{{ user.profile }}</view>
             </view>
             <view class="row-2-3">
-                <kong-swiper :configs="configs" :swiperTabs="swiperTabs">
+                <tui-tab
+                    :scroll="false"
+                    selectedColor="#87cefa"
+                    sliderBgColor="#87cefa"
+                    :current="currentTuiTab"
+                    @slideTuiTab="slideTuiTab"
+                    :swiperTabs="swiperTabs"
+                ></tui-tab>
+                <swiper
+                    style="background-color: rgb(248,248,248)"
+                    :style="{ height: swiperHeight + 'px' }"
+                    :current="currentSwiper"
+                    @change="slideSwiper"
+                    :duration="360"
+                >
                     <swiper-item
                         v-for="(swiperTab, index) in swiperTabs"
                         :key="index"
                     >
                         <view :id="'swiper-item-' + index">
-                            <component
-                                v-for="(item, itemIndex) in swiperTab.items"
-                                :key="itemIndex"
-                                :is="swiperTab.componentName"
-                                :item="item"
-                            ></component>
+                            <template
+                                v-if="
+                                    swiperTab.componentName === 'FavoriteBook'
+                                "
+                            >
+                                <favorite-book
+                                    v-for="(item, itemIndex) in swiperTab.items"
+                                    :key="itemIndex"
+                                    :item="item"
+                                ></favorite-book>
+                            </template>
+                            <template v-else>
+                                <favorite-shop
+                                    v-for="(item, itemIndex) in swiperTab.items"
+                                    :key="itemIndex"
+                                    :item="item"
+                                ></favorite-shop>
+                            </template>
                         </view>
                     </swiper-item>
-                </kong-swiper>
+                </swiper>
             </view>
         </view>
     </view>
 </template>
 
 <script>
-import favoriteShop from '@/components/mine/favorite-shop.vue'
-import favoriteBook from '@/components/mine/favorite-book.vue'
-import kongSwiper from '@/components/kong-swiper.vue'
+import FavoriteShop from '@/components/mine/favorite-shop.vue'
+import FavoriteBook from '@/components/mine/favorite-book.vue'
+import { suitSwiper } from '@/mixins/suit-swiper.js'
 
 export default {
-    name: 'mine',
+    name: 'Mine',
+    mixins: [suitSwiper],
     components: {
-        favoriteShop,
-        favoriteBook,
-        kongSwiper
+        FavoriteShop,
+        FavoriteBook
     },
     data() {
         return {
-            configs: {
-                selectedColor: '#87cefa',
-                sliderBgColor: '#87cefa',
-                itemWidth: '50%',
-                isWhiteSpace: false,
-                isScroll: false
-            },
             user: {
                 fans: 180,
                 praise: 44,
@@ -94,7 +113,7 @@ export default {
             swiperTabs: [
                 {
                     name: '收藏书籍',
-                    componentName: 'favoriteBook',
+                    componentName: 'FavoriteBook',
                     items: [
                         {
                             cover:
@@ -127,7 +146,7 @@ export default {
                 },
                 {
                     name: '订阅店铺',
-                    componentName: 'favoriteShop',
+                    componentName: 'FavoriteShop',
                     items: [
                         {
                             cover: require('../../static/mine/mexican.jpg'),
@@ -200,7 +219,8 @@ export default {
                 }
             ]
         }
-    }
+    },
+    methods: {}
 }
 </script>
 

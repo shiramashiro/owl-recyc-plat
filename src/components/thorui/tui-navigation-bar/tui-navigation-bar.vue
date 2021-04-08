@@ -4,7 +4,8 @@
         :class="{
             'tui-bar-line': opacity > 0.85 && splitLine,
             'tui-navbar-fixed': isFixed,
-            'tui-backdrop__filter': backdropFilter && dropDownOpacity > 0
+            'tui-backdrop__filter': backdropFilter && dropDownOpacity > 0,
+            'custom-immerse': isCustomImmerse
         }"
         :style="{
             height: height + 'px',
@@ -113,6 +114,11 @@ export default {
         zIndex: {
             type: [Number, String],
             default: 9998
+        },
+        //是否开启自定义沉浸式
+        isCustomImmerse: {
+            type: Boolean,
+            default: false
         }
     },
     watch: {
@@ -234,6 +240,12 @@ export default {
 </script>
 
 <style scoped>
+.custom-immerse {
+    position: absolute;
+    z-index: 9998 !important;
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
 .tui-navigation-bar {
     width: 100%;
     transition: opacity 0.4s;

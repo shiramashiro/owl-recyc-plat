@@ -1,25 +1,25 @@
 <template>
-    <view class="book margin-xs" @click="viewDetails()">
-        <view class="row-1 margin-bottom-xs padding-top-xs">
+    <view class="book flex-sub margin-xs" @click="viewMore()">
+        <view class="row-1 margin-tb-xs">
             <view class="col-1">
-                <image mode="aspectFill" :src="item.cover"></image>
+                <image mode="aspectFill" :src="data.cover"></image>
             </view>
         </view>
         <view class="row-2 padding-sm">
             <view class="col-1 margin-bottom-xs text-df">
-                {{ item.name }}
+                {{ data.name }}
             </view>
             <view class="col-2 margin-bottom-xs text-gray">
-                {{ item.author }}
+                {{ data.author }}
             </view>
             <view
                 class="col-3 margin-bottom-xs flex align-center justify-between"
             >
                 <view class="col-3-1 text-red text-lg">
-                    {{ item.price }}
+                    {{ data.price }}
                 </view>
                 <view class="col-3-2 text-gray text-lg">
-                    {{ item.originPrice }}
+                    {{ data.originPrice }}
                 </view>
             </view>
         </view>
@@ -27,24 +27,11 @@
 </template>
 
 <script>
+import { viewDetails } from '@/mixins/view-details.js'
+
 export default {
-    name: 'book',
-    props: {
-        item: {
-            type: Object,
-            required: true
-        }
-    },
-    data() {
-        return {}
-    },
-    methods: {
-        viewDetails() {
-            uni.navigateTo({
-                url: '/pages/index/book-details?id=' + this.item.id
-            })
-        }
-    }
+    name: 'Book',
+    mixins: [viewDetails]
 }
 </script>
 
@@ -52,7 +39,18 @@ export default {
 .book {
     background-color: white;
     border-radius: 20rpx;
+    /* #ifdef H5 */
     width: 47%;
+    /* #endif */
+    /* #ifdef MP */
+    width: 350rpx;
+    /* #endif */
+
+    .row-1 {
+        .col-1 {
+            text-align: center;
+        }
+    }
 
     .row-2 {
         .col-1 {
