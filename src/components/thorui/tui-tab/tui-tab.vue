@@ -251,7 +251,7 @@ export default {
 <style scoped>
 .tui-tab-sticky {
     position: sticky;
-    top: 0;
+    top: -1rpx;
     z-index: 100;
 }
 

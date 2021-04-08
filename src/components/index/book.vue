@@ -1,5 +1,5 @@
 <template>
-    <view class="book margin-xs" @click="viewMore()">
+    <view class="book flex-sub margin-xs" @click="viewMore()">
         <view class="row-1 margin-tb-xs">
             <view class="col-1">
                 <image mode="aspectFill" :src="data.cover"></image>
@@ -41,6 +41,9 @@ export default {
     border-radius: 20rpx;
     /* #ifdef H5 */
     width: 47%;
+    /* #endif */
+    /* #ifdef MP */
+    width: 350rpx;
     /* #endif */
 
     .row-1 {

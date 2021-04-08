@@ -1,6 +1,6 @@
 <template>
     <view class="index">
-        <view class="status_bar"> </view>
+        <view class="status_bar"></view>
         <navbar :cfg="cfg">
             <view class="nav-wrap margin-lr-lg flex justify-between">
                 <view class="col-1 flex align-center">
@@ -28,7 +28,7 @@
         <view class="rows">
             <recommendation></recommendation>
             <tui-tab
-                :isSticky="true"
+                :isSticky="isSticky"
                 :scroll="true"
                 selectedColor="#87cefa"
                 sliderBgColor="#87cefa"
@@ -56,16 +56,16 @@
 <script>
 import SwiperContent from '@/components/index/swiper-content.vue'
 import Recommendation from '@/components/index/recommendation.vue'
+import { suitSwiper } from '@/mixins/suit-swiper.js'
 
 export default {
     name: 'Index',
+    mixins: [suitSwiper],
     components: { SwiperContent, Recommendation },
     data() {
         return {
+            isSticky: true,
             search: '',
-            swiperHeight: 0,
-            currentSwiper: 0,
-            currentTuiTab: 0,
             cfg: {
                 splitLine: false,
                 isFixed: false,
@@ -92,31 +92,7 @@ export default {
             }
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.setSwiperItem(0)
-        }, 0)
-    },
     methods: {
-        setSwiperItem(index) {
-            uni.createSelectorQuery()
-                .in(this)
-                .select('#swiper-item-' + index)
-                .boundingClientRect(data => {
-                    this.swiperHeight = data.height + 25
-                })
-                .exec()
-        },
-        slideTuiTab(data) {
-            this.setSwiperItem(data.index)
-            this.currentTuiTab = data.index
-            this.currentSwiper = data.index
-        },
-        slideSwiper(data) {
-            this.setSwiperItem(data.detail.current)
-            this.currentTuiTab = data.detail.current
-            this.currentSwiper = data.detail.current
-        },
         openMsg() {
             console.log('open message center!')
         }
@@ -126,10 +102,12 @@ export default {
 
 <style lang="scss" scoped>
 .index {
+    // #ifdef H5
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
     }
+    // #endif
 
     .nav-wrap {
         height: 100%;
