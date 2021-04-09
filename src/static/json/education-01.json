@@ -1,47 +1,46 @@
 {
- "book": {
-   "type": "education",
-   "id": "education-01",
-   "covers": [
-     "http://img3m9.ddimg.cn/71/29/1707729479-1_u_2.jpg",
-     "http://img3m9.ddimg.cn/71/29/1707729479-2_x_2.jpg"
-   ],
-   "name": "Spring5设计模式",
-   "author": "Dinesh Rajput ",
-   "price": "￥70.30",
-   "originPrice": "￥79.00",
-   "desc": "在Java 早期，除了Spring 之外，几乎所有的Java 技术集成都比较复杂，如EJB。而Spring 相对于其他现有的Java 技术而言，它提供了一个更简单、更精简、更轻量级的编程模型，使得其面世之后就广被追捧。时至今日，已成为Java"
- },
-
-  "userData": {
-    "id": "userData-05",
-    "username": "小徐",
-    "nickname": "小坏蛋",
-    "password": "332211",
-    "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F12%2F20180112224107_yNAuS.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=f6a2b048fcb492587a8c968f2e4ffe51",
-    "fans": 0,
-    "praise": 0,
-    "follows": 0,
-    "bgImage": "https://t7.baidu.com/it/u=3268696359,1164377445&fm=193&f=GIF"
-  },
-
-  "bookDetail": {
-    "id": "comment-05",
-    "bookId": "computer-05",
-    "userId": "userData-05",
-    "user": {
-      "username": "小徐",
-      "nickname": "小坏蛋",
-      "password": "332211",
-      "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F12%2F20180112224107_yNAuS.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=f6a2b048fcb492587a8c968f2e4ffe51",
-      "fans": 0,
-      "praise": 0,
-      "follows": 0,
-      "bgImage": "https://t7.baidu.com/it/u=3268696359,1164377445&fm=193&f=GIF"
+    "book": {
+        "type": "education",
+        "id": "education-01",
+        "covers": [
+            "http://img3m9.ddimg.cn/71/29/1707729479-1_u_2.jpg",
+            "http://img3m9.ddimg.cn/71/29/1707729479-2_x_2.jpg"
+        ],
+        "name": "Spring5设计模式",
+        "author": "Dinesh Rajput ",
+        "price": "￥70.30",
+        "originPrice": "￥79.00",
+        "desc": "在Java 早期，除了Spring 之外，几乎所有的Java 技术集成都比较复杂，如EJB。而Spring 相对于其他现有的Java 技术而言，它提供了一个更简单、更精简、更轻量级的编程模型，使得其面世之后就广被追捧。时至今日，已成为Java"
     },
-    "postDate": "2020-04-06 06:27:19",
-    "agree": "33",
-    "disagree": "0"
 
-  }
+    "userData": {
+        "id": "userData-05",
+        "username": "小徐",
+        "nickname": "小坏蛋",
+        "password": "332211",
+        "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F12%2F20180112224107_yNAuS.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=f6a2b048fcb492587a8c968f2e4ffe51",
+        "fans": 0,
+        "praise": 0,
+        "follows": 0,
+        "bgImage": "https://t7.baidu.com/it/u=3268696359,1164377445&fm=193&f=GIF"
+    },
+
+    "bookDetail": {
+        "id": "comment-05",
+        "bookId": "computer-05",
+        "userId": "userData-05",
+        "user": {
+            "username": "小徐",
+            "nickname": "小坏蛋",
+            "password": "332211",
+            "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F12%2F20180112224107_yNAuS.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=f6a2b048fcb492587a8c968f2e4ffe51",
+            "fans": 0,
+            "praise": 0,
+            "follows": 0,
+            "bgImage": "https://t7.baidu.com/it/u=3268696359,1164377445&fm=193&f=GIF"
+        },
+        "postDate": "2020-04-06 06:27:19",
+        "agree": "33",
+        "disagree": "0"
+    }
 }

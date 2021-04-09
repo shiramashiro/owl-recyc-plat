@@ -52,29 +52,44 @@
                     {{ book.desc }}
                 </view>
             </view>
-            <view class="row-5">
-                <!-- 快递区 -->
+            <view class="row-5 margin-tb-sm">
+                <tui-tab
+                    :isSticky="isSticky"
+                    :scroll="true"
+                    selectedColor="#87cefa"
+                    sliderBgColor="#87cefa"
+                    :current="currentTuiTab"
+                    @slideTuiTab="cutomSlideTuiTab"
+                    :swiperTabs="swiperTabs"
+                ></tui-tab>
             </view>
-            <view class="row-6">
-                <!-- 评论区 -->
+            <view class="row-6 margin-lr-sm">
+                <comment
+                    v-for="(item, index) in comments"
+                    :key="index"
+                    :data="item"
+                ></comment>
             </view>
         </view>
-
-      <comment></comment>
     </view>
 </template>
 
 <script>
 import { suitSwiper } from '@/mixins/suit-swiper.js'
-import comment from "@/components/index/comment";
+import comment from '@/components/index/comment.vue'
+import comments from '@/static/json/comments.json'
+
 export default {
     name: 'MoreInfo',
     mixins: [suitSwiper],
-  components:{
-    comment
-  },
+    components: {
+        comment
+    },
     data() {
         return {
+            comments: comments,
+            currentSwiper: 0,
+            currentTuiTab: 0,
             cfg: {
                 splitLine: false,
                 isFixed: false,
@@ -84,6 +99,12 @@ export default {
                 isImmersive: false,
                 isCustomImmerse: true
             },
+            swiperTabs: [
+                { name: '全部评论' },
+                { name: '好评' },
+                { name: '中评' },
+                { name: '差评' }
+            ],
             book: {
                 id: 1,
                 covers: [
@@ -96,8 +117,7 @@ export default {
                 originPrice: '129.00',
                 desc:
                     '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
-            },
-            id: 0
+            }
         }
     },
     methods: {
@@ -110,8 +130,7 @@ export default {
         // #endif
     },
     onLoad(option) {
-        this.id = option.id
-      console.log(option.id);
+        console.log(option.id)
     }
 }
 </script>

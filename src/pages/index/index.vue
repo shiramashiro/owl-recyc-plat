@@ -66,6 +66,8 @@ export default {
         return {
             isSticky: true,
             search: '',
+            currentSwiper: 0,
+            currentTuiTab: 0,
             cfg: {
                 splitLine: false,
                 isFixed: false,
@@ -95,6 +97,16 @@ export default {
     methods: {
         openMsg() {
             console.log('open message center!')
+        },
+        slideTuiTab(data) {
+            this.setSwiperItem(data.index)
+            this.currentTuiTab = data.index
+            this.currentSwiper = data.index
+        },
+        slideSwiper(data) {
+            this.setSwiperItem(data.detail.current)
+            this.currentTuiTab = data.detail.current
+            this.currentSwiper = data.detail.current
         }
     }
 }
