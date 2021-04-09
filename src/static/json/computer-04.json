@@ -1,0 +1,47 @@
+{
+ "book": {
+   "type": "computer",
+   "id": "computer-04",
+   "covers": [
+     "http://img3m0.ddimg.cn/62/2/29198330-1_u_6.jpg",
+     "http://img3m0.ddimg.cn/62/2/29198330-1_u_6.jpg"
+   ],
+   "name": "Spring5设计模式",
+   "author": "Dinesh Rajput ",
+   "price": "￥70.30",
+   "originPrice": "￥79.00",
+   "desc": "在Java 早期，除了Spring 之外，几乎所有的Java 技术集成都比较复杂，如EJB。而Spring 相对于其他现有的Java 技术而言，它提供了一个更简单、更精简、更轻量级的编程模型，使得其面世之后就广被追捧。时至今日，已成为Java"
+ },
+
+  "userData": {
+    "id": "userData-04",
+    "username": "戴某某",
+    "nickname": "小脾气",
+    "password": "332211",
+    "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F19%2F20151119130051_kx2XT.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=895d3990f808adab8f9cf3bf1538fb74",
+    "fans": 300,
+    "praise": 0,
+    "follows": 0,
+    "bgImage": "https://t7.baidu.com/it/u=1881381408,1199921291&fm=193&f=GIF"
+  },
+
+  "bookDetail": {
+    "id": "comment-04",
+    "bookId": "computer-04",
+    "userId": "userData-04",
+    "user": {
+      "username": "戴某某",
+      "nickname": "小脾气",
+      "password": "332211",
+      "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F19%2F20151119130051_kx2XT.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=895d3990f808adab8f9cf3bf1538fb74",
+      "fans": 0,
+      "praise": 0,
+      "follows": 0,
+      "bgImage": "https://t7.baidu.com/it/u=1881381408,1199921291&fm=193&f=GIF"
+    },
+    "postDate": "2020-04-06 07:07:09",
+    "agree": "8",
+    "disagree": "0"
+
+  }
+}

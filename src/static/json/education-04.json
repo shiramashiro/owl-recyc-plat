@@ -1,0 +1,47 @@
+{
+ "book": {
+   "type": "education",
+   "id": "education-04",
+   "covers": [
+     "http://img3m4.ddimg.cn/23/0/23890604-1_u_5.jpg",
+     "http://img3m4.ddimg.cn/23/0/23890604-1_u_5.jpg"
+   ],
+   "name": "中华成语词典(第3版,单色插图本)",
+   "author": "《中华成语词典》编委会编",
+   "price": "￥40.50",
+   "originPrice": "￥45.00",
+   "desc": "★共收成语10000余条，酌情收列少量熟语。★对每条成语进行全方位的解释和说明，包括注音、释义、出处、例句、近义、反义、辨析、提示、用法、连用等。★通过援引古代和近现代的经典著作，揭示成语的本源，阐释成语的含义、用法及流变，提供成语在现代汉语中的使用范例。★配有500余幅诠释成语内涵的精美插图，具有一定的欣赏价值"
+ },
+
+  "userData": {
+    "id": "userData-08",
+    "username": "花道",
+    "nickname": "一路向北",
+    "password": "332211",
+    "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201509%2F15%2F20150915135644_dBiyk.thumb.700_0.png&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620550134&t=99c8d38e313a581f3a89513746308c6c",
+    "fans": 20,
+    "praise": 0,
+    "follows": 0,
+    "bgImage": "https://t7.baidu.com/it/u=3367017767,101309921&fm=193&f=GIF"
+  },
+
+  "bookDetail": {
+    "id": "comment-08",
+    "bookId": "computer-08",
+    "userId": "userData-08",
+    "user": {
+      "username": "花道",
+      "nickname": "一路向北",
+      "password": "332211",
+      "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201509%2F15%2F20150915135644_dBiyk.thumb.700_0.png&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620550134&t=99c8d38e313a581f3a89513746308c6c",
+      "fans": 0,
+      "praise": 0,
+      "follows": 0,
+      "bgImage": "https://t7.baidu.com/it/u=3367017767,101309921&fm=193&f=GIF"
+    },
+    "postDate": "2020-04-08 11:09:09",
+    "agree": "10",
+    "disagree": "0"
+
+  }
+}

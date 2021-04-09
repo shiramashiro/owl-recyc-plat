@@ -1,0 +1,47 @@
+{
+"book": {
+  "type": "education",
+  "id": "02-education-06",
+  "covers": [
+    "http://img3m1.ddimg.cn/77/19/25220921-1_u_3.jpg",
+    "http://img3m1.ddimg.cn/77/19/25220921-2_u_3.jpg"
+  ],
+  "name": "古汉语常用字字典（第5版）",
+  "author": " 王力 岑麒祥 林焘 等",
+  "price": "￥34.00",
+  "originPrice": "￥39.90",
+  "desc": "《古汉语常用字字典》由著名语言学家王力、岑麒祥、林焘、戴澧、唐作藩、蒋绍愚等十余位专家学者编写，是学习古汉语的必备工具书。本字典自1979年出版以来，深受广大读者欢迎。第5版延续了第4版的特色：专家学者主持、参与修订；释义权威，审音准确，例句精当，难懂例句附有注解和串讲；专设“注意”“辨析”内容，对疑难字词加以提示和辨析；附录实用，《中国历代纪元表》《古代汉语语法简介》《怎样学习古代汉语》等附录，可供读者学习参考。本次修订在常用义项的增补、释义的完善、字音的审订、例句的更新和体例的完备方面做了很多工作，可谓在第4版的基础上精益求精，质量更上一层楼。主要修订"
+},
+
+  "userData": {
+    "id": "userData-09",
+    "username": "拓海",
+    "nickname": "晴天",
+    "password": "332211",
+    "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F02%2F20151002193733_eKVxZ.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620550134&t=802684ba05153f379422f93888e486aa",
+    "fans": 0,
+    "praise": 0,
+    "follows": 0,
+    "bgImage": "https://t7.baidu.com/it/u=3124475037,942697011&fm=193&f=GIF"
+  },
+
+  "bookDetail": {
+    "id": "comment-09",
+    "bookId": "computer-09",
+    "userId": "userData-09",
+    "user": {
+      "username": "拓海",
+      "nickname": "晴天",
+      "password": "332211",
+      "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F02%2F20151002193733_eKVxZ.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620550134&t=802684ba05153f379422f93888e486aa",
+      "fans": 10,
+      "praise": 0,
+      "follows": 0,
+      "bgImage": "https://t7.baidu.com/it/u=3124475037,942697011&fm=193&f=GIF"
+    },
+    "postDate": "2020-04-09 12:18:19",
+    "agree": "16",
+    "disagree": "0"
+
+  }
+}

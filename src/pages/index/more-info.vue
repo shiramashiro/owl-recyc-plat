@@ -59,15 +59,20 @@
                 <!-- 评论区 -->
             </view>
         </view>
+
+      <comment></comment>
     </view>
 </template>
 
 <script>
 import { suitSwiper } from '@/mixins/suit-swiper.js'
-
+import comment from "@/components/index/comment";
 export default {
     name: 'MoreInfo',
     mixins: [suitSwiper],
+  components:{
+    comment
+  },
     data() {
         return {
             cfg: {
@@ -106,6 +111,7 @@ export default {
     },
     onLoad(option) {
         this.id = option.id
+      console.log(option.id);
     }
 }
 </script>

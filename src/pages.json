@@ -1,12 +1,6 @@
 {
     "pages": [
         {
-            "path": "pages/index/more-info",
-            "style": {
-                "navigationBarTitleText": "书籍详情"
-            }
-        },
-        {
             "path": "pages/index/index",
             "style": {
                 "navigationBarTitleText": "首页"
@@ -34,6 +28,12 @@
             "path": "pages/index/week-rank",
             "style": {
                 "navigationBarTitleText": "周排行"
+            }
+        },
+        {
+            "path": "pages/index/more-info",
+            "style": {
+                "navigationBarTitleText": "书籍详情"
             }
         }
     ],
