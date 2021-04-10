@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/community/community",
+            "style": {
+                "navigationBarTitleText": "社区"
+            }
+        },
+        {
             "path": "pages/msg/msg",
             "style": {
                 "navigationBarTitleText": "消息"
