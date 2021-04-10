@@ -7,7 +7,7 @@
             }
         },
         {
-                "path": "pages/filter/filter",
+            "path": "pages/filter/filter",
             "style": {
                 "navigationBarTitleText": "分类"
             }
@@ -15,7 +15,7 @@
         {
             "path": "pages/msg/msg",
             "style": {
-                "navigationBarTitleText": "消息中心"
+                "navigationBarTitleText": "消息"
             }
         },
         {
@@ -41,16 +41,18 @@
             "style": {
                 "navigationBarTitleText": "系统消息"
             }
-
-
         },
         {
             "path": "pages/msg/praise",
             "style": {
                 "navigationBarTitleText": "收到的赞"
             }
-
-
+        },
+        {
+            "path": "pages/msg/reply",
+            "style": {
+                "navigationBarTitleText": "回复我的"
+            }
         }
     ],
     "easycom": {
@@ -85,10 +87,10 @@
                 "text": "分类"
             },
             {
-                "pagePath": "pages/cart/cart",
-                "iconPath": "static/tabbar_cart.png",
-                "selectedIconPath": "static/tabbar_cart.png",
-                "text": "消息中心"
+                "pagePath": "pages/msg/msg",
+                "iconPath": "static/tabbar_msg.png",
+                "selectedIconPath": "static/tabbar_msg.png",
+                "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",
