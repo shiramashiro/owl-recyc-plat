@@ -1,18 +1,25 @@
 <template>
-    <view>
-        <view class="top">
-            全部消息
-            <text>编辑</text>
-        </view>
-
-        <view class="item" v-for="item in list">
+    <view class="sys-msg">
+        <!-- #ifdef H5 -->
+        <view class="status_bar"> </view>
+        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :cfg="cfg">
+            <view class="navi-content flex align-center">
+                <view>
+                    <i
+                        @click="backIntoIndex()"
+                        class="el-icon-third-fanhui"
+                    ></i>
+                </view>
+                <view class="margin-left-lg text-lg">系统消息</view>
+            </view>
+        </navbar>
+        <!-- #endif -->
+        <view class="items" v-for="(item, index) in list" :key="index">
             <view class="title">{{ item.title }}</view>
-
             <view class="detail">
                 {{ item.detail }}
                 <text>{{ item.text }}</text>
             </view>
-
             <view class="time">{{ item.time }}</view>
         </view>
     </view>
@@ -23,13 +30,20 @@ export default {
     name: 'sys-msg',
     data() {
         return {
+            cfg: {
+                splitLine: false,
+                isFixed: false,
+                isOpacity: false,
+                isCustom: true,
+                tansparent: false,
+                isImmersive: false
+            },
             list: [
                 {
-                    title: '终于揭晓了,B站跨年晚会即将开始',
+                    title: '终于揭晓了',
                     detail: `目前英国各大标志建筑物已经降半旗致哀，在王室大型典礼中扮演重要角色的英国纹章院表示，
        菲利普亲王的葬礼将在温莎城堡内 圣乔治教堂举行，不会举行国葬和遗体瞻仰仪式
        ，呼吁公众不要参加菲利普亲王葬礼的相关活动`,
-                    text: '&&网页链接',
                     time: '3个月前'
                 },
                 {
@@ -37,24 +51,41 @@ export default {
                     detail: `目前英国各大标志建筑物已经降半旗致哀，在王室大型典礼中扮演重要角色的英国纹章院表示，
       ，不会举行国葬和遗体瞻仰仪式
        ，呼吁公众不要参加菲利普亲王葬礼的相关活动`,
-                    text: '&&网页链接',
                     time: '3个月前'
                 },
                 {
-                    title: '你的B站2020年年度报告',
+                    title: '你的2020年年度报告',
                     detail: `目前英国各大标志建经降半旗致哀，在王室大型典礼中扮演重要角色的英国纹章院表示，
        菲利普亲王的葬礼将在温 圣乔治教堂举行，不会举行国葬和遗体瞻仰仪式
        ，呼吁公众不要参加菲利普亲王葬礼的相关活动`,
-                    text: '&&网页链接',
                     time: '3个月前'
                 }
             ]
         }
+    },
+    methods: {
+        // #ifdef H5
+        backIntoIndex() {
+            uni.switchTab({
+                url: '/pages/msg/msg'
+            })
+        }
+        // #endif
     }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+// #ifdef H5
+.status_bar {
+    height: var(--status-bar-height);
+    width: 100%;
+}
+// #endif
+
+.navi-content {
+    height: 100%;
+}
 .top {
     height: 40px;
     width: 100%;
@@ -68,7 +99,7 @@ export default {
     right: 15px;
     color: deeppink;
 }
-.item {
+.items {
     width: 100%;
     border-bottom: 1px #eae8e8 solid;
 }
@@ -78,6 +109,7 @@ export default {
     padding-left: 16px;
 }
 .detail {
+    padding: 0 20rpx;
     margin-top: 10px;
 }
 .detail text {

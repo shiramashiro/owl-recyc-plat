@@ -1,5 +1,5 @@
 <template>
-    <view class="filter">分类页</view>
+    <view class="community">ssssssssssssssssssss</view>
 </template>
 
 <script>

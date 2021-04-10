@@ -1,29 +1,43 @@
 <template>
     <view class="praise">
-        <view class="item" v-for="item in list">
-            <view class="top">
-                <view class="left">
-                    <img :src="item.url" />
+        <!-- #ifdef H5 -->
+        <view class="status_bar"> </view>
+        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :cfg="cfg">
+            <view class="navi-content flex align-center">
+                <view>
+                    <i
+                        @click="backIntoIndex()"
+                        class="el-icon-third-fanhui"
+                    ></i>
                 </view>
-
-                <view class="right">
-                    <view class="name">
+                <view class="margin-left-lg text-lg">收到的赞</view>
+            </view>
+        </navbar>
+        <!-- #endif -->
+        <view
+            class="items margin-tb-xs"
+            v-for="(item, index) in list"
+            :key="index"
+        >
+            <view class="flex align-center">
+                <avatar
+                    class="margin-right-sm"
+                    :size="50"
+                    :src="item.url"
+                ></avatar>
+                <view class="col-2 margin-right-sm">
+                    <view class="row-1 margin-bottom-xs">
                         {{ item.name }}
+                        <text class="margin-left-xs text-gray"
+                            >赞了我的评论</text
+                        >
                     </view>
-
-                    <view class="time">
+                    <view class="row-2 margin-bottom-xs">
+                        {{ item.detail }}
+                    </view>
+                    <view class="row-3 text-xs text-gray">
                         {{ item.time }}
                     </view>
-                </view>
-            </view>
-
-            <view class="center">
-                <view>{{ item.detail }}</view>
-            </view>
-
-            <view class="bottom">
-                <view class="box">
-                    在b站至今为止收到最多
                 </view>
             </view>
         </view>
@@ -35,13 +49,20 @@ export default {
     name: 'praise',
     data() {
         return {
+            cfg: {
+                splitLine: false,
+                isFixed: false,
+                isOpacity: false,
+                isCustom: true,
+                tansparent: false,
+                isImmersive: false
+            },
             list: [
                 {
                     url:
                         'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: 'scroll',
                     time: '2小时前',
-                    praise: '等200人赞了你',
                     detail: '在B站为止迄今收到最多的赞'
                 },
                 {
@@ -49,7 +70,6 @@ export default {
                         'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: 'scroll',
                     time: '2小时前',
-                    praise: '等200人赞了你',
                     detail: '在B站为止迄今收到最多的赞'
                 },
                 {
@@ -57,7 +77,6 @@ export default {
                         'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: 'scroll',
                     time: '2小时前',
-                    praise: '等200人赞了你',
                     detail: '在B站为止迄今收到最多的赞'
                 },
                 {
@@ -65,78 +84,37 @@ export default {
                         'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: 'scroll',
                     time: '2小时前',
-                    praise: '等200人赞了你',
                     detail: '在B站为止迄今收到最多的赞'
                 }
             ]
         }
+    },
+    methods: {
+        // #ifdef H5
+        backIntoIndex() {
+            uni.switchTab({
+                url: '/pages/msg/msg'
+            })
+        }
+        // #endif
     }
 }
 </script>
 
-<style scoped>
-.item {
-    margin-bottom: 8px;
+<style lang="scss" scoped>
+// #ifdef H5
+.status_bar {
+    height: var(--status-bar-height);
     width: 100%;
-    height: 130px;
-    box-shadow: 3px 3px 3px #f1f0f0;
 }
-.top {
-    width: 100%;
-    display: flex;
-    height: 45px;
-}
-.left {
-    width: 15%;
-    height: 100%;
+// #endif
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.left img {
-    border-radius: 50%;
-    width: 80%;
-    height: 80%;
-}
-.right {
-    width: 85%;
+.navi-content {
     height: 100%;
 }
-.name {
-    height: 20px;
-    padding-left: 10px;
-    padding-top: 5px;
-    font-size: 14px;
-}
-.time {
-    padding-left: 10px;
-    padding-top: 5px;
-    font-size: 8px;
-    opacity: 0.7;
-}
-.center {
-    display: flex;
-    padding-left: 62px;
-    align-items: center;
 
-    height: 30px;
-}
-.bottom {
-    margin-top: 5px;
+.items {
     width: 100%;
-    height: 30px;
-    background-color: #f5f3f3;
-    margin-left: 62px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-}
-.bottom view {
-    padding-left: 10px;
-    color: deeppink;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    border-bottom: 1rpx solid #f1f0f0;
 }
 </style>

@@ -7,12 +7,6 @@
             }
         },
         {
-            "path": "pages/filter/filter",
-            "style": {
-                "navigationBarTitleText": "分类"
-            }
-        },
-        {
             "path": "pages/msg/msg",
             "style": {
                 "navigationBarTitleText": "消息"
@@ -81,10 +75,10 @@
                 "text": "首页"
             },
             {
-                "pagePath": "pages/filter/filter",
-                "iconPath": "static/tabbar_filter.png",
-                "selectedIconPath": "static/tabbar_filter.png",
-                "text": "分类"
+                "pagePath": "pages/community/community",
+                "iconPath": "static/tabbar_community.png",
+                "selectedIconPath": "static/tabbar_community.png",
+                "text": "社区"
             },
             {
                 "pagePath": "pages/msg/msg",
