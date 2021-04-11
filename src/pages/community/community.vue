@@ -19,12 +19,14 @@
                                 提高书籍利用率·减少纸张浪费
                             </view>
                         </view>
-                        <view
-                            class="col-1-2 text-sm flex align-center margin-right-lg"
-                        >
-                            进入
-                            <view class="more"></view>
-                        </view>
+                        <navigator :url="'/pages/community/secondhand'">
+                            <view
+                                class="col-1-2 text-sm flex align-center margin-right-lg"
+                            >
+                                进入
+                                <view class="more"></view>
+                            </view>
+                        </navigator>
                     </view>
                 </view>
             </view>
@@ -85,6 +87,7 @@ export default {
             ],
             posts: [
                 {
+                    id: 1,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     time: '04-09',
                     browse: 100,
@@ -97,6 +100,7 @@ export default {
                     }
                 },
                 {
+                    id: 2,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     time: '04-09',
                     browse: 100,
@@ -109,6 +113,33 @@ export default {
                     }
                 },
                 {
+                    id: 3,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                },
+                {
+                    id: 3,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                },
+                {
+                    id: 3,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     time: '04-09',
                     browse: 100,

@@ -1,5 +1,8 @@
 <template>
-    <view class="post margin-bottom-sm padding-bottom-sm">
+    <view
+        class="post margin-bottom-sm padding-bottom-sm"
+        @click="viewPostDetail()"
+    >
         <view class="row-1 flex align-center margin-bottom-sm">
             <view class="col-1 margin-right-sm">
                 <avatar :src="data.user.avatar" :size="33"></avatar>
@@ -45,6 +48,13 @@ export default {
         data: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        viewPostDetail() {
+            uni.navigateTo({
+                url: '/pages/community/detail?id=' + this.data.id
+            })
         }
     }
 }

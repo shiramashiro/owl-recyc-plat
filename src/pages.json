@@ -55,7 +55,7 @@
             }
         },
         {
-            "path": "pages/community/book",
+            "path": "pages/community/secondhand",
             "style": {
                 "navigationBarTitleText": "二手书籍"
             }
