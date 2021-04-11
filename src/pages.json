@@ -35,6 +35,18 @@
             "style": {
                 "navigationBarTitleText": "书籍详情"
             }
+        },
+        {
+            "path": "pages/community/book",
+            "style": {
+                "navigationBarTitleText": "二手书籍"
+            }
+        },
+        {
+            "path": "pages/community/detail",
+            "style": {
+                "navigationBarTitleText": "帖子详情"
+            }
         }
     ],
     "easycom": {
