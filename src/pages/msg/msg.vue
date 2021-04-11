@@ -42,7 +42,7 @@ export default {
                 {
                     url: '/pages/msg/sys-msg',
                     name: '系统通知',
-                    image: require('@/static/sys-msg.svg')
+                    image: require('@/static/sys-msg.png')
                 }
             ]
         }
