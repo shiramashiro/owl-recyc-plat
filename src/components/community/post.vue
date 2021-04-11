@@ -1,5 +1,5 @@
 <template>
-    <view class="post margin-bottom-sm">
+    <view class="post margin-bottom-sm padding-bottom-sm">
         <view class="row-1 flex align-center margin-bottom-sm">
             <view class="col-1 margin-right-sm">
                 <avatar :src="data.user.avatar" :size="33"></avatar>
@@ -22,13 +22,16 @@
                 <!-- 保留区域 -->
             </view>
             <view class="col-2 flex align-center text-gray text-xs">
-                <view class="col-2-1 margin-right-sm">
+                <view class="col-2-1 margin-right-sm flex align-center">
+                    <image src="@/static/browse.png"></image>
                     {{ data.browse }}
                 </view>
-                <view class="col-2-2 margin-right-sm">
+                <view class="col-2-2 margin-right-sm flex align-center">
+                    <image src="@/static/discussion.png"></image>
                     {{ data.discussion }}
                 </view>
-                <view class="col-2-3">
+                <view class="col-2-3 flex align-center">
+                    <image src="@/static/like.png"></image>
                     {{ data.praise }}
                 </view>
             </view>
@@ -47,4 +50,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.post {
+    border-bottom: 1rpx solid #cccc;
+
+    .row-4 {
+        .col-2 image {
+            width: 34rpx;
+            height: 34rpx;
+        }
+    }
+}
+</style>
