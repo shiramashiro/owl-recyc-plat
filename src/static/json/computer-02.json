@@ -1,0 +1,46 @@
+{
+    "book": {
+        "type": "computer",
+        "id": "computer-02",
+        "covers": [
+            "http://img3m1.ddimg.cn/25/7/23745571-1_u_1.jpg",
+            "http://img3m1.ddimg.cn/25/7/23745571-2_u_3.jpg"
+        ],
+        "name": "java并发的编程技术",
+        "author": "方腾飞，魏鹏，程晓明 ",
+        "price": "￥56.9",
+        "originPrice": "￥59",
+        "desc": "阿里系和1号店资深技术专家撰写，Java并发编程领域的扛鼎之作，内容在InfoQ等社群得到高度认可 从JDK源码、JVM、CPU等多角度全面剖析和讲解Java并发编程的框架、原理和核心技术 随着大数据时代的来临，程序员可能每天"
+    },
+
+    "userData": {
+        "id": "userData-02",
+        "username": "张某某",
+        "nickname": "你才到碗里去",
+        "password": "332211",
+        "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a",
+        "fans": 0,
+        "praise": 0,
+        "follows": 0,
+        "bgImage": "https://t7.baidu.com/it/u=922000132,896858630&fm=193&f=GIF"
+    },
+
+    "bookDetail": {
+        "id": "comment-02",
+        "bookId": "computer-02",
+        "userId": "userData-02",
+        "user": {
+            "username": "张某某",
+            "nickname": "你才到碗里去",
+            "password": "332211",
+            "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a",
+            "fans": 0,
+            "praise": 0,
+            "follows": 0,
+            "bgImage": "https://t7.baidu.com/it/u=922000132,896858630&fm=193&f=GIF"
+        },
+        "postDate": "2020-04-1 18:11:19",
+        "agree": "16",
+        "disagree": "0"
+    }
+}

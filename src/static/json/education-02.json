@@ -1,0 +1,46 @@
+{
+    "book": {
+        "type": "education",
+        "id": "education-02",
+        "covers": [
+            "http://img3m1.ddimg.cn/77/19/25220921-1_u_3.jpg",
+            "http://img3m1.ddimg.cn/77/19/25220921-2_u_3.jpg"
+        ],
+        "name": "新东方六级词汇词根+联想记忆法",
+        "author": "俞敏洪",
+        "price": "￥41.12",
+        "originPrice": "￥48.00",
+        "desc": "《六级词汇词根 联想记忆法：乱序版》是俞敏洪老师编著的经典 词根 联想 系列词汇书之一，已陪伴数百万名考生走过备战六级的岁月，广受读者欢迎。 本书囊括六级新大纲词表所有新增词，删除新大纲词表中已经删除的词汇"
+    },
+
+    "userData": {
+        "id": "userData-06",
+        "username": "陈教练",
+        "nickname": "海草海草海草",
+        "password": "332211",
+        "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F16%2F20170216104450_trcMX.jpeg&refer=http%3A%2F%2Fa-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=e1380e9854b6966f2814649c8986470c",
+        "fans": 0,
+        "praise": 0,
+        "follows": 0,
+        "bgImage": "https://t7.baidu.com/it/u=2558356168,971668816&fm=193&f=GIF"
+    },
+
+    "bookDetail": {
+        "id": "comment-06",
+        "bookId": "computer-06",
+        "userId": "userData-06",
+        "user": {
+            "username": "陈教练",
+            "nickname": "海草海草海草",
+            "password": "332211",
+            "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F16%2F20170216104450_trcMX.jpeg&refer=http%3A%2F%2Fa-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=e1380e9854b6966f2814649c8986470c",
+            "fans": 40,
+            "praise": 0,
+            "follows": 0,
+            "bgImage": "https://t7.baidu.com/it/u=2558356168,971668816&fm=193&f=GIF"
+        },
+        "postDate": "2020-04-06 08:29:09",
+        "agree": "3",
+        "disagree": "1"
+    }
+}

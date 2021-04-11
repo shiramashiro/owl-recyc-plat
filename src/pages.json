@@ -7,15 +7,15 @@
             }
         },
         {
-            "path": "pages/filter/filter",
+            "path": "pages/community/community",
             "style": {
-                "navigationBarTitleText": "分类"
+                "navigationBarTitleText": "社区"
             }
         },
         {
-            "path": "pages/cart/cart",
+            "path": "pages/msg/msg",
             "style": {
-                "navigationBarTitleText": "购物车"
+                "navigationBarTitleText": "消息"
             }
         },
         {
@@ -34,6 +34,36 @@
             "path": "pages/index/more-info",
             "style": {
                 "navigationBarTitleText": "书籍详情"
+            }
+        },
+        {
+            "path": "pages/msg/sys-msg",
+            "style": {
+                "navigationBarTitleText": "系统消息"
+            }
+        },
+        {
+            "path": "pages/msg/praise",
+            "style": {
+                "navigationBarTitleText": "收到的赞"
+            }
+        },
+        {
+            "path": "pages/msg/reply",
+            "style": {
+                "navigationBarTitleText": "回复我的"
+            }
+        },
+        {
+            "path": "pages/community/secondhand",
+            "style": {
+                "navigationBarTitleText": "二手书籍"
+            }
+        },
+        {
+            "path": "pages/community/detail",
+            "style": {
+                "navigationBarTitleText": "帖子详情"
             }
         }
     ],
@@ -63,16 +93,16 @@
                 "text": "首页"
             },
             {
-                "pagePath": "pages/filter/filter",
-                "iconPath": "static/tabbar_filter.png",
-                "selectedIconPath": "static/tabbar_filter.png",
-                "text": "分类"
+                "pagePath": "pages/community/community",
+                "iconPath": "static/tabbar_community.png",
+                "selectedIconPath": "static/tabbar_community.png",
+                "text": "社区"
             },
             {
-                "pagePath": "pages/cart/cart",
-                "iconPath": "static/tabbar_cart.png",
-                "selectedIconPath": "static/tabbar_cart.png",
-                "text": "购物车"
+                "pagePath": "pages/msg/msg",
+                "iconPath": "static/tabbar_msg.png",
+                "selectedIconPath": "static/tabbar_msg.png",
+                "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",

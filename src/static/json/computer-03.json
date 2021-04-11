@@ -1,0 +1,46 @@
+{
+    "book": {
+        "type": "computer",
+        "id": "computer-03",
+        "covers": [
+            "http://img3m5.ddimg.cn/38/26/29142965-1_w_3.jpg",
+            "http://img3m5.ddimg.cn/38/26/29142965-1_w_3.jpg"
+        ],
+        "name": "Python零基础开发快速入门",
+        "author": "张帆",
+        "price": "￥71.00",
+        "originPrice": "￥79.80",
+        "desc": "本书内容包括了数据库，文件IO，数据解析，Web，API开发以及Python游戏和爬虫等开发技术，基本涉及到了Python初级应用开发的各个方面，通过学习本书可以快速的找到感兴趣的方向或者是实现项目的技术手段。"
+    },
+
+    "userData": {
+        "id": "userData-03",
+        "username": "Alen",
+        "nickname": "所见所闻",
+        "password": "332211",
+        "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201708%2F23%2F20170823102305_WeA2y.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=026c3463483bf48c086dcfcbf0fb551c",
+        "fans": 0,
+        "praise": 0,
+        "follows": 0,
+        "bgImage": "https://t7.baidu.com/it/u=3938497432,1183064470&fm=193&f=GIF"
+    },
+
+    "bookDetail": {
+        "id": "comment-03",
+        "bookId": "computer-03",
+        "userId": "userData-03",
+        "user": {
+            "username": "Alen",
+            "nickname": "所见所闻",
+            "password": "332211",
+            "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201708%2F23%2F20170823102305_WeA2y.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=026c3463483bf48c086dcfcbf0fb551c",
+            "fans": 0,
+            "praise": 0,
+            "follows": 0,
+            "bgImage": "https://t7.baidu.com/it/u=3938497432,1183064470&fm=193&f=GIF"
+        },
+        "postDate": "2020-04-04 14:07:19",
+        "agree": "28",
+        "disagree": "0"
+    }
+}

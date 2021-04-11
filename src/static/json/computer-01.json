@@ -1,0 +1,46 @@
+{
+    "book": {
+        "type": "computer",
+        "id": "computer-01",
+        "covers": [
+            "https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg",
+            "https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg"
+        ],
+        "name": "深入理解Java虚拟机",
+        "author": "周志明",
+        "price": "83.90",
+        "originPrice": "129.00",
+        "desc": "周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著"
+    },
+
+    "userData": {
+        "id": "userData-01",
+        "username": "李某某",
+        "nickname": "小橘子",
+        "password": "332211",
+        "avatar": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg",
+        "fans": 0,
+        "praise": 0,
+        "follows": 0,
+        "bgImage": "https://t7.baidu.com/it/u=3168329137,3263381309&fm=193&f=GIF"
+    },
+
+    "bookDetail": {
+        "id": "comment-01",
+        "bookId": "computer-01",
+        "userId": "userData-01",
+        "user": {
+            "username": "李某某",
+            "nickname": "小橘子",
+            "password": "332211",
+            "avatar": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg",
+            "fans": 0,
+            "praise": 0,
+            "follows": 0,
+            "bgImage": "https://t7.baidu.com/it/u=3168329137,3263381309&fm=193&f=GIF"
+        },
+        "postDate": "2020-04-1 13:11:19",
+        "agree": "15",
+        "disagree": "0"
+    }
+}

@@ -217,10 +217,23 @@ export default {
                         }
                     ]
                 }
-            ]
+            ],
+            currentSwiper: 0,
+            currentTuiTab: 0
         }
     },
-    methods: {}
+    methods: {
+        slideTuiTab(data) {
+            this.setSwiperItem(data.index)
+            this.currentTuiTab = data.index
+            this.currentSwiper = data.index
+        },
+        slideSwiper(data) {
+            this.setSwiperItem(data.detail.current)
+            this.currentTuiTab = data.detail.current
+            this.currentSwiper = data.detail.current
+        }
+    }
 }
 </script>
 

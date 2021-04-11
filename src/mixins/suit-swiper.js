@@ -1,9 +1,7 @@
 export const suitSwiper = {
     data() {
         return {
-            swiperHeight: 0,
-            currentSwiper: 0,
-            currentTuiTab: 0
+            swiperHeight: 0
         }
     },
     mounted() {
@@ -20,16 +18,6 @@ export const suitSwiper = {
                     this.swiperHeight = data.height + 25
                 })
                 .exec()
-        },
-        slideTuiTab(data) {
-            this.setSwiperItem(data.index)
-            this.currentTuiTab = data.index
-            this.currentSwiper = data.index
-        },
-        slideSwiper(data) {
-            this.setSwiperItem(data.detail.current)
-            this.currentTuiTab = data.detail.current
-            this.currentSwiper = data.detail.current
         }
     }
 }

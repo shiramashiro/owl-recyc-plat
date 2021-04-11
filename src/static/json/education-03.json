@@ -1,0 +1,46 @@
+{
+    "book": {
+        "type": "education",
+        "id": "education-03",
+        "covers": [
+            "http://img3m7.ddimg.cn/89/6/1271450357-1_u_4.jpg",
+            "http://img3m7.ddimg.cn/89/6/1271450357-2_u_4.jpg"
+        ],
+        "name": "新华字典第11版全新版正版 双色本",
+        "author": "",
+        "price": "￥24.90",
+        "originPrice": "￥24.90",
+        "desc": "《新华字典》APP，既包含纸质字典字头、词目、拼音、部首、释义、例句等全部内容，更利用新媒体出版的优势，提供央视著名播音员李瑞英的汉字播读，汉字规范笔顺动画，易读错字、多音字闯关游戏等增值内容，帮助读者全面准确地学习、理解和掌握汉字知识，为读者带来全新的工具书使用体验。"
+    },
+
+    "userData": {
+        "id": "userData-07",
+        "username": "三井",
+        "nickname": "星辰大海",
+        "password": "332211",
+        "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201901%2F05%2F20190105022015_dunfg.jpg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=062aaa6a90c64d1d58f9c5980abee2d7",
+        "fans": 0,
+        "praise": 0,
+        "follows": 0,
+        "bgImage": "https://t7.baidu.com/it/u=3309325006,3011257292&fm=193&f=GIF  "
+    },
+
+    "bookDetail": {
+        "id": "comment-07",
+        "bookId": "computer-07",
+        "userId": "userData-07",
+        "user": {
+            "username": "三井",
+            "nickname": "星辰大海",
+            "password": "332211",
+            "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201901%2F05%2F20190105022015_dunfg.jpg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=062aaa6a90c64d1d58f9c5980abee2d7",
+            "fans": 50,
+            "praise": 0,
+            "follows": 0,
+            "bgImage": "https://t7.baidu.com/it/u=3309325006,3011257292&fm=193&f=GIF"
+        },
+        "postDate": "2020-04-07 18:29:09",
+        "agree": "13",
+        "disagree": "0"
+    }
+}
