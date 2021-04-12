@@ -25,27 +25,32 @@
                 </view>
             </view>
         </navbar>
-        <view class="rows">
-            <recommendation></recommendation>
+        <recommendation></recommendation>
+        <view class="filter">
             <tui-tab
-                :isSticky="isSticky"
+                :isSticky="true"
                 :scroll="true"
                 selectedColor="#87cefa"
                 sliderBgColor="#87cefa"
                 :current="currentTuiTab"
-                @slideTuiTab="slideTuiTab"
+                @slideTuiTab="slide"
                 :swiperTabs="swiperTabs"
             ></tui-tab>
             <swiper
                 style="background-color: rgb(248,248,248)"
                 :style="{ height: swiperHeight + 'px' }"
                 :current="currentSwiper"
-                @change="slideSwiper"
+                @change="slide"
                 :duration="360"
             >
-                <swiper-item v-for="(tab, index) in swiperTabs" :key="index">
+                <swiper-item
+                    v-for="(swiperTab, index) in swiperTabs"
+                    :key="index"
+                >
                     <view :id="'swiper-item-' + index">
-                        <swiper-content :tabName="tab.name"></swiper-content>
+                        <swiper-content
+                            :tabType="swiperTab.type"
+                        ></swiper-content>
                     </view>
                 </swiper-item>
             </swiper>
@@ -64,7 +69,6 @@ export default {
     components: { SwiperContent, Recommendation },
     data() {
         return {
-            isSticky: true,
             search: '',
             currentSwiper: 0,
             currentTuiTab: 0,
@@ -77,9 +81,27 @@ export default {
                 isImmersive: false
             },
             swiperTabs: [
-                { name: '全部' },
-                { name: '计算机/网络' },
-                { name: '教育' }
+                { name: '全部', type: 'all' },
+                { name: '生活', type: 'living' },
+                { name: '科技', type: 'technology' },
+                { name: '社会', type: 'social' },
+                { name: '经管', type: 'business' },
+                { name: '文学', type: 'literature' },
+                { name: '艺术', type: 'art' },
+                { name: '辅教', type: 'education' },
+                { name: '童书', type: 'children' }
+            ],
+            book: [
+                {
+                    id: 0,
+                    type: '',
+                    cover: [],
+                    name: '',
+                    author: '',
+                    price: 0,
+                    originPrice: 0,
+                    desc: ''
+                }
             ],
             user: {
                 fans: 180,
@@ -98,15 +120,10 @@ export default {
         openMsg() {
             console.log('open message center!')
         },
-        slideTuiTab(data) {
-            this.setSwiperItem(data.index)
-            this.currentTuiTab = data.index
-            this.currentSwiper = data.index
-        },
-        slideSwiper(data) {
-            this.setSwiperItem(data.detail.current)
-            this.currentTuiTab = data.detail.current
-            this.currentSwiper = data.detail.current
+        slide(data) {
+            let index = data.detail.current
+            this.currentTuiTab = index
+            this.currentSwiper = index
         }
     }
 }
@@ -155,7 +172,7 @@ export default {
         }
     }
 
-    .rows {
+    .filter {
         .other-tab {
             flex-flow: row;
         }
