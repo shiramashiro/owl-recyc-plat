@@ -2,7 +2,7 @@
     <view class="more-info">
         <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
-        <navbar :cfg="cfg">
+        <navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             </view>
@@ -90,7 +90,7 @@ export default {
             comments: comments,
             currentSwiper: 0,
             currentTuiTab: 0,
-            cfg: {
+            config: {
                 splitLine: false,
                 isFixed: false,
                 isOpacity: false,

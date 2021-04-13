@@ -224,9 +224,9 @@ export default {
     },
     methods: {
         slideTuiTab(data) {
-            this.setSwiperItem(data.index)
-            this.currentTuiTab = data.index
-            this.currentSwiper = data.index
+            this.setSwiperItem(data.detail.current)
+            this.currentTuiTab = data.detail.current
+            this.currentSwiper = data.detail.current
         },
         slideSwiper(data) {
             this.setSwiperItem(data.detail.current)

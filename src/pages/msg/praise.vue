@@ -2,7 +2,7 @@
     <view class="praise">
         <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
-        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :cfg="cfg">
+        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :config="config">
             <view class="navi-content flex align-center">
                 <view>
                     <i
@@ -49,7 +49,7 @@ export default {
     name: 'praise',
     data() {
         return {
-            cfg: {
+            config: {
                 splitLine: false,
                 isFixed: false,
                 isOpacity: false,

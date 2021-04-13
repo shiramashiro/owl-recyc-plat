@@ -23,18 +23,18 @@ export default {
         }
     },
     mounted() {
-        this.$axios
-            .get('/get/book', {
-                params: {
-                    type: this.tabType
-                }
-            })
-            .then(response => {
-                this.books = response.data
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        // this.$axios
+        //     .get('/get/book', {
+        //         params: {
+        //             type: this.tabType
+        //         }
+        //     })
+        //     .then(response => {
+        //         this.books = response.data
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
     },
     data() {
         return {
