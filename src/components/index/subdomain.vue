@@ -8,7 +8,7 @@
                     <view class="col-1 text-lg">
                         {{ title }}
                     </view>
-                    <view class="col-2 text-xs flex align-end margin-left-xs">
+                    <view v-if="subTitle" class="col-2 text-xs flex align-end margin-left-xs">
                         {{ subTitle }}
                     </view>
                 </view>

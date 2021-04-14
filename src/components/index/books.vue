@@ -8,7 +8,7 @@
         >
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
-                    <image mode="aspectFill" :src="item.cover[0].cover"></image>
+                    <image mode="aspectFill" :src="item.cover[0].url"></image>
                 </view>
             </view>
             <view class="row-2 padding-sm">
