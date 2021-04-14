@@ -47,7 +47,7 @@ props: {
 
 修改原 components/index/casket.vue
 
-注意该组件中 selectCasket 函数：
+注意该组件中 handleClick 函数：
 
 ```javascript
 handleClick(index, cakset) {
@@ -66,9 +66,27 @@ handleClick(index, cakset) {
 
 在点击书籍分类服务入口的九宫格之后，会跳转相应的书籍类型到 classification 页面，接收到参数之后调用书籍接口查询对应类型的书籍，然后展示数据到 classification 页面中。
 
-## book.vue
+## books.vue
 
-删除原 components/index/new-book.vue，修改原 components/index/boo.vue
+删除原 components/index/new-book.vue，修改原 components/index/books.vue
+
+注意该组件中 handleClick 函数：
+
+```javascript
+handleClick(item) {
+    this.$emit('selected', item)
+}
+```
+
+在使用 books.vue 组件时，需要给回调函数`@selected`获取书籍信息，具体使用参考 pages/index/classification.vue
+
+## 使用关系
+
+1. index.vue 使用组件 subdomain.vue，subdomain.vue 目前使用了 caskets.vue；
+2. classification.vue 使用组件 books.vue；
+3. more-info.vue 使用组件 comment.vue。
+
+caskets.vue 点击后会跳转到 classification.vue 页面，classification.vue 获取 caskets.vue 传递过来的 type 参数去查询数据库，然后传递该数据给 books.vue 来渲染数据。点击 books.vue 之后传递参数 id 给 more-info.vue，more-info.vue 使用参数查询书籍详细信息，包括书籍基本信息以及评论信息等。
 
 # 数据结构
 
