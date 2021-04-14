@@ -25,9 +25,9 @@
             }
         },
         {
-            "path": "pages/index/week-rank",
+            "path": "pages/index/classification",
             "style": {
-                "navigationBarTitleText": "周排行"
+                "navigationBarTitleText": "分类"
             }
         },
         {

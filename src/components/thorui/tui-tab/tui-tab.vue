@@ -199,7 +199,9 @@ export default {
         handleClick(e) {
             let index = Number(e.currentTarget.dataset.index)
             this.$emit('slideTuiTab', {
-                index: index
+                detail: {
+                    current: index
+                }
             })
             this.scrollByIndex(index)
         },

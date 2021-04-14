@@ -1,7 +1,7 @@
 <template>
     <view class="index">
         <view class="status_bar"></view>
-        <navbar :cfg="cfg">
+        <navbar :config="config">
             <view class="nav-wrap margin-lr-lg flex justify-between">
                 <view class="col-1 flex align-center">
                     <avatar :src="user.avatar" :size="33"></avatar>
@@ -17,58 +17,37 @@
                         />
                     </view>
                 </view>
-                <view
-                    class="col-3 flex align-center justify-center"
-                    @click="openMsg()"
-                >
-                    <i class="el-icon-third-xiaoxixinxi" plain="true"></i>
-                </view>
             </view>
         </navbar>
-        <view class="rows">
-            <recommendation></recommendation>
-            <tui-tab
-                :isSticky="isSticky"
-                :scroll="true"
-                selectedColor="#87cefa"
-                sliderBgColor="#87cefa"
-                :current="currentTuiTab"
-                @slideTuiTab="slideTuiTab"
-                :swiperTabs="swiperTabs"
-            ></tui-tab>
-            <swiper
-                style="background-color: rgb(248,248,248)"
-                :style="{ height: swiperHeight + 'px' }"
-                :current="currentSwiper"
-                @change="slideSwiper"
-                :duration="360"
-            >
-                <swiper-item v-for="(tab, index) in swiperTabs" :key="index">
-                    <view :id="'swiper-item-' + index">
-                        <swiper-content :tabName="tab.name"></swiper-content>
-                    </view>
+        <view class="slide-show margin-lr-xs">
+            <swiper autoplay>
+                <swiper-item v-for="(item, index) in slideShow" :key="index">
+                    <image
+                        class="slide-show-image"
+                        mode="aspectFit"
+                        :src="item"
+                    ></image>
                 </swiper-item>
             </swiper>
         </view>
+        <subdomain :title="'书籍分类'">
+            <caskets @selected="chooseCasket"></caskets>
+        </subdomain>
+        <!-- 如果要增加其他模块，就在subdomain内部中写 -->
     </view>
 </template>
 
 <script>
-import SwiperContent from '@/components/index/swiper-content.vue'
-import Recommendation from '@/components/index/recommendation.vue'
-import { suitSwiper } from '@/mixins/suit-swiper.js'
+import Subdomain from '@/components/index/subdomain.vue'
+import Caskets from '@/components/index/caskets.vue'
 
 export default {
     name: 'Index',
-    mixins: [suitSwiper],
-    components: { SwiperContent, Recommendation },
+    components: { Subdomain, Caskets },
     data() {
         return {
-            isSticky: true,
             search: '',
-            currentSwiper: 0,
-            currentTuiTab: 0,
-            cfg: {
+            config: {
                 splitLine: false,
                 isFixed: false,
                 isOpacity: false,
@@ -77,9 +56,20 @@ export default {
                 isImmersive: false
             },
             swiperTabs: [
-                { name: '全部' },
-                { name: '计算机/网络' },
-                { name: '教育' }
+                { name: '全部', type: 'all' },
+                { name: '生活', type: 'living' },
+                { name: '科技', type: 'technology' },
+                { name: '社会', type: 'social' },
+                { name: '经管', type: 'business' },
+                { name: '文学', type: 'literature' },
+                { name: '艺术', type: 'art' },
+                { name: '辅教', type: 'education' },
+                { name: '童书', type: 'children' }
+            ],
+            slideShow: [
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032619353510220.jpg'
             ],
             user: {
                 fans: 180,
@@ -95,18 +85,10 @@ export default {
         }
     },
     methods: {
-        openMsg() {
-            console.log('open message center!')
-        },
-        slideTuiTab(data) {
-            this.setSwiperItem(data.index)
-            this.currentTuiTab = data.index
-            this.currentSwiper = data.index
-        },
-        slideSwiper(data) {
-            this.setSwiperItem(data.detail.current)
-            this.currentTuiTab = data.detail.current
-            this.currentSwiper = data.detail.current
+        chooseCasket(info) {
+            uni.navigateTo({
+                url: '/pages/index/classification?type=' + info.casket.type
+            })
         }
     }
 }
@@ -114,6 +96,9 @@ export default {
 
 <style lang="scss" scoped>
 .index {
+    // background-color: rgb(248, 248, 248);
+    background-color: rgb(121, 175, 224);
+
     // #ifdef H5
     .status_bar {
         height: var(--status-bar-height);
@@ -129,7 +114,7 @@ export default {
         }
 
         .col-2 {
-            width: 75%;
+            width: 85%;
 
             .input-wrap {
                 width: 100%;
@@ -149,13 +134,16 @@ export default {
                 -moz-osx-font-smoothing: grayscale;
             }
         }
+    }
 
-        .col-1 {
-            width: 10%;
+    .slide-show {
+        .slide-show-image {
+            width: 100%;
+            height: 100%;
         }
     }
 
-    .rows {
+    .filter {
         .other-tab {
             flex-flow: row;
         }

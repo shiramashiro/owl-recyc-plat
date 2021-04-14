@@ -1,13 +1,13 @@
 <template>
     <tui-navigation-bar
-        :splitLine="cfg.splitLine"
+        :splitLine="config.splitLine"
         @init="initNavigation"
-        :isFixed="cfg.isFixed"
-        :isOpacity="cfg.isOpacity"
-        :isCustom="cfg.isCustom"
-        :transparent="cfg.transparent"
-        :isImmersive="cfg.isImmersive"
-        :isCustomImmerse="cfg.isCustomImmerse"
+        :isFixed="config.isFixed"
+        :isOpacity="config.isOpacity"
+        :isCustom="config.isCustom"
+        :transparent="config.transparent"
+        :isImmersive="config.isImmersive"
+        :isCustomImmerse="config.isCustomImmerse"
         backgroundColor="black"
         color="#87cefa"
     >
@@ -21,15 +21,13 @@
 export default {
     name: 'Navbar',
     props: {
-        cfg: {
+        config: {
             type: Object,
             required: true
         }
     },
     methods: {
-        initNavigation(rollback) {
-            console.log(rollback)
-        }
+        initNavigation(rollback) {}
     }
 }
 </script>
