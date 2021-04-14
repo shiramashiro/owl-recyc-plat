@@ -4,7 +4,7 @@
             class="casket padding-lr-xs margin-tb-xs flex justify-between align-center"
             v-for="(item, index) in caskets"
             :key="index"
-            @click="selectCasket(index, caskets[index])"
+            @click="handleClick(index, caskets[index])"
         >
             <view class="col-1">
                 <view
@@ -29,6 +29,7 @@ export default {
         return {
             caskets: [
                 {
+                    type: 'all',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/22894393-1_w_1.jpg',
                     icon: 'el-icon-third-guanjun',
@@ -36,6 +37,7 @@ export default {
                     enTitle: 'General List'
                 },
                 {
+                    type: 'living',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29197803-1_w_3.jpg',
                     icon: 'el-icon-third-shiwu',
@@ -43,6 +45,7 @@ export default {
                     enTitle: 'Living'
                 },
                 {
+                    type: 'technology',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27920509-1_w_26.jpg',
                     icon: 'el-icon-third-keji',
@@ -50,6 +53,7 @@ export default {
                     enTitle: 'Technology'
                 },
                 {
+                    type: 'social',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/25157989-1_u_5.jpg',
                     icon: 'el-icon-third-shehui',
@@ -57,6 +61,7 @@ export default {
                     enTitle: 'Social Sciences'
                 },
                 {
+                    type: 'business',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27932536-1_u_3.jpg',
                     icon: 'el-icon-third-qiandai',
@@ -64,6 +69,7 @@ export default {
                     enTitle: 'Business'
                 },
                 {
+                    type: 'literature',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/1901258135_ii_cover.jpg',
                     icon: 'el-icon-third-wenxue',
@@ -71,6 +77,7 @@ export default {
                     enTitle: 'Literature'
                 },
                 {
+                    type: 'art',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28470862-1_u_3.jpg',
                     icon: 'el-icon-third-yishu',
@@ -78,6 +85,7 @@ export default {
                     enTitle: 'Art'
                 },
                 {
+                    type: 'education',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
                     icon: 'el-icon-third-xueshimaoxuexibiye',
@@ -85,6 +93,7 @@ export default {
                     enTitle: 'Education'
                 },
                 {
+                    type: 'children',
                     cover:
                         'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23684605-1_w_1.jpg',
                     icon: 'el-icon-third-ertong',
@@ -95,10 +104,7 @@ export default {
         }
     },
     methods: {
-        /**
-         * 返回选择的cakset信息
-         */
-        selectCasket(index, cakset) {
+        handleClick(index, cakset) {
             this.$emit('selected', {
                 index: index,
                 casket: cakset

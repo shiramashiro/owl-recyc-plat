@@ -87,7 +87,7 @@ export default {
     methods: {
         chooseCasket(info) {
             uni.navigateTo({
-                url: '/pages/index/filter?id=' + info.index
+                url: '/pages/index/classification?type=' + info.casket.type
             })
         }
     }
@@ -97,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 .index {
     // background-color: rgb(248, 248, 248);
-    background-color: red;
+    background-color: rgb(121, 175, 224);
 
     // #ifdef H5
     .status_bar {
