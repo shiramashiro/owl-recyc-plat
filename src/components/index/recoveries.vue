@@ -32,7 +32,7 @@ export default {
           once:"1000"
         },
         {
-          url:"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3.58cdn.com.cn%2Fp1%2Fbig%2Fn_v201ec6d6b3f434ee58e10ba890a3318a5.jpg%3Fw%3D425%26h%3D320&refer=http%3A%2F%2Fpic3.58cdn.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621160791&t=30c8d47c020266b7027f4e14e1cd6433",
+          url:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg",
           address:"成都市金牛区",
           price:"14.00",
           once:"2000"
@@ -68,10 +68,14 @@ export default {
   width: 100%;
   height: 55%;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .top img{
-  width: 100%;
-  height: 100%;
+
+  width: 90%;
+  height: 90%;
   border-radius: 5px;
 }
 .detail{
@@ -79,7 +83,7 @@ export default {
   height: 45%;
 }
 .address,.price,.once{
-  padding-left: 5px;
+  padding-left: 10px;
   padding-top: 3px;
   height: 33%;
   overflow: hidden;
@@ -93,5 +97,8 @@ export default {
 .address{
   font-weight: bold;
   font-size: 13px;
+}
+.price,.once{
+  font-size: 10px;
 }
 </style>
