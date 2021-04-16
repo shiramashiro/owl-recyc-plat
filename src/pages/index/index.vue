@@ -33,13 +33,8 @@
         <subdomain :title="'书籍分类'">
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
-        <!-- 如果要增加其他模块，就在subdomain内部中写 -->
-
-        <subdomain :title="'废纸回收点'">
-<!--          今天的任务-->
-
-          <recovery  @recoverys="chooseRecoverys" />
-            <!-- 组件 -->
+        <subdomain class="margin-top-sm" :title="'废纸回收点'">
+            <recoveries @selected="chooseRecovery"></recoveries>
         </subdomain>
     </view>
 </template>
@@ -47,10 +42,11 @@
 <script>
 import Subdomain from '@/components/index/subdomain.vue'
 import Caskets from '@/components/index/caskets.vue'
-import recovery from "@/components/index/recoveries";
+import Recoveries from '@/components/index/recoveries'
+
 export default {
     name: 'Index',
-    components: { Subdomain, Caskets, recovery },
+    components: { Subdomain, Caskets, Recoveries },
     data() {
         return {
             search: '',
@@ -97,10 +93,9 @@ export default {
                 url: '/pages/index/classification?type=' + info.casket.type
             })
         },
-
-      chooseRecoverys(index){
-       alert(index)
-      }
+        chooseRecovery(info) {
+            console.log(info)
+        }
     }
 }
 </script>

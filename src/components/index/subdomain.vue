@@ -5,10 +5,13 @@
                 class="title text-black padding-tb-lg padding-lr-sm flex justify-between align-center"
             >
                 <view class="rows flex">
-                    <view class="col-1 text-lg">
+                    <view class="col-1 text-lg text-bold">
                         {{ title }}
                     </view>
-                    <view v-if="subTitle" class="col-2 text-xs flex align-end margin-left-xs">
+                    <view
+                        v-if="subTitle"
+                        class="col-2 text-xs flex align-end margin-left-xs"
+                    >
                         {{ subTitle }}
                     </view>
                 </view>
