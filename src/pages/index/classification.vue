@@ -12,18 +12,7 @@ export default {
     components: { Books },
     data() {
         return {
-            books: [
-                // {
-                //     type: '',
-                //     id: 0,
-                //     cover: [],
-                //     author: '',
-                //     name: '',
-                //     price: 0,
-                //     originPrice: 0,
-                //     desc: ''
-                // }
-            ]
+            books: []
         }
     },
     onLoad(option) {
@@ -42,6 +31,7 @@ export default {
             })
     },
     methods: {
+        // 获取点击的书籍信息
         chooseBook(item) {
             console.log(item)
         }
@@ -51,7 +41,6 @@ export default {
 
 <style lang="scss" scoped>
 .classification {
-    // background-color: rgb(248, 248, 248);
-    background-color: rgb(121, 175, 224);
+    background-color: rgb(248, 248, 248);
 }
 </style>

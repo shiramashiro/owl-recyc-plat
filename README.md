@@ -14,79 +14,28 @@
 
 文件的命名方式不能以数字开头，规范跟 java 开发规范一致，文件名涉及多个单词使用`-`划分开来。比如 new-book.vue。
 
+组件的 name 命名为首字母大写，比如 more-recoveries.vue 组件的 name 应该写为 'MoreRecoveries'。
+
 ## 分支规范
 
 每个人每次都负责一个分支开发，比如某界面只在分支`feature-xxx`进行开发，避免与其他分支产生冲突，从而发生不可挽回的代码丢失风险！
 
-# 改动说明
+# 组件说明
+
+**最近更新时间：2021 年 4 月 17 日 01:37:09**
 
 ## subdomain.vue
 
-删除原 components/index/swiper-content.vue
+主要作用是复用首页每一个服务入口的卡片
 
-在 components/index 下新增组件 subdomain.vue，主要作用是复用首页每一个服务入口的卡片，详细请看`http://localhost:8080/#/`
+新增 url 和 isDisplay 两个参数，参数的作用分别如下：
 
-需要必须传递参数`title`，即服务入口的标题：
+1. url：如果设置 isDisplay 为 true，即表示开启标题右侧的更多按钮功能，所以必须设置跳转到哪一个页面中展示更多信息；
+2. isDisplay：是否开启标题右侧的更多按钮功能。
 
-```javascript
-props: {
-    title: {
-        type: String,
-        required: true
-    },
-    subTitle: {
-        type: String,
-        required: false
-    }
-}
-```
+## recoveries.vue
 
-其内容使用了`<slot></slot>`，内容可根据业务来插入。实例在 pages/index/index.vue。
-
-## caskets.vue
-
-修改原 components/index/casket.vue
-
-注意该组件中 handleClick 函数：
-
-```javascript
-handleClick(index, cakset) {
-    this.$emit('selected', {
-        index: index,
-        casket: cakset
-    })
-}
-```
-
-在使用 caskets.vue 组件时，需要给回调函数`@selected`获取宫格信息，具体使用参考 pages/index/index.vue
-
-## classification.vue
-
-删除原 pages/index/week-rank.vue，新增 pages/index/classification.vue
-
-在点击书籍分类服务入口的九宫格之后，会跳转相应的书籍类型到 classification 页面，接收到参数之后调用书籍接口查询对应类型的书籍，然后展示数据到 classification 页面中。
-
-## books.vue
-
-删除原 components/index/new-book.vue，修改原 components/index/books.vue
-
-注意该组件中 handleClick 函数：
-
-```javascript
-handleClick(item) {
-    this.$emit('selected', item)
-}
-```
-
-在使用 books.vue 组件时，需要给回调函数`@selected`获取书籍信息，具体使用参考 pages/index/classification.vue
-
-## 使用关系
-
-1. index.vue 使用组件 subdomain.vue，subdomain.vue 目前使用了 caskets.vue；
-2. classification.vue 使用组件 books.vue；
-3. more-info.vue 使用组件 comment.vue。
-
-caskets.vue 点击后会跳转到 classification.vue 页面，classification.vue 获取 caskets.vue 传递过来的 type 参数去查询数据库，然后传递该数据给 books.vue 来渲染数据。点击 books.vue 之后传递参数 id 给 more-info.vue，more-info.vue 使用参数查询书籍详细信息，包括书籍基本信息以及评论信息等。
+新增 maxSize 参数，用于限制最大显示数，默认值为 6，如果设置为 0 则表示没有限制显示数。
 
 # 数据结构
 
@@ -124,7 +73,7 @@ caskets.vue 点击后会跳转到 classification.vue 页面，classification.vue
 }
 ```
 
-## 书籍详情页评论数据结构
+## 评论数据结构
 
 ```json
 {
@@ -156,7 +105,7 @@ caskets.vue 点击后会跳转到 classification.vue 页面，classification.vue
 http://120.77.245.208:8070/get/book?type=
 ```
 
-type 可选字段：living | technology | social | business | literature | art | education | children
+type 可选字段：all | living | technology | social | business | literature | art | education | children
 
 # 目录结构
 
@@ -192,9 +141,10 @@ type 可选字段：living | technology | social | business | literature | art |
 ```json
 matser
 develop
+feature-首页开发
 ```
 
-## 各个分支的作用
+## 分支作用
 
 1. matser 为主分支，通常情况下只有在 develop 比较稳定的情况下才与 develop 进行合并操作；
 2. develop 为次分支，即开发分支，只有在某个 feature 分支比较稳定的情况下才与 feature 分支进行合并操作；

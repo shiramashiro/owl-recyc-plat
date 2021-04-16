@@ -1,13 +1,11 @@
 <template>
-    <view class="more-info">
-        <!-- #ifdef H5 -->
+    <view class="book-detail">
         <view class="status_bar"> </view>
         <navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             </view>
         </navbar>
-        <!-- #endif -->
         <view class="rows">
             <view class="row-1">
                 <swiper
@@ -80,7 +78,7 @@ import comment from '@/components/index/comment.vue'
 import comments from '@/static/json/comments.json'
 
 export default {
-    name: 'MoreInfo',
+    name: 'BookDetail',
     mixins: [suitSwiper],
     components: {
         comment
@@ -121,13 +119,11 @@ export default {
         }
     },
     methods: {
-        // #ifdef H5
         backIntoIndex() {
             uni.switchTab({
                 url: '/pages/index/index'
             })
         }
-        // #endif
     },
     onLoad(option) {
         console.log(option.id)
@@ -136,13 +132,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.more-info {
-    // #ifdef H5
+.book-detail {
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
     }
-    // #endif
 
     .navi-content {
         height: 100%;

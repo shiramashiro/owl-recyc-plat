@@ -1,8 +1,8 @@
 <template>
-    <view class="kong-avatar-wrap flex align-center">
+    <view class="avatar-wrap flex align-center">
         <image
             :mode="mode"
-            class="kong-avatar"
+            class="avatar"
             :style="{ '--size': size + 'px' }"
             :src="src"
         ></image>
@@ -32,8 +32,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.kong-avatar-wrap {
-    .kong-avatar {
+.avatar-wrap {
+    .avatar {
         width: var(--size);
         height: var(--size);
         border-radius: 100%;

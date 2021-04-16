@@ -8,7 +8,7 @@
         >
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
-                    <image mode="aspectFill" :src="item.cover[0].cover"></image>
+                    <image mode="aspectFill" :src="item.cover[0].url"></image>
                 </view>
             </view>
             <view class="row-2 padding-sm">
@@ -33,12 +33,14 @@
 export default {
     name: 'Books',
     props: {
+        // 书籍数组对象
         data: {
             type: Array,
             required: true
         }
     },
     methods: {
+        // 点击事件函数，回传每一项的信息以及对应的索引值
         handleClick(item) {
             this.$emit('selected', item)
         }

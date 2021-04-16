@@ -163,7 +163,6 @@ export default {
         background-image: url('@/static/community-bg.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        background-color: red;
 
         .top {
             height: 410rpx;
