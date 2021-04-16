@@ -51,7 +51,6 @@ export default {
 
 <style lang="scss" scoped>
 .classification {
-    // background-color: rgb(248, 248, 248);
-    background-color: rgb(121, 175, 224);
+    background-color: rgb(248, 248, 248);
 }
 </style>

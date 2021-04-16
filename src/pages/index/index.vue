@@ -34,6 +34,9 @@
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
         <!-- 如果要增加其他模块，就在subdomain内部中写 -->
+        <subdomain :title="'废纸回收点'">
+            <!-- 组件 -->
+        </subdomain>
     </view>
 </template>
 
@@ -43,7 +46,7 @@ import Caskets from '@/components/index/caskets.vue'
 
 export default {
     name: 'Index',
-    components: { Subdomain, Caskets },
+    components: { Subdomain, Caskets, Subdomain },
     data() {
         return {
             search: '',
@@ -96,15 +99,12 @@ export default {
 
 <style lang="scss" scoped>
 .index {
-    // background-color: rgb(248, 248, 248);
-    background-color: rgb(121, 175, 224);
+    background-color: rgb(248, 248, 248);
 
-    // #ifdef H5
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
     }
-    // #endif
 
     .nav-wrap {
         height: 100%;
