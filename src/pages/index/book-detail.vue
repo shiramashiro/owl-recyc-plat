@@ -1,5 +1,5 @@
 <template>
-    <view class="more-info">
+    <view class="book-detail">
         <view class="status_bar"> </view>
         <navbar :config="config">
             <view class="navi-content flex align-center">
@@ -78,7 +78,7 @@ import comment from '@/components/index/comment.vue'
 import comments from '@/static/json/comments.json'
 
 export default {
-    name: 'MoreInfo',
+    name: 'BookDetail',
     mixins: [suitSwiper],
     components: {
         comment
@@ -119,13 +119,11 @@ export default {
         }
     },
     methods: {
-        // #ifdef H5
         backIntoIndex() {
             uni.switchTab({
                 url: '/pages/index/index'
             })
         }
-        // #endif
     },
     onLoad(option) {
         console.log(option.id)
@@ -134,7 +132,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.more-info {
+.book-detail {
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;

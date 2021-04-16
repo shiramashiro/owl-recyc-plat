@@ -31,9 +31,15 @@
             }
         },
         {
-            "path": "pages/index/more-info",
+            "path": "pages/index/book-detail",
             "style": {
                 "navigationBarTitleText": "书籍详情"
+            }
+        },
+        {
+            "path": "pages/index/more-recoveries",
+            "style": {
+                "navigationBarTitleText": "更多回收点"
             }
         },
         {

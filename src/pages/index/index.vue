@@ -33,7 +33,12 @@
         <subdomain :title="'书籍分类'">
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
-        <subdomain class="margin-top-sm" :title="'废纸回收点'">
+        <subdomain
+            class="margin-top-sm"
+            :isDisplay="true"
+            :url="'/pages/index/more-recoveries'"
+            :title="'废纸回收点'"
+        >
             <recoveries @selected="chooseRecovery"></recoveries>
         </subdomain>
     </view>
