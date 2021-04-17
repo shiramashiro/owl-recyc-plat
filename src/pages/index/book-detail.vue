@@ -62,11 +62,7 @@
                 ></tui-tab>
             </view>
             <view class="row-6 margin-lr-sm">
-                <comment
-                    v-for="(item, index) in comments"
-                    :key="index"
-                    :data="item"
-                ></comment>
+                <comment :data="comments"></comment>
             </view>
         </view>
     </view>
@@ -74,14 +70,14 @@
 
 <script>
 import { suitSwiper } from '@/mixins/suit-swiper.js'
-import comment from '@/components/index/comment.vue'
+import Comment from '@/components/comment.vue'
 import comments from '@/static/json/comments.json'
 
 export default {
     name: 'BookDetail',
     mixins: [suitSwiper],
     components: {
-        comment
+        Comment
     },
     data() {
         return {

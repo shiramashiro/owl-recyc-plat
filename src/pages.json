@@ -43,6 +43,12 @@
             }
         },
         {
+            "path": "pages/index/recovery-detail",
+            "style": {
+                "navigationBarTitleText": "回收点详细"
+            }
+        },
+        {
             "path": "pages/msg/sys-msg",
             "style": {
                 "navigationBarTitleText": "系统消息"

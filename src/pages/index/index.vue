@@ -47,7 +47,7 @@
 <script>
 import Subdomain from '@/components/index/subdomain.vue'
 import Caskets from '@/components/index/caskets.vue'
-import Recoveries from '@/components/index/recoveries'
+import Recoveries from '@/components/index/recoveries.vue'
 
 export default {
     name: 'Index',
@@ -95,11 +95,13 @@ export default {
     methods: {
         chooseCasket(info) {
             uni.navigateTo({
-                url: '/pages/index/classification?type=' + info.casket.type
+                url: '/pages/index/classification?type=' + info.item.type
             })
         },
         chooseRecovery(info) {
-            console.log(info)
+            uni.navigateTo({
+                url: '/pages/index/recovery-detail?id=' + info.item.id
+            })
         }
     }
 }

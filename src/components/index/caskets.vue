@@ -105,10 +105,10 @@ export default {
     },
     methods: {
         // 点击事件函数，回传每一项的信息以及对应的索引值
-        handleClick(index, cakset) {
+        handleClick(index, item) {
             this.$emit('selected', {
                 index: index,
-                casket: cakset
+                item: item
             })
         }
     }
