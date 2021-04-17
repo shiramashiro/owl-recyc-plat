@@ -59,14 +59,20 @@ export default {
         }
     },
     methods: {
+        // 点击不同意，传入评论的信息
         clickDisagree(item, index) {
             this.handleClick(item, index, 'disagree')
         },
+        // 点击同意，传入评论的信息
         clickAgree(item, index) {
             this.handleClick(item, index, 'agree')
         },
+        /**
+         * clickDisagree和clickAgreee复用handleClick，向外回传评论信息以及用户点击的是同意还是反对。
+         * 使用此组件时，外界使用express触发该函数。
+         */
         handleClick(item, index, type) {
-            this.$emit('selected', {
+            this.$emit('express', {
                 type: type,
                 item: item,
                 index: index

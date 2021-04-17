@@ -4,7 +4,7 @@
             <view class="recovery-info">
                 <view></view>
             </view>
-            <comment @selected="chooseComment" :data="comments"></comment>
+            <comment @express="expressView" :data="comments"></comment>
         </view>
     </view>
 </template>
@@ -84,7 +84,7 @@ export default {
         }
     },
     methods: {
-        chooseComment(info) {
+        expressView(info) {
             console.log(info)
         }
     },
