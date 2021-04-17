@@ -25,7 +25,7 @@
                         </view>
                     </view>
                     <view class="row-2 margin-bottom-xs">
-                        {{ item.postContent }}
+                        {{ item.content }}
                     </view>
                 </view>
             </view>
@@ -54,7 +54,7 @@ export default {
     name: 'Comment',
     props: {
         data: {
-            type: Object,
+            type: Array,
             required: true
         }
     },

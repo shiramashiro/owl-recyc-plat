@@ -4,410 +4,45 @@
             <view class="recovery-info">
                 <view></view>
             </view>
-<!--          评论组件动态获取   comments数组的值-->
-          {{id}}
-            <comment @express="expressView" :data="comments1[id]" @click.native="ccc"></comment>
+            <comment
+                @express="expressView"
+                :data="recovery.recoveryComment"
+            ></comment>
         </view>
     </view>
 </template>
 
 <script>
 import Comment from '@/components/comment.vue'
-import comments from '@/static/json/comments.json'
 
 export default {
     name: 'RecoveryDetail',
     components: { Comment },
     data() {
         return {
-            comments: comments,
-            recovery: {
-                id: 1,
-                url:
-                    'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                address: '绵阳市涪城区',
-                price: '12.00',
-                times: '1000',
-                openTime: '08:00',
-                closeTime: '18:00',
-                notWork: ['周五', '周六'],
-                comments: [
-                    {
-                        id: 1,
-                        bookId: 1,
-                        userId: 1,
-                        user: {
-                            id: 1,
-                            username: '哈哈哈哈',
-                            avatar:
-                                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                        },
-                        postContent:
-                            '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                        postDate: '2020-04-09 13:46:13',
-                        agree: 10,
-                        disagree: 0
-                    },
-                    {
-                        id: 2,
-                        bookId: 1,
-                        userId: 2,
-                        user: {
-                            id: 2,
-                            username: '你才到碗啊啊啊',
-                            avatar:
-                                'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                        },
-                        postContent:
-                            '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                        postDate: '2020-04-06 08:29:09',
-                        agree: 0,
-                        disagree: 0
-                    },
-                    {
-                        id: 3,
-                        bookId: 1,
-                        userId: 2,
-                        user: {
-                            id: 2,
-                            username: '你才到碗啊啊啊',
-                            avatar:
-                                'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                        },
-                        postContent:
-                            '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                        postDate: '2020-04-06 08:29:09',
-                        agree: 0,
-                        disagree: 0
-                    }
-                ],
-
-
-
-            },
-          comments1:[
-
-            {
-
-              one: {
-                id: 1,
-                bookId: 1,
-                userId: 1,
-                user: {
-                  id: 1,
-                  username: '哈哈哈哈0',
-                  avatar:
-                      'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                postDate: '2020-04-09 13:46:13',
-                agree: 10,
-                disagree: 0
-              },
-              two: {
-                id: 2,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊0',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              },
-              three:  {
-                id: 3,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊0',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              }
-            },
-            {
-              one: {
-                id: 1,
-                bookId: 1,
-                userId: 1,
-                user: {
-                  id: 1,
-                  username: '哈哈哈哈1',
-                  avatar:
-                      'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                postDate: '2020-04-09 13:46:13',
-                agree: 10,
-                disagree: 0
-              },
-              two: {
-                id: 2,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊1',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              },
-              three:  {
-                id: 3,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊1',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              }
-            },
-            {
-              one: {
-                id: 1,
-                bookId: 1,
-                userId: 1,
-                user: {
-                  id: 1,
-                  username: '哈哈哈哈2',
-                  avatar:
-                      'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                postDate: '2020-04-09 13:46:13',
-                agree: 10,
-                disagree: 0
-              },
-              two: {
-                id: 2,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊2',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              },
-              three:  {
-                id: 3,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊2',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              }
-            },
-            {
-              one: {
-                id: 1,
-                bookId: 1,
-                userId: 1,
-                user: {
-                  id: 1,
-                  username: '哈哈哈哈3',
-                  avatar:
-                      'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                postDate: '2020-04-09 13:46:13',
-                agree: 10,
-                disagree: 0
-              },
-              two: {
-                id: 2,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊3',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              },
-              three:  {
-                id: 3,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊3',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              }
-            },
-            {
-              one: {
-                id: 1,
-                bookId: 1,
-                userId: 1,
-                user: {
-                  id: 1,
-                  username: '哈哈哈哈4',
-                  avatar:
-                      'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                postDate: '2020-04-09 13:46:13',
-                agree: 10,
-                disagree: 0
-              },
-              two: {
-                id: 2,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊4',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              },
-              three:  {
-                id: 3,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊4',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              }
-            },
-            {
-              one: {
-                id: 1,
-                bookId: 1,
-                userId: 1,
-                user: {
-                  id: 1,
-                  username: '哈哈哈哈5',
-                  avatar:
-                      'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                postDate: '2020-04-09 13:46:13',
-                agree: 10,
-                disagree: 0
-              },
-              two: {
-                id: 2,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊5',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              },
-              three:  {
-                id: 3,
-                bookId: 1,
-                userId: 2,
-                user: {
-                  id: 2,
-                  username: '你才到碗啊啊啊5',
-                  avatar:
-                      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                },
-                postContent:
-                    '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                postDate: '2020-04-06 08:29:09',
-                agree: 0,
-                disagree: 0
-              }
-            },
-
-          ],
-
-            id: 0
+            recovery: {}
         }
     },
     methods: {
         expressView(info) {
             console.log(info)
-        },
-        ccc(){
-
-
         }
     },
     onLoad(option) {
-        this.id = option.id -1
-
-    },
-
+        this.$axios
+            .get('/get/detail/recovery', {
+                params: {
+                    id: option.id
+                }
+            })
+            .then(resp => {
+                console.log(resp)
+                this.recovery = resp.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 }
 </script>
 
