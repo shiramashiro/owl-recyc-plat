@@ -54,7 +54,7 @@ export default {
     name: 'Comment',
     props: {
         data: {
-            type: Array,
+            type: Object,
             required: true
         }
     },

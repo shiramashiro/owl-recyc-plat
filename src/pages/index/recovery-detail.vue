@@ -6,7 +6,7 @@
             </view>
 <!--          评论组件动态获取   comments数组的值-->
           {{id}}
-            <comment @express="expressView" :data="comments1[id]"></comment>
+            <comment @express="expressView" :data="comments1[id]" @click.native="ccc"></comment>
         </view>
     </view>
 </template>
@@ -397,12 +397,17 @@ export default {
     methods: {
         expressView(info) {
             console.log(info)
+        },
+        ccc(){
+          console.log(1)
+
         }
     },
     onLoad(option) {
         this.id = option.id -1
-      // this.$route.id=this.iid
-    }
+
+    },
+
 }
 </script>
 
