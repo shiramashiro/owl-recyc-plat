@@ -85,7 +85,7 @@ export default {
 <style lang="scss" scoped>
 .comments {
     .comment {
-        border-bottom: 1px solid #cccc;
+        border-bottom: 1rpx solid #cccc;
     }
 }
 </style>
