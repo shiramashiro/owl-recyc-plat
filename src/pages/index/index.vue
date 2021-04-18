@@ -32,7 +32,9 @@
         </view>
         <subdomain
             class="margin-top-sm"
-            :isDisplay="true"
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
+            "
             :url="'/pages/index/more-recoveries'"
             :title="'回收点'"
         >
@@ -41,9 +43,13 @@
         <subdomain class="margin-top-lg" :title="'二手市场'">
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
-        <view class="margin-top-sm">
+        <subdomain
+            :bgColor="'rgb(248, 248, 248)'"
+            :title="'推荐'"
+            class="margin-top-sm"
+        >
             <books @selected="chooseBook" :data="books"></books>
-        </view>
+        </subdomain>
     </view>
 </template>
 

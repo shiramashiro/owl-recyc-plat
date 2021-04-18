@@ -31,6 +31,7 @@
                 </view>
             </view>
             <subdomain class="margin-top-sm" :title="'评论区'">
+                <post-comment></post-comment>
                 <comment
                     class="padding-lr-sm"
                     @express="expressView"
@@ -44,10 +45,11 @@
 <script>
 import Subdomain from '@/components/subdomain.vue'
 import Comment from '@/components/comment.vue'
+import PostComment from '@/components/post-comment.vue'
 
 export default {
     name: 'RecoveryDetail',
-    components: { Comment, Subdomain },
+    components: { Comment, Subdomain, PostComment },
     data() {
         return {
             recovery: {},

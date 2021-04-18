@@ -53,6 +53,7 @@
         </view>
         <view class="row-6 margin-lr-xs margin-top-sm">
             <subdomain :title="'评论区'">
+                <post-comment></post-comment>
                 <comment
                     class="padding-lr-sm"
                     @express="expressView"
@@ -66,10 +67,11 @@
 <script>
 import Comment from '@/components/comment.vue'
 import Subdomain from '@/components/subdomain.vue'
+import PostComment from '@/components/post-comment.vue'
 
 export default {
     name: 'BookDetail',
-    components: { Comment, Subdomain },
+    components: { Comment, Subdomain, PostComment },
     data() {
         return {
             currentSwiper: 0,
