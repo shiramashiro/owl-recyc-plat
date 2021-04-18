@@ -77,6 +77,12 @@
             "style": {
                 "navigationBarTitleText": "帖子详情"
             }
+        },
+        {
+            "path": "pages/community/more-activity",
+            "style": {
+                "navigationBarTitleText": "更多活动"
+            }
         }
     ],
     "easycom": {

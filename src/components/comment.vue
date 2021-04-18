@@ -49,7 +49,7 @@
 
 <script>
 export default {
-    name: 'Comment',
+    name: 'comment',
     props: {
         data: {
             type: Array,

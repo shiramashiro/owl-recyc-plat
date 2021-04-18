@@ -34,7 +34,7 @@
 
 <script>
 export default {
-    name: 'Books',
+    name: 'books',
     props: {
         // 书籍数组对象
         data: {

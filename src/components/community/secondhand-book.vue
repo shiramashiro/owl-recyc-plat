@@ -21,7 +21,7 @@
 
 <script>
 export default {
-    name: 'secondhandBook',
+    name: 'secondhand-book',
     props: {
         data: {
             type: Object,

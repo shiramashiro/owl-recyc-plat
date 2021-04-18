@@ -36,7 +36,7 @@
 
 <script>
 export default {
-    name: 'PostComment',
+    name: 'post-comment',
     props: {
         // 所属哪个页面下的评论的Id，比如回收点id的评论
         belongedId: {

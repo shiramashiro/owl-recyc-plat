@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: 'Avatar',
+    name: 'avatar',
     props: {
         src: {
             type: String,
