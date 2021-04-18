@@ -18,9 +18,9 @@
                         class="row-1 margin-bottom-xs flex justify-between align-center"
                     >
                         <view class="col-1 text-bold">
-                            {{ item.user.username }}
+                            {{ item.username }}
                         </view>
-                        <view class="col-2 text-gray">
+                        <view class="col-2 text-gray data">
                             {{ item.postDate }}
                         </view>
                     </view>
@@ -54,7 +54,7 @@ export default {
     name: 'Comment',
     props: {
         data: {
-            type: Array,
+            type:Array,
             required: true
         }
     },
@@ -87,5 +87,9 @@ export default {
     .comment {
         border-bottom: 1rpx solid #cccc;
     }
+}
+
+ .data{
+margin-left: 330rpx;
 }
 </style>
