@@ -32,6 +32,9 @@
                 </swiper>
             </view>
             <view class="rows-content margin-lr-lg">
+                <view class="col-0">
+                    {{ book.name }}
+                </view>
                 <view
                     class="row-2 margin-bottom-xs flex justify-between align-center"
                 >

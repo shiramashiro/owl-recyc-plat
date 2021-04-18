@@ -89,6 +89,9 @@ export default {
             .then(res => {
                 this.recovery = res.data
             })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 </script>
