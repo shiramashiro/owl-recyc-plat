@@ -64,6 +64,11 @@ export default {
             this.$refs.toast.showTips(options)
         },
         postComment() {
+            if (this.inputValue === '') {
+                this.showToast('你还没有输入任何信息！')
+                this.tipColor = '#EB0909'
+                return
+            }
             this.$axios
                 .post(this.postUrl, {
                     // 临时的userId，后期改
@@ -74,6 +79,7 @@ export default {
                 .then(resp => {
                     if (resp.status === 200) {
                         this.showToast('发表成功~')
+                        this.tipColor = '#19BE6B'
                     } else {
                         this.showToast('发表失败！')
                         this.tipColor = '#EB0909'
