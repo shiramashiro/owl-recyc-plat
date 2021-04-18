@@ -10,7 +10,6 @@
         <recoveries
             @selected="chooseRecovery"
             class="margin-top-sm margin-lr-xs"
-            style="background-color: white"
             :maxSize="0"
         ></recoveries>
     </view>

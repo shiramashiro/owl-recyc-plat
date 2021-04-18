@@ -53,7 +53,11 @@
         </view>
         <view class="row-6 margin-lr-xs margin-top-sm">
             <subdomain :title="'评论区'">
-                <post-comment></post-comment>
+                <post-comment
+                    :postUrl="'/set/book/comment'"
+                    :belongedId="book.id"
+                    class="padding-lr-sm"
+                ></post-comment>
                 <comment
                     class="padding-lr-sm"
                     @express="expressView"

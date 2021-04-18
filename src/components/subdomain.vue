@@ -34,7 +34,7 @@
             </view>
             <view
                 :style="{ backgroundColor: bgColor }"
-                class="content padding-bottom-sm"
+                class="content"
             >
                 <slot></slot>
             </view>

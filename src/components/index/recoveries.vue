@@ -4,7 +4,7 @@
             <view
                 v-if="index < maxSize || maxSize === 0"
                 :key="index"
-                class="item margin-bottom-sm"
+                class="item margin-xs"
                 @click="clickItem(item, index)"
             >
                 <image mode="aspectFill" :src="item.url" />
@@ -71,9 +71,9 @@ export default {
     flex-flow: wrap;
 
     .item {
-        border: 1rpx solid #cccc;
+        background-color: white;
         border-radius: 10rpx;
-        width: 48%;
+        width: 47%;
 
         .detail {
             .address {
@@ -88,7 +88,7 @@ export default {
 
         image {
             height: 300rpx;
-            border-radius: 10rpx;
+            border-radius: 10rpx 10rpx 0 0;
         }
     }
 }

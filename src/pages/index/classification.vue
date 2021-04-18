@@ -62,8 +62,6 @@ export default {
 
 <style lang="scss" scoped>
 .classification {
-    background-color: rgb(248, 248, 248);
-
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;

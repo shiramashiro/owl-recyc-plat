@@ -31,7 +31,11 @@
                 </view>
             </view>
             <subdomain class="margin-top-sm" :title="'评论区'">
-                <post-comment></post-comment>
+                <post-comment
+                    :postUrl="'/set/recovery/comment'"
+                    :belongedId="recovery.id"
+                    class="padding-lr-sm"
+                ></post-comment>
                 <comment
                     class="padding-lr-sm"
                     @express="expressView"

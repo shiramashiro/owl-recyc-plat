@@ -9,6 +9,7 @@
                 <view class="col-2 flex align-center justify-center">
                     <view class="input-wrap flex align-center">
                         <input
+                            style="width: 100%"
                             class="input text-sm"
                             v-model="search"
                             placeholder="请输入搜索关键字"
@@ -31,6 +32,7 @@
             </swiper>
         </view>
         <subdomain
+            :bgColor="'rgb(248, 248, 248)'"
             class="margin-top-sm"
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
@@ -40,10 +42,19 @@
         >
             <recoveries @selected="chooseRecovery"></recoveries>
         </subdomain>
-        <subdomain class="margin-top-lg" :title="'二手市场'">
+        <subdomain
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
+            "
+            class="margin-top-sm"
+            :title="'二手市场'"
+        >
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
         <subdomain
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recommendation.png'
+            "
             :bgColor="'rgb(248, 248, 248)'"
             :title="'推荐'"
             class="margin-top-sm"
