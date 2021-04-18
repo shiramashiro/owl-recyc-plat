@@ -39,7 +39,6 @@ export default {
                 }
             })
             .then(resp => {
-                console.log(resp)
                 this.books = resp.data
             })
             .catch(error => {
@@ -47,9 +46,10 @@ export default {
             })
     },
     methods: {
-        // 获取点击的书籍信息
-        chooseBook(item) {
-            console.log(item)
+        chooseBook(info) {
+            uni.navigateTo({
+                url: '/pages/index/book-detail?id=' + info.id
+            })
         },
         backIntoIndex() {
             uni.switchTab({

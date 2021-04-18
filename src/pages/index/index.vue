@@ -126,7 +126,6 @@ export default {
             })
         },
         chooseBook(info) {
-            console.log(info)
             uni.navigateTo({
                 url: '/pages/index/book-detail?id=' + info.id
             })

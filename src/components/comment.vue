@@ -5,7 +5,7 @@
             :key="index"
             class="comment margin-tb-sm padding-top-sm"
         >
-            <view class="comment-wrap flex align-center">
+            <view class="comment-wrap flex">
                 <view class="col-1 margin-right-sm">
                     <avatar
                         :src="item.user.avatar"
@@ -14,9 +14,7 @@
                     ></avatar>
                 </view>
                 <view class="col-2">
-                    <view
-                        class="row-1 margin-bottom-xs flex justify-between align-center"
-                    >
+                    <view class="row-1 margin-bottom-xs">
                         <view class="col-1 text-bold">
                             {{ item.user.username }}
                         </view>
