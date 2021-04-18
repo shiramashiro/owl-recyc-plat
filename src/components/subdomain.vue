@@ -1,8 +1,8 @@
 <template>
     <view class="subdomain margin-lr-xs">
-        <view class="subdomain-wrap margin-top-xs">
+        <view class="subdomain-wrap">
             <view
-                class="title text-black padding-tb-lg padding-lr-sm flex justify-between align-center"
+                class="title text-black padding-tb-sm padding-lr-sm flex justify-between align-center"
             >
                 <view class="rows flex align-center">
                     <view class="col-1 text-lg text-bold">

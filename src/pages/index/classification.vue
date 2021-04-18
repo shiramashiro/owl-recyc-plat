@@ -1,5 +1,12 @@
 <template>
     <view class="classification">
+        <view class="status_bar"> </view>
+        <navbar :config="config">
+            <view class="navi-content flex align-center">
+                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+                <view class="margin-left-lg text-lg">二手书籍分类</view>
+            </view>
+        </navbar>
         <books :data="books" @selected="chooseBook"></books>
     </view>
 </template>
@@ -12,7 +19,16 @@ export default {
     components: { Books },
     data() {
         return {
-            books: []
+            books: [],
+            config: {
+                splitLine: false,
+                isFixed: false,
+                isOpacity: false,
+                isCustom: true,
+                tansparent: false,
+                isImmersive: false,
+                isCustomImmerse: false
+            }
         }
     },
     onLoad(option) {
@@ -34,6 +50,11 @@ export default {
         // 获取点击的书籍信息
         chooseBook(item) {
             console.log(item)
+        },
+        backIntoIndex() {
+            uni.switchTab({
+                url: '/pages/index/index'
+            })
         }
     }
 }
@@ -42,5 +63,14 @@ export default {
 <style lang="scss" scoped>
 .classification {
     background-color: rgb(248, 248, 248);
+
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
+
+    .navi-content {
+        height: 100%;
+    }
 }
 </style>

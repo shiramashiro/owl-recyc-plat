@@ -1,5 +1,5 @@
 <template>
-    <view class="container padding-lr-sm flex justify-between">
+    <view class="container flex justify-between">
         <template v-for="(item, index) in recoveries">
             <view
                 v-if="index < maxSize || maxSize === 0"
@@ -13,7 +13,7 @@
                         地址：{{ item.address }}
                     </view>
                     <view class="price text-gray text-xs">
-                        评价回收价：{{ item.price }}
+                        回收价：{{ item.price }}元 / 斤
                     </view>
                     <view class="once text-gray text-xs">
                         回收次数：{{ item.once }}
@@ -37,65 +37,22 @@ export default {
     },
     data() {
         return {
-            recoveries: [
-                {
-                  id:"1",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '绵阳市涪城区',
-                    price: '12.00',
-                    once: '1000'
-                },
-                {
-                  id:"2",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '成都市金牛区',
-                    price: '14.00',
-                    once: '2000'
-                },
-                {
-                  id:"3",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '成都市金牛区',
-                    price: '14.00',
-                    once: '2000'
-                },
-                {
-                  id:"4",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '成都市金牛区',
-                    price: '14.00',
-                    once: '2000'
-                },
-                {
-                  id:"5",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '成都市金牛区',
-                    price: '14.00',
-                    once: '2000'
-                },
-                {
-                  id:"6",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '成都市金牛区',
-                    price: '14.00',
-                    once: '2000'
-                },
-                {
-                  id:"7",
-                    url:
-                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                    address: '成都市金牛区',
-                    price: '14.00',
-                    once: '2000'
-                }
-            ]
+            recoveries: []
         }
+    },
+    mounted() {
+        this.$axios
+            .get('/get/recoveries', {
+                params: {
+                    limitNum: this.maxSize
+                }
+            })
+            .then(resp => {
+                this.recoveries = resp.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
     },
     methods: {
         // 点击事件，回传每一项信息以及对应的索引值
@@ -117,6 +74,17 @@ export default {
         border: 1rpx solid #cccc;
         border-radius: 10rpx;
         width: 48%;
+
+        .detail {
+            .address {
+                display: -webkit-box;
+                word-break: break-all;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
 
         image {
             height: 300rpx;

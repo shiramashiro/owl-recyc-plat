@@ -4,9 +4,10 @@
         <navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+                <view class="margin-left-lg text-lg">二手书详细</view>
             </view>
         </navbar>
-        <view class="rows">
+        <view class="rows margin-lr-xs">
             <view class="row-1">
                 <swiper
                     :indicator-dots="true"
@@ -14,7 +15,6 @@
                     indicator-active-color="#87cefa"
                     :style="{ height: swiperHeight + 'px' }"
                     :current="currentSwiper"
-                    @change="slideSwiper"
                     :duration="360"
                 >
                     <swiper-item
@@ -46,26 +46,30 @@
                     </view>
                 </view>
                 <view class="row-3 text-gray">{{ book.originPrice }}</view>
-                <view class="row-4 margin-top-sm text-bold">
+                <view class="row-4 margin-top-sm padding-bottom-sm text-bold">
                     {{ book.desc }}
                 </view>
             </view>
-            <view class="row-6 margin-lr-sm">
+        </view>
+        <view class="row-6 margin-lr-xs margin-top-sm">
+            <subdomain :title="'评论区'">
                 <comment
+                    class="padding-lr-sm"
                     @express="expressView"
                     :data="book.bookComment"
                 ></comment>
-            </view>
+            </subdomain>
         </view>
     </view>
 </template>
 
 <script>
 import Comment from '@/components/comment.vue'
+import Subdomain from '@/components/subdomain.vue'
 
 export default {
     name: 'BookDetail',
-    components: { Comment },
+    components: { Comment, Subdomain },
     data() {
         return {
             currentSwiper: 0,
@@ -77,7 +81,7 @@ export default {
                 isCustom: true,
                 tansparent: false,
                 isImmersive: false,
-                isCustomImmerse: true
+                isCustomImmerse: false
             },
             swiperTabs: [
                 { name: '全部评论' },
@@ -85,7 +89,38 @@ export default {
                 { name: '中评' },
                 { name: '差评' }
             ],
-            book: {}
+            book: {
+                id: 0,
+                type: '',
+                name: '',
+                author: '',
+                price: 0,
+                originPrice: 0,
+                desc: '',
+                bookCover: [
+                    {
+                        id: 0,
+                        bookId: 0,
+                        url: ''
+                    }
+                ],
+                bookComment: [
+                    {
+                        id: 0,
+                        userId: 0,
+                        bookId: 0,
+                        content: '',
+                        postDate: '',
+                        agree: 0,
+                        disagree: 0,
+                        user: {
+                            id: 0,
+                            username: '',
+                            avatar: ''
+                        }
+                    }
+                ]
+            }
         }
     },
     methods: {
@@ -129,6 +164,8 @@ export default {
 
 <style lang="scss" scoped>
 .book-detail {
+    background-color: rgb(248, 248, 248);
+
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
@@ -139,6 +176,8 @@ export default {
     }
 
     .rows {
+        background-color: white;
+
         .row-1 {
             .image {
                 height: 480rpx;
@@ -150,7 +189,7 @@ export default {
             .row-2 {
                 .col-1 {
                     .col-1-1::before {
-                        content: '¥';
+                        content: '二手价¥';
                         font-size: 80%;
                         margin-right: 4rpx;
                     }
@@ -166,7 +205,7 @@ export default {
             }
 
             .row-3::before {
-                content: '¥';
+                content: '原价¥';
                 font-size: 80%;
                 margin-right: 4rpx;
             }

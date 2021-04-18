@@ -49,7 +49,7 @@
 
 <script>
 import Recoveries from '@/components/index/recoveries.vue'
-import Subdomain from '@/components/index/subdomain.vue'
+import Subdomain from '@/components/subdomain.vue'
 import Caskets from '@/components/index/caskets.vue'
 import Books from '@/components/index/books.vue'
 

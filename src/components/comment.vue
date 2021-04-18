@@ -3,7 +3,7 @@
         <view
             v-for="(item, index) in data"
             :key="index"
-            class="comment margin-tb-sm padding-bottom-sm"
+            class="comment margin-tb-sm padding-top-sm"
         >
             <view class="comment-wrap flex align-center">
                 <view class="col-1 margin-right-sm">
@@ -18,10 +18,7 @@
                         class="row-1 margin-bottom-xs flex justify-between align-center"
                     >
                         <view class="col-1 text-bold">
-                            {{ item.username }}
-                        </view>
-                        <view class="col-2 text-gray data">
-                            {{ item.postDate }}
+                            {{ item.user.username }}
                         </view>
                     </view>
                     <view class="row-2 margin-bottom-xs">
@@ -31,6 +28,9 @@
             </view>
             <view class="options flex justify-end">
                 <view class="options-wrap flex">
+                    <view class="col-2 text-gray margin-right-lg">
+                        {{ item.postDate }}
+                    </view>
                     <view
                         @click="clickDisagree(item, index)"
                         class="col-2 margin-right-lg el-icon-third-cai"
@@ -85,11 +85,7 @@ export default {
 <style lang="scss" scoped>
 .comments {
     .comment {
-        border-bottom: 1rpx solid #cccc;
+        border-top: 1rpx solid rgba(226, 226, 226, 0.8);
     }
-}
-
-.data {
-    margin-left: 330rpx;
 }
 </style>
