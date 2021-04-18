@@ -80,8 +80,13 @@
     "id": 0, // 评论ID
     "bookId": 0, // 评论对应的书籍ID，即哪个书籍下的评论
     "userId": 1, // 评论对应的用户ID，即哪个用户发表的评论
+    "recoveryId",
+    "content": "", // 评论内容
+    "postDate": "2020-04-09 13:46:13", // 发表日期
+    "agree": 0, // 点赞数
+    "disagree": 0, // 反对数
     "user": {
-        "id": 1,
+        "id": 0,
         "username": "", // 用户名
         "nickname": "", // 社区名
         "password": "", // 密码
@@ -91,9 +96,38 @@
         "follows": 0, // 订阅数
         "bgImage": "" // 我的背景图
     },
-    "postDate": "2020-04-09 13:46:13", // 发表日期
-    "agree": 0, // 点赞数
-    "disagree": 0 // 反对数
+}
+```
+
+## 回收点数据结构
+
+```json
+{
+    "id": 0, // 回收点Id
+    "url": "", // 回收点封面地址
+    "address": "", // 回收点地址
+    "price": 0, // 评价回收价 / 斤
+    "times": 0, // 回收次数
+    "openTime": "", // 开门时间
+    "closeTime": "", // 关门时间
+    "recoveryComment": [
+        // 评论数据，数组
+        {
+            "id": 0, // 评论Id
+            "userId": 0, // 评论用户Id
+            "recoveryId": 0, // 回收点Id
+            "content": "", // 评论内容
+            "postDate": "", // 评论日期
+            "agree": 0, // 赞同
+            "disagree": 0, // 反对
+            "user": {
+                // 用户信息
+                "id": 0, // 用户Id
+                "username": "", // 用户名
+                "avatar": "" // 用户头像地址
+            }
+        }
+    ]
 }
 ```
 

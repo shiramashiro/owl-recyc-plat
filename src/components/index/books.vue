@@ -8,7 +8,10 @@
         >
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
-                    <image mode="aspectFill" :src="item.cover[0].url"></image>
+                    <image
+                        mode="aspectFill"
+                        :src="item.bookCover[0].url"
+                    ></image>
                 </view>
             </view>
             <view class="row-2 padding-sm">
@@ -83,7 +86,7 @@ export default {
             }
 
             .row-2-3::before {
-                content: '回收价¥';
+                content: '二手价¥';
                 font-size: 80%;
                 margin-right: 4rpx;
             }

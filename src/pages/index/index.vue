@@ -9,6 +9,7 @@
                 <view class="col-2 flex align-center justify-center">
                     <view class="input-wrap flex align-center">
                         <input
+                            style="width: 100%"
                             class="input text-sm"
                             v-model="search"
                             placeholder="请输入搜索关键字"
@@ -30,31 +31,52 @@
                 </swiper-item>
             </swiper>
         </view>
-        <subdomain :title="'书籍分类'">
+        <subdomain
+            :bgColor="'rgb(248, 248, 248)'"
+            class="margin-top-sm"
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
+            "
+            :url="'/pages/index/more-recoveries'"
+            :title="'回收点'"
+        >
+            <recoveries @selected="chooseRecovery"></recoveries>
+        </subdomain>
+        <subdomain
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
+            "
+            class="margin-top-sm"
+            :title="'二手市场'"
+        >
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
         <subdomain
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recommendation.png'
+            "
+            :bgColor="'rgb(248, 248, 248)'"
+            :title="'推荐'"
             class="margin-top-sm"
-            :isDisplay="true"
-            :url="'/pages/index/more-recoveries'"
-            :title="'废纸回收点'"
         >
-            <recoveries @selected="chooseRecovery"></recoveries>
+            <books @selected="chooseBook" :data="books"></books>
         </subdomain>
     </view>
 </template>
 
 <script>
-import Subdomain from '@/components/index/subdomain.vue'
-import Caskets from '@/components/index/caskets.vue'
 import Recoveries from '@/components/index/recoveries.vue'
+import Subdomain from '@/components/subdomain.vue'
+import Caskets from '@/components/index/caskets.vue'
+import Books from '@/components/index/books.vue'
 
 export default {
     name: 'Index',
-    components: { Subdomain, Caskets, Recoveries },
+    components: { Subdomain, Caskets, Recoveries, Books },
     data() {
         return {
             search: '',
+            books: [],
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -102,7 +124,26 @@ export default {
             uni.navigateTo({
                 url: '/pages/index/recovery-detail?id=' + info.item.id
             })
+        },
+        chooseBook(info) {
+            uni.navigateTo({
+                url: '/pages/index/book-detail?id=' + info.id
+            })
         }
+    },
+    onLoad() {
+        this.$axios
+            .get('/get/book', {
+                params: {
+                    type: 'all'
+                }
+            })
+            .then(resp => {
+                this.books = resp.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 </script>

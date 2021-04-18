@@ -1,97 +1,124 @@
 <template>
     <view class="recovery-detail">
-        <view class="recovery-wrap margin-lr-sm">
-            <view class="recovery-info">
-                <view></view>
+        <view class="status_bar"> </view>
+        <navbar :config="config">
+            <view class="navi-content flex align-center">
+                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+                <view class="margin-left-lg text-lg">回收点详细</view>
             </view>
-            <comment @express="expressView" :data="comments"></comment>
+        </navbar>
+        <view class="recovery-wrap margin-lr-xs margin-top-xs">
+            <view class="recovery-info">
+                <image mode="aspectFill" :src="recovery.url"></image>
+                <view
+                    class="detail-wrap padding-lr-sm padding-bottom-sm margin-top-sm"
+                >
+                    <view> 地址：{{ recovery.address }} </view>
+                    <view>
+                        营业时间：{{ recovery.openTime }} ~
+                        {{ recovery.closeTime }}
+                    </view>
+                    <view>
+                        休息时间：
+                        <template v-for="(item, index) in holiday">
+                            <text class="margin-right-sm" :key="index">
+                                {{ item }}
+                            </text>
+                        </template>
+                    </view>
+                    <view> 回收次数：{{ recovery.times }} </view>
+                    <view> 回收价：{{ recovery.price }}元 / 斤 </view>
+                </view>
+            </view>
+            <subdomain class="margin-top-sm" :title="'评论区'">
+                <post-comment
+                    :postUrl="'/set/recovery/comment'"
+                    :belongedId="recovery.id"
+                    class="padding-lr-sm"
+                ></post-comment>
+                <comment
+                    class="padding-lr-sm"
+                    @express="expressView"
+                    :data="recovery.recoveryComment"
+                ></comment>
+            </subdomain>
         </view>
     </view>
 </template>
 
 <script>
+import Subdomain from '@/components/subdomain.vue'
 import Comment from '@/components/comment.vue'
-import comments from '@/static/json/comments.json'
+import PostComment from '@/components/post-comment.vue'
 
 export default {
     name: 'RecoveryDetail',
-    components: { Comment },
+    components: { Comment, Subdomain, PostComment },
     data() {
         return {
-            comments: comments,
-            recovery: {
-                id: 1,
-                url:
-                    'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=725350610,691782460&fm=26&gp=0.jpg',
-                address: '绵阳市涪城区',
-                price: '12.00',
-                times: '1000',
-                openTime: '08:00',
-                closeTime: '18:00',
-                notWork: ['周五', '周六'],
-                comments: [
-                    {
-                        id: 1,
-                        bookId: 1,
-                        userId: 1,
-                        user: {
-                            id: 1,
-                            username: '哈哈哈哈',
-                            avatar:
-                                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2633587454,2833522707&fm=26&gp=0.jpg'
-                        },
-                        postContent:
-                            '北京大学蒋绍愚教授主持修订中学生、语文教师、大学中文系学生必备工具书曾荣获首届中国辞书奖一等奖，迄今发行量超',
-                        postDate: '2020-04-09 13:46:13',
-                        agree: 10,
-                        disagree: 0
-                    },
-                    {
-                        id: 2,
-                        bookId: 1,
-                        userId: 2,
-                        user: {
-                            id: 2,
-                            username: '你才到碗啊啊啊',
-                            avatar:
-                                'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                        },
-                        postContent:
-                            '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                        postDate: '2020-04-06 08:29:09',
-                        agree: 0,
-                        disagree: 0
-                    },
-                    {
-                        id: 3,
-                        bookId: 1,
-                        userId: 2,
-                        user: {
-                            id: 2,
-                            username: '你才到碗啊啊啊',
-                            avatar:
-                                'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201506%2F14%2F20150614155423_FZNxW.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620549645&t=c17995f54415f42ad567421f523a928a'
-                        },
-                        postContent:
-                            '北京大学蒋绍愚教授主持修订中学生、语文教师',
-                        postDate: '2020-04-06 08:29:09',
-                        agree: 0,
-                        disagree: 0
-                    }
-                ]
+            recovery: {},
+            config: {
+                splitLine: false,
+                isFixed: false,
+                isOpacity: false,
+                isCustom: true,
+                tansparent: false,
+                isImmersive: false,
+                isCustomImmerse: false
             },
-            id: 0
+            holiday: ['周四', '周五']
         }
     },
     methods: {
         expressView(info) {
             console.log(info)
+        },
+        backIntoIndex() {
+            uni.switchTab({
+                url: '/pages/index/index'
+            })
         }
     },
     onLoad(option) {
-        this.id = option.id
+        this.$axios
+            .get('/get/detail/recovery', {
+                params: {
+                    id: option.id
+                }
+            })
+            .then(res => {
+                this.recovery = res.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.recovery-detail {
+    background-color: rgb(248, 248, 248);
+
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
+
+    .navi-content {
+        height: 100%;
+    }
+
+    .recovery-wrap {
+        .recovery-info {
+            background-color: white;
+
+            image {
+                border-radius: 10rpx;
+                width: 100%;
+                height: 400rpx;
+            }
+        }
+    }
+}
+</style>
