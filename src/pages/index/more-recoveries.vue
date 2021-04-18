@@ -1,5 +1,5 @@
 <template>
-    <view class="classification">
+    <view class="more-recoveries">
         <view class="status_bar"> </view>
         <navbar :config="config">
             <view class="navi-content flex align-center">
@@ -7,19 +7,22 @@
                 <view class="margin-left-lg text-lg">二手书籍分类</view>
             </view>
         </navbar>
-        <books :data="books" @selected="chooseBook"></books>
+        <recoveries
+            @selected="chooseRecovery"
+            class="margin-top-sm margin-lr-xs"
+            :maxSize="0"
+        ></recoveries>
     </view>
 </template>
 
 <script>
-import Books from '@/components/index/books.vue'
+import Recoveries from '@/components/index/recoveries.vue'
 
 export default {
-    name: 'Classification',
-    components: { Books },
+    name: 'MoreRecoveries',
+    components: { Recoveries },
     data() {
         return {
-            books: [],
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -31,29 +34,15 @@ export default {
             }
         }
     },
-    onLoad(option) {
-        this.$axios
-            .get('/get/book', {
-                params: {
-                    type: option.type
-                }
-            })
-            .then(resp => {
-                this.books = resp.data
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    },
     methods: {
-        chooseBook(info) {
-            uni.navigateTo({
-                url: '/pages/index/book-detail?id=' + info.id
-            })
-        },
         backIntoIndex() {
             uni.switchTab({
                 url: '/pages/index/index'
+            })
+        },
+        chooseRecovery(info) {
+            uni.navigateTo({
+                url: '/pages/index/recovery-detail?id=' + info.item.id
             })
         }
     }
@@ -61,7 +50,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.classification {
+.more-recoveries {
+    background-color: rgb(248, 248, 248);
+
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
