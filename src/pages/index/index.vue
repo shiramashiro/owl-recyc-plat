@@ -30,31 +30,36 @@
                 </swiper-item>
             </swiper>
         </view>
-        <subdomain :title="'书籍分类'">
-            <caskets @selected="chooseCasket"></caskets>
-        </subdomain>
         <subdomain
             class="margin-top-sm"
             :isDisplay="true"
             :url="'/pages/index/more-recoveries'"
-            :title="'废纸回收点'"
+            :title="'回收点'"
         >
             <recoveries @selected="chooseRecovery"></recoveries>
         </subdomain>
+        <subdomain class="margin-top-lg" :title="'二手市场'">
+            <caskets @selected="chooseCasket"></caskets>
+        </subdomain>
+        <view class="margin-top-sm">
+            <books :data="books"></books>
+        </view>
     </view>
 </template>
 
 <script>
+import Recoveries from '@/components/index/recoveries.vue'
 import Subdomain from '@/components/index/subdomain.vue'
 import Caskets from '@/components/index/caskets.vue'
-import Recoveries from '@/components/index/recoveries.vue'
+import Books from '@/components/index/books.vue'
 
 export default {
     name: 'Index',
-    components: { Subdomain, Caskets, Recoveries },
+    components: { Subdomain, Caskets, Recoveries, Books },
     data() {
         return {
             search: '',
+            books: [],
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -103,6 +108,20 @@ export default {
                 url: '/pages/index/recovery-detail?id=' + info.item.id
             })
         }
+    },
+    onLoad() {
+        this.$axios
+            .get('/get/book', {
+                params: {
+                    type: 'all'
+                }
+            })
+            .then(resp => {
+                this.books = resp.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 </script>
