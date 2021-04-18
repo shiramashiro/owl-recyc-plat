@@ -18,14 +18,14 @@
                     :duration="360"
                 >
                     <swiper-item
-                        v-for="(cover, index) in book.covers"
+                        v-for="(item, index) in book.bookCover"
                         :key="index"
                     >
                         <view :id="'swiper-item-' + index">
                             <image
                                 mode="aspectFit"
                                 class="image"
-                                :src="cover"
+                                :src="item.url"
                             ></image>
                         </view>
                     </swiper-item>
@@ -50,40 +50,26 @@
                     {{ book.desc }}
                 </view>
             </view>
-            <view class="row-5 margin-tb-sm">
-                <tui-tab
-                    :isSticky="isSticky"
-                    :scroll="true"
-                    selectedColor="#87cefa"
-                    sliderBgColor="#87cefa"
-                    :current="currentTuiTab"
-                    @slideTuiTab="cutomSlideTuiTab"
-                    :swiperTabs="swiperTabs"
-                ></tui-tab>
-            </view>
             <view class="row-6 margin-lr-sm">
-                <comment :data="comments"></comment>
+                <comment
+                    @express="expressView"
+                    :data="book.bookComment"
+                ></comment>
             </view>
         </view>
     </view>
 </template>
 
 <script>
-import { suitSwiper } from '@/mixins/suit-swiper.js'
 import Comment from '@/components/comment.vue'
-import comments from '@/static/json/comments.json'
 
 export default {
     name: 'BookDetail',
-    mixins: [suitSwiper],
-    components: {
-        Comment
-    },
+    components: { Comment },
     data() {
         return {
-            comments: comments,
             currentSwiper: 0,
-            currentTuiTab: 0,
+            swiperHeight: 0,
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -99,19 +85,7 @@ export default {
                 { name: '中评' },
                 { name: '差评' }
             ],
-            book: {
-                id: 1,
-                covers: [
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg'
-                ],
-                name: '深入理解Java虚拟机',
-                author: '周志明',
-                price: '83.90',
-                originPrice: '129.00',
-                desc:
-                    '周志明虚拟机新作，第3版新增内容近50%，5个维度全面剖析JVM，大厂面试知识点全覆盖。与 Java编程思想、Effective Java、Java核心技术 堪称：Java四大名著'
-            }
+            book: {}
         }
     },
     methods: {
@@ -119,10 +93,36 @@ export default {
             uni.switchTab({
                 url: '/pages/index/index'
             })
+        },
+        setSwiperItem(index) {
+            uni.createSelectorQuery()
+                .in(this)
+                .select('#swiper-item-' + index)
+                .boundingClientRect(data => {
+                    this.swiperHeight = data.height + 25
+                })
+                .exec()
+        },
+        expressView(info) {
+            console.log(info)
         }
     },
     onLoad(option) {
-        console.log(option.id)
+        this.$axios
+            .get('/get/detail/book', {
+                params: {
+                    id: option.id
+                }
+            })
+            .then(resp => {
+                this.book = resp.data
+                setTimeout(() => {
+                    this.setSwiperItem(0)
+                }, 0)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 </script>

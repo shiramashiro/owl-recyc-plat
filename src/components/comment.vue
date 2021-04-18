@@ -54,7 +54,7 @@ export default {
     name: 'Comment',
     props: {
         data: {
-            type:Array,
+            type: Array,
             required: true
         }
     },
@@ -89,7 +89,7 @@ export default {
     }
 }
 
- .data{
-margin-left: 330rpx;
+.data {
+    margin-left: 330rpx;
 }
 </style>

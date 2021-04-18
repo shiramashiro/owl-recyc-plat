@@ -42,7 +42,7 @@
             <caskets @selected="chooseCasket"></caskets>
         </subdomain>
         <view class="margin-top-sm">
-            <books :data="books"></books>
+            <books @selected="chooseBook" :data="books"></books>
         </view>
     </view>
 </template>
@@ -106,6 +106,12 @@ export default {
         chooseRecovery(info) {
             uni.navigateTo({
                 url: '/pages/index/recovery-detail?id=' + info.item.id
+            })
+        },
+        chooseBook(info) {
+            console.log(info)
+            uni.navigateTo({
+                url: '/pages/index/book-detail?id=' + info.id
             })
         }
     },
