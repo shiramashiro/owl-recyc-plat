@@ -17,15 +17,12 @@
                     :current="currentSwiper"
                     :duration="360"
                 >
-                    <swiper-item
-                        v-for="(item, index) in book.bookCover"
-                        :key="index"
-                    >
+                    <swiper-item v-for="(item, index) in book.img" :key="index">
                         <view :id="'swiper-item-' + index">
                             <image
                                 mode="aspectFit"
                                 class="image"
-                                :src="item.url"
+                                :src="item.imgUrl"
                             ></image>
                         </view>
                     </swiper-item>
@@ -64,7 +61,7 @@
                 <owl-comment
                     class="padding-lr-sm"
                     @express="expressView"
-                    :data="book.bookComment"
+                    :data="book.comment"
                 ></owl-comment>
             </owl-fiche>
         </view>
@@ -101,18 +98,18 @@ export default {
                 price: 0,
                 originPrice: 0,
                 desc: '',
-                bookCover: [
+                img: [
                     {
                         id: 0,
-                        bookId: 0,
-                        url: ''
+                        belongedId: 0,
+                        imgUrl: ''
                     }
                 ],
-                bookComment: [
+                comment: [
                     {
                         id: 0,
                         userId: 0,
-                        bookId: 0,
+                        belongedId: 0,
                         content: '',
                         postDate: '',
                         agree: 0,

@@ -39,7 +39,7 @@
                 <owl-comment
                     class="padding-lr-sm"
                     @express="expressView"
-                    :data="recovery.recoveryComment"
+                    :data="recovery.comment"
                 ></owl-comment>
             </owl-fiche>
         </view>
@@ -51,7 +51,17 @@ export default {
     name: 'RecoveryDetail',
     data() {
         return {
-            recovery: {},
+            recovery: {
+                id: 0,
+                comment: [
+                    {
+                        belongedId: 0,
+                        user: {
+                            avatar: ''
+                        }
+                    }
+                ]
+            },
             config: {
                 splitLine: false,
                 isFixed: false,

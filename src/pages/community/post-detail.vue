@@ -66,7 +66,7 @@
                         <image
                             class="img"
                             style="width: 100%; border-radius: 10rpx"
-                            v-for="(item, index) in post.postImg"
+                            v-for="(item, index) in post.img"
                             :key="index"
                             mode="aspectFill"
                             :src="item.imgUrl"
@@ -89,10 +89,15 @@
             </view>
         </view>
         <owl-fiche class="margin-top-sm" :title="'评论区'">
-            <!-- <owl-comment
+            <owl-make-comment
                 class="padding-lr-sm"
-                :data="comment.bookComment"
-            ></owl-comment> -->
+                :postUrl="'/set/post'"
+                :belongedId="post.id"
+            ></owl-make-comment>
+            <owl-comment
+                class="padding-lr-sm"
+                :data="post.comment"
+            ></owl-comment>
         </owl-fiche>
     </view>
 </template>
@@ -102,7 +107,25 @@ export default {
     name: 'post-detail',
     data() {
         return {
-            post: {},
+            post: {
+                id: 0,
+                user: {
+                    avatar: ''
+                },
+                img: [
+                    {
+                        belongedId: 0
+                    }
+                ],
+                comment: [
+                    {
+                        belongedId: 0,
+                        user: {
+                            avatar: ''
+                        }
+                    }
+                ]
+            },
             config: {
                 splitLine: false,
                 isFixed: false,
