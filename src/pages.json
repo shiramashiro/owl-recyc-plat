@@ -83,6 +83,12 @@
             "style": {
                 "navigationBarTitleText": "更多活动"
             }
+        },
+        {
+            "path": "pages/community/make-post",
+            "style": {
+                "navigationBarTitleText": "新建帖子"
+            }
         }
     ],
     "easycom": {

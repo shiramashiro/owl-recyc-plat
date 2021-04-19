@@ -35,8 +35,8 @@
             <owl-fiche
                 class="margin-top-sm"
                 :title="'官方活动'"
-                :iconWidth="'65rpx'"
-                :iconHeight="'65rpx'"
+                :iconWidth="'45rpx'"
+                :iconHeight="'45rpx'"
                 :iconPath="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
                 "
@@ -49,22 +49,105 @@
                     :key="index"
                 ></activity>
             </owl-fiche>
+            <owl-fiche
+                :iconWidth="'45rpx'"
+                :iconHeight="'45rpx'"
+                :iconPath="
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/hot.png'
+                "
+                class="margin-top-sm"
+                :title="'全社热帖'"
+                :url="'/pages/community/more-activity'"
+            >
+                <hot-posts :data="posts"></hot-posts>
+            </owl-fiche>
             <view class="posts margin-top-sm">
                 <posts @selected="choosePost"></posts>
+            </view>
+        </view>
+        <view class="make-post">
+            <view class="post-btn-wrap" @click="makePost">
+                <image
+                    mode="aspectFit"
+                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"
+                ></image>
             </view>
         </view>
     </view>
 </template>
 
 <script>
-import Activity from '@/components/community/activity.vue'
 import Posts from '@/components/community/posts.vue'
+import Activity from '@/components/community/activity.vue'
+import HotPosts from '@/components/community/hot-posts.vue'
 
 export default {
     name: 'community',
-    components: { Activity, Posts },
+    components: { Activity, Posts, HotPosts },
     data() {
         return {
+            posts: [
+                {
+                    id: 1,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    tag: '需求帖',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85867954_p0.jpg'
+                    ],
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                },
+                {
+                    id: 2,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    tag: '转卖帖',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg'
+                    ],
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                },
+                {
+                    id: 3,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    tag: '讨论帖',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png'
+                    ],
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                }
+            ],
             activities: [
                 {
                     title: '转让二手书籍，获得10个金币！',
@@ -80,6 +163,11 @@ export default {
         }
     },
     methods: {
+        makePost() {
+            uni.navigateTo({
+                url: '/pages/community/make-post'
+            })
+        },
         choosePost(info) {
             uni.navigateTo({
                 url: '/pages/community/post-detail?id=' + info.item.id
@@ -141,6 +229,23 @@ export default {
                 font-weight: bold;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+            }
+        }
+    }
+
+    .make-post {
+        .post-btn-wrap {
+            position: fixed;
+            bottom: 400rpx;
+            z-index: 998;
+            right: 20rpx;
+
+            image {
+                border-radius: 100%;
+                width: 70rpx;
+                height: 70rpx;
+                padding: 10rpx;
+                background-color: white;
             }
         }
     }
