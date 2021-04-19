@@ -33,7 +33,7 @@
     </view>
 
     <view class="box1Btn">
-      <button class="btn1">注册</button>
+      <button class="btn1" @click="change">注册</button>
       <button class="btn2">登录</button>
     </view>
 
