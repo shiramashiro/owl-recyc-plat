@@ -32,7 +32,8 @@
             </view>
             <owl-fiche class="margin-top-sm" :title="'评论区'">
                 <owl-make-comment
-                    :postUrl="'/set/recovery/comment'"
+                    :postUrl="'/set/comment'"
+                    :urlType="'recovery'"
                     :belongedId="recovery.id"
                     class="padding-lr-sm"
                 ></owl-make-comment>

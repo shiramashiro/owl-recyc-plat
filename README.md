@@ -14,39 +14,45 @@
 
 # 组件说明
 
-**最近更新时间：2021 年 4 月 19 日 10:50:34**
+**最近更新时间：2021 年 4 月 20 日 00:43:41**
 
 已将所有公共组件名改为 owl-xxx.vue，并已全局注册，直接使用即可，无需导入。
 
-## owl-fiche.vue
+## 修改 owl-fiche.vue
 
 主要作用是复用首页每一个服务入口的卡片
 
 删除 isDisplay 参数，在组件内判断是否传入 url，即为开启更多按钮的跳转地址。
 
-## recoveries.vue
+## 修改 owl-make-comment.vue
 
-新增 maxSize 参数，用于限制最大显示数，默认值为 6，如果设置为 0 则表示没有限制显示数。
+发送评论的接口，必须传递的参数为 belongedId、postUrl、urlType，具体用法查看源码。
+
+## 新增 owl-tag.vue
+
+标签组件，可传递参数 type，其可选值为 primary、danger、warning，可自定义宽和高，单位可以是 rpx 或 px，但是建议是 rpx。
 
 # 数据结构
 
-**最近更新时间：2021 年 4 月 19 日 09:23:45**
+**最近更新时间：2021 年 4 月 20 日 00:43:30**
 
 ## 书籍数据结构
 
 ```json
 {
     "type": "living | technology | social | business | literature | art | education | children", // 书籍类型
-    "id": 0, // 书籍ID
-    "cover": [
-        "", // 书籍封面地址
-        "",
-    ],
     "author": "", // 作者姓名
     "name": "", // 书籍名称
     "price": 00.00, // 回收价
     "originPrice": 00.00, // 原价
     "desc": "", // 书籍介绍
+    "img": [
+        {
+            "id": 0,
+            "imgUrl": "",
+            "belogngedId": 0
+        }
+    ],
 }
 ```
 
@@ -101,7 +107,14 @@
     "times": 0, // 回收次数
     "openTime": "", // 开门时间
     "closeTime": "", // 关门时间
-    "recoveryComment": [
+    "img": [
+        {
+            "id": 0,
+            "imgUrl": "",
+            "belogngedId": 0
+        }
+    ],
+    "comment": [
         {
             "id": 0, // 评论ID
             "userId": 0, // 评论对应的用户ID，即哪个用户发表的评论
@@ -145,7 +158,7 @@ type 可选值：all | living | technology | social | business | literature | ar
 POST 方法
 
 ```http
-http://120.77.245.208:8070/set/[book|recovery]/comment
+http://120.77.245.208:8070/set/comment
 ```
 
 参数结构：
@@ -154,7 +167,8 @@ http://120.77.245.208:8070/set/[book|recovery]/comment
 {
     userId: 0,
     belongedId: 0,
-    content: ''
+    content: '',
+    type: 'recovery | book | post' // 分别对应不同类型的评论，需要在组件中传递
 }
 ```
 

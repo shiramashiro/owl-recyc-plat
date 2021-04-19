@@ -47,6 +47,11 @@ export default {
         postUrl: {
             type: String,
             required: true
+        },
+        // 提交的请求类型，如book的评论、recovery的评论或者post的评论
+        urlType: {
+            type: String,
+            required: true
         }
     },
     data() {
@@ -74,7 +79,8 @@ export default {
                     // 临时的userId，后期改
                     userId: 1,
                     belongedId: this.belongedId,
-                    content: this.inputValue
+                    content: this.inputValue,
+                    type: this.urlType
                 })
                 .then(resp => {
                     if (resp.status === 200) {

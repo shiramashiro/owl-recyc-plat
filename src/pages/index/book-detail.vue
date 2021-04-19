@@ -54,7 +54,8 @@
         <view class="row-6 margin-lr-xs margin-top-sm">
             <owl-fiche :title="'评论区'">
                 <owl-make-comment
-                    :postUrl="'/set/book/comment'"
+                    :postUrl="'/set/comment'"
+                    :urlType="'book'"
                     :belongedId="book.id"
                     class="padding-lr-sm"
                 ></owl-make-comment>
