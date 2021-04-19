@@ -32,7 +32,7 @@
             </view>
         </view>
         <view class="body margin-lr-xs">
-            <subdomain
+            <owl-fiche
                 class="margin-top-sm"
                 :title="'官方活动'"
                 :iconWidth="'65rpx'"
@@ -48,7 +48,7 @@
                     :data="activity"
                     :key="index"
                 ></activity>
-            </subdomain>
+            </owl-fiche>
             <view class="posts margin-top-sm">
                 <posts @selected="choosePost"></posts>
             </view>
@@ -59,11 +59,10 @@
 <script>
 import Activity from '@/components/community/activity.vue'
 import Posts from '@/components/community/posts.vue'
-import Subdomain from '@/components/subdomain.vue'
 
 export default {
     name: 'community',
-    components: { Activity, Posts, Subdomain },
+    components: { Activity, Posts },
     data() {
         return {
             activities: [

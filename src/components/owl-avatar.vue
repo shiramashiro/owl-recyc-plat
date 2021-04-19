@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: 'avatar',
+    name: 'owl-avatar',
     props: {
         src: {
             type: String,

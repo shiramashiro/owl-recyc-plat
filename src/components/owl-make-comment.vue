@@ -1,13 +1,13 @@
 <template>
-    <view class="post-comment flex align-center justify-between">
+    <view class="owl-make-comment flex align-center justify-between">
         <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
         <view class="col-1">
-            <avatar
+            <owl-avatar
                 :size="28"
                 :src="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
                 "
-            ></avatar>
+            ></owl-avatar>
         </view>
         <view class="col-2">
             <view class="padding-xs input-wrap">
@@ -25,7 +25,7 @@
                 :height="'60rpx'"
                 :width="'100rpx'"
                 :type="'primary'"
-                :size="28"
+                :size="24"
                 @click="postComment"
             >
                 发表
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.post-comment {
+.owl-make-comment {
     .col-2 {
         .input-wrap {
             background-color: rgb(248, 248, 248);

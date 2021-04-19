@@ -1,8 +1,10 @@
 <template>
     <view>
-        <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
-        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :config="config">
+        <owl-navbar
+            style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
+            :config="config"
+        >
             <view class="navi-content flex align-center">
                 <view>
                     <i
@@ -12,8 +14,7 @@
                 </view>
                 <view class="margin-left-lg text-lg">帖子详情</view>
             </view>
-        </navbar>
-        <!-- #endif -->
+        </owl-navbar>
         <view class="box">
             <view class="top">
                 <view class="left">
@@ -75,28 +76,25 @@ export default {
         }
     },
     methods: {
-        // #ifdef H5
         backIntoIndex() {
             uni.switchTab({
                 url: '/pages/community/community'
             })
         }
-        // #endif
     }
 }
 </script>
 
 <style lang="scss" scoped>
-// #ifdef H5
 .status_bar {
     height: var(--status-bar-height);
     width: 100%;
 }
-// #endif
 
 .navi-content {
     height: 100%;
 }
+
 .box {
     width: 95%;
     height: 400px;

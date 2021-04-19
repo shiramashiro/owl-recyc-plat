@@ -1,12 +1,12 @@
 <template>
     <view class="book-detail">
         <view class="status_bar"> </view>
-        <navbar :config="config">
+        <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-lg">二手书详细</view>
             </view>
-        </navbar>
+        </owl-navbar>
         <view class="rows margin-lr-xs">
             <view class="row-1">
                 <swiper
@@ -55,30 +55,25 @@
             </view>
         </view>
         <view class="row-6 margin-lr-xs margin-top-sm">
-            <subdomain :title="'评论区'">
-                <post-comment
+            <owl-fiche :title="'评论区'">
+                <owl-make-comment
                     :postUrl="'/set/book/comment'"
                     :belongedId="book.id"
                     class="padding-lr-sm"
-                ></post-comment>
-                <comment
+                ></owl-make-comment>
+                <owl-comment
                     class="padding-lr-sm"
                     @express="expressView"
                     :data="book.bookComment"
-                ></comment>
-            </subdomain>
+                ></owl-comment>
+            </owl-fiche>
         </view>
     </view>
 </template>
 
 <script>
-import Comment from '@/components/comment.vue'
-import Subdomain from '@/components/subdomain.vue'
-import PostComment from '@/components/post-comment.vue'
-
 export default {
     name: 'BookDetail',
-    components: { Comment, Subdomain, PostComment },
     data() {
         return {
             currentSwiper: 0,

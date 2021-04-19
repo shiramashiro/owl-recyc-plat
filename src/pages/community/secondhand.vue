@@ -2,7 +2,10 @@
     <view class="secondhand">
         <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
-        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :config="config">
+        <owl-navbar
+            style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
+            :config="config"
+        >
             <view class="navi-content flex align-center">
                 <view>
                     <i
@@ -12,7 +15,7 @@
                 </view>
                 <view class="margin-left-lg text-lg">二手书籍</view>
             </view>
-        </navbar>
+        </owl-navbar>
         <!-- #endif -->
         <view class="margin-top-sm">
             <secondhand-book

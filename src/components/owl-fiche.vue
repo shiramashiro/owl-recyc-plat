@@ -1,6 +1,6 @@
 <template>
-    <view class="subdomain margin-lr-xs">
-        <view class="subdomain-wrap">
+    <view class="owl-fiche margin-lr-xs">
+        <view class="owl-fiche-wrap">
             <view
                 :class="[isLrPadding ? 'padding-lr-sm' : '']"
                 class="title text-black padding-tb-sm flex justify-between align-center"
@@ -49,7 +49,7 @@
 
 <script>
 export default {
-    name: 'subdomain',
+    name: 'owl-fiche',
     props: {
         // 主标题，必须有
         title: {
@@ -104,7 +104,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.subdomain {
+.owl-fiche {
     border-radius: 24rpx;
     background-color: white;
 }
