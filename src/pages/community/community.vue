@@ -59,7 +59,7 @@
                 :title="'全社热帖'"
                 :url="'/pages/community/more-activity'"
             >
-                <hot-posts :data="posts"></hot-posts>
+                <hot-posts :data="hotPosts"></hot-posts>
             </owl-fiche>
             <view class="posts margin-top-sm">
                 <posts @selected="choosePost"></posts>
@@ -86,66 +86,27 @@ export default {
     components: { Activity, Posts, HotPosts },
     data() {
         return {
-            posts: [
+            hotPosts: [
                 {
                     id: 1,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     breif:
                         'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    tag: '需求帖',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    imgs: [
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png',
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85867954_p0.jpg'
-                    ],
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
+                    browse: 100
                 },
                 {
-                    id: 2,
+                    id: 1,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     breif:
-                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    tag: '转卖帖',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    imgs: [
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg'
-                    ],
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    browse: 100
                 },
                 {
-                    id: 3,
+                    id: 1,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     breif:
-                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    tag: '讨论帖',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    imgs: [
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png'
-                    ],
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    browse: 100
                 }
             ],
             activities: [
@@ -169,6 +130,7 @@ export default {
             })
         },
         choosePost(info) {
+            console.log(info)
             uni.navigateTo({
                 url: '/pages/community/post-detail?id=' + info.item.id
             })
@@ -244,8 +206,9 @@ export default {
                 border-radius: 100%;
                 width: 70rpx;
                 height: 70rpx;
-                padding: 10rpx;
+                padding: 14rpx;
                 background-color: white;
+                box-shadow: 5rpx 5rpx 10rpx #87cefa;
             }
         }
     }

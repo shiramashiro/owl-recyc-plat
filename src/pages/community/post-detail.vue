@@ -21,13 +21,11 @@
                     <view class="col-1-1">
                         <owl-avatar
                             :size="30"
-                            :src="
-                                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
-                            "
+                            :src="post.user.avatar"
                         ></owl-avatar>
                     </view>
                     <view class="col-1-2 margin-left-sm text-sm">
-                        kongsam
+                        {{ post.user.username }}
                     </view>
                 </view>
                 <view class="col-2">
@@ -44,33 +42,34 @@
             </view>
             <view class="panel margin-tb-lg">
                 <view class="row-1 flex">
-                    <owl-tag :type="'primary'" :height="'22px'" :width="'70px'"
-                        >需求帖</owl-tag
+                    <owl-tag
+                        :type="'primary'"
+                        :height="'50rpx'"
+                        :width="'140rpx'"
+                        >{{ post.tag }}</owl-tag
                     >
                     <view
                         class="title margin-left-xs text-lg"
                         style="word-break: break-all"
                     >
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        {{ post.title }}
                     </view>
                 </view>
                 <view class="row-2 text-xs text-gray text-center margin-tb-lg">
-                    —— 文章发表：04-13 ——
+                    —— 文章发表：{{ post.time }} ——
                 </view>
                 <view class="row-3">
                     <view class="content margin-bottom-sm">
-                        三年后多多多多多多多多多多多
-                        多多多多多多多多多多多多多多多多多多多多多多多多
-                        多多多多多多多多多多多多多多多多多多多多多多多多哒哒哒哒哒哒多多对多多
+                        {{ post.content }}
                     </view>
                     <view class="imgs">
                         <image
                             class="img"
                             style="width: 100%; border-radius: 10rpx"
-                            v-for="(item, index) in imgs"
+                            v-for="(item, index) in post.postImg"
                             :key="index"
                             mode="aspectFill"
-                            :src="item"
+                            :src="item.imgUrl"
                         ></image>
                     </view>
                 </view>
@@ -86,14 +85,14 @@
                         mode="aspectFit"
                     ></image>
                 </view>
-                <view class="col-1">帖子浏览数：5000</view>
+                <view class="col-1">帖子浏览数：{{ post.browseNum }}</view>
             </view>
         </view>
         <owl-fiche class="margin-top-sm" :title="'评论区'">
-            <owl-comment
+            <!-- <owl-comment
                 class="padding-lr-sm"
                 :data="comment.bookComment"
-            ></owl-comment>
+            ></owl-comment> -->
         </owl-fiche>
     </view>
 </template>
@@ -103,12 +102,7 @@ export default {
     name: 'post-detail',
     data() {
         return {
-            imgs: [
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png',
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85867954_p0.jpg'
-            ],
-            comment: {},
+            post: {},
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -121,14 +115,13 @@ export default {
     },
     onLoad(option) {
         this.$axios
-            .get('/get/detail/book', {
+            .get('/get/post', {
                 params: {
-                    id: 1
+                    id: option.id
                 }
             })
             .then(resp => {
-                console.log(resp)
-                this.comment = resp.data
+                this.post = resp.data[0]
             })
             .catch(error => {
                 console.log(error)

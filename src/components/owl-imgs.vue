@@ -4,7 +4,7 @@
             <image
                 style="height: 100%; width: 100%"
                 mode="aspectFill"
-                :src="imgs[0]"
+                :src="imgs[0].imgUrl"
             ></image>
         </template>
         <template v-else-if="imgs.length < 3">
@@ -18,7 +18,7 @@
                     <image
                         style="height: 100%"
                         mode="aspectFill"
-                        :src="item"
+                        :src="item.imgUrl"
                     ></image>
                 </view>
             </view>
@@ -26,7 +26,7 @@
         <template v-else>
             <view class="col-1" style="width: 59%">
                 <image
-                    :src="imgs[0]"
+                    :src="imgs[0].imgUrl"
                     style="height: 100%"
                     mode="aspectFill"
                 ></image>
@@ -38,7 +38,7 @@
                             <image
                                 mode="aspectFill"
                                 style="height: 100%"
-                                :src="item"
+                                :src="item.imgUrl"
                             ></image>
                         </view>
                     </template>
