@@ -1,5 +1,9 @@
 <template>
-    <view :class="['owl-tag-' + type]" class="owl-tag text-xs">
+    <view
+        :style="{ width: width, height: height }"
+        :class="['owl-tag-' + type]"
+        class="owl-tag text-xs text-center"
+    >
         <slot></slot>
     </view>
 </template>
@@ -12,6 +16,14 @@ export default {
         type: {
             type: String,
             default: 'primary'
+        },
+        width: {
+            type: String,
+            required: false
+        },
+        height: {
+            type: String,
+            required: false
         }
     }
 }

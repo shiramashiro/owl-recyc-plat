@@ -19,7 +19,7 @@
                     </view>
                 </view>
             </view>
-            <view class="row-2 text-lg">{{ item.title }}</view>
+            <view class="row-2 text-lg text-cut">{{ item.title }}</view>
             <view class="row-5 text-gray text-cut">{{ item.breif }}</view>
             <view class="row-3 margin-tb-sm">
                 <owl-imgs :imgs="item.imgs"></owl-imgs>

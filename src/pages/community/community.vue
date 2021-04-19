@@ -81,7 +81,9 @@ export default {
     },
     methods: {
         choosePost(info) {
-            console.log(info)
+            uni.navigateTo({
+                url: '/pages/community/post-detail?id=' + info.item.id
+            })
         }
     }
 }

@@ -73,7 +73,7 @@
             }
         },
         {
-            "path": "pages/community/detail",
+            "path": "pages/community/post-detail",
             "style": {
                 "navigationBarTitleText": "帖子详情"
             }

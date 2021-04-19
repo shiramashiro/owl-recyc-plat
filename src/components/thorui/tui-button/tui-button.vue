@@ -370,16 +370,16 @@ export default {
 }
 
 .tui-primary-hover {
-    background: #4a67d6 !important;
+    background: #87cefa !important;
     color: #e5e5e5 !important;
 }
 
 .tui-primary-outline::after {
-    border: 1px solid #5677fc !important;
+    border: 1px solid #87cefa !important;
 }
 
 .tui-primary-outline {
-    color: #5677fc !important;
+    color: #87cefa !important;
     background: transparent;
 }
 

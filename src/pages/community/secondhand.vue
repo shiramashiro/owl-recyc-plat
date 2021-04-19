@@ -1,6 +1,5 @@
 <template>
     <view class="secondhand">
-        <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
         <owl-navbar
             style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
@@ -16,7 +15,6 @@
                 <view class="margin-left-lg text-lg">二手书籍</view>
             </view>
         </owl-navbar>
-        <!-- #endif -->
         <view class="margin-top-sm">
             <secondhand-book
                 v-for="(item, index) in list"
@@ -100,12 +98,10 @@ export default {
 
 <style lang="scss" scoped>
 .secondhand {
-    // #ifdef H5
     .status_bar {
         height: var(--status-bar-height);
         width: 100%;
     }
-    // #endif
 
     .navi-content {
         height: 100%;
