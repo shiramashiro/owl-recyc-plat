@@ -1,8 +1,7 @@
 <template>
     <view class="sys-msg">
-        <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
-        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :config="config">
+        <owl-navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :config="config">
             <view class="navi-content flex align-center">
                 <view>
                     <i
@@ -12,8 +11,7 @@
                 </view>
                 <view class="margin-left-lg text-lg">系统消息</view>
             </view>
-        </navbar>
-        <!-- #endif -->
+        </owl-navbar>
         <view class="items" v-for="(item, index) in list" :key="index">
             <view class="title">{{ item.title }}</view>
             <view class="detail">
@@ -76,12 +74,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// #ifdef H5
 .status_bar {
     height: var(--status-bar-height);
     width: 100%;
 }
-// #endif
 
 .navi-content {
     height: 100%;

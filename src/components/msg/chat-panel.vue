@@ -1,5 +1,5 @@
 <template>
-    <view class="chart-item">
+    <view class="chat-panel">
         <view
             class="cu-list menu-avatar"
             v-for="(item, index) in list"
@@ -7,8 +7,8 @@
             @click="viewMore(item.id)"
         >
             <view class="cu-item">
-                <view class="cu-avatar radius lg">
-                    <img :src="item.url" alt="" />
+                <view class="cu-avatar">
+                    <owl-avatar :size="60" :src="item.url"></owl-avatar>
                 </view>
                 <view class="content">
                     <view class="text-pink">
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-    name: 'chart',
+    name: 'chat-panel',
     data() {
         return {
             list: [
@@ -131,10 +131,4 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-.cu-avatar.radius.lg img {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 100%;
-}
-</style>
+<style lang="css" scoped></style>

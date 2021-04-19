@@ -1,13 +1,18 @@
 <template>
-    <view class="subdomain margin-lr-xs">
-        <view class="subdomain-wrap">
+    <view class="owl-fiche margin-lr-xs">
+        <view class="owl-fiche-wrap">
             <view
-                class="title text-black padding-tb-sm padding-lr-sm flex justify-between align-center"
+                :class="[isLrPadding ? 'padding-lr-sm' : '']"
+                class="title text-black padding-tb-sm flex justify-between align-center"
             >
                 <view class="rows flex align-center">
-                    <view class="col-1 flex align-center text-lg text-bold">
+                    <view class="col-1 flex align-center text-lg">
                         <template v-if="iconPath !== ''">
                             <image
+                                :style="{
+                                    height: iconHeight,
+                                    width: iconWidth
+                                }"
                                 class="margin-right-sm"
                                 mode="aspectFit"
                                 :src="iconPath"
@@ -34,7 +39,7 @@
             </view>
             <view
                 :style="{ backgroundColor: bgColor }"
-                class="content"
+                class="content padding-bottom-xs"
             >
                 <slot></slot>
             </view>
@@ -44,7 +49,7 @@
 
 <script>
 export default {
-    name: 'Subdomain',
+    name: 'owl-fiche',
     props: {
         // 主标题，必须有
         title: {
@@ -73,6 +78,18 @@ export default {
             type: String,
             required: false,
             default: ''
+        },
+        isLrPadding: {
+            type: Boolean,
+            default: true
+        },
+        iconWidth: {
+            type: String,
+            default: '40rpx'
+        },
+        iconHeight: {
+            type: String,
+            default: '40rpx'
         }
     },
     methods: {
@@ -87,19 +104,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.subdomain {
-    border-radius: 24rpx 24rpx 2rpx 2rpx;
+.owl-fiche {
+    border-radius: 24rpx;
     background-color: white;
-
-    .title {
-        .rows {
-            .col-1 {
-                image {
-                    width: 40rpx;
-                    height: 40rpx;
-                }
-            }
-        }
-    }
 }
 </style>

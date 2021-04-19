@@ -1,12 +1,12 @@
 <template>
     <view class="classification">
         <view class="status_bar"> </view>
-        <navbar :config="config">
+        <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-lg">二手书籍分类</view>
             </view>
-        </navbar>
+        </owl-navbar>
         <books :data="books" @selected="chooseBook"></books>
     </view>
 </template>

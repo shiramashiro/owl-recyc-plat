@@ -1,12 +1,12 @@
 <template>
     <view class="more-recoveries">
         <view class="status_bar"> </view>
-        <navbar :config="config">
+        <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-lg">二手书籍分类</view>
             </view>
-        </navbar>
+        </owl-navbar>
         <recoveries
             @selected="chooseRecovery"
             class="margin-top-sm margin-lr-xs"
