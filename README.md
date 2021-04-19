@@ -1,11 +1,5 @@
 # 开发说明
 
-## 组件
-
-使用 uni-app 的原生组件如 image、swiper 以外，大部分使用的是 thoriui 第三方组件库，官方文档地址为：https://thorui.cn/doc/。
-
-使用 colorui 简化 CSS 开发，比如 flex 布局，只需要在 view 标签的 class 中加上 flex 即可实现布局，具体用法使用微信小程序打开 colorui demo 项目查看。<u>推荐多使用 colorui 封装好的样式，提升开发速度。</u>
-
 ## CSS
 
 使用 SCSS 预处理代替 CSS，SCSS 的属性和 CSS 属性完全一致，但需要注意的是 SCSS 注重层次，可查看其他`.vue`中的用法。
@@ -20,9 +14,11 @@
 
 # 组件说明
 
-**最近更新时间：2021 年 4 月 19 日 09:19:13**
+**最近更新时间：2021 年 4 月 19 日 10:50:34**
 
-## subdomain.vue
+已将所有公共组件名改为 owl-xxx.vue，并已全局注册，直接使用即可，无需导入。
+
+## owl-fiche.vue
 
 主要作用是复用首页每一个服务入口的卡片
 
@@ -132,13 +128,69 @@
 
 # 接口说明
 
-## 书籍接口
+**最近更新时间：2021 年 4 月 19 日 13:15:25**
+
+## 获取书籍接口
+
+GET 方法
 
 ```http
 http://120.77.245.208:8070/get/book?type=
 ```
 
-type 可选字段：all | living | technology | social | business | literature | art | education | children
+type 可选值：all | living | technology | social | business | literature | art | education | children
+
+## 发表评论接口
+
+POST 方法
+
+```http
+http://120.77.245.208:8070/set/[book|recovery]/comment
+```
+
+参数结构：
+
+```javascript
+{
+    userId: 0,
+    belongedId: 0,
+    content: ''
+}
+```
+
+## 获取回收点详细接口
+
+GET 方法
+
+```http
+http://120.77.245.208:8070/get/detail/recovery?id=
+```
+
+## 获取回收点简略接口
+
+GET 方法
+
+```http
+http://120.77.245.208:8070/get/recoveries?limitNum=
+```
+
+limitNum 参数限制获取回收点个数，默认为 6 个，设为 0 是获取所有
+
+## 获取书籍详细接口
+
+GET 方法
+
+```http
+http://120.77.245.208:8070/get/book?id=
+```
+
+## 获取书籍简略接口
+
+GET 方法
+
+```http
+http://120.77.245.208:8070/get/detail/book?id=
+```
 
 # 目录结构
 
@@ -202,3 +254,5 @@ git branch -d [特性分支名]
 
 git push origin develop
 ```
+
+Created By "猫头鹰小组"

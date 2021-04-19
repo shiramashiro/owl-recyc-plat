@@ -19,14 +19,14 @@
                     </view>
                 </view>
             </view>
-            <view class="row-2">{{ item.title }}</view>
-            <view class="row-3">
-                <!-- 图片展示区域 -->
+            <view class="row-2 text-lg">{{ item.title }}</view>
+            <view class="row-5 text-gray text-cut">{{ item.breif }}</view>
+            <view class="row-3 margin-tb-sm">
+                <owl-imgs :imgs="item.imgs"></owl-imgs>
             </view>
             <view class="row-4 flex justify-between">
                 <view class="col-1">
-                    <!-- tags区域 -->
-                    <owl-tag :type="'gray'">需求帖</owl-tag>
+                    <owl-tag :type="'gray'">{{ item.tag }}</owl-tag>
                 </view>
                 <view class="col-2 flex align-center text-gray text-xs">
                     <view class="col-2-1 margin-right-sm flex align-center">
@@ -66,10 +66,18 @@ export default {
                 {
                     id: 1,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     time: '04-09',
+                    tag: '需求帖',
                     browse: 100,
                     discussion: 110,
                     praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85867954_p0.jpg'
+                    ],
                     user: {
                         avatar:
                             'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
@@ -79,10 +87,16 @@ export default {
                 {
                     id: 2,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     time: '04-09',
+                    tag: '转卖帖',
                     browse: 100,
                     discussion: 110,
                     praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg'
+                    ],
                     user: {
                         avatar:
                             'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
@@ -92,36 +106,17 @@ export default {
                 {
                     id: 3,
                     title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                     time: '04-09',
+                    tag: '讨论帖',
                     browse: 100,
                     discussion: 110,
                     praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                },
-                {
-                    id: 3,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                },
-                {
-                    id: 3,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png'
+                    ],
                     user: {
                         avatar:
                             'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
