@@ -1,18 +1,18 @@
 <template>
     <view class="community">
-        <view class="top-wrap padding-lr-sm">
+        <view class="top-wrap padding-lr-xs">
             <view class="top">
                 <view class="secondary-market-entry flex align-center">
                     <view
                         class="col-1 flex align-center margin-right-sm margin-left-sm"
                     >
-                        <image src="@/static/old-book.png"></image>
+                        <image src="@/static/transfered-book.png"></image>
                     </view>
                     <view
                         class="col-2 flex align-center justify-between margin-tb-sm"
                     >
                         <view class="col-1-1">
-                            <view class="row-1 text-bold margin-bottom-xs">
+                            <view class="row-1 margin-bottom-xs">
                                 二手书籍转让区
                             </view>
                             <view class="row-2 text-gray text-sm">
@@ -31,48 +31,123 @@
                 </view>
             </view>
         </view>
-        <view class="body margin-lr-sm">
-            <view class="activities">
-                <view class="activity-title margin-top-sm flex align-center">
-                    <view class="col-1 flex align-center">
-                        <image src="@/static/speaker.png"></image>
-                    </view>
-                    <view class="col-2 flex align-center justify-between">
-                        <view class="col-1-1 text-lg">官方活动</view>
-                        <view
-                            class="col-1-2 text-gray text-sm flex align-center"
-                        >
-                            全部
-                            <view class="more"></view>
-                        </view>
-                    </view>
-                </view>
+        <view class="body margin-lr-xs">
+            <owl-fiche
+                class="margin-top-sm"
+                :title="'官方活动'"
+                :iconWidth="'45rpx'"
+                :iconHeight="'45rpx'"
+                :iconPath="
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
+                "
+                :url="'/pages/community/more-activity'"
+            >
                 <activity
+                    class="margin-lr-sm"
                     v-for="(activity, index) in activities"
                     :data="activity"
                     :key="index"
                 ></activity>
+            </owl-fiche>
+            <owl-fiche
+                :iconWidth="'45rpx'"
+                :iconHeight="'45rpx'"
+                :iconPath="
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/hot.png'
+                "
+                class="margin-top-sm"
+                :title="'全社热帖'"
+                :url="'/pages/community/more-activity'"
+            >
+                <hot-posts :data="posts"></hot-posts>
+            </owl-fiche>
+            <view class="posts margin-top-sm">
+                <posts @selected="choosePost"></posts>
             </view>
-            <view class="posts">
-                <post
-                    v-for="(post, index) in posts"
-                    :key="index"
-                    :data="post"
-                ></post>
+        </view>
+        <view class="make-post">
+            <view class="post-btn-wrap" @click="makePost">
+                <image
+                    mode="aspectFit"
+                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"
+                ></image>
             </view>
         </view>
     </view>
 </template>
 
 <script>
-import activity from '@/components/community/activity.vue'
-import post from '@/components/community/post.vue'
+import Posts from '@/components/community/posts.vue'
+import Activity from '@/components/community/activity.vue'
+import HotPosts from '@/components/community/hot-posts.vue'
 
 export default {
     name: 'community',
-    components: { activity, post },
+    components: { Activity, Posts, HotPosts },
     data() {
         return {
+            posts: [
+                {
+                    id: 1,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    tag: '需求帖',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85867954_p0.jpg'
+                    ],
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                },
+                {
+                    id: 2,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    tag: '转卖帖',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg'
+                    ],
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                },
+                {
+                    id: 3,
+                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    breif:
+                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                    time: '04-09',
+                    tag: '讨论帖',
+                    browse: 100,
+                    discussion: 110,
+                    praise: 10,
+                    imgs: [
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg',
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/85810903_p0.png'
+                    ],
+                    user: {
+                        avatar:
+                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
+                        username: 'xxxxxxxxx'
+                    }
+                }
+            ],
             activities: [
                 {
                     title: '转让二手书籍，获得10个金币！',
@@ -84,74 +159,19 @@ export default {
                     tag: '活动',
                     time: '04-09'
                 }
-            ],
-            posts: [
-                {
-                    id: 1,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                },
-                {
-                    id: 2,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                },
-                {
-                    id: 3,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                },
-                {
-                    id: 3,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                },
-                {
-                    id: 3,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    time: '04-09',
-                    browse: 100,
-                    discussion: 110,
-                    praise: 10,
-                    user: {
-                        avatar:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg',
-                        username: 'xxxxxxxxx'
-                    }
-                }
             ]
+        }
+    },
+    methods: {
+        makePost() {
+            uni.navigateTo({
+                url: '/pages/community/make-post'
+            })
+        },
+        choosePost(info) {
+            uni.navigateTo({
+                url: '/pages/community/post-detail?id=' + info.item.id
+            })
         }
     }
 }
@@ -159,9 +179,11 @@ export default {
 
 <style lang="scss" scoped>
 .community {
+    background-color: rgb(248, 248, 248);
+
     .top-wrap {
         background-image: url('@/static/community-bg.png');
-        background-size: 100% 100%;
+        background-position: 18% 85%;
         background-repeat: no-repeat;
 
         .top {
@@ -197,25 +219,33 @@ export default {
     }
 
     .body {
-        .activities {
-            .activity-title {
-                .col-1 image {
-                    width: 45rpx;
-                    height: 45rpx;
-                }
+        .col-2 {
+            width: 100%;
 
-                .col-2 {
-                    width: 100%;
+            .more::after {
+                content: '\e78a';
+                font-family: 'iconfont' !important;
+                font-style: normal;
+                font-weight: bold;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+    }
 
-                    .more::after {
-                        content: '\e78a';
-                        font-family: 'iconfont' !important;
-                        font-style: normal;
-                        font-weight: bold;
-                        -webkit-font-smoothing: antialiased;
-                        -moz-osx-font-smoothing: grayscale;
-                    }
-                }
+    .make-post {
+        .post-btn-wrap {
+            position: fixed;
+            bottom: 400rpx;
+            z-index: 998;
+            right: 20rpx;
+
+            image {
+                border-radius: 100%;
+                width: 70rpx;
+                height: 70rpx;
+                padding: 10rpx;
+                background-color: white;
             }
         }
     }

@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    name: 'Recoveries',
+    name: 'recoveries',
     props: {
         // maxSize为0时，代表无限制显示，规定默认显示6个
         maxSize: {

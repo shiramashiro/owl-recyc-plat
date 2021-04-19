@@ -1,12 +1,12 @@
 <template>
     <view class="recovery-detail">
         <view class="status_bar"> </view>
-        <navbar :config="config">
+        <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-lg">回收点详细</view>
             </view>
-        </navbar>
+        </owl-navbar>
         <view class="recovery-wrap margin-lr-xs margin-top-xs">
             <view class="recovery-info">
                 <image mode="aspectFill" :src="recovery.url"></image>
@@ -30,30 +30,25 @@
                     <view> 回收价：{{ recovery.price }}元 / 斤 </view>
                 </view>
             </view>
-            <subdomain class="margin-top-sm" :title="'评论区'">
-                <post-comment
+            <owl-fiche class="margin-top-sm" :title="'评论区'">
+                <owl-make-comment
                     :postUrl="'/set/recovery/comment'"
                     :belongedId="recovery.id"
                     class="padding-lr-sm"
-                ></post-comment>
-                <comment
+                ></owl-make-comment>
+                <owl-comment
                     class="padding-lr-sm"
                     @express="expressView"
                     :data="recovery.recoveryComment"
-                ></comment>
-            </subdomain>
+                ></owl-comment>
+            </owl-fiche>
         </view>
     </view>
 </template>
 
 <script>
-import Subdomain from '@/components/subdomain.vue'
-import Comment from '@/components/comment.vue'
-import PostComment from '@/components/post-comment.vue'
-
 export default {
     name: 'RecoveryDetail',
-    components: { Comment, Subdomain, PostComment },
     data() {
         return {
             recovery: {},

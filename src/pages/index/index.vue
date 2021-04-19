@@ -1,10 +1,10 @@
 <template>
     <view class="index">
         <view class="status_bar"></view>
-        <navbar :config="config">
+        <owl-navbar :config="config">
             <view class="nav-wrap margin-lr-lg flex justify-between">
                 <view class="col-1 flex align-center">
-                    <avatar :src="user.avatar" :size="33"></avatar>
+                    <owl-avatar :src="user.avatar" :size="33"></owl-avatar>
                 </view>
                 <view class="col-2 flex align-center justify-center">
                     <view class="input-wrap flex align-center">
@@ -19,7 +19,7 @@
                     </view>
                 </view>
             </view>
-        </navbar>
+        </owl-navbar>
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
                 <swiper-item v-for="(item, index) in slideShow" :key="index">
@@ -31,7 +31,7 @@
                 </swiper-item>
             </swiper>
         </view>
-        <subdomain
+        <owl-fiche
             :bgColor="'rgb(248, 248, 248)'"
             class="margin-top-sm"
             :iconPath="
@@ -41,8 +41,8 @@
             :title="'回收点'"
         >
             <recoveries @selected="chooseRecovery"></recoveries>
-        </subdomain>
-        <subdomain
+        </owl-fiche>
+        <owl-fiche
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
             "
@@ -50,8 +50,8 @@
             :title="'二手市场'"
         >
             <caskets @selected="chooseCasket"></caskets>
-        </subdomain>
-        <subdomain
+        </owl-fiche>
+        <owl-fiche
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recommendation.png'
             "
@@ -60,19 +60,18 @@
             class="margin-top-sm"
         >
             <books @selected="chooseBook" :data="books"></books>
-        </subdomain>
+        </owl-fiche>
     </view>
 </template>
 
 <script>
 import Recoveries from '@/components/index/recoveries.vue'
-import Subdomain from '@/components/subdomain.vue'
 import Caskets from '@/components/index/caskets.vue'
 import Books from '@/components/index/books.vue'
 
 export default {
     name: 'Index',
-    components: { Subdomain, Caskets, Recoveries, Books },
+    components: { Caskets, Recoveries, Books },
     data() {
         return {
             search: '',
