@@ -89,6 +89,19 @@
             "style": {
                 "navigationBarTitleText": "新建帖子"
             }
+        },
+        {
+            "path": "pages/Sign/sign",
+            "style": {
+                "navigationBarTitleText": "登录"
+            }
+        },
+
+        {
+            "path": "pages/Sign/duanxin",
+            "style": {
+                "navigationBarTitleText": "注册"
+            }
         }
     ],
     "easycom": {
