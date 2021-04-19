@@ -1,12 +1,12 @@
 <template>
     <view class="book-detail">
         <view class="status_bar"> </view>
-        <navbar :config="config">
+        <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-lg">二手书详细</view>
             </view>
-        </navbar>
+        </owl-navbar>
         <view class="rows margin-lr-xs">
             <view class="row-1">
                 <swiper
@@ -17,15 +17,12 @@
                     :current="currentSwiper"
                     :duration="360"
                 >
-                    <swiper-item
-                        v-for="(item, index) in book.bookCover"
-                        :key="index"
-                    >
+                    <swiper-item v-for="(item, index) in book.img" :key="index">
                         <view :id="'swiper-item-' + index">
                             <image
                                 mode="aspectFit"
                                 class="image"
-                                :src="item.url"
+                                :src="item.imgUrl"
                             ></image>
                         </view>
                     </swiper-item>
@@ -55,30 +52,26 @@
             </view>
         </view>
         <view class="row-6 margin-lr-xs margin-top-sm">
-            <subdomain :title="'评论区'">
-                <post-comment
-                    :postUrl="'/set/book/comment'"
+            <owl-fiche :title="'评论区'">
+                <owl-make-comment
+                    :postUrl="'/set/comment'"
+                    :urlType="'book'"
                     :belongedId="book.id"
                     class="padding-lr-sm"
-                ></post-comment>
-                <comment
+                ></owl-make-comment>
+                <owl-comment
                     class="padding-lr-sm"
                     @express="expressView"
-                    :data="book.bookComment"
-                ></comment>
-            </subdomain>
+                    :data="book.comment"
+                ></owl-comment>
+            </owl-fiche>
         </view>
     </view>
 </template>
 
 <script>
-import Comment from '@/components/comment.vue'
-import Subdomain from '@/components/subdomain.vue'
-import PostComment from '@/components/post-comment.vue'
-
 export default {
     name: 'BookDetail',
-    components: { Comment, Subdomain, PostComment },
     data() {
         return {
             currentSwiper: 0,
@@ -106,18 +99,18 @@ export default {
                 price: 0,
                 originPrice: 0,
                 desc: '',
-                bookCover: [
+                img: [
                     {
                         id: 0,
-                        bookId: 0,
-                        url: ''
+                        belongedId: 0,
+                        imgUrl: ''
                     }
                 ],
-                bookComment: [
+                comment: [
                     {
                         id: 0,
                         userId: 0,
-                        bookId: 0,
+                        belongedId: 0,
                         content: '',
                         postDate: '',
                         agree: 0,

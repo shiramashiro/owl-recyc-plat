@@ -1,8 +1,10 @@
 <template>
     <view class="praise">
-        <!-- #ifdef H5 -->
         <view class="status_bar"> </view>
-        <navbar style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;" :config="config">
+        <owl-navbar
+            style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
+            :config="config"
+        >
             <view class="navi-content flex align-center">
                 <view>
                     <i
@@ -12,19 +14,18 @@
                 </view>
                 <view class="margin-left-lg text-lg">收到的赞</view>
             </view>
-        </navbar>
-        <!-- #endif -->
+        </owl-navbar>
         <view
             class="items margin-tb-xs"
             v-for="(item, index) in list"
             :key="index"
         >
             <view class="flex align-center">
-                <avatar
+                <owl-avatar
                     class="margin-right-sm"
                     :size="50"
                     :src="item.url"
-                ></avatar>
+                ></owl-avatar>
                 <view class="col-2 margin-right-sm">
                     <view class="row-1 margin-bottom-xs">
                         {{ item.name }}
@@ -90,24 +91,20 @@ export default {
         }
     },
     methods: {
-        // #ifdef H5
         backIntoIndex() {
             uni.switchTab({
                 url: '/pages/msg/msg'
             })
         }
-        // #endif
     }
 }
 </script>
 
 <style lang="scss" scoped>
-// #ifdef H5
 .status_bar {
     height: var(--status-bar-height);
     width: 100%;
 }
-// #endif
 
 .navi-content {
     height: 100%;

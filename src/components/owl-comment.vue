@@ -1,17 +1,17 @@
 <template>
-    <view class="comments">
+    <view class="owl-comments">
         <view
             v-for="(item, index) in data"
             :key="index"
-            class="comment margin-tb-sm padding-top-sm"
+            class="owl-comment margin-tb-sm padding-top-sm"
         >
             <view class="comment-wrap flex">
                 <view class="col-1 margin-right-sm">
-                    <avatar
+                    <owl-avatar
                         :src="item.user.avatar"
                         mode="aspectFill"
                         :size="40"
-                    ></avatar>
+                    ></owl-avatar>
                 </view>
                 <view class="col-2">
                     <view class="row-1 margin-bottom-xs">
@@ -49,7 +49,7 @@
 
 <script>
 export default {
-    name: 'Comment',
+    name: 'owl-comment',
     props: {
         data: {
             type: Array,
@@ -81,8 +81,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.comments {
-    .comment {
+.owl-comments {
+    .owl-comment {
         border-top: 1rpx solid rgba(226, 226, 226, 0.8);
     }
 }

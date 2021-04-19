@@ -24,7 +24,7 @@
 
 <script>
 export default {
-    name: 'Caskets',
+    name: 'caskets',
     data() {
         return {
             caskets: [

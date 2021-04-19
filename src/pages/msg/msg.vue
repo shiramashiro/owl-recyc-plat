@@ -16,16 +16,16 @@
                 </navigator>
             </template>
         </view>
-        <chart></chart>
+        <chat-panel></chat-panel>
     </view>
 </template>
 
 <script>
-import chart from '@/components/msg/chart.vue'
+import ChatPanel from '@/components/msg/chat-panel.vue'
 
 export default {
     name: 'msg',
-    components: { chart },
+    components: { ChatPanel },
     data() {
         return {
             navigators: [

@@ -19,7 +19,7 @@
 
 <script>
 export default {
-    name: 'Navbar',
+    name: 'navbar',
     props: {
         config: {
             type: Object,

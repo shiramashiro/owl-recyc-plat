@@ -1,13 +1,13 @@
 <template>
-    <view class="post-comment flex align-center justify-between">
+    <view class="owl-make-comment flex align-center justify-between">
         <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
         <view class="col-1">
-            <avatar
+            <owl-avatar
                 :size="28"
                 :src="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
                 "
-            ></avatar>
+            ></owl-avatar>
         </view>
         <view class="col-2">
             <view class="padding-xs input-wrap">
@@ -25,7 +25,7 @@
                 :height="'60rpx'"
                 :width="'100rpx'"
                 :type="'primary'"
-                :size="28"
+                :size="24"
                 @click="postComment"
             >
                 发表
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-    name: 'PostComment',
+    name: 'post-comment',
     props: {
         // 所属哪个页面下的评论的Id，比如回收点id的评论
         belongedId: {
@@ -45,6 +45,11 @@ export default {
         },
         // 提交的请求地址
         postUrl: {
+            type: String,
+            required: true
+        },
+        // 提交的请求类型，如book的评论、recovery的评论或者post的评论
+        urlType: {
             type: String,
             required: true
         }
@@ -74,7 +79,8 @@ export default {
                     // 临时的userId，后期改
                     userId: 1,
                     belongedId: this.belongedId,
-                    content: this.inputValue
+                    content: this.inputValue,
+                    type: this.urlType
                 })
                 .then(resp => {
                     if (resp.status === 200) {
@@ -94,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.post-comment {
+.owl-make-comment {
     .col-2 {
         .input-wrap {
             background-color: rgb(248, 248, 248);
