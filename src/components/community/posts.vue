@@ -20,7 +20,9 @@
                 </view>
             </view>
             <view class="row-2 text-lg text-cut">{{ item.title }}</view>
-            <view class="row-5 text-gray text-cut">{{ item.breif }}</view>
+            <view class="row-5 text-gray text-sm margin-top-xs">
+                {{ item.content }}
+            </view>
             <view class="row-3 margin-tb-sm">
                 <owl-imgs :imgs="item.img"></owl-imgs>
             </view>
@@ -70,11 +72,7 @@ export default {
     },
     mounted() {
         this.$axios
-            .get('/get/post', {
-                params: {
-                    id: 0
-                }
-            })
+            .get('/get/post')
             .then(resp => {
                 this.posts = resp.data
             })
@@ -83,7 +81,6 @@ export default {
             })
     },
     methods: {
-        // 点击事件函数，回传每一项的信息以及对应的索引值
         handleClick(item, index) {
             this.$emit('selected', {
                 item: item,
@@ -105,6 +102,15 @@ export default {
                 width: 34rpx;
                 height: 34rpx;
             }
+        }
+
+        .row-5 {
+            display: -webkit-box;
+            word-break: break-all;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
