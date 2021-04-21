@@ -40,7 +40,8 @@
                 :iconPath="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
                 "
-                :url="'/pages/community/more-activity'"
+                :url="'/pages/community/more'"
+                :urlParams="['tagType=official']"
             >
                 <activities
                     @selected="chooseActivity"
@@ -55,12 +56,13 @@
                 "
                 class="margin-top-sm"
                 :title="'全社热帖'"
-                :url="'/pages/community/more-activity'"
+                :url="'/pages/community/more'"
+                :urlParams="['browseNum=100']"
             >
                 <hot-posts @selected="chooseHotPost"></hot-posts>
             </owl-fiche>
             <view class="posts margin-top-sm">
-                <posts @selected="choosePost"></posts>
+                <posts :url="'/get/post'" @selected="choosePost"></posts>
             </view>
         </view>
         <view class="make-post">

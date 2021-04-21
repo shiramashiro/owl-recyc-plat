@@ -90,13 +90,29 @@ export default {
         iconHeight: {
             type: String,
             default: '40rpx'
+        },
+        urlParams: {
+            type: Array,
+            required: false
         }
     },
     methods: {
-        // 显示更多按钮的事件函数，即跳转页面
         display() {
+            let tempUrl = this.url
+            if (this.urlParams !== '') {
+                tempUrl += '?' + this.urlParams[0]
+                if (this.urlParams.length > 0) {
+                    for (
+                        let index = 1;
+                        index < this.urlParams.length;
+                        index++
+                    ) {
+                        tempUrl += '&' + this.urlParams[index]
+                    }
+                }
+            }
             uni.navigateTo({
-                url: this.url
+                url: tempUrl
             })
         }
     }

@@ -14,7 +14,7 @@
                 <view class="col-3-1">
                     <image mode="aspectFill" src="@/static/hot.png"></image>
                 </view>
-                <view class="col-3-2">1000</view>
+                <view class="col-3-2">{{ item.browseNum }}</view>
             </view>
         </view>
     </view>

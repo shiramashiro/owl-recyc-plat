@@ -109,7 +109,7 @@ export default {
                 bgImage:
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg',
                 avatar:
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/user01.jpg'
             }
         }
     },

@@ -28,7 +28,7 @@
             </view>
             <view class="row-4 flex justify-between">
                 <view class="col-1">
-                    <owl-tag :type="'gray'">{{ item.tag }}</owl-tag>
+                    <owl-tag :type="'gray'">{{ item.tagName }}</owl-tag>
                 </view>
                 <view class="col-2 flex align-center text-gray text-xs">
                     <view class="col-2-1 margin-right-sm flex align-center">
@@ -64,21 +64,47 @@
 <script>
 export default {
     name: 'posts',
-    props: {},
+    props: {
+        url: {
+            type: String,
+            required: true
+        },
+        urlParam: {
+            type: Object,
+            required: false
+        }
+    },
     data() {
         return {
             posts: []
         }
     },
     mounted() {
-        this.$axios
-            .get('/get/post')
-            .then(resp => {
-                this.posts = resp.data
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        if (JSON.stringify(this.urlParam) !== '{}') {
+            let tempParams = {}
+            for (let key in this.urlParam) {
+                tempParams[key] = this.urlParam[key]
+            }
+            this.$axios
+                .get(this.url, {
+                    params: tempParams
+                })
+                .then(resp => {
+                    this.posts = resp.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        } else {
+            this.$axios
+                .get(this.url)
+                .then(resp => {
+                    this.posts = resp.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
     },
     methods: {
         handleClick(item, index) {

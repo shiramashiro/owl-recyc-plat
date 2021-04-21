@@ -10,7 +10,7 @@
                 {{ item.title }}
             </view>
             <view class="row-2 flex align-center justify-between">
-                <owl-tag>{{ item.tag }}</owl-tag>
+                <owl-tag>{{ item.tagName }}</owl-tag>
                 <view class="col-2 text-gray text-xs">
                     {{ item.time }}
                 </view>
@@ -31,7 +31,8 @@ export default {
         this.$axios
             .get('/get/post', {
                 params: {
-                    limitNum: 3
+                    limitNum: 3,
+                    tagType: 'official'
                 }
             })
             .then(resp => {
