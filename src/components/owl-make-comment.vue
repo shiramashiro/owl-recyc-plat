@@ -1,32 +1,24 @@
 <template>
-    <view class="owl-make-comment flex align-center justify-between">
+    <view class="owl-make-comment flex justify-between">
         <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
-        <view class="col-1">
-            <owl-avatar
-                :size="28"
-                :src="
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
-                "
-            ></owl-avatar>
-        </view>
-        <view class="col-2">
+        <view class="col-1 margin-right-xs">
             <view class="padding-xs input-wrap">
-                <input
-                    placeholder-style="font-size: 10px;"
+                <textarea
+                    style="height: 120rpx"
                     v-model="inputValue"
                     type="text"
-                    maxlength="100"
+                    maxlength="500"
                     placeholder="发表你的看法..."
                 />
             </view>
         </view>
-        <view class="col-3">
+        <view class="col-2">
             <tui-button
                 :height="'60rpx'"
                 :width="'100rpx'"
                 :type="'primary'"
                 :size="24"
-                @click="postComment"
+                @click="publishComment"
             >
                 发表
             </tui-button>
@@ -38,7 +30,7 @@
 export default {
     name: 'post-comment',
     props: {
-        // 所属哪个页面下的评论的Id，比如回收点id的评论
+        // 所属哪个页面下的评论的Id
         belongedId: {
             type: Number,
             required: true
@@ -62,13 +54,12 @@ export default {
     },
     methods: {
         showToast(msg) {
-            let options = {
+            this.$refs.toast.showTips({
                 msg: msg,
                 duration: 2000
-            }
-            this.$refs.toast.showTips(options)
+            })
         },
-        postComment() {
+        publishComment() {
             if (this.inputValue === '') {
                 this.showToast('你还没有输入任何信息！')
                 this.tipColor = '#EB0909'
@@ -76,7 +67,6 @@ export default {
             }
             this.$axios
                 .post(this.postUrl, {
-                    // 临时的userId，后期改
                     userId: 1,
                     belongedId: this.belongedId,
                     content: this.inputValue,
@@ -93,6 +83,8 @@ export default {
                 })
                 .catch(error => {
                     console.log(error)
+                    this.showToast('服务器发生了错误！')
+                    this.tipColor = '#EB0909'
                 })
         }
     }
@@ -101,7 +93,7 @@ export default {
 
 <style lang="scss" scoped>
 .owl-make-comment {
-    .col-2 {
+    .col-1 {
         .input-wrap {
             background-color: rgb(248, 248, 248);
             border-radius: 6px;

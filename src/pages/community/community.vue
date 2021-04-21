@@ -34,20 +34,19 @@
         <view class="body margin-lr-xs">
             <owl-fiche
                 class="margin-top-sm"
-                :title="'官方活动'"
+                :title="'官方帖'"
                 :iconWidth="'45rpx'"
                 :iconHeight="'45rpx'"
                 :iconPath="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
                 "
-                :url="'/pages/community/more-activity'"
+                :url="'/pages/community/more'"
+                :urlParams="['tagType=official']"
             >
-                <activity
+                <activities
+                    @selected="chooseActivity"
                     class="margin-lr-sm"
-                    v-for="(activity, index) in activities"
-                    :data="activity"
-                    :key="index"
-                ></activity>
+                ></activities>
             </owl-fiche>
             <owl-fiche
                 :iconWidth="'45rpx'"
@@ -57,12 +56,13 @@
                 "
                 class="margin-top-sm"
                 :title="'全社热帖'"
-                :url="'/pages/community/more-activity'"
+                :url="'/pages/community/more'"
+                :urlParams="['browseNum=100']"
             >
-                <hot-posts :data="hotPosts"></hot-posts>
+                <hot-posts @selected="chooseHotPost"></hot-posts>
             </owl-fiche>
             <view class="posts margin-top-sm">
-                <posts @selected="choosePost"></posts>
+                <posts :url="'/get/post'" @selected="choosePost"></posts>
             </view>
         </view>
         <view class="make-post">
@@ -78,56 +78,23 @@
 
 <script>
 import Posts from '@/components/community/posts.vue'
-import Activity from '@/components/community/activity.vue'
+import Activities from '@/components/community/activities.vue'
 import HotPosts from '@/components/community/hot-posts.vue'
 
 export default {
     name: 'community',
-    components: { Activity, Posts, HotPosts },
-    data() {
-        return {
-            hotPosts: [
-                {
-                    id: 1,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    breif:
-                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    browse: 100
-                },
-                {
-                    id: 1,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    breif:
-                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    browse: 100
-                },
-                {
-                    id: 1,
-                    title: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    breif:
-                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                    browse: 100
-                }
-            ],
-            activities: [
-                {
-                    title: '转让二手书籍，获得10个金币！',
-                    tag: '活动',
-                    time: '04-09'
-                },
-                {
-                    title: '转让二手书籍，获得10个金币！',
-                    tag: '活动',
-                    time: '04-09'
-                }
-            ]
-        }
-    },
+    components: { Activities, Posts, HotPosts },
     methods: {
         makePost() {
             uni.navigateTo({
                 url: '/pages/community/make-post'
             })
+        },
+        chooseHotPost(info) {
+            this.choosePost(info)
+        },
+        chooseActivity(info) {
+            this.choosePost(info)
         },
         choosePost(info) {
             uni.navigateTo({
@@ -196,6 +163,7 @@ export default {
 
     .make-post {
         .post-btn-wrap {
+            opacity: 0.75;
             position: fixed;
             bottom: 400rpx;
             z-index: 998;
