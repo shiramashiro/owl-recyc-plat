@@ -1,12 +1,17 @@
 <template>
  <view class="box">
-
+   <owl-navbar :config="config" :color="color">
+     <view class="navi-content flex align-center">
+       <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+       <view class="margin-left-lg text-lg">登录</view>
+     </view>
+   </owl-navbar>
    <view class="image align-center justify-center">
    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.17qq.com%2Fimg_qqtouxiang%2F83456068.jpeg&refer=http%3A%2F%2Fwww.17qq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621392654&t=7acb1fd423c41d7a927bedfe12177343" alt="">
  </view>
 
    <view class="input">
-     <input type="text" placeholder="QQ号/手机号/邮箱">
+     <input type="text" placeholder="手机号/邮箱">
      <input type="password" placeholder="密码" >
 
    </view>
@@ -33,17 +38,35 @@
 
 <script>
 import TuiKeyboardInput from "@/components/thorui/tui-keyboard-input/tui-keyboard-input";
+
 export default {
 name: "sign",
   components: {TuiKeyboardInput},
   data(){
     return{
-      isShow:true
+      color:'black',
+      isShow:true,
+      config: {
+
+        splitLine: false,
+        isFixed: false,
+        isOpacity: false,
+        isCustom: true,
+        tansparent: false,
+        isImmersive: false,
+        isCustomImmerse: false
+      }
+
     }
   },
   methods:{
     show(){
       this.isShow=!this.isShow
+    },
+    backIntoIndex(){
+      uni.switchTab({
+        url: '/pages/index/index'
+      })
     }
   }
 }
@@ -78,20 +101,23 @@ name: "sign",
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 40rpx;
+
 }
 .input input{
   width: 70%;
   height: 80rpx;
-  border: 1px black solid;
-  border-radius: 16rpx;
+  border-bottom: 1px #87cefa  solid;
+  /*border-radius: 16rpx;*/
   margin-top: 40rpx;
+
 }
 button{
   margin-top: 40rpx;
   width: 70%;
   height: 80rpx;
   border-radius: 20rpx;
-  color: #1d1c1c;
+  color: #5a5454;
+  background: #87cefa ;
 }
 .forget{
   width: 70%;
