@@ -1,5 +1,5 @@
 <template>
-    <view class="owl-imgs flex justify-between" style="height: 160px">
+    <view class="owl-imgs flex justify-between" :style="isNoneImg()">
         <template v-if="imgs.length > 0 && imgs.length < 2">
             <image
                 style="height: 100%; width: 100%"
@@ -55,6 +55,15 @@ export default {
         imgs: {
             type: Array,
             required: true
+        }
+    },
+    methods: {
+        isNoneImg() {
+            if (this.imgs.length === 0) {
+                return 'height: 0px'
+            } else {
+                return 'height: 160px'
+            }
         }
     }
 }

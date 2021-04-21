@@ -5,7 +5,7 @@
             <owl-avatar
                 :size="28"
                 :src="
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/avatar.jpg'
+                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/user01.jpg'
                 "
             ></owl-avatar>
         </view>

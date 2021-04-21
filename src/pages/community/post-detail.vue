@@ -44,9 +44,9 @@
                 <view class="row-1 flex">
                     <owl-tag
                         :type="'primary'"
-                        :height="'50rpx'"
-                        :width="'140rpx'"
-                        >{{ post.tag }}</owl-tag
+                        :height="'45rpx'"
+                        :width="'120rpx'"
+                        >{{ post.tagName }}</owl-tag
                     >
                     <view
                         class="title margin-left-xs text-lg"

@@ -79,15 +79,28 @@
             }
         },
         {
-            "path": "pages/community/more-activity",
+            "path": "pages/community/more",
             "style": {
-                "navigationBarTitleText": "更多活动"
+                "navigationBarTitleText": "更多"
             }
         },
         {
             "path": "pages/community/make-post",
             "style": {
                 "navigationBarTitleText": "新建帖子"
+            }
+        },
+        {
+            "path": "pages/Sign/sign",
+            "style": {
+                "navigationBarTitleText": "登录"
+            }
+        },
+
+        {
+            "path": "pages/Sign/phone",
+            "style": {
+                "navigationBarTitleText": "注册"
             }
         }
     ],
