@@ -2,7 +2,7 @@
     <view
         :style="{ width: width, height: height }"
         :class="['owl-tag-' + type]"
-        class="owl-tag text-xs text-center"
+        class="owl-tag text-xs flex align-center justify-center"
     >
         <slot></slot>
     </view>
@@ -12,7 +12,7 @@
 export default {
     name: 'owl-tag',
     props: {
-        // primary | danger | warning
+        // primary | danger | warning | gray
         type: {
             type: String,
             default: 'primary'

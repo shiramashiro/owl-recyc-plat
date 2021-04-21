@@ -17,8 +17,19 @@
                     <view class="col-2">
                         <view class="row-1">
                             <view class="margin-left-sm">
-                                <view class="text-lg margin-bottom-xs">
-                                    {{ item.user.username }}
+                                <view
+                                    class="text-cut text-lg flex align-center margin-bottom-xs"
+                                >
+                                    <view class="margin-right-xs">
+                                        {{ item.user.username }}
+                                    </view>
+                                    <view>
+                                        <owl-tag
+                                            :type="'gray'"
+                                            :height="'30rpx'"
+                                            >lv{{ item.user.level }}</owl-tag
+                                        >
+                                    </view>
                                 </view>
                                 <view
                                     class="col-2 text-xs text-gray margin-right-lg"
@@ -86,6 +97,18 @@ export default {
 .owl-comments {
     .owl-comment {
         border-top: 1rpx solid rgba(226, 226, 226, 0.8);
+
+        .comment-wrap {
+            .col-2 {
+                .row-2 {
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+
+    .owl-comment:first-child {
+        border-top: 0;
     }
 }
 </style>

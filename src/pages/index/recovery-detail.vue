@@ -44,12 +44,16 @@
                 ></owl-comment>
             </owl-fiche>
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
+import { setView } from '@/mixins/set-view.js'
+
 export default {
     name: 'RecoveryDetail',
+    mixins: [setView],
     data() {
         return {
             recovery: {
@@ -72,13 +76,11 @@ export default {
                 isImmersive: false,
                 isCustomImmerse: false
             },
-            holiday: ['周四', '周五']
+            holiday: ['周四', '周五'],
+            commentType: 'recovery'
         }
     },
     methods: {
-        expressView(info) {
-            console.log(info)
-        },
         backIntoIndex() {
             uni.switchTab({
                 url: '/pages/index/index'

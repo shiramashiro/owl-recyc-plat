@@ -66,12 +66,16 @@
                 ></owl-comment>
             </owl-fiche>
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
+import { setView } from '@/mixins/set-view.js'
+
 export default {
     name: 'BookDetail',
+    mixins: [setView],
     data() {
         return {
             currentSwiper: 0,
@@ -122,7 +126,8 @@ export default {
                         }
                     }
                 ]
-            }
+            },
+            commentType: 'book'
         }
     },
     methods: {
@@ -139,9 +144,6 @@ export default {
                     this.swiperHeight = data.height + 25
                 })
                 .exec()
-        },
-        expressView(info) {
-            console.log(info)
         }
     },
     onLoad(option) {

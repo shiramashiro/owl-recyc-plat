@@ -93,16 +93,21 @@
                 :belongedId="post.id"
             ></owl-make-comment>
             <owl-comment
+                @express="expressView"
                 class="padding-lr-sm"
                 :data="post.comment"
             ></owl-comment>
         </owl-fiche>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
+import { setView } from '@/mixins/set-view.js'
+
 export default {
     name: 'post-detail',
+    mixins: [setView],
     data() {
         return {
             post: {
@@ -131,7 +136,8 @@ export default {
                 isCustom: true,
                 tansparent: false,
                 isImmersive: false
-            }
+            },
+            commentType: 'post'
         }
     },
     onLoad(option) {
