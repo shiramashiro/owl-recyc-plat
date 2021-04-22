@@ -91,14 +91,14 @@
             }
         },
         {
-            "path": "pages/Sign/sign",
+            "path": "pages/entry/signin",
             "style": {
                 "navigationBarTitleText": "登录"
             }
         },
 
         {
-            "path": "pages/Sign/phone",
+            "path": "pages/entry/signup",
             "style": {
                 "navigationBarTitleText": "注册"
             }
