@@ -39,13 +39,15 @@
 ##sign.vue
 主要内容 登录界面
 
-## phone.vue
-主要内容是 短信登录和密码登录的切换  界面
+## 新增 phone.vue
+
+主要内容是 短信登录和密码登录的切换 界面
+
 # 数据结构
 
-**最近更新时间：2021 年 4 月 20 日 00:43:30**
+**最近更新时间：2021 年 4 月 22 日 00:31:09**
 
-## 书籍数据结构
+## 书籍数据
 
 ```json
 {
@@ -65,11 +67,12 @@
 }
 ```
 
-## 用户数据结构
+## 用户数据
 
 ```json
 {
     "id": 1,
+    "level": 0,
     "username": "", // 用户名
     "password": "", // 密码
     "avatar": "", // 头像地址
@@ -80,7 +83,7 @@
 }
 ```
 
-## 评论数据结构
+## 评论数据
 
 ```json
 {
@@ -93,6 +96,7 @@
     "disagree": 0, // 反对数
     "user": {
         "id": 0,
+        "level": 0,
         "username": "", // 用户名
         "nickname": "", // 社区名
         "password": "", // 密码
@@ -105,7 +109,7 @@
 }
 ```
 
-## 回收点数据结构
+## 回收点数据
 
 ```json
 {
@@ -134,6 +138,7 @@
             "disagree": 0, // 反对数
             "user": {
                 "id": 0,
+                "level": 0,
                 "username": "", // 用户名
                 "nickname": "", // 社区名
                 "password": "", // 密码
@@ -150,7 +155,7 @@
 
 # 接口说明
 
-**最近更新时间：2021 年 4 月 21 日 01:20:45**
+**最近更新时间：2021 年 4 月 22 日 00:30:21**
 
 ## 获取书籍接口
 
@@ -162,13 +167,13 @@ http://120.77.245.208:8070/get/book?type=
 
 type 可选值：all | living | technology | social | business | literature | art | education | children
 
-## 发表评论接口
-
-POST 方法
+## 发表评论
 
 ```http
 http://120.77.245.208:8070/set/comment
 ```
+
+请求方式：POST
 
 参数结构：
 
@@ -177,59 +182,49 @@ http://120.77.245.208:8070/set/comment
     userId: 0,
     belongedId: 0,
     content: '',
-    type: 'recovery | book | post' // 分别对应不同类型的评论，需要在组件中传递
+    type: 'recovery | book | post'
 }
 ```
 
-## 获取回收点详细接口
+参数说明：type 别对应不同类型的评论，需要在组件中传递。
 
-GET 方法
-
-```http
-http://120.77.245.208:8070/get/detail/recovery?id=
-```
-
-## 获取回收点简略接口
-
-GET 方法
-
-```http
-http://120.77.245.208:8070/get/recoveries?limitNum=
-```
-
-limitNum 参数限制获取回收点个数，默认为 6 个，设为 0 是获取所有
-
-## 获取书籍详细接口
-
-GET 方法
-
-```http
-http://120.77.245.208:8070/get/book?id=
-```
-
-## 获取书籍简略接口
-
-GET 方法
-
-```http
-http://120.77.245.208:8070/get/detail/book?id=
-```
-
-## 获取帖子接口
-
-GET 方法
+## 获取帖子
 
 ```http
 http://120.77.245.208:8070/get/post?[limitNum | browseNum | id]
 ```
 
-可选参数由：limitNum、browseNum、id
+请求方式：GET
 
-limitNum 代表限制查询多少条帖子；
+参数说明：
 
-browseNum 代表查询浏览数大于等于多少的帖子；
+1. limitNum 代表限制查询多少条帖子；
+2. browseNum 代表查询浏览数大于等于多少的帖子；
+3. id 代表查询指定 id 的帖子。
 
-id 代表查询指定 id 的帖子。
+## 点赞或反对评论
+
+```http
+http://120.77.245.208:8070/set/view
+```
+
+请求方式：POST
+
+参数结构：
+
+```javascript
+{
+    id: 0,
+    type: 'post | book | recovery',
+    viewType: "agree | disagree"
+}
+```
+
+参数说明：
+
+1. id 代表被点赞或反对的评论的用户 ID；
+2. type 代表当前评论是书籍评论，还是社区评论，还是回收点评论;
+3. viewType 代表用户点赞评论是赞同还是反对。
 
 # 目录结构
 

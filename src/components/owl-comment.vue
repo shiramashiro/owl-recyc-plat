@@ -5,30 +5,47 @@
             :key="index"
             class="owl-comment margin-tb-sm padding-top-sm"
         >
-            <view class="comment-wrap flex">
-                <view class="col-1 margin-right-sm">
-                    <owl-avatar
-                        :src="item.user.avatar"
-                        mode="aspectFill"
-                        :size="40"
-                    ></owl-avatar>
-                </view>
-                <view class="col-2">
-                    <view class="row-1 margin-bottom-xs">
-                        <view class="col-1 text-bold">
-                            {{ item.user.username }}
-                        </view>
+            <view class="comment-wrap">
+                <view class="flex">
+                    <view class="col-1">
+                        <owl-avatar
+                            :src="item.user.avatar"
+                            mode="aspectFill"
+                            :size="40"
+                        ></owl-avatar>
                     </view>
-                    <view class="row-2 margin-bottom-xs">
-                        {{ item.content }}
+                    <view class="col-2">
+                        <view class="row-1">
+                            <view class="margin-left-sm">
+                                <view
+                                    class="text-cut text-lg flex align-center margin-bottom-xs"
+                                >
+                                    <view class="margin-right-xs">
+                                        {{ item.user.username }}
+                                    </view>
+                                    <view>
+                                        <owl-tag
+                                            :type="'gray'"
+                                            :height="'30rpx'"
+                                            >lv{{ item.user.level }}</owl-tag
+                                        >
+                                    </view>
+                                </view>
+                                <view
+                                    class="col-2 text-xs text-gray margin-right-lg"
+                                >
+                                    {{ item.postDate }}
+                                </view>
+                            </view>
+                        </view>
+                        <view class="row-2 margin-left-sm margin-top-xs">
+                            {{ item.content }}
+                        </view>
                     </view>
                 </view>
             </view>
             <view class="options flex justify-end">
-                <view class="options-wrap flex">
-                    <view class="col-2 text-gray margin-right-lg">
-                        {{ item.postDate }}
-                    </view>
+                <view class="options-wrap flex text-sm text-gray">
                     <view
                         @click="clickDisagree(item, index)"
                         class="col-2 margin-right-lg el-icon-third-cai"
@@ -65,10 +82,6 @@ export default {
         clickAgree(item, index) {
             this.handleClick(item, index, 'agree')
         },
-        /**
-         * clickDisagree和clickAgreee复用handleClick，向外回传评论信息以及用户点击的是同意还是反对。
-         * 使用此组件时，外界使用express触发该函数。
-         */
         handleClick(item, index, type) {
             this.$emit('express', {
                 type: type,
@@ -84,6 +97,18 @@ export default {
 .owl-comments {
     .owl-comment {
         border-top: 1rpx solid rgba(226, 226, 226, 0.8);
+
+        .comment-wrap {
+            .col-2 {
+                .row-2 {
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+
+    .owl-comment:first-child {
+        border-top: 0;
     }
 }
 </style>

@@ -1,10 +1,7 @@
 <template>
     <view class="post-detail">
         <view class="status_bar"> </view>
-        <owl-navbar
-            style="background-color: rgb(248, 248, 248); box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
-            :config="config"
-        >
+        <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <view>
                     <i
@@ -12,10 +9,10 @@
                         class="el-icon-third-fanhui"
                     ></i>
                 </view>
-                <view class="margin-left-lg text-lg">帖子详情</view>
+                <view class="margin-left-lg text-df text-gray">帖子详情</view>
             </view>
         </owl-navbar>
-        <view class="post-panel padding-top-sm padding-lr-sm">
+        <view class="post-panel margin-top-sm padding-top-sm padding-lr-sm">
             <view class="row-1 flex align-center justify-between">
                 <view class="col-1 flex align-center">
                     <view class="col-1-1">
@@ -56,7 +53,7 @@
                     </view>
                 </view>
                 <view class="row-2 text-xs text-gray text-center margin-tb-lg">
-                    —— 文章发表：{{ post.time }} ——
+                    文章发表：{{ post.time }}
                 </view>
                 <view class="row-3">
                     <view class="content margin-bottom-sm">
@@ -96,16 +93,21 @@
                 :belongedId="post.id"
             ></owl-make-comment>
             <owl-comment
+                @express="expressView"
                 class="padding-lr-sm"
                 :data="post.comment"
             ></owl-comment>
         </owl-fiche>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
+import { setView } from '@/mixins/set-view.js'
+
 export default {
     name: 'post-detail',
+    mixins: [setView],
     data() {
         return {
             post: {
@@ -134,7 +136,8 @@ export default {
                 isCustom: true,
                 tansparent: false,
                 isImmersive: false
-            }
+            },
+            commentType: 'post'
         }
     },
     onLoad(option) {

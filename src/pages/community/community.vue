@@ -163,6 +163,7 @@ export default {
 
     .make-post {
         .post-btn-wrap {
+            opacity: 0.75;
             position: fixed;
             bottom: 400rpx;
             z-index: 998;
