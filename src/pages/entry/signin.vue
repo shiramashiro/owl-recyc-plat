@@ -67,6 +67,7 @@ export default {
     name: 'signin',
     data() {
         return {
+            storeList:{},
             height: 0,
             onPhoneSelected: false,
             onPwdSelected: false,
@@ -131,8 +132,17 @@ export default {
             }
         },
         signin() {
-            // 发起登陆的请求...
-            console.log('登陆...')
+          this.$axios.post('/signin',{
+              phone: this.phoneValue,
+              password: this.pwdValue
+          }).then(res => {
+             alert(res.data.object.username)
+             this.storeList=res.data.object
+             this.$store.commit('change',this.storeList)
+
+          }).catch(error => {
+              console.log(error)
+          })
         },
         forgetPwd() {
             console.log('触发服务...跳转相应的页面！')

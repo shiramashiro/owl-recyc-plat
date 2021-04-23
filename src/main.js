@@ -22,6 +22,7 @@ import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
 
+
 Vue.component('owl-tag', OwlTag)
 Vue.component('owl-imgs', OWlImgs)
 Vue.component('owl-fiche', OwlFiche)
@@ -38,6 +39,7 @@ App.mpType = 'app'
 
 const app = new Vue({
     ...App,
-    Vuex
+    Vuex,
+
 })
 app.$mount()
