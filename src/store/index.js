@@ -5,11 +5,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-     user:''
+        userInfo: {
+            avatar: '',
+            bgImage: '',
+            fans: 0,
+            follows: 0,
+            id: 0,
+            level: 0,
+            password: '',
+            phone: '',
+            praise: 0,
+            profile: '',
+            username: ''
+        }
     },
     mutations: {
-        change(state,storeList){
-            state.user=storeList
+        setUserInfo(state, data) {
+            state.userInfo = data
         }
     },
     actions: {}

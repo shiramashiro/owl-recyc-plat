@@ -1,6 +1,5 @@
 <template>
     <view class="index">
-
         <view class="status_bar"></view>
         <owl-navbar :config="config">
             <view class="nav-wrap margin-lr-lg flex justify-between">
@@ -62,7 +61,6 @@
         >
             <books @selected="chooseBook" :data="books"></books>
         </owl-fiche>
-
     </view>
 </template>
 
@@ -70,10 +68,7 @@
 import Recoveries from '@/components/index/recoveries.vue'
 import Caskets from '@/components/index/caskets.vue'
 import Books from '@/components/index/books.vue'
-import {
-  mapState,
-  mapMutations
-} from 'vuex';
+
 export default {
     name: 'Index',
     components: { Caskets, Recoveries, Books },

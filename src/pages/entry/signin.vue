@@ -22,7 +22,7 @@
                         :class="[onPhoneSelected ? 'selected' : 'signin-input']"
                         @input="onPhoneKeyInput"
                         @click="onPhoneSelected = true"
-                        @blur="getAvatar"
+                        @blur="onPhoneKeyInputRemove"
                         v-model="phoneValue"
                         placeholder-style="font-size: 28rpx"
                         type="text"
@@ -59,6 +59,7 @@
                 </view>
             </view>
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -67,8 +68,8 @@ export default {
     name: 'signin',
     data() {
         return {
-            storeList:{},
             height: 0,
+            width: 0,
             onPhoneSelected: false,
             onPwdSelected: false,
             phoneValue: '',
@@ -77,7 +78,6 @@ export default {
             isInputedPwd: false,
             avatarUrl:
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
-            width: 0,
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -86,7 +86,8 @@ export default {
                 tansparent: false,
                 isImmersive: false,
                 isCustomImmerse: true
-            }
+            },
+            tipColor: '#19BE6B'
         }
     },
     onReady() {
@@ -107,12 +108,7 @@ export default {
         estimate(target) {
             return target !== ''
         },
-        /**
-         * 当手机号输入框失去焦点后，向服务器查询该用户的头像，
-         * 如果查询到头像，则把默认头像地址替换为当前用户的头像，
-         * 如果没有查询到头像，则仍旧以默认头像地址为准。
-         */
-        getAvatar() {
+        onPhoneKeyInputRemove() {
             this.onPhoneSelected = false
             if (this.phoneValue != '') {
                 this.$axios
@@ -124,25 +120,42 @@ export default {
                     .then(resp => {
                         if (resp.data.object != null) {
                             this.avatarUrl = resp.data.object
+                        } else {
+                            this.showTips('请检查手机号是否错误！', '#EB0909')
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        this.showTips('服务器错误', '#EB0909')
                     })
             }
         },
         signin() {
-          this.$axios.post('/signin',{
-              phone: this.phoneValue,
-              password: this.pwdValue
-          }).then(res => {
-             alert(res.data.object.username)
-             this.storeList=res.data.object
-             this.$store.commit('change',this.storeList)
-
-          }).catch(error => {
-              console.log(error)
-          })
+            this.$axios
+                .post('/signin', {
+                    phone: this.phoneValue,
+                    password: this.pwdValue
+                })
+                .then(res => {
+                    if (res.data.code === 200) {
+                        this.$store.commit('setUserInfo', res.data.object)
+                        this.showTips('登陆成功~', '#19BE6B')
+                    } else {
+                        this.showTips(
+                            '登陆失败~请检查密码是否错误！',
+                            '#EB0909'
+                        )
+                    }
+                })
+                .catch(error => {
+                    this.showTips('服务器错误', '#EB0909')
+                })
+        },
+        showTips(tipMsg, tipColor) {
+            this.tipColor = tipColor
+            this.$refs.toast.showTips({
+                msg: tipMsg,
+                duration: 3000
+            })
         },
         forgetPwd() {
             console.log('触发服务...跳转相应的页面！')
