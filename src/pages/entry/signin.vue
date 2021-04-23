@@ -12,19 +12,17 @@
         >
             <view class="sigin-body">
                 <view class="avatar flex align-center justify-center">
-                    <owl-avatar
-                        :size="80"
-                        :src="
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/user05.png'
-                        "
-                    ></owl-avatar>
+                    <owl-avatar :size="80" :src="avatarUrl"></owl-avatar>
                 </view>
                 <view
                     class="user-info margin-tb-xl"
                     :style="{ width: width + 'px' }"
                 >
                     <input
+                        :class="[onPhoneSelected ? 'selected' : 'signin-input']"
                         @input="onPhoneKeyInput"
+                        @click="onPhoneSelected = true"
+                        @blur="getAvatar"
                         v-model="phoneValue"
                         placeholder-style="font-size: 28rpx"
                         type="text"
@@ -32,7 +30,10 @@
                         placeholder="您的手机号"
                     />
                     <input
+                        :class="[onPwdSelected ? 'selected' : 'signin-input']"
                         @input="onPwdKeyInput"
+                        @click="onPwdSelected = true"
+                        @blur="onPwdSelected = false"
                         v-model="pwdValue"
                         placeholder-style="font-size: 28rpx"
                         type="password"
@@ -67,10 +68,14 @@ export default {
     data() {
         return {
             height: 0,
+            onPhoneSelected: false,
+            onPwdSelected: false,
             phoneValue: '',
             pwdValue: '',
             isInputedPhone: false,
             isInputedPwd: false,
+            avatarUrl:
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
             width: 0,
             config: {
                 splitLine: false,
@@ -101,6 +106,25 @@ export default {
         estimate(target) {
             return target !== ''
         },
+        getAvatar() {
+            this.onPhoneSelected = false
+            if (this.phoneValue != '') {
+                this.$axios
+                    .get('/get/signin/avatar', {
+                        params: {
+                            phone: this.phoneValue
+                        }
+                    })
+                    .then(resp => {
+                        if (resp.data.object != null) {
+                            this.avatarUrl = resp.data.object
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        },
         signin() {
             // 发起异步请求...
             console.log('登陆...')
@@ -121,6 +145,18 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.selected {
+    background-color: #f8f8f8;
+    height: 70rpx;
+    transition: 0.2s;
+    padding: 0 5px;
+    box-shadow: 0 2px 3px -1px #87cefa;
+}
+
+.signin {
+    background-color: #f8f8f8;
+}
+
 .status_bar {
     height: var(--status-bar-height);
     width: 100%;
@@ -134,12 +170,9 @@ export default {
     color: #87cefa;
 }
 
-.signin {
-    background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpicnew13.photophoto.cn%2F20190507%2Fxiaoqingxinbeijingtu-33040572_1.jpg&refer=http%3A%2F%2Fpicnew13.photophoto.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621392403&t=2b129de3de7282b951fbeacbbb0dd2c1')
-        no-repeat;
-}
-
-.user-info input {
+.signin-input {
+    background-color: #f8f8f8;
+    transition: 0.2s;
     height: 70rpx;
     border-bottom: 1px #87cefa solid;
 }
