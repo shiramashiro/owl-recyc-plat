@@ -106,6 +106,11 @@ export default {
         estimate(target) {
             return target !== ''
         },
+        /**
+         * 当手机号输入框失去焦点后，向服务器查询该用户的头像，
+         * 如果查询到头像，则把默认头像地址替换为当前用户的头像，
+         * 如果没有查询到头像，则仍旧以默认头像地址为准。
+         */
         getAvatar() {
             this.onPhoneSelected = false
             if (this.phoneValue != '') {
@@ -126,7 +131,7 @@ export default {
             }
         },
         signin() {
-            // 发起异步请求...
+            // 发起登陆的请求...
             console.log('登陆...')
         },
         forgetPwd() {
