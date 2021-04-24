@@ -83,11 +83,10 @@
 <script>
 import CollectedBooks from '@/components/mine/collected-books.vue'
 import CollectedPosts from '@/components/mine/collected-posts.vue'
-import Index from '@/components/mine/index.vue'
 
 export default {
     name: 'mine',
-    components: { CollectedBooks, CollectedPosts, Index },
+    components: { CollectedBooks, CollectedPosts },
     data() {
         return {
             index: 0,
@@ -101,7 +100,6 @@ export default {
                 isCustomImmerse: true
             },
             swiperTabs: [
-                { tabName: '主页', componentName: 'Index' },
                 { tabName: '收藏的书籍', componentName: 'CollectedBooks' },
                 { tabName: '收藏的帖子', componentName: 'CollectedPosts' }
             ]

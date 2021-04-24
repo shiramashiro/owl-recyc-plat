@@ -107,6 +107,7 @@ export default {
         }
     },
     methods: {
+        // 点击帖子，获取帖子的所有数据和index索引值
         handleClick(item, index) {
             this.$emit('selected', {
                 item: item,

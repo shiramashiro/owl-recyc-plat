@@ -1,5 +1,7 @@
 <template>
-    <view class="coolected-books"></view>
+    <view class="coolected-books">
+        
+    </view>
 </template>
 
 <script>
