@@ -158,14 +158,16 @@ export default {
             })
         },
         forgetPwd() {
-            console.log('触发服务...跳转相应的页面！')
+            this.showTips('此服务正在开发中...', '#FF7900')
         },
         signup() {
-            console.log('触发服务...跳转相应的页面！')
+            uni.navigateTo({
+                url: '/pages/entry/signup'
+            })
         },
         backIntoIndex() {
             uni.switchTab({
-                url: '/pages/index/index'
+                url: '/pages/mine/mine'
             })
         }
     }
