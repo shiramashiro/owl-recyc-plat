@@ -4,6 +4,7 @@
         <owl-navbar :config="config">
             <view class="navi-content flex align-center">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+                <view class="margin-left-lg text-lg">登录</view>
             </view>
         </owl-navbar>
         <view
