@@ -139,6 +139,11 @@ export default {
                     if (res.data.code === 200) {
                         this.$store.commit('setUserInfo', res.data.object)
                         this.showTips('登陆成功~', '#19BE6B')
+                        setTimeout(() => {
+                            uni.switchTab({
+                                url: '/pages/mine/mine'
+                            })
+                        }, 2100)
                     } else {
                         this.showTips(
                             '登陆失败~请检查密码是否错误！',

@@ -121,15 +121,6 @@ export default {
                             url: '/pages/mine/homepage'
                         })
                     }
-                },
-                {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/signout.png',
-                    name: '退出登录',
-                    action: function() {
-                        console.log('ssss')
-                        this.$store.commit.removeUserInfo()
-                    }
                 }
             ]
         }

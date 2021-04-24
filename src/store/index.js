@@ -12,10 +12,6 @@ export default new Vuex.Store({
         setUserInfo(state, data) {
             state.isSignin = true
             state.userInfo = data
-        },
-        removeUserInfo() {
-            state.isSignin = false
-            state.userInfo = {}
         }
     },
     actions: {}

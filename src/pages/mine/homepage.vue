@@ -1,5 +1,14 @@
 <template>
     <view class="homepage">
+        <owl-navbar :config="config">
+            <view class="navi-content flex align-center padding-lr-xs">
+                <image
+                    style="width: 70rpx; height: 70rpx"
+                    @click="backIntoIndex()"
+                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
+                ></image>
+            </view>
+        </owl-navbar>
         <view class="row-1">
             <image
                 class="image"
@@ -82,6 +91,15 @@ export default {
     data() {
         return {
             index: 0,
+            config: {
+                splitLine: false,
+                isFixed: false,
+                isOpacity: false,
+                isCustom: true,
+                tansparent: false,
+                isImmersive: false,
+                isCustomImmerse: true
+            },
             swiperTabs: [
                 { tabName: '主页', componentName: 'Index' },
                 { tabName: '收藏的书籍', componentName: 'CollectedBooks' },
@@ -92,6 +110,11 @@ export default {
     methods: {
         slideTuiTab(info) {
             this.index = info.index
+        },
+        backIntoIndex() {
+            uni.switchTab({
+                url: '/pages/mine/mine'
+            })
         }
     }
 }
@@ -99,6 +122,15 @@ export default {
 
 <style lang="scss" scoped>
 .homepage {
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
+
+    .navi-content {
+        height: 100%;
+    }
+
     .row-1 {
         width: 100%;
         height: 100%;
