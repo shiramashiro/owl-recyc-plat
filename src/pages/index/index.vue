@@ -3,10 +3,7 @@
         <view class="status_bar"></view>
         <owl-navbar :config="config">
             <view class="nav-wrap margin-lr-lg flex justify-between">
-                <view class="col-1 flex align-center">
-                    <owl-avatar :src="user.avatar" :size="33"></owl-avatar>
-                </view>
-                <view class="col-2 flex align-center justify-center">
+                <view class="row flex align-center justify-center">
                     <view class="input-wrap flex align-center">
                         <input
                             style="width: 100%"
@@ -32,6 +29,15 @@
             </swiper>
         </view>
         <owl-fiche
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
+            "
+            class="margin-top-sm"
+            :title="'二手市场'"
+        >
+            <caskets @selected="chooseCasket"></caskets>
+        </owl-fiche>
+        <owl-fiche
             :bgColor="'rgb(248, 248, 248)'"
             class="margin-top-sm"
             :iconPath="
@@ -41,15 +47,6 @@
             :title="'回收点'"
         >
             <recoveries @selected="chooseRecovery"></recoveries>
-        </owl-fiche>
-        <owl-fiche
-            :iconPath="
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
-            "
-            class="margin-top-sm"
-            :title="'二手市场'"
-        >
-            <caskets @selected="chooseCasket"></caskets>
         </owl-fiche>
         <owl-fiche
             :iconPath="
@@ -159,12 +156,8 @@ export default {
     .nav-wrap {
         height: 100%;
 
-        .col-1 {
-            width: 10%;
-        }
-
-        .col-2 {
-            width: 85%;
+        .row {
+            width: 100%;
 
             .input-wrap {
                 width: 100%;

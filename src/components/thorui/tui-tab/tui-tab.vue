@@ -39,7 +39,7 @@
                                         ? 'bold'
                                         : 'normal'
                             }"
-                            >{{ item.name }}</view
+                            >{{ item.tabName }}</view
                         >
                     </view>
                     <view
@@ -199,9 +199,7 @@ export default {
         handleClick(e) {
             let index = Number(e.currentTarget.dataset.index)
             this.$emit('slideTuiTab', {
-                detail: {
-                    current: index
-                }
+                index: index
             })
             this.scrollByIndex(index)
         },
