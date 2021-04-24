@@ -154,7 +154,7 @@ export default {
             this.tipColor = tipColor
             this.$refs.toast.showTips({
                 msg: tipMsg,
-                duration: 3000
+                duration: 2000
             })
         },
         forgetPwd() {

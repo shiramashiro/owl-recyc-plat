@@ -1,5 +1,5 @@
 <template>
-    <view class="owl-fiche margin-lr-xs">
+    <view class="owl-fiche" :class="[isLrMargin ? 'margin-lr-xs' : '']">
         <view class="owl-fiche-wrap">
             <view
                 :class="[isLrPadding ? 'padding-lr-sm' : '']"
@@ -18,7 +18,7 @@
                                 :src="iconPath"
                             ></image>
                         </template>
-                        <view>
+                        <view :style="{ fontSize: titleFontSize }">
                             {{ title }}
                         </view>
                     </view>
@@ -79,40 +79,53 @@ export default {
             required: false,
             default: ''
         },
+        // 是否开启左右padding
         isLrPadding: {
             type: Boolean,
             default: true
         },
+        // icon图标宽度
         iconWidth: {
             type: String,
             default: '40rpx'
         },
+        // icon图标高度
         iconHeight: {
             type: String,
             default: '40rpx'
         },
+        // url参数
         urlParams: {
             type: Array,
             required: false
+        },
+        // 是否开启左右的margin
+        isLrMargin: {
+            type: Boolean,
+            default: true
+        },
+        titleFontSize: {
+            type: String,
+            default: '30rpx'
         }
     },
     methods: {
         display() {
-            let tempUrl = this.url
+            let targetUrl = this.url
             if (this.urlParams !== '') {
-                tempUrl += '?' + this.urlParams[0]
+                targetUrl += '?' + this.urlParams[0]
                 if (this.urlParams.length > 0) {
                     for (
                         let index = 1;
                         index < this.urlParams.length;
                         index++
                     ) {
-                        tempUrl += '&' + this.urlParams[index]
+                        targetUrl += '&' + this.urlParams[index]
                     }
                 }
             }
             uni.navigateTo({
-                url: tempUrl
+                url: targetUrl
             })
         }
     }

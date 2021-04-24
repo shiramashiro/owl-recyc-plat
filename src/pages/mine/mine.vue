@@ -1,71 +1,76 @@
 <template>
     <view class="mine">
-        <view class="row-1">
+        <view class="bg">
             <image
                 class="image"
                 mode="aspectFill"
-                :src="$store.state.userInfo.bgImage"
+                src="https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg"
             ></image>
         </view>
-        <view class="row-2">
-            <view class="row-2-1">
-                <view class="col-1">
-                    <image
-                        class="avatar"
-                        model="aspectFit"
-                        :src="$store.state.userInfo.avatar"
-                    ></image>
-                </view>
-                <view class="col-2">
-                    <view class="row-1 flex justify-between align-center">
-                        <view class="cols text-center">
-                            <view class="text-sm">
-                                {{ $store.state.userInfo.fans }}
-                            </view>
-                            <view class="text-xs text-gray">粉丝</view>
+        <view class="content padding-lr-sm">
+            <view class="user-brief">
+                <view class="brief-wrap">
+                    <view v-if="!$store.state.isSignin" class="rows">
+                        <view
+                            class="row-1 text-center"
+                            @click="goToTargetPage('/pages/entry/signin')"
+                        >
+                            <image
+                                mode="aspectFill"
+                                :src="
+                                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png'
+                                "
+                            ></image>
+                            <view class="text-lg text-black margin-top-xs"
+                                >点击登录</view
+                            >
                         </view>
-                        <view class="cols text-center">
-                            <view class="text-sm">
-                                {{ $store.state.userInfo.follows }}
-                            </view>
-                            <view class="text-xs text-gray">关注</view>
-                        </view>
-                        <view class="cols text-center">
-                            <view class="text-sm">
-                                {{ $store.state.userInfo.praise }}
-                            </view>
-                            <view class="text-xs text-gray">获赞</view>
+                        <view class="row-2 text-center text-gray text-sm">
+                            登陆解锁更多精彩内容哟
                         </view>
                     </view>
-                    <view class="row-2">
-                        <button class="editor" size="mini" :plain="true">
-                            编辑资料
-                        </button>
+                    <view v-else class="rows">
+                        <view class="row-1 text-center">
+                            <image
+                                mode="aspectFill"
+                                :src="$store.state.userInfo.avatar"
+                            ></image>
+                        </view>
+                        <view class="row-2 flex justify-end text-gray text-sm">
+                            <view
+                                @click="goToTargetPage('/pages/mine/homepage')"
+                                class="homepage text-center padding-xs"
+                                >个人主页 ></view
+                            >
+                        </view>
                     </view>
                 </view>
             </view>
-            <view class="row-2-2">
-                <view class="row-1 text-lg">
-                    {{ $store.state.userInfo.username }}
-                </view>
-                <view class="row-2 text-sm text-gray">
-                    {{ $store.state.userInfo.profile }}
-                </view>
-            </view>
-            <view class="row-2-3">
-                <tui-tab
-                    :scroll="false"
-                    selectedColor="#87cefa"
-                    sliderBgColor="#87cefa"
-                    @slideTuiTab="slideTuiTab"
-                    :current="index"
-                    :swiperTabs="swiperTabs"
-                ></tui-tab>
-                <view class="components">
-                    <component
-                        :is="swiperTabs[index].componentName"
-                    ></component>
-                </view>
+            <view class="margin-top-sm">
+                <owl-fiche :title="'服务'" :isLrMargin="false">
+                    <tui-list-view color="#777">
+                        <tui-list-cell
+                            v-for="(cell, index) in listCells"
+                            :key="index"
+                            :hover="true"
+                            :arrow="true"
+                        >
+                            <view
+                                class="flex text-sm align-center"
+                                @click="cell.action"
+                            >
+                                <view class="icon margin-right-xs">
+                                    <image
+                                        mode="aspectFit"
+                                        style="width: 30rpx; height: 30rpx"
+                                        :src="cell.icon"
+                                    ></image>
+                                </view>
+                                <view class="name">{{ cell.name }}</view>
+                            </view>
+                        </tui-list-cell>
+                    </tui-list-view>
+                </owl-fiche>
             </view>
         </view>
     </view>
@@ -76,17 +81,62 @@ export default {
     name: 'mine',
     data() {
         return {
-            index: 0,
-            swiperTabs: [
-                { tabName: '收藏的书籍', componentName: 'CollectedBooks' },
-                { tabName: '收藏的帖子', componentName: 'CollectedPosts' },
-                { tabName: '发布的帖子', componentName: 'publishedPosts' }
+            listCells: [
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/customer-service.png',
+                    name: '联系客服',
+                    action: function() {
+                        uni.navigateTo({
+                            url: '/pages/mine/homepage'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/update.png',
+                    name: '检查更新',
+                    action: function() {
+                        uni.navigateTo({
+                            url: '/pages/mine/homepage'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/advice.png',
+                    name: '建议与反馈',
+                    action: function() {
+                        uni.navigateTo({
+                            url: '/pages/mine/homepage'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/about.png',
+                    name: '关于猫头鹰',
+                    action: function() {
+                        uni.navigateTo({
+                            url: '/pages/mine/homepage'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/signout.png',
+                    name: '退出登录',
+                    action: function() {
+                        console.log('ssss')
+                        this.$store.commit.removeUserInfo()
+                    }
+                }
             ]
         }
     },
     methods: {
-        slideTuiTab(info) {
-            this.index = info.index
+        goToTargetPage(targetPage) {
+            uni.navigateTo({ url: targetPage })
         }
     }
 }
@@ -94,69 +144,43 @@ export default {
 
 <style lang="scss" scoped>
 .mine {
-    .row-1 {
-        width: 100%;
-        height: 100%;
+    background-color: #f8f8f8;
 
+    .bg {
         .image {
             width: 100%;
-            height: 305rpx;
+            height: 250rpx;
         }
     }
 
-    .row-2 {
-        .row-2-1 {
-            padding: 0 20rpx;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            align-content: center;
+    .content {
+        background-color: white;
 
-            .col-1 {
-                margin-right: 60rpx;
-                position: relative;
+        .user-brief {
+            position: relative;
 
-                .avatar {
-                    position: inherit;
-                    border: 10rpx solid white;
-                    border-radius: 100%;
-                    width: 180rpx;
-                    height: 180rpx;
-                    top: -15rpx;
-                }
-            }
+            .brief-wrap {
+                position: inherit;
+                top: -60rpx;
 
-            .col-2 {
-                width: 100%;
+                .rows {
+                    .row-1 {
+                        width: 180rpx;
+                        image {
+                            width: 165rpx;
+                            height: 165rpx;
+                            border-radius: 100%;
+                        }
+                    }
 
-                .row-1 {
-                    .cols {
-                        margin-right: 0;
-                        margin: 0 0 10rpx 0;
+                    .row-2 {
+                        .homepage {
+                            width: 160rpx;
+                            border-radius: 10rpx;
+                            border: 1rpx #cccc solid;
+                        }
                     }
                 }
-
-                .row-2 {
-                    .editor {
-                        width: 100%;
-                        color: #87cefa;
-                        border: #87cefa 1rpx solid;
-                    }
-                }
-            }
-        }
-
-        .row-2-2 {
-            padding: 0 20rpx;
-            border-bottom: 1rpx solid #e8e8e8;
-
-            .row-1 {
-                margin-bottom: 13rpx;
-                color: #87cefa;
-            }
-
-            .row-2 {
-                padding-bottom: 25rpx;
             }
         }
     }

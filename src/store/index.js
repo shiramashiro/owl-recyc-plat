@@ -5,11 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        isSignin: false,
         userInfo: {}
     },
     mutations: {
         setUserInfo(state, data) {
+            state.isSignin = true
             state.userInfo = data
+        },
+        removeUserInfo() {
+            state.isSignin = false
+            state.userInfo = {}
         }
     },
     actions: {}

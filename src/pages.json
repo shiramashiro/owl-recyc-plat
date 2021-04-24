@@ -96,11 +96,16 @@
                 "navigationBarTitleText": "登录"
             }
         },
-
         {
             "path": "pages/entry/signup",
             "style": {
                 "navigationBarTitleText": "注册"
+            }
+        },
+        {
+            "path": "pages/mine/homepage",
+            "style": {
+                "navigationBarTitleText": "个人主页"
             }
         }
     ],
