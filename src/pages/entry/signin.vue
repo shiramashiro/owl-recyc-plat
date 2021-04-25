@@ -156,10 +156,10 @@ export default {
                     this.showTips('服务器错误', '#EB0909')
                 })
         },
-        showTips(tipMsg, tipColor) {
-            this.tipColor = tipColor
+        showTips(msg, color) {
+            this.tipColor = color
             this.$refs.toast.showTips({
-                msg: tipMsg,
+                msg: msg,
                 duration: 2000
             })
         },

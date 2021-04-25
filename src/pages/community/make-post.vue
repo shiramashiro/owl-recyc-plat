@@ -10,7 +10,7 @@
                 <view class="post-btn margin-right-sm">
                     <tui-button
                         @click="publishPost"
-                        plain
+                        :disabled="isDisabled"
                         :width="'110rpx'"
                         :height="'40rpx'"
                         :size="20"
@@ -22,6 +22,7 @@
         </owl-navbar>
         <view class="title padding-tb-sm margin-lr-sm">
             <input
+                @input="onTitleKeyInput"
                 v-model="titleValue"
                 placeholder-style="font-size: 32rpx; color: #ccc"
                 maxlength="50"
@@ -30,6 +31,7 @@
         </view>
         <view class="content padding-tb-sm margin-lr-sm">
             <textarea
+                @input="onContentKeyInput"
                 v-model="contentValue"
                 placeholder-style="font-size: 28rpx; color: #ccc"
                 style="width: 100%"
@@ -59,6 +61,7 @@
         <view class="options margin-top-sm padding-lr-sm">
             开发中...
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -90,9 +93,17 @@ export default {
                 isImmersive: false,
                 isCustomImmerse: false
             },
+            isDisabled: false,
+            tipColor: '#19BE6B',
             titleValue: '',
             contentValue: '',
             radioCurrent: 0
+        }
+    },
+    mounted() {
+        if (JSON.stringify(this.$store.state.userInfo) === '{}') {
+            this.showTips('你还没有登陆哟~', '#EB0909')
+            this.isDisabled = true
         }
     },
     methods: {
@@ -101,23 +112,59 @@ export default {
                 url: '/pages/community/community'
             })
         },
-        radioChange: function(evt) {
-            for (let i = 0; i < this.radios.length; i++) {
-                if (this.radios[i].value === evt.target.value) {
-                    this.radioCurrent = i
+        onTitleKeyInput() {
+            this.estimate()
+        },
+        onContentKeyInput() {
+            this.estimate()
+        },
+        estimate() {
+            if (this.titleValue !== '' && this.contentValue !== '') {
+                this.isDisabled = false
+            } else {
+                this.isDisabled = true
+            }
+        },
+        radioChange(evt) {
+            for (let index = 0; i < this.radios.length; index++) {
+                if (this.radios[index].value === evt.target.value) {
+                    this.radioCurrent = index
                     break
                 }
             }
         },
+        showTips(msg, color) {
+            this.tipColor = color
+            this.$refs.toast.showTips({
+                msg: msg,
+                duration: 2000
+            })
+        },
         publishPost() {
-            let post = {
-                content: this.contentValue,
-                title: this.titleValue,
-                tagName: this.radios[this.radioCurrent].name,
-                tagType: this.radios[this.radioCurrent].value,
-                userId: 1
+            if (this.titleValue !== '' && this.contentValue !== '') {
+                this.$axios
+                    .post('/set/post', {
+                        title: this.titleValue,
+                        content: this.contentValue,
+                        userId: this.$store.state.userInfo.id,
+                        tagName: this.radios[this.radioCurrent].name,
+                        tagType: this.radios[this.radioCurrent].value
+                    })
+                    .then(resp => {
+                        console.log(resp)
+                        if (resp.status === 200) {
+                            this.showTips('发表成功~', '#19BE6B')
+                        } else {
+                            this.showTips('发表失败！', '#EB0909')
+                        }
+                    })
+                    .catch(error => {
+                        this.showTips('服务器错误，发表失败！', '#EB0909')
+                    })
+            } else {
+                this.isDisabled = true
+                this.showTips('发表失败！请输入内容~', '#EB0909')
             }
-            this.$axios.post('/set/post', post)
         }
     }
 }

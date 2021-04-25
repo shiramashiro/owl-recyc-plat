@@ -65,11 +65,11 @@
 export default {
     name: 'posts',
     props: {
-        url: {
+        requestURL: {
             type: String,
             required: true
         },
-        urlParam: {
+        URLAttrs: {
             type: Object,
             required: false
         }
@@ -80,14 +80,14 @@ export default {
         }
     },
     mounted() {
-        if (JSON.stringify(this.urlParam) !== '{}') {
-            let tempParams = {}
-            for (let key in this.urlParam) {
-                tempParams[key] = this.urlParam[key]
+        if (JSON.stringify(this.URLAttrs) !== '{}') {
+            let requestAttrs = {}
+            for (let key in this.URLAttrs) {
+                requestAttrs[key] = this.URLAttrs[key]
             }
             this.$axios
-                .get(this.url, {
-                    params: tempParams
+                .get(this.requestURL, {
+                    params: requestAttrs
                 })
                 .then(resp => {
                     this.posts = resp.data
@@ -97,7 +97,7 @@ export default {
                 })
         } else {
             this.$axios
-                .get(this.url)
+                .get(this.requestURL)
                 .then(resp => {
                     this.posts = resp.data
                 })
@@ -107,7 +107,6 @@ export default {
         }
     },
     methods: {
-        // 点击帖子，获取帖子的所有数据和index索引值
         handleClick(item, index) {
             this.$emit('selected', {
                 item: item,

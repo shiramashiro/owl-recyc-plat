@@ -105,10 +105,10 @@ export default {
         }
     },
     methods: {
-        showTips(tipMsg, tipColor) {
-            this.tipColor = tipColor
+        showTips(msg, color) {
+            this.tipColor = color
             this.$refs.toast.showTips({
-                msg: tipMsg,
+                msg: msg,
                 duration: 2000
             })
         },

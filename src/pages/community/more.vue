@@ -11,8 +11,8 @@
         </owl-navbar>
         <posts
             class="margin-top-sm padding-lr-xs"
-            :url="'/get/post'"
-            :urlParam="tempParams"
+            :requestURL="'/get/post'"
+            :URLAttrs="URLAttrs"
             @selected="choosePost"
         ></posts>
     </view>
@@ -26,7 +26,7 @@ export default {
     name: 'more',
     data() {
         return {
-            tempParams: [],
+            URLAttrs: {},
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -51,11 +51,11 @@ export default {
         }
     },
     onLoad(option) {
-        let tempParams = {}
+        let URLAttrs = {}
         for (let key in option) {
-            tempParams[key] = option[key]
+            URLAttrs[key] = option[key]
         }
-        this.tempParams = tempParams
+        this.URLAttrs = URLAttrs
     }
 }
 </script>
