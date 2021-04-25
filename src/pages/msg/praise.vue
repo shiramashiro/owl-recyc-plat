@@ -1,56 +1,30 @@
 <template>
-    <view class="praise">
+    <view class="praise" :style="{ height: height + 'px' }">
         <view class="status_bar"> </view>
         <owl-navbar
             style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
             :config="config"
         >
             <view class="navi-content flex align-center">
-                <view>
-                    <i
-                        @click="backIntoIndex()"
-                        class="el-icon-third-fanhui"
-                    ></i>
-                </view>
+                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-lg">收到的赞</view>
             </view>
         </owl-navbar>
-        <view
-            class="items margin-tb-xs"
-            v-for="(item, index) in list"
-            :key="index"
-        >
-            <view class="flex align-center">
-                <owl-avatar
-                    class="margin-right-sm"
-                    :size="50"
-                    :src="item.url"
-                ></owl-avatar>
-
-                <view class="col-2 margin-right-sm">
-                    <view class="row-1 margin-bottom-xs">
-                        {{ item.name }}
-                        <text class="margin-left-xs text-gray"
-                            >赞了我的评论</text
-                        >
-                    </view>
-                    <view class="row-2 margin-bottom-xs">
-                        {{ item.detail }}
-                    </view>
-                    <view class="row-3 text-xs text-gray">
-                        {{ item.time }}
-                    </view>
-                </view>
-            </view>
-        </view>
+        <praise-panel></praise-panel>
     </view>
 </template>
 
 <script>
+import PraisePanel from '@/components/msg/praise-panel.vue'
+
 export default {
     name: 'praise',
+    components: {
+        PraisePanel
+    },
     data() {
         return {
+            height: 0,
             config: {
                 splitLine: false,
                 isFixed: false,
@@ -58,38 +32,15 @@ export default {
                 isCustom: true,
                 tansparent: false,
                 isImmersive: false
-            },
-            list: [
-                {
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
-                    name: 'scroll',
-                    time: '2小时前',
-                    detail: '在B站为止迄今收到最多的赞'
-                },
-                {
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
-                    name: 'scroll',
-                    time: '2小时前',
-                    detail: '在B站为止迄今收到最多的赞'
-                },
-                {
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
-                    name: 'scroll',
-                    time: '2小时前',
-                    detail: '在B站为止迄今收到最多的赞'
-                },
-                {
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
-                    name: 'scroll',
-                    time: '2小时前',
-                    detail: '在B站为止迄今收到最多的赞'
-                }
-            ]
+            }
         }
+    },
+    mounted() {
+        uni.getSystemInfo({
+            success: res => {
+                this.height = res.windowHeight
+            }
+        })
     },
     methods: {
         backIntoIndex() {
@@ -102,24 +53,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.status_bar {
-    height: var(--status-bar-height);
-    width: 100%;
-}
+.praise {
+    background-color: #f8f8f8;
 
-.navi-content {
-    height: 100%;
-}
+    .status_bar {
+        height: var(--status-bar-height);
+        width: 100%;
+    }
 
-.items {
-    width: 100%;
-    border-bottom: 1rpx solid #f1f0f0;
-  height: 160rpx;
-}
-.row-2{
-  margin-top: 20rpx;
-}
-.row-3{
-  margin-top: 20rpx;
+    .navi-content {
+        height: 100%;
+    }
 }
 </style>
