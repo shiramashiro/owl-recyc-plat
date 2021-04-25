@@ -119,11 +119,11 @@ export default {
                         }
                     })
                     .then(resp => {
-                        if (resp.data.object != null) {
-                            this.avatarUrl = resp.data.object
-                        } else {
+                        if (resp.data.object == null) {
                             this.showTips('请检查手机号是否错误！', '#EB0909')
+                            return
                         }
+                        this.avatarUrl = resp.data.object
                     })
                     .catch(error => {
                         this.showTips('服务器错误', '#EB0909')
@@ -137,20 +137,20 @@ export default {
                     password: this.pwdValue
                 })
                 .then(res => {
-                    if (res.data.code === 200) {
-                        this.$store.commit('setUserInfo', res.data.object)
-                        this.showTips('登陆成功~', '#19BE6B')
-                        setTimeout(() => {
-                            uni.switchTab({
-                                url: '/pages/mine/mine'
-                            })
-                        }, 2100)
-                    } else {
+                    if (res.data.code !== 200) {
                         this.showTips(
                             '登陆失败~请检查密码是否错误！',
                             '#EB0909'
                         )
+                        return
                     }
+                    this.$store.commit('setUserInfo', res.data.object)
+                    this.showTips('登陆成功~', '#19BE6B')
+                    setTimeout(() => {
+                        uni.switchTab({
+                            url: '/pages/mine/mine'
+                        })
+                    }, 2100)
                 })
                 .catch(error => {
                     this.showTips('服务器错误', '#EB0909')

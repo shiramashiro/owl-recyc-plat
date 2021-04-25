@@ -151,12 +151,11 @@ export default {
                         tagType: this.radios[this.radioCurrent].value
                     })
                     .then(resp => {
-                        console.log(resp)
-                        if (resp.status === 200) {
-                            this.showTips('发表成功~', '#19BE6B')
-                        } else {
+                        if (resp.status !== 200) {
                             this.showTips('发表失败！', '#EB0909')
+                            return
                         }
+                        this.showTips('发表成功~', '#19BE6B')
                     })
                     .catch(error => {
                         this.showTips('服务器错误，发表失败！', '#EB0909')

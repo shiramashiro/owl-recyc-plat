@@ -139,9 +139,9 @@ export default {
                 .then(res => {
                     if (res.data.code === 400) {
                         this.showTips('存在相同的手机号，注册失败！', '#EB0909')
-                    } else {
-                        this.showTips('注册成功，返回登陆吧！', '#19BE6B')
+                        return
                     }
+                    this.showTips('注册成功，返回登陆吧！', '#19BE6B')
                 })
                 .catch(error => {
                     this.showTips('服务器错误', '#EB0909')
