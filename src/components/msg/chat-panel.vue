@@ -131,4 +131,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.cu-list{
+  border-bottom: 0.5rpx solid #faf8f8;
+}
+</style>

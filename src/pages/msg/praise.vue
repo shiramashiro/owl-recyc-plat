@@ -26,6 +26,7 @@
                     :size="50"
                     :src="item.url"
                 ></owl-avatar>
+
                 <view class="col-2 margin-right-sm">
                     <view class="row-1 margin-bottom-xs">
                         {{ item.name }}
@@ -113,5 +114,12 @@ export default {
 .items {
     width: 100%;
     border-bottom: 1rpx solid #f1f0f0;
+  height: 160rpx;
+}
+.row-2{
+  margin-top: 20rpx;
+}
+.row-3{
+  margin-top: 20rpx;
 }
 </style>

@@ -90,9 +90,9 @@ export default {
             tipColor: '#19BE6B'
         }
     },
-    onReady() {
+    onReady() { //相当于mounted
         uni.getSystemInfo({
-            success: res => {
+            success: res => {  //获取对象
                 this.height = res.windowHeight
                 this.width = res.windowWidth * 0.7
             }

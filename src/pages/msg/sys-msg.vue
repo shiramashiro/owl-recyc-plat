@@ -12,6 +12,8 @@
                 <view class="margin-left-lg text-lg">系统消息</view>
             </view>
         </owl-navbar>
+
+
         <view class="items" v-for="(item, index) in list" :key="index">
             <view class="title">{{ item.title }}</view>
             <view class="detail">
@@ -20,6 +22,8 @@
             </view>
             <view class="time">{{ item.time }}</view>
         </view>
+
+
     </view>
 </template>
 
@@ -96,8 +100,12 @@ export default {
     color: deeppink;
 }
 .items {
-    width: 100%;
-    border-bottom: 1px #eae8e8 solid;
+    width: 95%;
+    border: 1px #eae8e8 solid;
+    margin: 20rpx auto;
+    border-radius:16rpx ;
+    box-shadow: 3px 3px 3px #e8e3e3;
+
 }
 .title {
     font-weight: bold;
