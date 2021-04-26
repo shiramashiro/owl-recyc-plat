@@ -122,7 +122,7 @@ export default {
             type: String,
             default: '#fff'
         },
-        // swipe插入的内容对象
+        // swipe插入的内容
         content: {
             type: Object,
             required: false
