@@ -1,14 +1,13 @@
 <template>
     <view class="homepage">
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center padding-lr-xs">
-                <image
-                    style="width: 70rpx; height: 70rpx"
-                    @click="backIntoIndex()"
-                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
-                ></image>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar>
+            <image
+                class="margin-left-sm"
+                style="width: 70rpx; height: 70rpx"
+                @click="backIntoIndex()"
+                src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
+            ></image>
+        </tui-navigation-bar>
         <view class="row-1">
             <image
                 class="image"

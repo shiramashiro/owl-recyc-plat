@@ -4,8 +4,7 @@
         :class="{
             'tui-bar-line': opacity > 0.85 && splitLine,
             'tui-navbar-fixed': isFixed,
-            'tui-backdrop__filter': backdropFilter && dropDownOpacity > 0,
-            'custom-immerse': isCustomImmerse
+            'tui-backdrop__filter': backdropFilter && dropDownOpacity > 0
         }"
         :style="{
             height: height + 'px',
@@ -14,6 +13,7 @@
             zIndex: isFixed ? zIndex : 'auto'
         }"
     >
+        <view class="status_bar"> </view>
         <view
             class="tui-status-bar"
             :style="{ height: statusBarHeight + 'px' }"
@@ -30,7 +30,9 @@
         >
             {{ title }}
         </view>
-        <slot></slot>
+        <view style="height: 100%" class="tui-nav-content flex align-center">
+            <slot />
+        </view>
     </view>
 </template>
 
@@ -61,7 +63,7 @@ export default {
         //是否设置不透明度
         isOpacity: {
             type: Boolean,
-            default: true
+            default: false
         },
         //不透明度最大值 0-1
         maxOpacity: {
@@ -98,7 +100,7 @@ export default {
         },
         isFixed: {
             type: Boolean,
-            default: true
+            default: false
         },
         //是否开启高斯模糊效果[仅在支持的浏览器有效果]
         backdropFilter: {
@@ -114,11 +116,6 @@ export default {
         zIndex: {
             type: [Number, String],
             default: 9998
-        },
-        //是否开启自定义沉浸式
-        isCustomImmerse: {
-            type: Boolean,
-            default: false
         }
     },
     watch: {
@@ -240,10 +237,9 @@ export default {
 </script>
 
 <style scoped>
-.custom-immerse {
-    position: absolute;
-    z-index: 9998 !important;
-    background-color: rgba(255, 255, 255, 0) !important;
+.status_bar {
+    height: var(--status-bar-height);
+    width: 100%;
 }
 
 .tui-navigation-bar {

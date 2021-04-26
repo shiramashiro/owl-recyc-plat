@@ -1,7 +1,6 @@
 <template>
     <view class="make-post">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
+        <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-gray text-sm">
@@ -19,7 +18,7 @@
                     </tui-button>
                 </view>
             </view>
-        </owl-navbar>
+        </tui-navigation-bar>
         <view class="title padding-tb-sm margin-lr-sm">
             <input
                 @input="onTitleKeyInput"
@@ -84,15 +83,6 @@ export default {
                     value: 'discussion'
                 }
             ],
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
-            },
             isDisabled: false,
             tipColor: '#19BE6B',
             titleValue: '',
@@ -100,6 +90,10 @@ export default {
             radioCurrent: 0
         }
     },
+    /**
+     * 当该组件被挂载时，判断vuex的用户数据是否为空，
+     * 否则提示用户前去登陆，并且发布按钮不可用。
+     */
     mounted() {
         if (JSON.stringify(this.$store.state.userInfo) === '{}') {
             this.showTips('你还没有登陆哟~', '#EB0909')
@@ -112,6 +106,9 @@ export default {
                 url: '/pages/community/community'
             })
         },
+        /**
+         * 当键盘输入时，判断标题和内容是否有值，否则不允许使用发布按钮。
+         */
         onTitleKeyInput() {
             this.estimate()
         },
@@ -125,6 +122,9 @@ export default {
                 this.isDisabled = true
             }
         },
+        /**
+         * 点击radio时获取当前radio信息
+         */
         radioChange(evt) {
             for (let index = 0; i < this.radios.length; index++) {
                 if (this.radios[index].value === evt.target.value) {
@@ -133,6 +133,9 @@ export default {
                 }
             }
         },
+        /**
+         * 显示消息提示
+         */
         showTips(msg, color) {
             this.tipColor = color
             this.$refs.toast.showTips({
@@ -140,8 +143,13 @@ export default {
                 duration: 2000
             })
         },
+        /**
+         * 当点击发布按钮时，开始将文章插入到数据库中。
+         */
         publishPost() {
+            // 判断输入的标题和内容是否为''值
             if (this.titleValue !== '' && this.contentValue !== '') {
+                // 发起异步请求，提交表单数据，将文章数据提交给后台处理。
                 this.$axios
                     .post('/set/post', {
                         title: this.titleValue,
@@ -151,16 +159,20 @@ export default {
                         tagType: this.radios[this.radioCurrent].value
                     })
                     .then(resp => {
+                        // 除200以外的情况进入if体。
                         if (resp.status !== 200) {
                             this.showTips('发表失败！', '#EB0909')
                             return
                         }
+                        // 200的情况进入这一步
                         this.showTips('发表成功~', '#19BE6B')
                     })
                     .catch(error => {
+                        // 服务器错误时提示消息
                         this.showTips('服务器错误，发表失败！', '#EB0909')
                     })
             } else {
+                // 如果插入的标题和文字内容为空，点击按钮时会提示消息发表失败。
                 this.isDisabled = true
                 this.showTips('发表失败！请输入内容~', '#EB0909')
             }
@@ -171,13 +183,8 @@ export default {
 
 <style lang="scss" scoped>
 .make-post {
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
     .navi-content {
-        height: 100%;
+        width: 100%;
     }
 
     .title {

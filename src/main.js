@@ -19,7 +19,6 @@ Axios.interceptors.response.use(config => {
 import OwlTag from '@/components/owl-tag.vue'
 import OWlImgs from '@/components/owl-imgs.vue'
 import OwlFiche from '@/components/owl-fiche.vue'
-import OwlNavbar from '@/components/owl-navbar.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
@@ -29,7 +28,6 @@ Vue.component('owl-tag', OwlTag)
 Vue.component('owl-imgs', OWlImgs)
 Vue.component('owl-fiche', OwlFiche)
 Vue.component('owl-avatar', OwlAvatar)
-Vue.component('owl-navbar', OwlNavbar)
 Vue.component('owl-comment', OwlComment)
 Vue.component('owl-make-comment', OwlMakeComment)
 

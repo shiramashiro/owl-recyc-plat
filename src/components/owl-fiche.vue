@@ -64,20 +64,21 @@ export default {
         // 点击更多，跳转的页面URL
         navigateTo: {
             type: String,
-            required: false,
             default: ''
         },
-        // URL参数
+        // 是否携带参数？不携带不传入即可
         URLAttrs: {
             type: Array,
-            required: false
+            default() {
+                return []
+            }
         },
         // 背景颜色
         bgColor: {
             type: String,
             default: 'white'
         },
-        // icon图标
+        // icon图标URL地址
         iconPath: {
             type: String,
             default: ''
@@ -109,6 +110,12 @@ export default {
         }
     },
     methods: {
+        /**
+         * 组装从父组件传递过来的URLAttrs和navigateTo，
+         * 由于参数是多个的，所以涉及到拼接字符串的工作。
+         *
+         * 当参数大于1就代表有至少两个参数，当参数小于1就代表只有一个参数。
+         */
         display() {
             // 临时传入一个变量，避免Vue报错
             let confirmedURL = this.navigateTo

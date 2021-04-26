@@ -1,12 +1,9 @@
 <template>
     <view class="recovery-detail">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">回收点详细</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar>
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">回收点详细</view>
+        </tui-navigation-bar>
         <view class="recovery-wrap margin-lr-xs margin-top-xs">
             <view class="recovery-info">
                 <image mode="aspectFill" :src="recovery.url"></image>
@@ -107,15 +104,6 @@ export default {
 <style lang="scss" scoped>
 .recovery-detail {
     background-color: rgb(248, 248, 248);
-
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
 
     .recovery-wrap {
         .recovery-info {

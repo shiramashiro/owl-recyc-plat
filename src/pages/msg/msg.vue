@@ -97,7 +97,7 @@ export default {
                 {
                     url: '/pages/msg/notify',
                     name: '系统通知',
-                    image: require('@/static/sys-msg.png')
+                    image: require('@/static/notify.png')
                 }
             ],
             chats: [

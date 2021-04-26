@@ -1,12 +1,9 @@
 <template>
     <view class="signin">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">登录</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar :isOpacity="true">
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">登录</view>
+        </tui-navigation-bar>
         <view
             class="signin-wrap flex align-center justify-center"
             :style="{ height: height + 'px' }"
@@ -91,9 +88,11 @@ export default {
             tipColor: '#19BE6B'
         }
     },
-    onReady() { //相当于mounted
+    onReady() {
+        //相当于mounted
         uni.getSystemInfo({
-            success: res => {  //获取对象
+            success: res => {
+                //获取对象
                 this.height = res.windowHeight
                 this.width = res.windowWidth * 0.7
             }
@@ -191,15 +190,6 @@ export default {
 
 .signin {
     background-color: #f8f8f8;
-}
-
-.status_bar {
-    height: var(--status-bar-height);
-    width: 100%;
-}
-
-.navi-content {
-    height: 100%;
 }
 
 .help {

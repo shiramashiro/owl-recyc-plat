@@ -1,11 +1,9 @@
 <template>
     <view class="signup">
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">注册</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar :isOpacity="true">
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">注册</view>
+        </tui-navigation-bar>
         <view
             class="container flex align-center justify-center"
             :style="{ height: height + 'px' }"
@@ -162,15 +160,6 @@ export default {
 <style lang="css" scoped>
 .signup {
     background-color: #f8f8f8;
-}
-
-.status_bar {
-    height: var(--status-bar-height);
-    width: 100%;
-}
-
-.navi-content {
-    height: 100%;
 }
 
 .signup-input {

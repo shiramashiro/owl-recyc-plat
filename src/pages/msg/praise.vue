@@ -1,15 +1,9 @@
 <template>
     <view class="praise" :style="{ height: height + 'px' }">
-        <view class="status_bar"> </view>
-        <owl-navbar
-            style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;"
-            :config="config"
-        >
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">收到的赞</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;">
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">收到的赞</view>
+        </tui-navigation-bar>
         <view class="praise-panel">
             <view
                 v-for="(item, index) in praiseItmes"
@@ -127,15 +121,6 @@ export default {
 <style lang="scss" scoped>
 .praise {
     background-color: #f8f8f8;
-
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
 
     .praise-panel {
         .item {
