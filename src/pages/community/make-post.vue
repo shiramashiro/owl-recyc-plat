@@ -1,7 +1,6 @@
 <template>
     <view class="make-post">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
+        <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
                 <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
                 <view class="margin-left-lg text-gray text-sm">
@@ -10,7 +9,7 @@
                 <view class="post-btn margin-right-sm">
                     <tui-button
                         @click="publishPost"
-                        plain
+                        :disabled="isDisabled"
                         :width="'110rpx'"
                         :height="'40rpx'"
                         :size="20"
@@ -19,9 +18,10 @@
                     </tui-button>
                 </view>
             </view>
-        </owl-navbar>
+        </tui-navigation-bar>
         <view class="title padding-tb-sm margin-lr-sm">
             <input
+                @input="onTitleKeyInput"
                 v-model="titleValue"
                 placeholder-style="font-size: 32rpx; color: #ccc"
                 maxlength="50"
@@ -30,6 +30,7 @@
         </view>
         <view class="content padding-tb-sm margin-lr-sm">
             <textarea
+                @input="onContentKeyInput"
                 v-model="contentValue"
                 placeholder-style="font-size: 28rpx; color: #ccc"
                 style="width: 100%"
@@ -59,6 +60,7 @@
         <view class="options margin-top-sm padding-lr-sm">
             开发中...
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -81,18 +83,21 @@ export default {
                     value: 'discussion'
                 }
             ],
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
-            },
+            isDisabled: false,
+            tipColor: '#19BE6B',
             titleValue: '',
             contentValue: '',
             radioCurrent: 0
+        }
+    },
+    /**
+     * 当该组件被挂载时，判断vuex的用户数据是否为空，
+     * 否则提示用户前去登陆，并且发布按钮不可用。
+     */
+    mounted() {
+        if (JSON.stringify(this.$store.state.userInfo) === '{}') {
+            this.showTips('你还没有登陆哟~', '#EB0909')
+            this.isDisabled = true
         }
     },
     methods: {
@@ -101,23 +106,76 @@ export default {
                 url: '/pages/community/community'
             })
         },
-        radioChange: function(evt) {
-            for (let i = 0; i < this.radios.length; i++) {
-                if (this.radios[i].value === evt.target.value) {
-                    this.radioCurrent = i
+        /**
+         * 当键盘输入时，判断标题和内容是否有值，否则不允许使用发布按钮。
+         */
+        onTitleKeyInput() {
+            this.estimate()
+        },
+        onContentKeyInput() {
+            this.estimate()
+        },
+        estimate() {
+            if (this.titleValue !== '' && this.contentValue !== '') {
+                this.isDisabled = false
+            } else {
+                this.isDisabled = true
+            }
+        },
+        /**
+         * 点击radio时获取当前radio信息
+         */
+        radioChange(evt) {
+            for (let index = 0; i < this.radios.length; index++) {
+                if (this.radios[index].value === evt.target.value) {
+                    this.radioCurrent = index
                     break
                 }
             }
         },
+        /**
+         * 显示消息提示
+         */
+        showTips(msg, color) {
+            this.tipColor = color
+            this.$refs.toast.showTips({
+                msg: msg,
+                duration: 2000
+            })
+        },
+        /**
+         * 当点击发布按钮时，开始将文章插入到数据库中。
+         */
         publishPost() {
-            let post = {
-                content: this.contentValue,
-                title: this.titleValue,
-                tagName: this.radios[this.radioCurrent].name,
-                tagType: this.radios[this.radioCurrent].value,
-                userId: 1
+            // 判断输入的标题和内容是否为''值
+            if (this.titleValue !== '' && this.contentValue !== '') {
+                // 发起异步请求，提交表单数据，将文章数据提交给后台处理。
+                this.$axios
+                    .post('/set/post', {
+                        title: this.titleValue,
+                        content: this.contentValue,
+                        userId: this.$store.state.userInfo.id,
+                        tagName: this.radios[this.radioCurrent].name,
+                        tagType: this.radios[this.radioCurrent].value
+                    })
+                    .then(resp => {
+                        // 除200以外的情况进入if体。
+                        if (resp.status !== 200) {
+                            this.showTips('发表失败！', '#EB0909')
+                            return
+                        }
+                        // 200的情况进入这一步
+                        this.showTips('发表成功~', '#19BE6B')
+                    })
+                    .catch(error => {
+                        // 服务器错误时提示消息
+                        this.showTips('服务器错误，发表失败！', '#EB0909')
+                    })
+            } else {
+                // 如果插入的标题和文字内容为空，点击按钮时会提示消息发表失败。
+                this.isDisabled = true
+                this.showTips('发表失败！请输入内容~', '#EB0909')
             }
-            this.$axios.post('/set/post', post)
         }
     }
 }
@@ -125,13 +183,8 @@ export default {
 
 <style lang="scss" scoped>
 .make-post {
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
     .navi-content {
-        height: 100%;
+        width: 100%;
     }
 
     .title {

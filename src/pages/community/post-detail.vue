@@ -1,17 +1,9 @@
 <template>
     <view class="post-detail">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <view>
-                    <i
-                        @click="backIntoIndex()"
-                        class="el-icon-third-fanhui"
-                    ></i>
-                </view>
-                <view class="margin-left-lg text-df text-gray">帖子详情</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar>
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg">帖子详情</view>
+        </tui-navigation-bar>
         <view class="post-panel margin-top-sm padding-top-sm padding-lr-sm">
             <view class="row-1 flex align-center justify-between">
                 <view class="col-1 flex align-center">
@@ -167,15 +159,6 @@ export default {
 <style lang="scss" scoped>
 .post-detail {
     background-color: rgb(248, 248, 248);
-
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
 
     .post-panel {
         background-color: white;

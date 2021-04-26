@@ -65,11 +65,13 @@
 export default {
     name: 'posts',
     props: {
-        url: {
+        // 请求URL地址
+        requestURL: {
             type: String,
             required: true
         },
-        urlParam: {
+        // 请求参数，可以不传入，不传入代表查询所有的帖子
+        URLAttrs: {
             type: Object,
             required: false
         }
@@ -80,14 +82,11 @@ export default {
         }
     },
     mounted() {
-        if (JSON.stringify(this.urlParam) !== '{}') {
-            let tempParams = {}
-            for (let key in this.urlParam) {
-                tempParams[key] = this.urlParam[key]
-            }
+        // 如果父组件传递过来的参数不为空，则发起请求时顺带提交参数。
+        if (JSON.stringify(this.URLAttrs) !== '{}') {
             this.$axios
-                .get(this.url, {
-                    params: tempParams
+                .get(this.requestURL, {
+                    params: this.URLAttrs
                 })
                 .then(resp => {
                     this.posts = resp.data
@@ -96,8 +95,9 @@ export default {
                     console.log(error)
                 })
         } else {
+            // 没有参数传递则查询所有的帖子
             this.$axios
-                .get(this.url)
+                .get(this.requestURL)
                 .then(resp => {
                     this.posts = resp.data
                 })
@@ -108,9 +108,14 @@ export default {
     },
     methods: {
         handleClick(item, index) {
+            // 如果组件给了自定义函数selected，就回传点击之后的帖子的信息
             this.$emit('selected', {
                 item: item,
                 index: index
+            })
+            // 当点击帖子时，跳转对应ID的帖子
+            uni.navigateTo({
+                url: '/pages/community/post-detail?id=' + item.id
             })
         }
     }

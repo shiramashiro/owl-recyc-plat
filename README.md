@@ -2,11 +2,15 @@
 
 # 开发说明
 
-主题色为：#87cefa
+主题值色：rgb(135, 206, 250) 或 #87cefa
+
+白色背景色值：rgb(248, 248, 248) 或 #f8f8f8
+
+分割线色值：rgb(240, 240, 240) 或 #f0f0f0
 
 ## CSS
 
-使用 SCSS 预处理代替 CSS，SCSS 的属性和 CSS 属性完全一致，但需要注意的是 SCSS 注重层次，可查看其他`.vue`中的用法。
+使用 SCSS 预处理代替 CSS，SCSS 的属性和 CSS 属性完全一致，但需要注意的是 SCSS 注重层次。
 
 ## 命名规范
 
@@ -18,15 +22,15 @@
 
 # 组件说明
 
-**最近更新时间：2021 年 4 月 20 日 00:43:41**
+**最近更新时间：2021 年 4 月 26 日 17:40:03**
 
-已将所有公共组件名改为 owl-xxx.vue，并已全局注册，直接使用即可，无需导入。
+公共组件名为 owl-xxx.vue，并已全局注册，直接使用。
 
 ## 修改 owl-fiche.vue
 
 主要作用是复用首页每一个服务入口的卡片
 
-删除 isDisplay 参数，在组件内判断是否传入 url，即为开启更多按钮的跳转地址。
+删除 isDisplay 参数，在组件内判断是否传入 url，即为开启“更多”按钮的跳转地址。
 
 ## 修改 owl-make-comment.vue
 
@@ -39,13 +43,23 @@
 ##sign.vue
 主要内容 登录界面
 
-## 新增 phone.vue
+## 修改 signin.vue
 
-主要内容是 短信登录和密码登录的切换 界面
+当点击输入框时，添加底部的阴影效果，增强用户交互体验。
+
+用户输入完手机号时，如果查询到此用户的头像，就将默认头像替换为当前头像，否则仍旧以默认头像为准。
+
+## 新增 signup.vue
+
+注册页面
+
+## 删除 caskets.vue
+
+因为重复造轮子，所以删除了此组件，直接融合到了 index.vue 中。
 
 # 数据结构
 
-**最近更新时间：2021 年 4 月 22 日 00:31:09**
+**最近更新时间：2021 年 4 月 23 日 13:40:56**
 
 ## 书籍数据
 
@@ -59,9 +73,9 @@
     "desc": "", // 书籍介绍
     "img": [
         {
-            "id": 0,
-            "imgUrl": "",
-            "belogngedId": 0
+            "id": 0, // 图片ID
+            "imgUrl": "", // 图片url地址
+            "belogngedId": 0 // 图片所属书籍ID
         }
     ],
 }
@@ -71,8 +85,8 @@
 
 ```json
 {
-    "id": 1,
-    "level": 0,
+    "id": 1, // 用户ID
+    "level": 0, // 用户等级
     "username": "", // 用户名
     "password": "", // 密码
     "avatar": "", // 头像地址
@@ -95,8 +109,8 @@
     "agree": 0, // 点赞数
     "disagree": 0, // 反对数
     "user": {
-        "id": 0,
-        "level": 0,
+        "id": 0, // 用户ID
+        "level": 0, // 用户等级
         "username": "", // 用户名
         "nickname": "", // 社区名
         "password": "", // 密码
@@ -122,9 +136,9 @@
     "closeTime": "", // 关门时间
     "img": [
         {
-            "id": 0,
-            "imgUrl": "",
-            "belogngedId": 0
+            "id": 0, // 图片ID
+            "imgUrl": "", // 图片url地址
+            "belogngedId": 0 // 图片所属回收点ID
         }
     ],
     "comment": [
@@ -137,8 +151,8 @@
             "agree": 0, // 点赞数
             "disagree": 0, // 反对数
             "user": {
-                "id": 0,
-                "level": 0,
+                "id": 0, // 用户ID
+                "level": 0, // 用户等级
                 "username": "", // 用户名
                 "nickname": "", // 社区名
                 "password": "", // 密码
@@ -155,17 +169,21 @@
 
 # 接口说明
 
-**最近更新时间：2021 年 4 月 22 日 00:30:21**
+**最近更新时间：2021 年 4 月 23 日 13:38:33**
 
-## 获取书籍接口
-
-GET 方法
+## 获取书籍
 
 ```http
 http://120.77.245.208:8070/get/book?type=
 ```
 
-type 可选值：all | living | technology | social | business | literature | art | education | children
+请求方式：GET
+
+参数说明：
+
+all | living | technology | social | business | literature | art | education | children
+
+每一个参数值都是对应书籍的类型，通过类型查询书籍。
 
 ## 发表评论
 
@@ -225,6 +243,60 @@ http://120.77.245.208:8070/set/view
 1. id 代表被点赞或反对的评论的用户 ID；
 2. type 代表当前评论是书籍评论，还是社区评论，还是回收点评论;
 3. viewType 代表用户点赞评论是赞同还是反对。
+
+## 登陆
+
+```http
+http://120.77.245.208:8070/signin
+```
+
+请求方式：POST
+
+参数结构：
+
+```javascript
+{
+    "phone": "1111111111",
+    "password": "xxxxxxxxx"
+}
+```
+
+参数说明：phone 和 password 是登陆必须字段，且只能传入这两个字段才能进行登录业务。
+
+## 注册
+
+```http
+http://120.77.245.208:8070/signup
+```
+
+请求方式：POST
+
+参数结构：
+
+```javascript
+{
+    "phone": "1111111111",
+    "password": "xxxxxxxxx",
+    "username": "xxxx"
+}
+```
+
+参数说明：phone、password 和 username 是注册必须字段，且只能传入这三个字段才能进行注册业务。
+
+注意：
+
+1. 如果数据库中存在了相同的手机号，就会返回 400 状态响应码和消息；
+2. 如果数据库中没有存在相同的手机号，就会返回 200 状态响应码和消息。
+
+## 获取头像
+
+```http
+http://120.77.245.208:8070/get/signin/avatar?phone=
+```
+
+请求方式：GET
+
+参数说明：根据 phone 查询用户的头像地址
 
 # 目录结构
 
@@ -289,4 +361,4 @@ git branch -d [特性分支名]
 git push origin develop
 ```
 
-Created By "猫头鹰小组"
+由 "猫头鹰小组" 创建

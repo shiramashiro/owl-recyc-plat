@@ -1,19 +1,15 @@
 <template>
     <view class="more">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-gray text-df">
-                    更多
-                </view>
+        <tui-navigation-bar>
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-gray text-df">
+                更多
             </view>
-        </owl-navbar>
+        </tui-navigation-bar>
         <posts
             class="margin-top-sm padding-lr-xs"
-            :url="'/get/post'"
-            :urlParam="tempParams"
-            @selected="choosePost"
+            :requestURL="'/get/post'"
+            :URLAttrs="params"
         ></posts>
     </view>
 </template>
@@ -26,16 +22,7 @@ export default {
     name: 'more',
     data() {
         return {
-            tempParams: [],
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
-            }
+            params: {}
         }
     },
     methods: {
@@ -43,19 +30,22 @@ export default {
             uni.switchTab({
                 url: '/pages/community/community'
             })
-        },
-        choosePost(info) {
-            uni.navigateTo({
-                url: '/pages/community/post-detail?id=' + info.item.id
-            })
         }
     },
+    /**
+     * 从community的“官方贴”和“全社热帖”跳转过来时，接收一个参数对象。
+     * 注意：这个不是数组，而是对象，建议通过consloe打印查看结构。
+     *
+     * 这是由owl-fiche.vue的display函数处理过后传来的对象。
+     * 可能接收的字段有limitNum、browseNum和id，其他字段都是无效的。
+     * 接收到参数对象之后，需要把这个对象转交给posts组件，查询帖子数据。
+     *
+     * @param limitNum 限制查询帖子的数量
+     * @param browseNum 通过帖子浏览数查询帖子
+     * @param id 通过帖子id查询帖子
+     */
     onLoad(option) {
-        let tempParams = {}
-        for (let key in option) {
-            tempParams[key] = option[key]
-        }
-        this.tempParams = tempParams
+        this.params = option
     }
 }
 </script>
@@ -63,14 +53,5 @@ export default {
 <style lang="scss" scoped>
 .more {
     background-color: rgb(248, 248, 248);
-
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
 }
 </style>

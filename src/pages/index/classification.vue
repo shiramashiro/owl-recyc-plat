@@ -1,12 +1,9 @@
 <template>
     <view class="classification">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">二手书籍分类</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar>
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">二手书籍分类</view>
+        </tui-navigation-bar>
         <books :data="books" @selected="chooseBook"></books>
     </view>
 </template>
@@ -19,16 +16,7 @@ export default {
     components: { Books },
     data() {
         return {
-            books: [],
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
-            }
+            books: []
         }
     },
     onLoad(option) {
@@ -60,15 +48,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.classification {
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
-}
-</style>
+<style lang="scss" scoped></style>

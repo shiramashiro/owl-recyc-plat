@@ -1,12 +1,9 @@
 <template>
     <view class="more-recoveries">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">二手书籍分类</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar>
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">二手书籍分类</view>
+        </tui-navigation-bar>
         <recoveries
             @selected="chooseRecovery"
             class="margin-top-sm margin-lr-xs"
@@ -22,17 +19,7 @@ export default {
     name: 'MoreRecoveries',
     components: { Recoveries },
     data() {
-        return {
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
-            }
-        }
+        return {}
     },
     methods: {
         backIntoIndex() {
@@ -52,14 +39,5 @@ export default {
 <style lang="scss" scoped>
 .more-recoveries {
     background-color: rgb(248, 248, 248);
-
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
 }
 </style>

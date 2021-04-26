@@ -1,5 +1,5 @@
 <template>
-    <view class="owl-fiche margin-lr-xs">
+    <view class="owl-fiche" :class="[isLrMargin ? 'margin-lr-xs' : '']">
         <view class="owl-fiche-wrap">
             <view
                 :class="[isLrPadding ? 'padding-lr-sm' : '']"
@@ -18,7 +18,7 @@
                                 :src="iconPath"
                             ></image>
                         </template>
-                        <view>
+                        <view :style="{ fontSize: titleFontSize }">
                             {{ title }}
                         </view>
                     </view>
@@ -30,7 +30,7 @@
                     </view>
                 </view>
                 <view
-                    v-if="url !== ''"
+                    v-if="navigateTo !== ''"
                     @click="display"
                     class="text-gray text-sm"
                 >
@@ -56,63 +56,83 @@ export default {
             type: String,
             required: true
         },
-        // 子标题，可无
+        // 子标题
         subTitle: {
             type: String,
             required: false
         },
-        // 如果开启了显示更多按钮，请传入url地址跳转页面
-        url: {
+        // 点击更多，跳转的页面URL
+        navigateTo: {
             type: String,
-            default: '',
-            required: false
+            default: ''
+        },
+        // 是否携带参数？不携带不传入即可
+        URLAttrs: {
+            type: Array,
+            default() {
+                return []
+            }
         },
         // 背景颜色
         bgColor: {
             type: String,
-            required: false,
             default: 'white'
         },
-        // icon图标
+        // icon图标URL地址
         iconPath: {
             type: String,
-            required: false,
             default: ''
         },
-        isLrPadding: {
-            type: Boolean,
-            default: true
-        },
+        // icon图标宽度
         iconWidth: {
             type: String,
             default: '40rpx'
         },
+        // icon图标高度
         iconHeight: {
             type: String,
             default: '40rpx'
         },
-        urlParams: {
-            type: Array,
-            required: false
+        // 是否开启左右的margin
+        isLrMargin: {
+            type: Boolean,
+            default: true
+        },
+        // 是否开启左右padding
+        isLrPadding: {
+            type: Boolean,
+            default: true
+        },
+        // 标题字体大小，默认30rpx
+        titleFontSize: {
+            type: String,
+            default: '30rpx'
         }
     },
     methods: {
+        /**
+         * 组装从父组件传递过来的URLAttrs和navigateTo，
+         * 由于参数是多个的，所以涉及到拼接字符串的工作。
+         *
+         * 当参数大于1就代表有至少两个参数，当参数小于1就代表只有一个参数。
+         */
         display() {
-            let tempUrl = this.url
-            if (this.urlParams !== '') {
-                tempUrl += '?' + this.urlParams[0]
-                if (this.urlParams.length > 0) {
-                    for (
-                        let index = 1;
-                        index < this.urlParams.length;
-                        index++
-                    ) {
-                        tempUrl += '&' + this.urlParams[index]
-                    }
+            // 临时传入一个变量，避免Vue报错
+            let confirmedURL = this.navigateTo
+            // 获取参数的长度
+            let URLLength = this.URLAttrs.length
+            // 如果传入了参数，长度只能是大于0
+            if (URLLength > 1) {
+                // 将第一个参数的前面加上?
+                confirmedURL += '?' + this.URLAttrs[0]
+                for (let index = 1; index < URLLength; index++) {
+                    confirmedURL += '&' + this.URLAttrs[index]
                 }
+            } else {
+                confirmedURL += '?' + this.URLAttrs[0]
             }
             uni.navigateTo({
-                url: tempUrl
+                url: confirmedURL
             })
         }
     }

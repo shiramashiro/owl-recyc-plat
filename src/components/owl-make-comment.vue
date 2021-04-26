@@ -1,6 +1,5 @@
 <template>
     <view class="owl-make-comment flex justify-between">
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
         <view class="col-1 margin-right-xs">
             <view class="padding-xs input-wrap">
                 <textarea
@@ -23,6 +22,7 @@
                 发表
             </tui-button>
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -53,7 +53,8 @@ export default {
         }
     },
     methods: {
-        showToast(msg) {
+        showTips(msg, color) {
+            this.tipColor = color
             this.$refs.toast.showTips({
                 msg: msg,
                 duration: 2000
@@ -61,30 +62,30 @@ export default {
         },
         publishComment() {
             if (this.inputValue === '') {
-                this.showToast('你还没有输入任何信息！')
-                this.tipColor = '#EB0909'
+                this.showTips('你还没有输入任何信息！', '#EB0909')
+                return
+            }
+            if (JSON.stringify(this.$store.state.userInfo) === '{}') {
+                console.log('没有登录')
+                this.showTips('你还没有登陆哟~无法发表评论', '#EB0909')
                 return
             }
             this.$axios
                 .post(this.postUrl, {
-                    userId: 1,
+                    userId: this.$store.state.userInfo.id,
                     belongedId: this.belongedId,
                     content: this.inputValue,
                     type: this.urlType
                 })
                 .then(resp => {
-                    if (resp.status === 200) {
-                        this.showToast('发表成功~')
-                        this.tipColor = '#19BE6B'
-                    } else {
-                        this.showToast('发表失败！')
-                        this.tipColor = '#EB0909'
+                    if (resp.status !== 200) {
+                        this.showTips('发表失败！', '#EB0909')
+                        return
                     }
+                    this.showTips('发表成功~', '#19BE6B')
                 })
                 .catch(error => {
-                    console.log(error)
-                    this.showToast('服务器发生了错误！')
-                    this.tipColor = '#EB0909'
+                    this.showTips('服务器发生了错误！', '#EB0909')
                 })
         }
     }

@@ -1,12 +1,9 @@
 <template>
     <view class="book-detail">
-        <view class="status_bar"> </view>
-        <owl-navbar :config="config">
-            <view class="navi-content flex align-center">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
-                <view class="margin-left-lg text-lg">二手书详细</view>
-            </view>
-        </owl-navbar>
+        <tui-navigation-bar>
+            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <view class="margin-left-lg text-lg">二手书详细</view>
+        </tui-navigation-bar>
         <view class="rows margin-lr-xs">
             <view class="row-1">
                 <swiper
@@ -80,15 +77,6 @@ export default {
         return {
             currentSwiper: 0,
             swiperHeight: 0,
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
-            },
             swiperTabs: [
                 { name: '全部评论' },
                 { name: '好评' },
@@ -169,15 +157,6 @@ export default {
 <style lang="scss" scoped>
 .book-detail {
     background-color: rgb(248, 248, 248);
-
-    .status_bar {
-        height: var(--status-bar-height);
-        width: 100%;
-    }
-
-    .navi-content {
-        height: 100%;
-    }
 
     .rows {
         background-color: white;

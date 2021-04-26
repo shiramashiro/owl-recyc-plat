@@ -1,47 +1,31 @@
 <template>
     <view class="index">
-        <view class="status_bar"></view>
-        <owl-navbar :config="config">
-            <view class="nav-wrap margin-lr-lg flex justify-between">
-                <view class="col-1 flex align-center">
-                    <owl-avatar :src="user.avatar" :size="33"></owl-avatar>
-                </view>
-                <view class="col-2 flex align-center justify-center">
-                    <view class="input-wrap flex align-center">
-                        <input
-                            style="width: 100%"
-                            class="input text-sm"
-                            v-model="search"
-                            placeholder="请输入搜索关键字"
-                            type="text"
-                            maxlength="50"
-                        />
-                    </view>
-                </view>
+        <tui-navigation-bar>
+            <view class="input-wrap flex align-center padding-lr-sm">
+                <input
+                    style="width: 100%"
+                    class="input text-sm"
+                    v-model="searchValue"
+                    placeholder="请输入搜索关键字"
+                    type="text"
+                    maxlength="50"
+                />
             </view>
-        </owl-navbar>
+        </tui-navigation-bar>
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
-                <swiper-item v-for="(item, index) in slideShow" :key="index">
+                <swiper-item
+                    v-for="(carouselItem, index) in carouselMaps"
+                    :key="index"
+                >
                     <image
                         class="slide-show-image"
                         mode="aspectFit"
-                        :src="item"
+                        :src="carouselItem"
                     ></image>
                 </swiper-item>
             </swiper>
         </view>
-        <owl-fiche
-            :bgColor="'rgb(248, 248, 248)'"
-            class="margin-top-sm"
-            :iconPath="
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
-            "
-            :url="'/pages/index/more-recoveries'"
-            :title="'回收点'"
-        >
-            <recoveries @selected="chooseRecovery"></recoveries>
-        </owl-fiche>
         <owl-fiche
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
@@ -49,7 +33,48 @@
             class="margin-top-sm"
             :title="'二手市场'"
         >
-            <caskets @selected="chooseCasket"></caskets>
+            <view class="caskets flex justify-between padding-lr-sm">
+                <view
+                    class="casket padding-lr-xs margin-tb-xs flex justify-between align-center"
+                    v-for="(renderedCasketItem, index) in renderedCasketsData"
+                    :key="index"
+                    @click="
+                        navigateToClickedItem('/pages/index/classification', [
+                            'type=' + renderedCasketItem.type
+                        ])
+                    "
+                >
+                    <view class="col-1">
+                        <view
+                            class="flex align-center row-1 text-black text-bold text-df"
+                            :class="renderedCasketItem.icon"
+                        >
+                            {{ renderedCasketItem.cnTitle }}
+                        </view>
+                        <view class="row-2 text-xs text-gray">
+                            {{ renderedCasketItem.enTitle }}
+                        </view>
+                    </view>
+                    <view class="col-2">
+                        <image
+                            mode="aspectFit"
+                            class="image"
+                            :src="renderedCasketItem.cover"
+                        ></image>
+                    </view>
+                </view>
+            </view>
+        </owl-fiche>
+        <owl-fiche
+            :bgColor="'rgb(248, 248, 248)'"
+            class="margin-top-sm"
+            :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
+            "
+            :navigateTo="'/pages/index/more-recoveries'"
+            :title="'回收点'"
+        >
+            <recoveries @selected="chooseRecovery"></recoveries>
         </owl-fiche>
         <owl-fiche
             :iconPath="
@@ -59,31 +84,99 @@
             :title="'推荐'"
             class="margin-top-sm"
         >
-            <books @selected="chooseBook" :data="books"></books>
+            <books @selected="chooseBook" :data="renderedBooksData"></books>
         </owl-fiche>
     </view>
 </template>
 
 <script>
 import Recoveries from '@/components/index/recoveries.vue'
-import Caskets from '@/components/index/caskets.vue'
 import Books from '@/components/index/books.vue'
 
 export default {
     name: 'Index',
-    components: { Caskets, Recoveries, Books },
+    components: { Recoveries, Books },
     data() {
         return {
-            search: '',
-            books: [],
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false
-            },
+            // 绑定输入框的输入值
+            searchValue: '',
+            // 被渲染的书籍数据
+            renderedBooksData: [],
+            // 被渲染的九宫格数据
+            renderedCasketsData: [
+                {
+                    type: 'all',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/22894393-1_w_1.jpg',
+                    icon: 'el-icon-third-guanjun',
+                    cnTitle: '全部',
+                    enTitle: 'General List'
+                },
+                {
+                    type: 'living',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29197803-1_w_3.jpg',
+                    icon: 'el-icon-third-shiwu',
+                    cnTitle: '生活',
+                    enTitle: 'Living'
+                },
+                {
+                    type: 'technology',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27920509-1_w_26.jpg',
+                    icon: 'el-icon-third-keji',
+                    cnTitle: '科技',
+                    enTitle: 'Technology'
+                },
+                {
+                    type: 'social',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/25157989-1_u_5.jpg',
+                    icon: 'el-icon-third-shehui',
+                    cnTitle: '社会',
+                    enTitle: 'Social Sciences'
+                },
+                {
+                    type: 'business',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27932536-1_u_3.jpg',
+                    icon: 'el-icon-third-qiandai',
+                    cnTitle: '经管',
+                    enTitle: 'Business'
+                },
+                {
+                    type: 'literature',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/1901258135_ii_cover.jpg',
+                    icon: 'el-icon-third-wenxue',
+                    cnTitle: '文学',
+                    enTitle: 'Literature'
+                },
+                {
+                    type: 'art',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28470862-1_u_3.jpg',
+                    icon: 'el-icon-third-yishu',
+                    cnTitle: '艺术',
+                    enTitle: 'Art'
+                },
+                {
+                    type: 'education',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
+                    icon: 'el-icon-third-xueshimaoxuexibiye',
+                    cnTitle: '辅教',
+                    enTitle: 'Education'
+                },
+                {
+                    type: 'children',
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23684605-1_w_1.jpg',
+                    icon: 'el-icon-third-ertong',
+                    cnTitle: '童书',
+                    enTitle: "Children's Books"
+                }
+            ],
             swiperTabs: [
                 { name: '全部', type: 'all' },
                 { name: '生活', type: 'living' },
@@ -95,39 +188,46 @@ export default {
                 { name: '辅教', type: 'education' },
                 { name: '童书', type: 'children' }
             ],
-            slideShow: [
+            carouselMaps: [
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032619353510220.jpg'
-            ],
-            user: {
-                fans: 180,
-                praise: 44,
-                follows: 124,
-                username: 'kongsam',
-                profile: 'Time tick away, dream faded away!',
-                bgImage:
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/88441329_p0.jpg',
-                avatar:
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/user01.jpg'
-            }
+            ]
         }
     },
     methods: {
-        chooseCasket(info) {
+        /**
+         * 导航到被点击项的页面
+         *
+         * @param url 类型：String。作用：跳转目标页URL地址
+         * @param params 类型：Array。作用：跳转页面可能需要携带必要的参数
+         * @param info 类型：Object。作用：接收被点击项的信息
+         */
+        navigateToClickedItem(url, params, info) {
+            // 判断是否传入参数，如果小于0则说明没有传入参数
+            if (params.length > 1) {
+                url += '?' + params[0]
+                for (let index = 1; index < params.length; index++) {
+                    url += '&' + params[index]
+                }
+            } else {
+                // 传递了一个参数值
+                url += '?' + params[0]
+            }
+            // 拼接url之后传递给此方法进行跳转
             uni.navigateTo({
-                url: '/pages/index/classification?type=' + info.item.type
+                url: url
             })
         },
         chooseRecovery(info) {
-            uni.navigateTo({
-                url: '/pages/index/recovery-detail?id=' + info.item.id
-            })
+            this.navigateToClickedItem('/pages/index/recovery-detail', [
+                'id=' + info.item.id
+            ])
         },
         chooseBook(info) {
-            uni.navigateTo({
-                url: '/pages/index/book-detail?id=' + info.id
-            })
+            this.navigateToClickedItem('/pages/index/book-detail', [
+                'id=' + info.id
+            ])
         }
     },
     onLoad() {
@@ -138,7 +238,7 @@ export default {
                 }
             })
             .then(resp => {
-                this.books = resp.data
+                this.renderedBooksData = resp.data
             })
             .catch(error => {
                 console.log(error)
@@ -151,37 +251,39 @@ export default {
 .index {
     background-color: rgb(248, 248, 248);
 
-    .status_bar {
-        height: var(--status-bar-height);
+    .input-wrap {
         width: 100%;
+        border-radius: 50rpx;
+        background-color: rgb(244, 244, 244);
+        padding: 0 20rpx;
+        height: 58rpx;
     }
 
-    .nav-wrap {
-        height: 100%;
+    .input-wrap::before {
+        content: '\e623';
+        margin-right: 14rpx;
+        font-family: 'iconfont' !important;
+        font-size: 25rpx;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-        .col-1 {
-            width: 10%;
-        }
+    .caskets {
+        flex-flow: wrap;
 
-        .col-2 {
-            width: 85%;
+        .casket {
+            height: 120rpx;
+            width: 31.5%;
+            background-color: white;
+            border-radius: 16rpx;
+            border: 1rpx solid #cccc;
 
-            .input-wrap {
-                width: 100%;
-                border-radius: 50rpx;
-                background-color: rgb(244, 244, 244);
-                padding: 0 20rpx;
-                height: 58rpx;
-            }
-
-            .input-wrap::before {
-                content: '\e623';
-                margin-right: 14rpx;
-                font-family: 'iconfont' !important;
-                font-size: 25rpx;
-                font-style: normal;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
+            .col-2 {
+                .image {
+                    width: 80rpx;
+                    height: 105rpx;
+                }
             }
         }
     }

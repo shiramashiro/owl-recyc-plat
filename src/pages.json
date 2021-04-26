@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/transfer/transfer",
+            "style": {
+                "navigationBarTitleText": "转让"
+            }
+        },
+        {
             "path": "pages/community/community",
             "style": {
                 "navigationBarTitleText": "社区"
@@ -49,9 +55,9 @@
             }
         },
         {
-            "path": "pages/msg/sys-msg",
+            "path": "pages/msg/notify",
             "style": {
-                "navigationBarTitleText": "系统消息"
+                "navigationBarTitleText": "系统通知"
             }
         },
         {
@@ -67,9 +73,9 @@
             }
         },
         {
-            "path": "pages/community/secondhand",
+            "path": "pages/msg/chat",
             "style": {
-                "navigationBarTitleText": "二手书籍"
+                "navigationBarTitleText": "聊天"
             }
         },
         {
@@ -91,16 +97,21 @@
             }
         },
         {
-            "path": "pages/Sign/sign",
+            "path": "pages/entry/signin",
             "style": {
                 "navigationBarTitleText": "登录"
             }
         },
-
         {
-            "path": "pages/Sign/phone",
+            "path": "pages/entry/signup",
             "style": {
                 "navigationBarTitleText": "注册"
+            }
+        },
+        {
+            "path": "pages/mine/homepage",
+            "style": {
+                "navigationBarTitleText": "个人主页"
             }
         }
     ],
@@ -125,26 +136,32 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "static/tabbar-index.png",
-                "selectedIconPath": "static/tabbar-index.png",
+                "iconPath": "static/tabbar/index.png",
+                "selectedIconPath": "static/tabbar/index.png",
                 "text": "首页"
             },
             {
+                "pagePath": "pages/transfer/transfer",
+                "iconPath": "static/tabbar/transfer.png",
+                "selectedIconPath": "static/tabbar/transfer.png",
+                "text": "转让"
+            },
+            {
                 "pagePath": "pages/community/community",
-                "iconPath": "static/tabbar-community.png",
-                "selectedIconPath": "static/tabbar-community.png",
+                "iconPath": "static/tabbar/community.png",
+                "selectedIconPath": "static/tabbar/community.png",
                 "text": "社区"
             },
             {
                 "pagePath": "pages/msg/msg",
-                "iconPath": "static/tabbar-msg.png",
-                "selectedIconPath": "static/tabbar-msg.png",
+                "iconPath": "static/tabbar/msg.png",
+                "selectedIconPath": "static/tabbar/msg.png",
                 "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",
-                "iconPath": "static/tabbar-mine.png",
-                "selectedIconPath": "static/tabbar-mine.png",
+                "iconPath": "static/tabbar/mine.png",
+                "selectedIconPath": "static/tabbar/mine.png",
                 "text": "我的"
             }
         ]
