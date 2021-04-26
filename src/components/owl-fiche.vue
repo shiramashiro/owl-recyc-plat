@@ -64,7 +64,8 @@ export default {
         // 点击更多，跳转的页面URL
         navigateTo: {
             type: String,
-            required: false
+            required: false,
+            default: ''
         },
         // URL参数
         URLAttrs: {

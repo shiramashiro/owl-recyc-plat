@@ -2,7 +2,7 @@
     <view class="container">
         <view class="status_bar"> </view>
         <owl-navbar
-            style="box-shadow: 8rpx 8rpx 2rpx #f1f0f0;"
+            style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;"
             :config="config"
         >
             <view class="navi-content flex align-center">
