@@ -2,33 +2,7 @@
     <view class="community">
         <view class="top-wrap padding-lr-xs">
             <view class="top">
-                <view class="secondary-market-entry flex align-center">
-                    <view
-                        class="col-1 flex align-center margin-right-sm margin-left-sm"
-                    >
-                        <image src="@/static/transfered-book.png"></image>
-                    </view>
-                    <view
-                        class="col-2 flex align-center justify-between margin-tb-sm"
-                    >
-                        <view class="col-1-1">
-                            <view class="row-1 margin-bottom-xs">
-                                二手书籍转让区
-                            </view>
-                            <view class="row-2 text-gray text-sm">
-                                提高书籍利用率·减少纸张浪费
-                            </view>
-                        </view>
-                        <navigator :url="'/pages/community/secondhand'">
-                            <view
-                                class="col-1-2 text-sm flex align-center margin-right-lg"
-                            >
-                                进入
-                                <view class="more"></view>
-                            </view>
-                        </navigator>
-                    </view>
-                </view>
+                <!-- 内容，暂时没有 -->
             </view>
         </view>
         <view class="body margin-lr-xs">
@@ -115,10 +89,10 @@ export default {
         background-repeat: no-repeat;
 
         .top {
-            height: 410rpx;
+            height: 310rpx;
             position: relative;
 
-            .secondary-market-entry {
+            .content-item {
                 position: absolute;
                 width: 100%;
                 bottom: 25rpx;
