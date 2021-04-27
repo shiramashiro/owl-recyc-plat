@@ -1,12 +1,12 @@
 <template>
     <view class="signin">
-        <tui-navigation-bar :isOpacity="true">
+        <tui-navigation-bar :isFixed="true" :isOpacity="true">
             <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             <view class="margin-left-lg text-lg">登录</view>
         </tui-navigation-bar>
         <view
             class="signin-wrap flex align-center justify-center"
-            :style="{ height: height + 'px' }"
+            :style="{ height: $systemInfo.windowHeight + 'px' }"
         >
             <view class="sigin-body">
                 <view class="avatar flex align-center justify-center">
@@ -66,7 +66,6 @@ export default {
     name: 'signin',
     data() {
         return {
-            height: 0,
             width: 0,
             onPhoneSelected: false,
             onPwdSelected: false,
@@ -76,27 +75,11 @@ export default {
             isInputedPwd: false,
             avatarUrl:
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: true
-            },
             tipColor: '#19BE6B'
         }
     },
-    onReady() {
-        //相当于mounted
-        uni.getSystemInfo({
-            success: res => {
-                //获取对象
-                this.height = res.windowHeight
-                this.width = res.windowWidth * 0.7
-            }
-        })
+    mounted() {
+        this.width = this.$systemInfo.windowWidth * 0.7
     },
     methods: {
         onPwdKeyInput(evet) {

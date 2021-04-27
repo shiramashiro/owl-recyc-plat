@@ -38,14 +38,6 @@ export default {
     name: 'chat',
     data() {
         return {
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false
-            },
             chatContentValue: ''
         }
     },

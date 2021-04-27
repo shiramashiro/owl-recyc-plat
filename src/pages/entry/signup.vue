@@ -1,12 +1,12 @@
 <template>
     <view class="signup">
-        <tui-navigation-bar :isOpacity="true">
+        <tui-navigation-bar :isFixed="true" :isOpacity="true">
             <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             <view class="margin-left-lg text-lg">注册</view>
         </tui-navigation-bar>
         <view
             class="container flex align-center justify-center"
-            :style="{ height: height + 'px' }"
+            :style="{ height: $systemInfo.windowHeight + 'px' }"
         >
             <view class="wrap" :style="{ width: width + 'px' }">
                 <image
@@ -90,16 +90,7 @@ export default {
             usernameValue: '',
             width: 0,
             height: 0,
-            tipColor: '#19BE6B',
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: true
-            }
+            tipColor: '#19BE6B'
         }
     },
     methods: {
@@ -146,13 +137,8 @@ export default {
                 })
         }
     },
-    onReady() {
-        uni.getSystemInfo({
-            success: res => {
-                this.height = res.windowHeight
-                this.width = res.windowWidth * 0.7
-            }
-        })
+    mounted() {
+        this.width = this.$systemInfo.windowWidth * 0.7
     }
 }
 </script>

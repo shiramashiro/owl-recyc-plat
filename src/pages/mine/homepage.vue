@@ -1,6 +1,9 @@
 <template>
-    <view class="homepage">
-        <tui-navigation-bar>
+    <view
+        class="homepage"
+        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
+    >
+        <tui-navigation-bar :isFixed="true" :isOpacity="true">
             <image
                 class="margin-left-sm"
                 style="width: 70rpx; height: 70rpx"
@@ -89,15 +92,6 @@ export default {
     data() {
         return {
             index: 0,
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: true
-            },
             swiperTabs: [
                 { tabName: '收藏的书籍', componentName: 'CollectedBooks' },
                 { tabName: '收藏的帖子', componentName: 'CollectedPosts' }

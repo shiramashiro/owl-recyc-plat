@@ -7,9 +7,7 @@
         <view class="recovery-wrap margin-lr-xs margin-top-xs">
             <view class="recovery-info">
                 <image mode="aspectFill" :src="recovery.url"></image>
-                <view
-                    class="detail-wrap padding-lr-sm padding-bottom-sm margin-top-sm"
-                >
+                <view class="detail-wrap padding-lr-sm margin-tb-sm">
                     <view> 地址：{{ recovery.address }} </view>
                     <view>
                         营业时间：{{ recovery.openTime }} ~
@@ -25,6 +23,9 @@
                     </view>
                     <view> 回收次数：{{ recovery.times }} </view>
                     <view> 回收价：{{ recovery.price }}元 / 斤 </view>
+                </view>
+                <view class="options-wrap padding-lr-sm padding-bottom-sm">
+                    <!-- 2021年4月26日23:08:10，指派任务：回收点添加新的交互UI，指派人：yuanhang -->
                 </view>
             </view>
             <owl-fiche class="margin-top-sm" :title="'评论区'">
@@ -63,15 +64,6 @@ export default {
                         }
                     }
                 ]
-            },
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: false
             },
             holiday: ['周四', '周五'],
             commentType: 'recovery'

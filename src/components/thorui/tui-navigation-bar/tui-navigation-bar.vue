@@ -137,7 +137,7 @@ export default {
             height: 44, //header高度
             top: 0,
             scrollH: 1, //滚动总高度,计算opacity
-            opacity: 1, //0-1
+            opacity: 0, //0-1
             statusBarHeight: 0, //状态栏高度
             background: '255,255,255', //header背景色
             dropDownOpacity: 1

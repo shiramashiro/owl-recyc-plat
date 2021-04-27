@@ -135,8 +135,6 @@ export default {
 
 <style lang="scss" scoped>
 .mine {
-    background-color: #f8f8f8;
-
     .bg {
         .image {
             width: 100%;

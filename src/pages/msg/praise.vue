@@ -1,5 +1,8 @@
 <template>
-    <view class="praise" :style="{ height: height + 'px' }">
+    <view
+        class="praise"
+        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
+    >
         <tui-navigation-bar style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;">
             <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
             <view class="margin-left-lg text-lg">收到的赞</view>
@@ -47,15 +50,6 @@ export default {
     name: 'praise',
     data() {
         return {
-            height: 0,
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false
-            },
             actions: [
                 {
                     name: '删除',
@@ -97,13 +91,6 @@ export default {
                 }
             ]
         }
-    },
-    mounted() {
-        uni.getSystemInfo({
-            success: res => {
-                this.height = res.windowHeight
-            }
-        })
     },
     methods: {
         backIntoIndex() {
