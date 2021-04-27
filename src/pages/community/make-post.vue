@@ -2,7 +2,12 @@
     <view class="make-post">
         <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
-                <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+                <navigator
+                    :url="'/pages/community/community'"
+                    open-type="switchTab"
+                >
+                    <i class="el-icon-third-fanhui"></i>
+                </navigator>
                 <view class="margin-left-lg text-gray text-sm">
                     发布新帖子
                 </view>
@@ -101,11 +106,6 @@ export default {
         }
     },
     methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/community/community'
-            })
-        },
         /**
          * 当键盘输入时，判断标题和内容是否有值，否则不允许使用发布按钮。
          */

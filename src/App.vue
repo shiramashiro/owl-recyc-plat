@@ -29,7 +29,6 @@ export default {
                 Vue.prototype.$systemInfo = e
             }
         })
-        console.log(this.$systemInfo)
     }
 }
 </script>

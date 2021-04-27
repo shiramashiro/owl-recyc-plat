@@ -1,4 +1,4 @@
-export const setView = {
+export const setViewMixins = {
     data() {
         return {
             tipColor: '#19BE6B',
@@ -7,31 +7,28 @@ export const setView = {
     },
     methods: {
         expressView(info) {
-            console.log('ss')
             let clickedType = '点赞'
             if (info.type === 'disagree') clickedType = '反对'
             this.$axios
                 .post('/set/view', {
-                    type: this.commentType,
                     id: info.item.id,
-                    viewType: info.type
+                    viewType: info.type,
+                    type: this.commentType
                 })
                 .then(resp => {
-                    if (resp.status === 200) {
-                        this.showToast(clickedType + '成功~')
-                        this.tipColor = '#19BE6B'
-                    } else {
-                        this.showToast(clickedType + '失败！')
-                        this.tipColor = '#EB0909'
+                    if (resp.status !== 200) {
+                        this.showToast(clickedType + '失败！', '#EB0909')
+                        return
                     }
+                    this.showToast(clickedType + '成功~', '#19BE6B')
                 })
                 .catch(error => {
                     console.log(error)
-                    this.showToast('服务器错误！')
-                    this.tipColor = '#EB0909'
+                    this.showToast('服务器错误！', '#EB0909')
                 })
         },
-        showToast(msg) {
+        showToast(msg, color) {
+            this.tipColor = color
             this.$refs.toast.showTips({
                 msg: msg,
                 duration: 2000

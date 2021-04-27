@@ -1,14 +1,19 @@
 <template>
     <view class="signup">
         <tui-navigation-bar :isFixed="true" :isOpacity="true">
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/entry/signin'">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">注册</view>
         </tui-navigation-bar>
         <view
             class="container flex align-center justify-center"
             :style="{ height: $systemInfo.windowHeight + 'px' }"
         >
-            <view class="wrap" :style="{ width: width + 'px' }">
+            <view
+                class="wrap"
+                :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
+            >
                 <image
                     class="background"
                     mode="aspectFill "
@@ -88,8 +93,6 @@ export default {
             phoneValue: '',
             pwdValue: '',
             usernameValue: '',
-            width: 0,
-            height: 0,
             tipColor: '#19BE6B'
         }
     },
@@ -99,11 +102,6 @@ export default {
             this.$refs.toast.showTips({
                 msg: msg,
                 duration: 2000
-            })
-        },
-        backIntoIndex() {
-            uni.navigateTo({
-                url: '/pages/entry/signin'
             })
         },
         onPwdKeyInput(evet) {
@@ -136,9 +134,6 @@ export default {
                     this.showTips('服务器错误', '#EB0909')
                 })
         }
-    },
-    mounted() {
-        this.width = this.$systemInfo.windowWidth * 0.7
     }
 }
 </script>

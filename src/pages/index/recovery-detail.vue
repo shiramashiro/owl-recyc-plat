@@ -1,7 +1,9 @@
 <template>
     <view class="recovery-detail">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/index/index'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">回收点详细</view>
         </tui-navigation-bar>
         <view class="recovery-wrap margin-lr-xs margin-top-xs">
@@ -47,11 +49,12 @@
 </template>
 
 <script>
-import { setView } from '@/mixins/set-view.js'
+// 导入mixins
+import { setViewMixins } from '@/mixins/set-view.js'
 
 export default {
     name: 'RecoveryDetail',
-    mixins: [setView],
+    mixins: [setViewMixins],
     data() {
         return {
             recovery: {
@@ -67,13 +70,6 @@ export default {
             },
             holiday: ['周四', '周五'],
             commentType: 'recovery'
-        }
-    },
-    methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/index/index'
-            })
         }
     },
     onLoad(option) {

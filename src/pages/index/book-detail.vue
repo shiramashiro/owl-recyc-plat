@@ -1,7 +1,9 @@
 <template>
     <view class="book-detail">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/index/index'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">二手书详细</view>
         </tui-navigation-bar>
         <view class="rows margin-lr-xs">
@@ -68,11 +70,12 @@
 </template>
 
 <script>
-import { setView } from '@/mixins/set-view.js'
+// 导入mixins
+import { setViewMixins } from '@/mixins/set-view.js'
 
 export default {
     name: 'BookDetail',
-    mixins: [setView],
+    mixins: [setViewMixins],
     data() {
         return {
             currentSwiper: 0,
@@ -119,11 +122,6 @@ export default {
         }
     },
     methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/index/index'
-            })
-        },
         setSwiperItem(index) {
             uni.createSelectorQuery()
                 .in(this)

@@ -108,11 +108,6 @@ export default {
     },
     methods: {
         handleClick(item, index) {
-            // 如果组件给了自定义函数selected，就回传点击之后的帖子的信息
-            this.$emit('selected', {
-                item: item,
-                index: index
-            })
             // 当点击帖子时，跳转对应ID的帖子
             uni.navigateTo({
                 url: '/pages/community/post-detail?id=' + item.id

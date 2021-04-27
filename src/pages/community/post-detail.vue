@@ -1,7 +1,9 @@
 <template>
     <view class="post-detail">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg">帖子详情</view>
         </tui-navigation-bar>
         <view class="post-panel margin-top-sm padding-top-sm padding-lr-sm">
@@ -95,11 +97,12 @@
 </template>
 
 <script>
-import { setView } from '@/mixins/set-view.js'
+// 导入mixins
+import { setViewMixins } from '@/mixins/set-view.js'
 
 export default {
     name: 'post-detail',
-    mixins: [setView],
+    mixins: [setViewMixins],
     data() {
         return {
             post: {
@@ -145,13 +148,6 @@ export default {
             .catch(error => {
                 console.log(error)
             })
-    },
-    methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/community/community'
-            })
-        }
     }
 }
 </script>
