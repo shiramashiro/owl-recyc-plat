@@ -1,7 +1,12 @@
 <template>
     <view class="more">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator
+                :url="'/pages/community/community'"
+                open-type="switchTab"
+            >
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-gray text-df">
                 更多
             </view>
@@ -18,18 +23,11 @@
 import Posts from '@/components/community/posts.vue'
 
 export default {
-    components: { Posts },
     name: 'more',
+    components: { Posts },
     data() {
         return {
             params: {}
-        }
-    },
-    methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/community/community'
-            })
         }
     },
     /**

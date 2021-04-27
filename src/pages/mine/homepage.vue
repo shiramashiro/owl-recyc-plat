@@ -4,12 +4,13 @@
         :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
     >
         <tui-navigation-bar :isFixed="true" :isOpacity="true">
-            <image
-                class="margin-left-sm"
-                style="width: 70rpx; height: 70rpx"
-                @click="backIntoIndex()"
-                src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
-            ></image>
+            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+                <image
+                    class="margin-left-sm"
+                    style="width: 70rpx; height: 70rpx"
+                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
+                ></image>
+            </navigator>
         </tui-navigation-bar>
         <view class="row-1">
             <image
@@ -101,11 +102,6 @@ export default {
     methods: {
         slideTuiTab(info) {
             this.index = info.index
-        },
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/mine/mine'
-            })
         }
     }
 }

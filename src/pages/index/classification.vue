@@ -1,10 +1,12 @@
 <template>
     <view class="classification">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/index/index'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">二手书籍分类</view>
         </tui-navigation-bar>
-        <books :data="books" @selected="chooseBook"></books>
+        <books :data="books"></books>
     </view>
 </template>
 
@@ -32,18 +34,6 @@ export default {
             .catch(error => {
                 console.log(error)
             })
-    },
-    methods: {
-        chooseBook(info) {
-            uni.navigateTo({
-                url: '/pages/index/book-detail?id=' + info.id
-            })
-        },
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/index/index'
-            })
-        }
     }
 }
 </script>

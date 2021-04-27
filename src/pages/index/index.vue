@@ -12,6 +12,24 @@
                 />
             </view>
         </tui-navigation-bar>
+        <view class="tui-rolling-news">
+            <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
+            <swiper
+                vertical
+                autoplay
+                circular
+                interval="3000"
+                class="tui-swiper"
+            >
+                <swiper-item
+                    v-for="(item, index) in newsList"
+                    :key="index"
+                    class="tui-swiper-item"
+                >
+                    <view class="tui-news-item" @tap="detail">{{ item }}</view>
+                </swiper-item>
+            </swiper>
+        </view>
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
                 <swiper-item
@@ -74,7 +92,7 @@
             :navigateTo="'/pages/index/more-recoveries'"
             :title="'回收点'"
         >
-            <recoveries @selected="chooseRecovery"></recoveries>
+            <recoveries></recoveries>
         </owl-fiche>
         <owl-fiche
             :iconPath="
@@ -84,7 +102,7 @@
             :title="'推荐'"
             class="margin-top-sm"
         >
-            <books @selected="chooseBook" :data="renderedBooksData"></books>
+            <books :data="renderedBooksData"></books>
         </owl-fiche>
     </view>
 </template>
@@ -93,9 +111,13 @@
 import Recoveries from '@/components/index/recoveries.vue'
 import Books from '@/components/index/books.vue'
 
+// 导入mixins
+import { navigateToMixins } from '@/mixins/navigate-to.js'
+
 export default {
     name: 'Index',
     components: { Recoveries, Books },
+    mixins: [navigateToMixins],
     data() {
         return {
             // 绑定输入框的输入值
@@ -177,57 +199,16 @@ export default {
                     enTitle: "Children's Books"
                 }
             ],
-            swiperTabs: [
-                { name: '全部', type: 'all' },
-                { name: '生活', type: 'living' },
-                { name: '科技', type: 'technology' },
-                { name: '社会', type: 'social' },
-                { name: '经管', type: 'business' },
-                { name: '文学', type: 'literature' },
-                { name: '艺术', type: 'art' },
-                { name: '辅教', type: 'education' },
-                { name: '童书', type: 'children' }
+            newsList: [
+                '致力发展负责任的人工智能 中国发布八大治理原则',
+                '格兰仕暗示拜访拼多多后遭天猫打压，拼多多高层赞其有勇气',
+                '阿里计划将每股普通股拆为8股，增加筹资灵活性'
             ],
             carouselMaps: [
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032619353510220.jpg'
             ]
-        }
-    },
-    methods: {
-        /**
-         * 导航到被点击项的页面
-         *
-         * @param url 类型：String。作用：跳转目标页URL地址
-         * @param params 类型：Array。作用：跳转页面可能需要携带必要的参数
-         * @param info 类型：Object。作用：接收被点击项的信息
-         */
-        navigateToClickedItem(url, params, info) {
-            // 判断是否传入参数，如果小于0则说明没有传入参数
-            if (params.length > 1) {
-                url += '?' + params[0]
-                for (let index = 1; index < params.length; index++) {
-                    url += '&' + params[index]
-                }
-            } else {
-                // 传递了一个参数值
-                url += '?' + params[0]
-            }
-            // 拼接url之后传递给此方法进行跳转
-            uni.navigateTo({
-                url: url
-            })
-        },
-        chooseRecovery(info) {
-            this.navigateToClickedItem('/pages/index/recovery-detail', [
-                'id=' + info.item.id
-            ])
-        },
-        chooseBook(info) {
-            this.navigateToClickedItem('/pages/index/book-detail', [
-                'id=' + info.id
-            ])
         }
     },
     onLoad() {
@@ -288,16 +269,38 @@ export default {
         }
     }
 
+    .tui-rolling-news {
+        width: 100%;
+        padding: 12rpx 15rpx;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+
+        .tui-swiper {
+            font-size: 28rpx;
+            height: 50rpx;
+            flex: 1;
+        }
+
+        .tui-swiper-item {
+            display: flex;
+            align-items: center;
+
+            .tui-news-item {
+                line-height: 28rpx;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
     .slide-show {
         .slide-show-image {
             width: 100%;
             height: 100%;
-        }
-    }
-
-    .filter {
-        .other-tab {
-            flex-flow: row;
         }
     }
 }

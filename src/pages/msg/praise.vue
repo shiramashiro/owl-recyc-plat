@@ -4,7 +4,9 @@
         :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
     >
         <tui-navigation-bar style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;">
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/msg/msg'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">收到的赞</view>
         </tui-navigation-bar>
         <view class="praise-panel">
@@ -93,11 +95,6 @@ export default {
         }
     },
     methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/msg/msg'
-            })
-        },
         chooseSwipe(info) {
             console.log(info)
         }

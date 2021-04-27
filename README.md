@@ -21,11 +21,38 @@
 
 每个人每次都负责一个分支开发，比如某界面只在分支`feature-xxx`进行开发，避免与其他分支产生冲突，从而发生不可挽回的代码丢失风险！
 
-# 组件说明
+## 目录结构
 
-**最近更新时间：2021 年 4 月 27 日 16:09:43**
+**最近更新时间：2021 年 4 月 19 日 09:14:44**
 
-公共组件名为 owl-xxx.vue，并已全局注册，直接使用。
+目录结构大致如下：
+
+```json
+-src
+    --colorui
+    --components
+        ---community
+        ---index
+        ---mine
+        ---msg
+        ---thorui
+    --minixs
+    --pages
+        ---community
+        ---index
+        ---mine
+        ---msg
+    --static
+        ---icon
+    --store
+```
+
+1. 静态资源都存放在 static 文件夹中；
+2. colorui 和 thorui 为第三方组件库；
+3. components 存放对应页面的组件；
+4. pages 存放页面的组件，pages 跟 pages.json 配套，使用方法查阅 uni-app 官方文档。
+
+注意：pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
 
 # 接口说明
 
@@ -157,39 +184,6 @@ http://120.77.245.208:8070/get/signin/avatar?phone=
 请求方式：GET
 
 参数说明：根据 phone 查询用户的头像地址
-
-# 目录结构
-
-**最近更新时间：2021 年 4 月 19 日 09:14:44**
-
-目录结构大致如下：
-
-```json
--src
-    --colorui
-    --components
-        ---community
-        ---index
-        ---mine
-        ---msg
-        ---thorui
-    --minixs
-    --pages
-        ---community
-        ---index
-        ---mine
-        ---msg
-    --static
-        ---icon
-    --store
-```
-
-1. 静态资源都存放在 static 文件夹中；
-2. colorui 和 thorui 为第三方组件库；
-3. components 存放对应页面的组件；
-4. pages 存放页面的组件，pages 跟 pages.json 配套，使用方法查阅 uni-app 官方文档。
-
-注意：pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
 
 # 分支说明
 

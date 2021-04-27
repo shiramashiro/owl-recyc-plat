@@ -1,7 +1,9 @@
 <template>
     <view class="signin">
         <tui-navigation-bar :isFixed="true" :isOpacity="true">
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">登录</view>
         </tui-navigation-bar>
         <view
@@ -14,7 +16,7 @@
                 </view>
                 <view
                     class="user-info margin-tb-xl"
-                    :style="{ width: width + 'px' }"
+                    :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
                 >
                     <input
                         :class="[onPhoneSelected ? 'selected' : 'signin-input']"
@@ -38,7 +40,10 @@
                         placeholder="您的密码"
                     />
                 </view>
-                <view class="signin-btn" :style="{ width: width + 'px' }">
+                <view
+                    class="signin-btn"
+                    :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
+                >
                     <tui-button
                         :height="'75rpx'"
                         :size="30"
@@ -50,10 +55,12 @@
                 </view>
                 <view
                     class="help margin-top-sm flex align-center justify-between"
-                    :style="{ width: width + 'px' }"
+                    :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
                 >
                     <view class="forget-pwd" @click="forgetPwd">忘记密码?</view>
-                    <view class="signup" @click="signup">新用户注册</view>
+                    <navigator :url="'/pages/entry/signup'">
+                        <view class="signup">新用户注册</view>
+                    </navigator>
                 </view>
             </view>
         </view>
@@ -66,7 +73,6 @@ export default {
     name: 'signin',
     data() {
         return {
-            width: 0,
             onPhoneSelected: false,
             onPwdSelected: false,
             phoneValue: '',
@@ -77,9 +83,6 @@ export default {
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
             tipColor: '#19BE6B'
         }
-    },
-    mounted() {
-        this.width = this.$systemInfo.windowWidth * 0.7
     },
     methods: {
         onPwdKeyInput(evet) {
@@ -147,16 +150,6 @@ export default {
         },
         forgetPwd() {
             this.showTips('此服务正在开发中...', '#FF7900')
-        },
-        signup() {
-            uni.navigateTo({
-                url: '/pages/entry/signup'
-            })
-        },
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/mine/mine'
-            })
         }
     }
 }
