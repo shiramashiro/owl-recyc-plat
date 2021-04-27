@@ -1,5 +1,12 @@
 <template>
     <view class="owl-comments">
+        <view v-if="data.length === 0">
+            <tui-no-data imgUrl="/static/nocomment.png">
+                <text class="tui-color__black"
+                    >还没有任何评论哦~发表一个吧！</text
+                >
+            </tui-no-data>
+        </view>
         <view
             v-for="(item, index) in data"
             :key="index"

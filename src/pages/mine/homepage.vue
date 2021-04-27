@@ -8,7 +8,6 @@
                 <image
                     class="margin-left-sm"
                     style="width: 70rpx; height: 70rpx"
-                    @click="backIntoIndex()"
                     src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
                 ></image>
             </navigator>
