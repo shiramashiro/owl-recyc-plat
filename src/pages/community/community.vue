@@ -14,8 +14,8 @@
                 :iconPath="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
                 "
-                :navigateTo="'/pages/community/more'"
-                :URLAttrs="['tagType=official']"
+                :navigateTo="'/pages/more'"
+                :URLAttrs="['tagType=official', 'backNav=community/community']"
             >
                 <view class="activities padding-lr-sm">
                     <view
@@ -23,9 +23,7 @@
                         v-for="(item, index) in renderedPostsData"
                         :key="index"
                     >
-                        <navigator
-                            :url="'/pages/community/post-detail?id=' + item.id"
-                        >
+                        <navigator :url="'/pages/post-detail?id=' + item.id">
                             <view class="padding-sm margin-tb-sm">
                                 <view
                                     class="row-1 margin-bottom-xs text-cut text-sm"
@@ -53,8 +51,8 @@
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/hot.png'
                 "
                 :title="'全社热帖'"
-                :navigateTo="'/pages/community/more'"
-                :URLAttrs="['browseNum=100']"
+                :navigateTo="'/pages/more'"
+                :URLAttrs="['browseNum=100', 'backNav=community/community']"
             >
                 <view class="hot-posts padding-lr-sm">
                     <view
@@ -62,9 +60,7 @@
                         v-for="(item, index) in renderedHotPostsData"
                         :key="index"
                     >
-                        <navigator
-                            :url="'/pages/community/post-detail?id=' + item.id"
-                        >
+                        <navigator :url="'/pages/post-detail?id=' + item.id">
                             <view
                                 class="padding-tb-sm flex align-center justify-between"
                             >
@@ -93,7 +89,7 @@
                 </view>
             </owl-fiche>
             <view class="posts margin-top-sm">
-                <posts :requestURL="'/get/post'"></posts>
+                <owl-posts :requestURL="'/get/post'"></owl-posts>
             </view>
         </view>
         <view class="make-post">
@@ -110,11 +106,8 @@
 </template>
 
 <script>
-import Posts from '@/components/community/posts.vue'
-
 export default {
     name: 'community',
-    components: { Posts },
     data() {
         return {
             renderedHotPostsData: [],
@@ -221,7 +214,7 @@ export default {
         .hot-posts {
             .hot-post {
                 margin-bottom: 20rpx;
-                border-bottom: 1rpx solid #cccc;
+                border-bottom: 1rpx solid #f0f0f0;
 
                 .col-3-1 image {
                     width: 30rpx;

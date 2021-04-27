@@ -31,6 +31,18 @@
             }
         },
         {
+            "path": "pages/more",
+            "style": {
+                "navigationBarTitleText": "更多"
+            }
+        },
+        {
+            "path": "pages/post-detail",
+            "style": {
+                "navigationBarTitleText": "帖子详情"
+            }
+        },
+        {
             "path": "pages/index/classification",
             "style": {
                 "navigationBarTitleText": "分类"
@@ -76,18 +88,6 @@
             "path": "pages/msg/chat",
             "style": {
                 "navigationBarTitleText": "聊天"
-            }
-        },
-        {
-            "path": "pages/community/post-detail",
-            "style": {
-                "navigationBarTitleText": "帖子详情"
-            }
-        },
-        {
-            "path": "pages/community/more",
-            "style": {
-                "navigationBarTitleText": "更多"
             }
         },
         {

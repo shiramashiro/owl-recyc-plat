@@ -16,6 +16,7 @@ Axios.interceptors.response.use(config => {
 // 导入组件
 import OwlTag from '@/components/owl-tag.vue'
 import OWlImgs from '@/components/owl-imgs.vue'
+import OwlPosts from '@/components/owl-posts.vue'
 import OwlFiche from '@/components/owl-fiche.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
@@ -24,6 +25,7 @@ import OwlMakeComment from '@/components/owl-make-comment.vue'
 // 全局注册组件
 Vue.component('owl-tag', OwlTag)
 Vue.component('owl-imgs', OWlImgs)
+Vue.component('owl-posts', OwlPosts)
 Vue.component('owl-fiche', OwlFiche)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-comment', OwlComment)

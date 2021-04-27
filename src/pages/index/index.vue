@@ -46,6 +46,35 @@
         </view>
         <owl-fiche
             :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/news.png'
+            "
+            class="margin-top-sm"
+            :navigateTo="'/pages/more'"
+            :URLAttrs="['backNav=index/index']"
+            :title="'新闻 / 资讯'"
+        >
+            <view class="panel">
+                <template v-for="(item, index) in newsPanelList">
+                    <navigator
+                        :url="'/pages/post-detail?id=' + item.id"
+                        :key="index"
+                    >
+                        <view
+                            class="list-item flex align-center padding-lr-sm padding-tb-sm margin-bottom-sm"
+                        >
+                            <view class="num margin-right-sm">{{
+                                index + 1
+                            }}</view>
+                            <view class="brief text-cut">
+                                {{ item.title }}
+                            </view>
+                        </view>
+                    </navigator>
+                </template>
+            </view>
+        </owl-fiche>
+        <owl-fiche
+            :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
             "
             class="margin-top-sm"
@@ -204,6 +233,24 @@ export default {
                 '格兰仕暗示拜访拼多多后遭天猫打压，拼多多高层赞其有勇气',
                 '阿里计划将每股普通股拆为8股，增加筹资灵活性'
             ],
+            newsPanelList: [
+                {
+                    id: 1,
+                    title: '600万吨包装纸产能砸向市场'
+                },
+                {
+                    id: 2,
+                    title: '4月27日废纸价格最高上调50元/吨 最高下调30元/吨'
+                },
+                {
+                    id: 3,
+                    title: '玖龙纸业美国Old Town工厂开始生产废纸浆'
+                },
+                {
+                    id: 4,
+                    title: '惠普携手合兴包装 全力加速包装印刷业数字化转型'
+                }
+            ],
             carouselMaps: [
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
@@ -301,6 +348,17 @@ export default {
         .slide-show-image {
             width: 100%;
             height: 100%;
+        }
+    }
+
+    .panel {
+        .list-item {
+            border-bottom: 1rpx solid #f0f0f0;
+        }
+
+        .list-item:last-child {
+            margin-bottom: 0;
+            border-bottom: 0;
         }
     }
 }

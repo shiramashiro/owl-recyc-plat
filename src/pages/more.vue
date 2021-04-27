@@ -1,33 +1,28 @@
 <template>
     <view class="more">
         <tui-navigation-bar>
-            <navigator
-                :url="'/pages/community/community'"
-                open-type="switchTab"
-            >
+            <navigator :url="'/pages/' + backNav" open-type="switchTab">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg text-gray text-df">
                 更多
             </view>
         </tui-navigation-bar>
-        <posts
+        <owl-posts
             class="margin-top-sm padding-lr-xs"
             :requestURL="'/get/post'"
             :URLAttrs="params"
-        ></posts>
+        ></owl-posts>
     </view>
 </template>
 
 <script>
-import Posts from '@/components/community/posts.vue'
-
 export default {
     name: 'more',
-    components: { Posts },
     data() {
         return {
-            params: {}
+            params: {},
+            backNav: ''
         }
     },
     /**
@@ -43,6 +38,7 @@ export default {
      * @param id 通过帖子id查询帖子
      */
     onLoad(option) {
+        this.backNav = option.backNav
         this.params = option
     }
 }
