@@ -60,22 +60,17 @@
                 ></owl-make-comment>
                 <owl-comment
                     class="padding-lr-sm"
-                    @express="expressView"
+                    :belongedName="'book'"
                     :data="book.comment"
                 ></owl-comment>
             </owl-fiche>
         </view>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
-// 导入mixins
-import { setViewMixins } from '@/mixins/set-view.js'
-
 export default {
     name: 'BookDetail',
-    mixins: [setViewMixins],
     data() {
         return {
             currentSwiper: 0,
@@ -117,8 +112,7 @@ export default {
                         }
                     }
                 ]
-            },
-            commentType: 'book'
+            }
         }
     },
     methods: {

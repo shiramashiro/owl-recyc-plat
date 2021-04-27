@@ -27,8 +27,9 @@
                                         <owl-tag
                                             :type="'gray'"
                                             :height="'30rpx'"
-                                            >lv{{ item.user.level }}</owl-tag
                                         >
+                                            lv{{ item.user.level }}
+                                        </owl-tag>
                                     </view>
                                 </view>
                                 <view
@@ -47,13 +48,13 @@
             <view class="options flex justify-end">
                 <view class="options-wrap flex text-sm text-gray">
                     <view
-                        @click="clickDisagree(item, index)"
+                        @click="handleClick(item.id, index, 'disagree')"
                         class="col-2 margin-right-lg el-icon-third-cai"
                     >
                         {{ item.disagree }}
                     </view>
                     <view
-                        @click="clickAgree(item, index)"
+                        @click="handleClick(item.id, index, 'agree')"
                         class="col-1 el-icon-third-dianzan"
                     >
                         {{ item.agree }}
@@ -61,6 +62,7 @@
                 </view>
             </view>
         </view>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -71,22 +73,49 @@ export default {
         data: {
             type: Array,
             required: true
+        },
+        // 属于哪个组件的评论
+        belongedName: {
+            type: String,
+            required: true
+        }
+    },
+    data() {
+        return {
+            tipColor: '#19BE6B'
         }
     },
     methods: {
-        // 点击不同意，传入评论的信息
-        clickDisagree(item, index) {
-            this.handleClick(item, index, 'disagree')
+        handleClick(id, index, viewType) {
+            let tipType = '点赞'
+            if (viewType === 'disagree') {
+                this.data[index].disagree += 1
+                tipType = '反对'
+            } else {
+                this.data[index].agree += 1
+            }
+            this.$axios
+                .post('/set/view', {
+                    id: id,
+                    viewType: viewType,
+                    type: this.belongedName
+                })
+                .then(resp => {
+                    if (resp.status !== 200) {
+                        this.showToast(tipType + '失败！', '#EB0909')
+                        return
+                    }
+                    this.showToast(tipType + '成功~', '#19BE6B')
+                })
+                .catch(error => {
+                    this.showToast('服务器错误！', '#EB0909')
+                })
         },
-        // 点击同意，传入评论的信息
-        clickAgree(item, index) {
-            this.handleClick(item, index, 'agree')
-        },
-        handleClick(item, index, type) {
-            this.$emit('express', {
-                type: type,
-                item: item,
-                index: index
+        showToast(msg, color) {
+            this.tipColor = color
+            this.$refs.toast.showTips({
+                msg: msg,
+                duration: 2000
             })
         }
     }

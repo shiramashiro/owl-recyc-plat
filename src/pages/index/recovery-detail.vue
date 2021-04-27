@@ -39,22 +39,17 @@
                 ></owl-make-comment>
                 <owl-comment
                     class="padding-lr-sm"
-                    @express="expressView"
+                    :belongedName="'recovery'"
                     :data="recovery.comment"
                 ></owl-comment>
             </owl-fiche>
         </view>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
-// 导入mixins
-import { setViewMixins } from '@/mixins/set-view.js'
-
 export default {
     name: 'RecoveryDetail',
-    mixins: [setViewMixins],
     data() {
         return {
             recovery: {
@@ -68,8 +63,7 @@ export default {
                     }
                 ]
             },
-            holiday: ['周四', '周五'],
-            commentType: 'recovery'
+            holiday: ['周四', '周五']
         }
     },
     onLoad(option) {

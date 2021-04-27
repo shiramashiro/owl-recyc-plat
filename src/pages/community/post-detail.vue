@@ -1,7 +1,10 @@
 <template>
     <view class="post-detail">
         <tui-navigation-bar>
-            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+            <navigator
+                :url="'/pages/community/community'"
+                open-type="switchTab"
+            >
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg">帖子详情</view>
@@ -87,22 +90,17 @@
                 :belongedId="post.id"
             ></owl-make-comment>
             <owl-comment
-                @express="expressView"
                 class="padding-lr-sm"
+                :belongedName="'post'"
                 :data="post.comment"
             ></owl-comment>
         </owl-fiche>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
-// 导入mixins
-import { setViewMixins } from '@/mixins/set-view.js'
-
 export default {
     name: 'post-detail',
-    mixins: [setViewMixins],
     data() {
         return {
             post: {
@@ -123,16 +121,7 @@ export default {
                         }
                     }
                 ]
-            },
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false
-            },
-            commentType: 'post'
+            }
         }
     },
     onLoad(option) {
@@ -143,6 +132,7 @@ export default {
                 }
             })
             .then(resp => {
+                // issue 获取的data里面是一个数组，但是理想状态下不是数组，而是一个对象。
                 this.post = resp.data[0]
             })
             .catch(error => {
