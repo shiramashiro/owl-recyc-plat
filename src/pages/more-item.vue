@@ -1,5 +1,5 @@
 <template>
-    <view class="more">
+    <view class="more-item">
         <tui-navigation-bar>
             <navigator :url="'/pages/' + params.backNav" open-type="switchTab">
                 <i class="el-icon-third-fanhui"></i>
@@ -26,19 +26,19 @@
 
 <script>
 export default {
-    name: 'more',
+    name: 'more-item',
     data() {
         return {
             params: {}
         }
     },
     /**
-     * 从community的“官方贴”和“全社热帖”跳转过来时，接收一个参数对象。
-     * 注意：这个不是数组，而是对象，建议通过consloe打印查看结构。
+     * 从owl-fiche的更多跳转过来时，接收一个对象。
+     * 注意：不是数组，而是对象，建议通过consloe打印查看结构。
      *
-     * 这是由owl-fiche.vue的display函数处理过后传来的对象。
-     * 可能接收的字段有limitNum、browseNum和id，其他字段都是无效的。
-     * 接收到参数对象之后，需要把这个对象转交给posts组件，查询帖子数据。
+     * 这是由owl-fiche组件的display函数处理过后传来的对象。
+     * 可能接收的字段有limitNum、browseNum和id，
+     * 接收到参数对象之后，需要把这个对象转交给组件，查数据。
      *
      * @param limitNum 限制查询帖子的数量
      * @param browseNum 通过帖子浏览数查询帖子
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.more {
+.more-item {
     background-color: rgb(248, 248, 248);
 }
 </style>
