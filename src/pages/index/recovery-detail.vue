@@ -10,31 +10,41 @@
             <view class="recovery-info">
                 <image mode="aspectFill" :src="recovery.url"></image>
                 <view class="detail-wrap padding-lr-sm margin-tb-sm">
-                    <view> 地址：{{ recovery.address }} </view>
-                    <view>
-                        营业时间：{{ recovery.openTime }} ~
-                        {{ recovery.closeTime }}
+                    <view class="item margin-bottom-sm padding-bottom-sm">
+                        <text class="text-bold margin-right-lg">详细地址</text>
+                        <text class="info">
+                            {{ recovery.address }}
+                        </text>
                     </view>
-                    <view>
-                        休息时间：
+                    <view class="item margin-bottom-sm padding-bottom-sm">
+                        <text class="text-bold margin-right-lg">营业时间</text>
+                        <text class="info">
+                            {{ recovery.openTime }} ~ {{ recovery.closeTime }}
+                        </text>
+                    </view>
+                    <view class="item margin-bottom-sm padding-bottom-sm">
+                        <text class="text-bold margin-right-lg">休息时间</text>
                         <template v-for="(item, index) in holiday">
-                            <text class="margin-right-sm" :key="index">
+                            <text class="margin-right-sm info" :key="index">
                                 {{ item }}
                             </text>
                         </template>
                     </view>
-                    <view> 回收次数：{{ recovery.times }} </view>
-                    <view> 回收价：{{ recovery.price }}元 / 斤 </view>
+                    <view class="item margin-bottom-sm padding-bottom-sm">
+                        <text class="text-bold margin-right-lg">回收次数</text>
+                        <text class="info">
+                            {{ recovery.times }}
+                        </text>
+                    </view>
+                    <view class="item margin-bottom-sm padding-bottom-sm">
+                        <text class="text-bold margin-right-lg">回收价格</text>
+                        <text class="info"> {{ recovery.price }}元 / 斤 </text>
+                    </view>
                 </view>
-
-
-                <view class="options-wrap padding-lr-sm padding-bottom-sm">
-                  <owl-indent></owl-indent>
-                    <!-- 2021年4月26日23:08:10，指派任务：回收点添加新的交互UI，指派人：yuanhang -->
-                </view>
-
-
             </view>
+            <owl-fiche class="margin-top-sm">
+                <owl-indent></owl-indent>
+            </owl-fiche>
             <owl-fiche class="margin-top-sm" :title="'评论区'">
                 <owl-make-comment
                     :postUrl="'/set/comment'"
@@ -100,6 +110,20 @@ export default {
                 border-radius: 10rpx;
                 width: 100%;
                 height: 400rpx;
+            }
+
+            .detail-wrap {
+                .item {
+                    border-bottom: 1rpx #f0f0f0 solid;
+                }
+
+                .item:last-child {
+                    border-bottom: 0;
+                }
+
+                .info {
+                    color: #3d3d3d;
+                }
             }
         }
     }
