@@ -24,9 +24,14 @@
                     <view> 回收次数：{{ recovery.times }} </view>
                     <view> 回收价：{{ recovery.price }}元 / 斤 </view>
                 </view>
+
+
                 <view class="options-wrap padding-lr-sm padding-bottom-sm">
+                  <owl-indent></owl-indent>
                     <!-- 2021年4月26日23:08:10，指派任务：回收点添加新的交互UI，指派人：yuanhang -->
                 </view>
+
+
             </view>
             <owl-fiche class="margin-top-sm" :title="'评论区'">
                 <owl-make-comment

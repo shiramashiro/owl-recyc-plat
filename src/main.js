@@ -22,6 +22,7 @@ import OwlFiche from '@/components/owl-fiche.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
+import OwlIndent from'@/components/owl-indent'
 
 // 全局注册组件
 Vue.component('owl-tag', OwlTag)
@@ -30,7 +31,7 @@ Vue.component('owl-fiche', OwlFiche)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-comment', OwlComment)
 Vue.component('owl-make-comment', OwlMakeComment)
-
+Vue.component('owl-indent', OwlIndent)
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios
 Vue.prototype.$store = Vuex

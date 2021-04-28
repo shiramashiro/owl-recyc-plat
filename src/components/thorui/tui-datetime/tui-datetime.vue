@@ -208,7 +208,7 @@ export default {
             type: String,
             default: '#5677fc'
         },
-        //设置默认显示日期 2019-08-01 || 2019-08-01 17:01 || 2019/08/01
+          //设置默认显示日期 2019-08-01 || 2019-08-01 17:01 || 2019/08/01
         setDateTime: {
             type: String,
             default: ''
