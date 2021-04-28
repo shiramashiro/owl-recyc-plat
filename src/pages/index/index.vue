@@ -260,20 +260,6 @@ export default {
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032619353510220.jpg'
             ]
         }
-    },
-    onLoad() {
-        this.$axios
-            .get('/get/book', {
-                params: {
-                    type: 'all'
-                }
-            })
-            .then(resp => {
-                this.renderedBooksData = resp.data
-            })
-            .catch(error => {
-                console.log(error)
-            })
     }
 }
 </script>
