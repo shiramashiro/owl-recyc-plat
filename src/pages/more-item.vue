@@ -1,18 +1,26 @@
 <template>
     <view class="more">
         <tui-navigation-bar>
-            <navigator :url="'/pages/' + backNav" open-type="switchTab">
+            <navigator :url="'/pages/' + params.backNav" open-type="switchTab">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg text-gray text-df">
                 更多
             </view>
         </tui-navigation-bar>
-        <owl-posts
-            class="margin-top-sm padding-lr-xs"
-            :requestURL="'/get/post'"
-            :URLAttrs="params"
-        ></owl-posts>
+        <template v-if="params.comName === 'owlPosts'">
+            <owl-posts
+                class="margin-top-sm padding-lr-xs"
+                :requestURL="'/get/post'"
+                :URLAttrs="params"
+            ></owl-posts>
+        </template>
+        <template v-else-if="params.comName === 'owlBooks'">
+            <owl-books :bookType="params.type"></owl-books>
+        </template>
+        <template v-else-if="params.comName === 'owlRecoveries'">
+            <owl-recoveries :maxSize="Number(params.maxSize)"></owl-recoveries>
+        </template>
     </view>
 </template>
 
@@ -21,8 +29,7 @@ export default {
     name: 'more',
     data() {
         return {
-            params: {},
-            backNav: ''
+            params: {}
         }
     },
     /**
@@ -38,7 +45,6 @@ export default {
      * @param id 通过帖子id查询帖子
      */
     onLoad(option) {
-        this.backNav = option.backNav
         this.params = option
     }
 }

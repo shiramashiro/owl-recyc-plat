@@ -14,7 +14,7 @@
                 :iconPath="
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
                 "
-                :navigateTo="'/pages/more'"
+                :navigateTo="'/pages/more-item'"
                 :URLAttrs="['tagType=official', 'backNav=community/community']"
             >
                 <view class="activities padding-lr-sm">
@@ -51,7 +51,7 @@
                     'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/hot.png'
                 "
                 :title="'全社热帖'"
-                :navigateTo="'/pages/more'"
+                :navigateTo="'/pages/more-item'"
                 :URLAttrs="['browseNum=100', 'backNav=community/community']"
             >
                 <view class="hot-posts padding-lr-sm">

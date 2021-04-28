@@ -18,10 +18,12 @@ import OwlTag from '@/components/owl-tag.vue'
 import OWlImgs from '@/components/owl-imgs.vue'
 import OwlPosts from '@/components/owl-posts.vue'
 import OwlFiche from '@/components/owl-fiche.vue'
+import OwlBooks from '@/components/owl-books.vue'
 import OwlIndent from '@/components/owl-indent.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
 import OwlActionBar from '@/components/owl-action-bar.vue'
+import OwlRecoveries from '@/components/owl-recoveries.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
 
 // 全局注册组件
@@ -29,10 +31,12 @@ Vue.component('owl-tag', OwlTag)
 Vue.component('owl-imgs', OWlImgs)
 Vue.component('owl-posts', OwlPosts)
 Vue.component('owl-fiche', OwlFiche)
+Vue.component('owl-books', OwlBooks)
 Vue.component('owl-indent', OwlIndent)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-comment', OwlComment)
 Vue.component('owl-action-bar', OwlActionBar)
+Vue.component('owl-recoveries', OwlRecoveries)
 Vue.component('owl-make-comment', OwlMakeComment)
 
 Vue.config.productionTip = false

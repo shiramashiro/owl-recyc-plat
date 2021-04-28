@@ -1,7 +1,7 @@
 <template>
-    <view class="books flex">
+    <view class="owl-books flex">
         <view
-            v-for="(item, index) in data"
+            v-for="(item, index) in books"
             :key="index"
             class="book flex-sub margin-xs"
             @click="
@@ -41,16 +41,35 @@ export default {
     name: 'books',
     mixins: [navigateToMixins],
     props: {
-        data: {
-            type: Array,
+        bookType: {
+            type: String,
             required: true
         }
+    },
+    data() {
+        return {
+            books: []
+        }
+    },
+    mounted() {
+        this.$axios
+            .get('/get/book', {
+                params: {
+                    type: this.bookType
+                }
+            })
+            .then(resp => {
+                this.books = resp.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.books {
+.owl-books {
     flex-flow: wrap;
 
     .book {

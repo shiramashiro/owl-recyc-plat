@@ -49,8 +49,8 @@
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/news.png'
             "
             class="margin-top-sm"
-            :navigateTo="'/pages/more'"
-            :URLAttrs="['backNav=index/index']"
+            :navigateTo="'/pages/more-item'"
+            :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
             :title="'新闻 / 资讯'"
         >
             <view class="panel">
@@ -86,8 +86,10 @@
                     v-for="(renderedCasketItem, index) in renderedCasketsData"
                     :key="index"
                     @click="
-                        navigateToClickedItem('/pages/index/classification', [
-                            'type=' + renderedCasketItem.type
+                        navigateToClickedItem('/pages/more-item', [
+                            'type=' + renderedCasketItem.type,
+                            'comName=owlBooks',
+                            'backNav=index/index'
                         ])
                     "
                 >
@@ -118,10 +120,15 @@
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
             "
-            :navigateTo="'/pages/index/more-recoveries'"
+            :navigateTo="'/pages/more-item'"
+            :URLAttrs="[
+                'maxSize=0',
+                'backNav=index/index',
+                'comName=owlRecoveries'
+            ]"
             :title="'回收点'"
         >
-            <recoveries></recoveries>
+            <owl-recoveries></owl-recoveries>
         </owl-fiche>
         <owl-fiche
             :iconPath="
@@ -131,21 +138,17 @@
             :title="'推荐'"
             class="margin-top-sm"
         >
-            <books :data="renderedBooksData"></books>
+            <owl-books :bookType="'all'"></owl-books>
         </owl-fiche>
     </view>
 </template>
 
 <script>
-import Recoveries from '@/components/index/recoveries.vue'
-import Books from '@/components/index/books.vue'
-
 // 导入mixins
 import { navigateToMixins } from '@/mixins/navigate-to.js'
 
 export default {
     name: 'Index',
-    components: { Recoveries, Books },
     mixins: [navigateToMixins],
     data() {
         return {

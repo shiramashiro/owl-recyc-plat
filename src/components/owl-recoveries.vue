@@ -1,5 +1,5 @@
 <template>
-    <view class="container flex justify-between">
+    <view class="owl-recoveries container flex justify-between">
         <template v-for="(item, index) in recoveries">
             <view
                 v-if="index < maxSize || maxSize === 0"
