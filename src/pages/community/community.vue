@@ -19,22 +19,29 @@
             >
                 <view class="activities padding-lr-sm">
                     <view
-                        class="activity padding-sm margin-tb-sm"
-                        v-for="(item, index) in posts"
+                        class="activity"
+                        v-for="(item, index) in renderedPostsData"
                         :key="index"
-                        @click="navigateToPostDetail(item.id)"
                     >
-                        <view class="row-1 margin-bottom-xs text-cut text-sm">
-                            {{ item.title }}
-                        </view>
-                        <view class="flex align-center justify-between">
-                            <owl-tag>
-                                {{ item.tagName }}
-                            </owl-tag>
-                            <view class="text-gray text-xs">
-                                {{ item.time }}
+                        <navigator
+                            :url="'/pages/community/post-detail?id=' + item.id"
+                        >
+                            <view class="padding-sm margin-tb-sm">
+                                <view
+                                    class="row-1 margin-bottom-xs text-cut text-sm"
+                                >
+                                    {{ item.title }}
+                                </view>
+                                <view class="flex align-center justify-between">
+                                    <owl-tag>
+                                        {{ item.tagName }}
+                                    </owl-tag>
+                                    <view class="text-gray text-xs">
+                                        {{ item.time }}
+                                    </view>
+                                </view>
                             </view>
-                        </view>
+                        </navigator>
                     </view>
                 </view>
             </owl-fiche>
@@ -51,28 +58,37 @@
             >
                 <view class="hot-posts padding-lr-sm">
                     <view
-                        class="hot-post padding-tb-sm flex align-center justify-between"
-                        v-for="(item, index) in hotPosts"
+                        class="hot-post"
+                        v-for="(item, index) in renderedHotPostsData"
                         :key="index"
-                        @click="navigateToPostDetail(item.id)"
                     >
-                        <view class="col-1 text-sm text-center">
-                            {{ index + 1 }}
-                        </view>
-                        <view class="col-2 text-cut margin-left-xs">
-                            {{ item.title }}
-                        </view>
-                        <view
-                            class="text-center text-cut col-3 flex align-center text-gray text-xs"
+                        <navigator
+                            :url="'/pages/community/post-detail?id=' + item.id"
                         >
-                            <view class="col-3-1">
-                                <image
-                                    mode="aspectFill"
-                                    src="@/static/hot.png"
-                                ></image>
+                            <view
+                                class="padding-tb-sm flex align-center justify-between"
+                            >
+                                <view class="col-1 text-sm text-center">
+                                    {{ index + 1 }}
+                                </view>
+                                <view class="col-2 text-cut margin-left-xs">
+                                    {{ item.title }}
+                                </view>
+                                <view
+                                    class="text-center text-cut col-3 flex align-center text-gray text-xs"
+                                >
+                                    <view class="col-3-1">
+                                        <image
+                                            mode="aspectFill"
+                                            src="@/static/hot.png"
+                                        ></image>
+                                    </view>
+                                    <view class="col-3-2">
+                                        {{ item.browseNum }}
+                                    </view>
+                                </view>
                             </view>
-                            <view class="col-3-2">{{ item.browseNum }}</view>
-                        </view>
+                        </navigator>
                     </view>
                 </view>
             </owl-fiche>
@@ -81,12 +97,14 @@
             </view>
         </view>
         <view class="make-post">
-            <view class="post-btn-wrap" @click="makePost">
-                <image
-                    mode="aspectFit"
-                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"
-                ></image>
-            </view>
+            <navigator :url="'/pages/community/make-post'">
+                <view class="post-btn-wrap">
+                    <image
+                        mode="aspectFit"
+                        src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"
+                    ></image>
+                </view>
+            </navigator>
         </view>
     </view>
 </template>
@@ -99,8 +117,8 @@ export default {
     components: { Posts },
     data() {
         return {
-            hotPosts: [],
-            posts: []
+            renderedHotPostsData: [],
+            renderedPostsData: []
         }
     },
     /**
@@ -116,7 +134,7 @@ export default {
                     }
                 })
                 .then(resp => {
-                    this.hotPosts = resp.data
+                    this.renderedHotPostsData = resp.data
                 })
                 .catch(error => {
                     console.log(error)
@@ -128,24 +146,12 @@ export default {
                     }
                 })
                 .then(resp => {
-                    this.posts = resp.data
+                    this.renderedPostsData = resp.data
                 })
                 .catch(error => {
                     console.log(error)
                 })
         ])
-    },
-    methods: {
-        makePost() {
-            uni.navigateTo({
-                url: '/pages/community/make-post'
-            })
-        },
-        navigateToPostDetail(param) {
-            uni.navigateTo({
-                url: '/pages/community/post-detail?id=' + param
-            })
-        }
     }
 }
 </script>

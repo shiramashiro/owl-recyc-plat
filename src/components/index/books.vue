@@ -4,7 +4,11 @@
             v-for="(item, index) in data"
             :key="index"
             class="book flex-sub margin-xs"
-            @click="handleClick(item)"
+            @click="
+                navigateToClickedItem('/pages/index/book-detail', [
+                    'id=' + item.id
+                ])
+            "
         >
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
@@ -30,19 +34,16 @@
 </template>
 
 <script>
+// 导入mixins
+import { navigateToMixins } from '@/mixins/navigate-to.js'
+
 export default {
     name: 'books',
+    mixins: [navigateToMixins],
     props: {
-        // 书籍数组对象
         data: {
             type: Array,
             required: true
-        }
-    },
-    methods: {
-        // 点击事件函数，回传每一项的信息以及对应的索引值
-        handleClick(item) {
-            this.$emit('selected', item)
         }
     }
 }
