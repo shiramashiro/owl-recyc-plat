@@ -145,11 +145,11 @@ name: "owl-indent",
     },
 
     show: function(e) {
-
       if(this.$store.state.userInfo.username !=null){
         this.$refs.dateTime.show();
       }
     },
+
     closeTime(){
       this.visibleTime=!this.visibleTime
     },
