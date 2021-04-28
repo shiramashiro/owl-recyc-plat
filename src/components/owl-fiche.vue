@@ -86,12 +86,12 @@ export default {
         // icon图标宽度
         iconWidth: {
             type: String,
-            default: '40rpx'
+            default: '45rpx'
         },
         // icon图标高度
         iconHeight: {
             type: String,
-            default: '40rpx'
+            default: '45rpx'
         },
         // 是否开启左右的margin
         isLrMargin: {
