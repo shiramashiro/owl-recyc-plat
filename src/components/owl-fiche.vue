@@ -51,10 +51,10 @@
 export default {
     name: 'owl-fiche',
     props: {
-        // 主标题，必须有
+        // 主标题
         title: {
             type: String,
-            required: true
+            required: false
         },
         // 子标题
         subTitle: {
