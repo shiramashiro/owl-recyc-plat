@@ -58,6 +58,8 @@
                     :data="recovery.comment"
                 ></owl-comment>
             </owl-fiche>
+            <!-- 时间：2021年4月28日21:22:08，受委托人：yuanhang，任务：完成底部导航栏 -->
+            <owl-action-bar></owl-action-bar>
         </view>
     </view>
 </template>

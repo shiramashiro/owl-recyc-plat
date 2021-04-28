@@ -12,7 +12,7 @@
                 />
             </view>
         </tui-navigation-bar>
-        <view class="tui-rolling-news">
+        <view class="tui-rolling-news padding-xs margin-xs">
             <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
             <swiper
                 vertical
@@ -60,11 +60,11 @@
                         :key="index"
                     >
                         <view
-                            class="list-item flex align-center padding-lr-sm padding-tb-sm margin-bottom-sm"
+                            class="list-item flex align-center padding-lr-sm padding-tb-sm margin-bottom-xs"
                         >
-                            <view class="num margin-right-sm">{{
-                                index + 1
-                            }}</view>
+                            <view class="num margin-right-sm">
+                                {{ index + 1 }}
+                            </view>
                             <view class="brief text-cut">
                                 {{ item.title }}
                             </view>
@@ -317,8 +317,8 @@ export default {
     }
 
     .tui-rolling-news {
+        background-color: white;
         width: 100%;
-        padding: 12rpx 15rpx;
         box-sizing: border-box;
         display: flex;
         align-items: center;
@@ -353,12 +353,7 @@ export default {
 
     .panel {
         .list-item {
-            border-bottom: 1rpx solid #f0f0f0;
-        }
-
-        .list-item:last-child {
-            margin-bottom: 0;
-            border-bottom: 0;
+            border-bottom: 1rpx solid #f0f0f0 !important;
         }
     }
 }

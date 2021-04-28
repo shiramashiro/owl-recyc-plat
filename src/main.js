@@ -18,20 +18,23 @@ import OwlTag from '@/components/owl-tag.vue'
 import OWlImgs from '@/components/owl-imgs.vue'
 import OwlPosts from '@/components/owl-posts.vue'
 import OwlFiche from '@/components/owl-fiche.vue'
+import OwlIndent from '@/components/owl-indent.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
+import OwlActionBar from '@/components/owl-action-bar.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
-import OwlIndent from'@/components/owl-indent'
 
 // 全局注册组件
 Vue.component('owl-tag', OwlTag)
 Vue.component('owl-imgs', OWlImgs)
 Vue.component('owl-posts', OwlPosts)
 Vue.component('owl-fiche', OwlFiche)
+Vue.component('owl-indent', OwlIndent)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-comment', OwlComment)
+Vue.component('owl-action-bar', OwlActionBar)
 Vue.component('owl-make-comment', OwlMakeComment)
-Vue.component('owl-indent', OwlIndent)
+
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios
 Vue.prototype.$store = Vuex

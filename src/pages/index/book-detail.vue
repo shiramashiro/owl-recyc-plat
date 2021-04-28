@@ -28,7 +28,7 @@
                 </swiper>
             </view>
             <view class="rows-content margin-lr-lg">
-                <view class="col-0">
+                <view class="col-0 text-bold text-lg">
                     {{ book.name }}
                 </view>
                 <view
@@ -45,7 +45,7 @@
                     </view>
                 </view>
                 <view class="row-3 text-gray">{{ book.originPrice }}</view>
-                <view class="row-4 margin-top-sm padding-bottom-sm text-bold">
+                <view class="row-4 margin-top-sm padding-bottom-sm">
                     {{ book.desc }}
                 </view>
             </view>
