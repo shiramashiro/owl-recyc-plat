@@ -79,12 +79,6 @@
             }
         },
         {
-            "path": "pages/community/make-post",
-            "style": {
-                "navigationBarTitleText": "新建帖子"
-            }
-        },
-        {
             "path": "pages/entry/signin",
             "style": {
                 "navigationBarTitleText": "登录"
@@ -100,6 +94,12 @@
             "path": "pages/mine/homepage",
             "style": {
                 "navigationBarTitleText": "个人主页"
+            }
+        },
+        {
+            "path": "pages/owl-editor",
+            "style": {
+                "navigationBarTitleText": "发表帖子"
             }
         }
     ],

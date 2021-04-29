@@ -20,8 +20,11 @@
                         </view>
                     </view>
                     <view class="row-2 text-lg text-cut">{{ item.title }}</view>
-                    <view class="row-5 text-gray text-sm margin-top-xs">
-                        {{ item.content }}
+                    <view class="row-5 margin-top-xs">
+                        <u-parse
+                            :className="'custom-style'"
+                            :content="item.content"
+                        ></u-parse>
                     </view>
                     <view class="row-3 margin-tb-sm">
                         <owl-imgs :imgs="item.img"></owl-imgs>
@@ -117,6 +120,11 @@ export default {
 
 <style lang="scss" scoped>
 .posts {
+    .custom-style {
+        color: #aaaaaa;
+        font-size: 20rpx;
+    }
+
     .post {
         background-color: white;
         border-radius: 15rpx;

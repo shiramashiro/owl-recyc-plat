@@ -13,6 +13,9 @@ Axios.interceptors.response.use(config => {
     return config
 })
 
+// 富文本解析器
+import UParse from '@/components/u-parse/u-parse.vue'
+
 // 导入组件
 import OwlTag from '@/components/owl-tag.vue'
 import OWlImgs from '@/components/owl-imgs.vue'
@@ -25,6 +28,9 @@ import OwlComment from '@/components/owl-comment.vue'
 import OwlActionBar from '@/components/owl-action-bar.vue'
 import OwlRecoveries from '@/components/owl-recoveries.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
+
+// 全局注册富文本解析器
+Vue.component('u-parse', UParse)
 
 // 全局注册组件
 Vue.component('owl-tag', OwlTag)

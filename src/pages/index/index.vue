@@ -12,7 +12,7 @@
                 />
             </view>
         </tui-navigation-bar>
-        <view class="tui-rolling-news padding-xs margin-xs">
+        <view class="tui-rolling-news">
             <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
             <swiper
                 vertical
@@ -236,24 +236,7 @@ export default {
                 '格兰仕暗示拜访拼多多后遭天猫打压，拼多多高层赞其有勇气',
                 '阿里计划将每股普通股拆为8股，增加筹资灵活性'
             ],
-            newsPanelList: [
-                {
-                    id: 1,
-                    title: '600万吨包装纸产能砸向市场'
-                },
-                {
-                    id: 2,
-                    title: '4月27日废纸价格最高上调50元/吨 最高下调30元/吨'
-                },
-                {
-                    id: 3,
-                    title: '玖龙纸业美国Old Town工厂开始生产废纸浆'
-                },
-                {
-                    id: 4,
-                    title: '惠普携手合兴包装 全力加速包装印刷业数字化转型'
-                }
-            ],
+            newsPanelList: [],
             carouselMaps: [
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
@@ -261,18 +244,16 @@ export default {
             ]
         }
     },
-    onLoad() {
+    mounted() {
         this.$axios
-            .get('/get/book', {
+            .get('/get/post', {
                 params: {
-                    type: 'all'
+                    tagType: 'news',
+                    limitNum: 4
                 }
             })
             .then(resp => {
-                this.renderedBooksData = resp.data
-            })
-            .catch(error => {
-                console.log(error)
+                this.newsPanelList = resp.data
             })
     }
 }

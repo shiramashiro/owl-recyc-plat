@@ -43,7 +43,7 @@
                         >{{ post.tagName }}</owl-tag
                     >
                     <view
-                        class="title margin-left-xs text-lg"
+                        class="title margin-left-xs text-lg text-bold"
                         style="word-break: break-all"
                     >
                         {{ post.title }}
@@ -54,7 +54,7 @@
                 </view>
                 <view class="row-3">
                     <view class="content margin-bottom-sm">
-                        {{ post.content }}
+                        <u-parse :content="post.content"></u-parse>
                     </view>
                     <view class="imgs">
                         <image
