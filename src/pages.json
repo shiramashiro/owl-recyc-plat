@@ -101,6 +101,12 @@
             "style": {
                 "navigationBarTitleText": "发表帖子"
             }
+        },
+        {
+            "path": "pages/order",
+            "style": {
+                "navigationBarTitleText": "我的订单"
+            }
         }
     ],
     "easycom": {

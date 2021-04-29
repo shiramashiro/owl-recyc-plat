@@ -56,7 +56,7 @@
 
 # 接口说明
 
-**最近更新时间：2021 年 4 月 27 日 16:11:31**
+**最近更新时间：2021 年 4 月 30 日 00:16:14**
 
 ## 获取书籍
 
@@ -184,6 +184,44 @@ http://120.77.245.208:8070/get/signin/avatar?phone=
 请求方式：GET
 
 参数说明：根据 phone 查询用户的头像地址
+
+## 获取订单
+
+```http
+http://120.77.245.208:8070/get/order
+```
+
+请求方式：POST
+
+参数结构：
+
+```json
+{
+    "userId": 1,
+    "tradeContentType": "recovery",
+    "tradeType": "tentative"
+}
+```
+
+## 设置订单
+
+```http
+http://120.77.245.208:8070/set/order
+```
+
+请求方式：POST
+
+参数结构：
+
+```json
+{
+    "address": "北京市东城区",
+    "dateTime": "2021-03-31 00:10",
+    "num": 1,
+    "tradeContentType": "recovery",
+    "tradeType": "decide"
+}
+```
 
 # 分支说明
 

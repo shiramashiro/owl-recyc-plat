@@ -50,6 +50,9 @@
                 </view>
             </view>
         </view>
+        <owl-fiche class="margin-top-sm">
+            <owl-indent ref="indent"></owl-indent>
+        </owl-fiche>
         <view class="row-6 margin-lr-xs margin-top-sm">
             <owl-fiche :title="'评论区'">
                 <owl-make-comment
@@ -65,6 +68,12 @@
                 ></owl-comment>
             </owl-fiche>
         </view>
+        <owl-action-bar
+            :type="'bookTrade'"
+            @rightBtn="notify"
+            @leftBtn="notify"
+        ></owl-action-bar>
+        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -112,10 +121,49 @@ export default {
                         }
                     }
                 ]
-            }
+            },
+            tipColor: '#19BE6B'
         }
     },
     methods: {
+        /**
+         * 通过refs对象获取组件的getIndent方法。
+         * 然后通过自定义函数得知，用户点击的哪一个按钮，
+         * 不同的按钮将不同的数据塞入Vuex数组中进行存储。
+         * 注意：只有当获取的ident对象存在时才可以设置comit。
+         *
+         * @param e owl-indent组件返回的indent对象。
+         */
+        notify(e) {
+            let indent = this.$refs.indent.getIndent()
+            if (indent !== undefined) {
+                indent['tradeContentType'] = 'book'
+                if (e.type === 'rightBtn') {
+                    indent['tradeType'] = 'decide'
+                    this.$store.commit('setNowTrade', indent)
+                } else {
+                    indent['tradeType'] = 'tentative'
+                    this.$store.commit('setTentativeTrade', indent)
+                }
+                if (this.$store.state.isSignin) {
+                    indent['userId'] = this.$store.state.userInfo.id
+                    this.$axios
+                        .post('/set/order', indent)
+                        .then(resp => {
+                            if (resp.status !== 200) {
+                                this.showTips('操作失败！', '#EB0909')
+                                return
+                            }
+                            this.showTips('操作成功！', '#19BE6B')
+                        })
+                        .catch(error => {
+                            this.showTips('服务器错误', '#EB0909')
+                        })
+                } else {
+                    this.showTips('没有登录哦~', '#EB0909')
+                }
+            }
+        },
         setSwiperItem(index) {
             uni.createSelectorQuery()
                 .in(this)

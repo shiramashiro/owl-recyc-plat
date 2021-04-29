@@ -5,7 +5,7 @@
                 <view class="left">时间</view>
                 <view class="center">
                     <view v-if="dateTimeValue === ''" class="text-gray">
-                        请选择日期，方便回收人员定时取件
+                        请选择日期
                     </view>
                     <view v-else>
                         {{ dateTimeValue }}
@@ -27,7 +27,7 @@
                 <view class="left">地区</view>
                 <view class="center">
                     <view v-if="addressValue === ''" class="text-gray">
-                        请选择地址，方便回收人员上门取件
+                        请选择地址
                     </view>
                     <view v-else>
                         {{ addressValue }}
@@ -48,7 +48,6 @@
                 <tui-cascade-selection
                     :itemList="itemList"
                     @complete="confirmAddress"
-                    @click="change"
                     :headerLine="true"
                 >
                 </tui-cascade-selection>
@@ -84,6 +83,11 @@
                 {{ item }}
             </view>
         </view>
+        <tui-tips
+            backgroundColor="#EB0909"
+            color="#ffffff"
+            ref="tips"
+        ></tui-tips>
     </view>
 </template>
 
@@ -146,12 +150,8 @@ export default {
         }
     },
     methods: {
-        /**
-         * 初始化日期时间：年-月-日 时:分
-         */
         initDateTime() {
             let date = new Date()
-
             return (
                 date.getFullYear() +
                 '-' +
@@ -175,12 +175,34 @@ export default {
         },
         confirmAddress(e) {
             this.addressValue = e.text
+        },
+        /**
+         * 获取订单信息，只有当信息有时才会返回indent对象，
+         * 否则提示用户完善信息。
+         */
+        getIndent() {
+            if (
+                this.numBoxValue !== 0 &&
+                this.dateTimeValue !== '' &&
+                this.addressValue !== ''
+            ) {
+                return {
+                    num: this.numBoxValue,
+                    dateTime: this.dateTimeValue,
+                    address: this.addressValue
+                }
+            } else {
+                this.$refs.tips.showTips({
+                    msg: '请完善信息！',
+                    duration: 2000
+                })
+            }
         }
     }
 }
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .item {
     height: 70rpx;
     display: flex;

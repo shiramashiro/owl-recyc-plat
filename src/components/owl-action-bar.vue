@@ -2,33 +2,77 @@
     <view class="owl-action-bar">
         <view class="container padding-xs flex align-center justify-between">
             <view class="item flex">
-                <view class="top">
-                    <image src="@/static/serve.svg" />
-                </view>
-                <view class="bottom text-sm" @click="serve">客服</view>
+                <navigator :url="'/pages/order'">
+                    <view class="top flex align-center justify-center">
+                        <image src="@/static/cart.png" />
+                        <template
+                            v-if="$store.state.tentativeTrade.length !== 0"
+                        >
+                            <tui-badge type="danger">
+                                {{ $store.state.tentativeTrade.length }}
+                            </tui-badge>
+                        </template>
+                    </view>
+                    <view class="bottom text-sm">
+                        <template v-if="type === 'bookTrade'">
+                            购物车
+                        </template>
+                        <template v-else>
+                            暂定
+                        </template>
+                    </view>
+                </navigator>
             </view>
 
             <view class="item flex">
-                <view class="top">
-                    <image src="@/static/cart.svg" />
-                </view>
-                <view class="bottom text-sm">订单</view>
+                <navigator :url="'/pages/order'">
+                    <view class="top flex align-center justify-center">
+                        <image src="@/static/order.png" />
+                        <template v-if="$store.state.decideTrade.length !== 0">
+                            <tui-badge type="danger">
+                                {{ $store.state.decideTrade.length }}
+                            </tui-badge>
+                        </template>
+                    </view>
+                    <view class="bottom text-sm">
+                        订单
+                    </view>
+                </navigator>
             </view>
 
             <view class="item flex recycle-btn">
                 <tui-button
+                    @click="handleClick('rightBtn')"
                     height="80rpx"
                     type="primary"
+                    :size="25"
                     shape="circle"
                     background="#87cefa"
-                    >通知回收</tui-button
                 >
+                    <template v-if="type === 'bookTrade'">
+                        立即购买
+                    </template>
+                    <template v-else>
+                        通知回收
+                    </template>
+                </tui-button>
             </view>
 
             <view class="item flex">
-                <tui-button height="80rpx" type="gray" shape="circle"
-                    >暂定回收</tui-button
+                <tui-button
+                    @click="handleClick('leftBtn')"
+                    height="80rpx"
+                    :size="25"
+                    type="gray"
+                    shape="circle"
                 >
+                    <template v-if="type === 'bookTrade'">
+                        加入购物车
+                    </template>
+                    <template v-else>
+                        暂定回收
+                    </template>
+                </tui-button>
             </view>
         </view>
 
@@ -46,16 +90,24 @@ export default {
     data() {
         return {}
     },
+    props: {
+        // 默认为default，可选为bookTrade
+        type: {
+            type: String,
+            default: 'default'
+        }
+    },
     methods: {
-        showTips(msg) {
-            this.$refs.toast.showTips({
-                msg: msg,
-                duration: 2000,
-                type: 'green'
-            })
-        },
-        serve() {
-            this.showTips('该功能正在完善中')
+        handleClick(e) {
+            if (e == 'rightBtn') {
+                this.$emit('rightBtn', {
+                    type: e
+                })
+            } else {
+                this.$emit('leftBtn', {
+                    type: e
+                })
+            }
         }
     }
 }

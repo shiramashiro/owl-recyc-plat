@@ -45,8 +45,34 @@
                     </view>
                 </view>
             </view>
+            <view class="margin-top-sm" v-if="$store.state.isSignin">
+                <owl-fiche :title="'我的'" :isLrMargin="false">
+                    <tui-list-view color="#777">
+                        <tui-list-cell
+                            v-for="(cell, index) in userCells"
+                            :key="index"
+                            :hover="true"
+                            :arrow="true"
+                        >
+                            <view
+                                class="flex text-sm align-center"
+                                @click="cell.action"
+                            >
+                                <view class="icon margin-right-xs">
+                                    <image
+                                        mode="aspectFit"
+                                        style="width: 30rpx; height: 30rpx"
+                                        :src="cell.icon"
+                                    ></image>
+                                </view>
+                                <view class="name">{{ cell.name }}</view>
+                            </view>
+                        </tui-list-cell>
+                    </tui-list-view>
+                </owl-fiche>
+            </view>
             <view class="margin-top-sm">
-                <owl-fiche :title="'服务'" :isLrMargin="false">
+                <owl-fiche :title="'关于'" :isLrMargin="false">
                     <tui-list-view color="#777">
                         <tui-list-cell
                             v-for="(cell, index) in listCells"
@@ -118,6 +144,52 @@ export default {
                     action: function() {
                         uni.navigateTo({
                             url: '/pages/mine/homepage'
+                        })
+                    }
+                }
+            ],
+            userCells: [
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/recovery.png',
+                    name: '暂定回收',
+                    action: function() {
+                        uni.navigateTo({
+                            url:
+                                '/pages/order?tradeType=tentative&tradeContentType=recovery'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/history.png',
+                    name: '历史回收',
+                    action: function() {
+                        uni.navigateTo({
+                            url:
+                                '/pages/order?tradeType=decide&tradeContentType=recovery'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/cart.png',
+                    name: '暂定购书',
+                    action: function() {
+                        uni.navigateTo({
+                            url:
+                                '/pages/order?tradeType=tentative&tradeContentType=book'
+                        })
+                    }
+                },
+                {
+                    icon:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/book.png',
+                    name: '书籍订单',
+                    action: function() {
+                        uni.navigateTo({
+                            url:
+                                '/pages/order?tradeType=decide&tradeContentType=book'
                         })
                     }
                 }
