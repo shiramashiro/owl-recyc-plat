@@ -12,7 +12,7 @@
                 />
             </view>
         </tui-navigation-bar>
-        <view class="tui-rolling-news padding-xs margin-xs">
+        <view class="tui-rolling-news">
             <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
             <swiper
                 vertical
