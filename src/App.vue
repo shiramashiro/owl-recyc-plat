@@ -36,6 +36,7 @@ export default {
 <style>
 /*每个页面公共css */
 @import 'colorui/main.css';
+@import '@/components/u-parse/u-parse.css';
 @import 'colorui/icon.css';
 
 body {
