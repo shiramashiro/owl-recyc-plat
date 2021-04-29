@@ -1,12 +1,16 @@
 <template>
-    <view class="homepage">
-        <tui-navigation-bar>
-            <image
-                class="margin-left-sm"
-                style="width: 70rpx; height: 70rpx"
-                @click="backIntoIndex()"
-                src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
-            ></image>
+    <view
+        class="homepage"
+        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
+    >
+        <tui-navigation-bar :isFixed="true" :isOpacity="true">
+            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+                <image
+                    class="margin-left-sm"
+                    style="width: 70rpx; height: 70rpx"
+                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
+                ></image>
+            </navigator>
         </tui-navigation-bar>
         <view class="row-1">
             <image
@@ -89,15 +93,6 @@ export default {
     data() {
         return {
             index: 0,
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false,
-                isCustomImmerse: true
-            },
             swiperTabs: [
                 { tabName: '收藏的书籍', componentName: 'CollectedBooks' },
                 { tabName: '收藏的帖子', componentName: 'CollectedPosts' }
@@ -107,11 +102,6 @@ export default {
     methods: {
         slideTuiTab(info) {
             this.index = info.index
-        },
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/mine/mine'
-            })
         }
     }
 }

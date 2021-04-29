@@ -3,7 +3,7 @@
         <view class="col-1 margin-right-xs">
             <view class="padding-xs input-wrap">
                 <textarea
-                    style="height: 120rpx"
+                    style="height: 120rpx; width: 100%"
                     v-model="inputValue"
                     type="text"
                     maxlength="500"
@@ -11,12 +11,13 @@
                 />
             </view>
         </view>
-        <view class="col-2">
+        <view class="col-2 text-center">
             <tui-button
-                :height="'60rpx'"
-                :width="'100rpx'"
+                plain
+                class="flex align-center justify-center"
+                style="height: 100%"
                 :type="'primary'"
-                :size="24"
+                :size="30"
                 @click="publishComment"
             >
                 发表
@@ -95,6 +96,8 @@ export default {
 <style lang="scss" scoped>
 .owl-make-comment {
     .col-1 {
+        width: 80%;
+
         .input-wrap {
             background-color: rgb(248, 248, 248);
             border-radius: 6px;
@@ -102,6 +105,14 @@ export default {
             input {
                 width: 100%;
             }
+        }
+    }
+
+    .col-2 {
+        width: 18%;
+
+        .send-btn {
+            height: 100%;
         }
     }
 }

@@ -14,176 +14,63 @@
 
 ## 命名规范
 
-组件的 name 命名方式为，单词与单词之间用`-`隔开，字母均为小写，比如 more-recoveries.vue 组件的 name 应该写为 'more-recoveries'。
+1. 组件：组件 name 属性值填入的值为单词与单词之间用`-`隔开；导入组件时的变量名使用大驼峰命名规则，即 AbcDef 的形式。
+2. CSS：class、id 的命名方式为单词与单词之间用`-`隔开。
 
-## 分支规范
+## 分支说明
 
 每个人每次都负责一个分支开发，比如某界面只在分支`feature-xxx`进行开发，避免与其他分支产生冲突，从而发生不可挽回的代码丢失风险！
 
-# 组件说明
+## 目录结构
 
-**最近更新时间：2021 年 4 月 26 日 17:40:03**
+**最近更新时间：2021 年 4 月 19 日 09:14:44**
 
-公共组件名为 owl-xxx.vue，并已全局注册，直接使用。
-
-## 修改 owl-fiche.vue
-
-主要作用是复用首页每一个服务入口的卡片
-
-删除 isDisplay 参数，在组件内判断是否传入 url，即为开启“更多”按钮的跳转地址。
-
-## 修改 owl-make-comment.vue
-
-发送评论的接口，必须传递的参数为 belongedId、postUrl、urlType，具体用法查看源码。
-
-## 新增 owl-tag.vue
-
-标签组件，可传递参数 type，其可选值为 primary、danger、warning，可自定义宽和高，单位可以是 rpx 或 px，但是建议是 rpx。
-
-##sign.vue
-主要内容 登录界面
-
-## 修改 signin.vue
-
-当点击输入框时，添加底部的阴影效果，增强用户交互体验。
-
-用户输入完手机号时，如果查询到此用户的头像，就将默认头像替换为当前头像，否则仍旧以默认头像为准。
-
-## 新增 signup.vue
-
-注册页面
-
-## 删除 caskets.vue
-
-因为重复造轮子，所以删除了此组件，直接融合到了 index.vue 中。
-
-# 数据结构
-
-**最近更新时间：2021 年 4 月 23 日 13:40:56**
-
-## 书籍数据
+目录结构大致如下：
 
 ```json
-{
-    "type": "living | technology | social | business | literature | art | education | children", // 书籍类型
-    "author": "", // 作者姓名
-    "name": "", // 书籍名称
-    "price": 00.00, // 回收价
-    "originPrice": 00.00, // 原价
-    "desc": "", // 书籍介绍
-    "img": [
-        {
-            "id": 0, // 图片ID
-            "imgUrl": "", // 图片url地址
-            "belogngedId": 0 // 图片所属书籍ID
-        }
-    ],
-}
+-src
+    --colorui
+    --components
+        ---community
+        ---index
+        ---mine
+        ---msg
+        ---thorui
+    --minixs
+    --pages
+        ---community
+        ---index
+        ---mine
+        ---msg
+    --static
+        ---icon
+    --store
 ```
 
-## 用户数据
+1. 静态资源都存放在 static 文件夹中；
+2. colorui 和 thorui 为第三方组件库；
+3. components 存放对应页面的组件；
+4. pages 存放页面的组件，pages 跟 pages.json 配套，使用方法查阅 uni-app 官方文档。
 
-```json
-{
-    "id": 1, // 用户ID
-    "level": 0, // 用户等级
-    "username": "", // 用户名
-    "password": "", // 密码
-    "avatar": "", // 头像地址
-    "fans": 0, // 粉丝数
-    "praise": 0, // 点赞数
-    "follows": 0, // 订阅数
-    "bgImage": "" // 背景图
-}
-```
-
-## 评论数据
-
-```json
-{
-    "id": 0, // 评论ID
-    "userId": 1, // 评论对应的用户ID，即哪个用户发表的评论
-    "belogngedId", // 所属ID
-    "content": "", // 评论内容
-    "postDate": "", // 发表日期
-    "agree": 0, // 点赞数
-    "disagree": 0, // 反对数
-    "user": {
-        "id": 0, // 用户ID
-        "level": 0, // 用户等级
-        "username": "", // 用户名
-        "nickname": "", // 社区名
-        "password": "", // 密码
-        "avatar": "", // 头像地址
-        "fans": 0, // 粉丝数
-        "praise": 0, // 点赞数
-        "follows": 0, // 订阅数
-        "bgImage": "" // 我的背景图
-    },
-}
-```
-
-## 回收点数据
-
-```json
-{
-    "id": 0, // 回收点Id
-    "url": "", // 回收点封面地址
-    "address": "", // 回收点地址
-    "price": 0, // 评价回收价 / 斤
-    "times": 0, // 回收次数
-    "openTime": "", // 开门时间
-    "closeTime": "", // 关门时间
-    "img": [
-        {
-            "id": 0, // 图片ID
-            "imgUrl": "", // 图片url地址
-            "belogngedId": 0 // 图片所属回收点ID
-        }
-    ],
-    "comment": [
-        {
-            "id": 0, // 评论ID
-            "userId": 0, // 评论对应的用户ID，即哪个用户发表的评论
-            "belogngedId", // 所属ID
-            "content": "", // 评论内容
-            "postDate": "", // 发表日期
-            "agree": 0, // 点赞数
-            "disagree": 0, // 反对数
-            "user": {
-                "id": 0, // 用户ID
-                "level": 0, // 用户等级
-                "username": "", // 用户名
-                "nickname": "", // 社区名
-                "password": "", // 密码
-                "avatar": "", // 头像地址
-                "fans": 0, // 粉丝数
-                "praise": 0, // 点赞数
-                "follows": 0, // 订阅数
-                "bgImage": "" // 我的背景图
-            },
-        }
-    ]
-}
-```
+注意：pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
 
 # 接口说明
 
-**最近更新时间：2021 年 4 月 23 日 13:38:33**
+**最近更新时间：2021 年 4 月 27 日 16:11:31**
 
 ## 获取书籍
 
 ```http
-http://120.77.245.208:8070/get/book?type=
+http://120.77.245.208:8070/get/book
 ```
 
 请求方式：GET
 
 参数说明：
 
-all | living | technology | social | business | literature | art | education | children
+在发起此请求获取书籍时，必须传入 type 来区分获取什么类型的书籍，下面是可选参数值：
 
-每一个参数值都是对应书籍的类型，通过类型查询书籍。
+all | living | technology | social | business | literature | art | education | children
 
 ## 发表评论
 
@@ -209,7 +96,7 @@ http://120.77.245.208:8070/set/comment
 ## 获取帖子
 
 ```http
-http://120.77.245.208:8070/get/post?[limitNum | browseNum | id]
+http://120.77.245.208:8070/get/post
 ```
 
 请求方式：GET
@@ -297,39 +184,6 @@ http://120.77.245.208:8070/get/signin/avatar?phone=
 请求方式：GET
 
 参数说明：根据 phone 查询用户的头像地址
-
-# 目录结构
-
-**最近更新时间：2021 年 4 月 19 日 09:14:44**
-
-目录结构大致如下：
-
-```json
--src
-    --colorui
-    --components
-        ---community
-        ---index
-        ---mine
-        ---msg
-        ---thorui
-    --minixs
-    --pages
-        ---community
-        ---index
-        ---mine
-        ---msg
-    --static
-        ---icon
-    --store
-```
-
-1. 静态资源都存放在 static 文件夹中；
-2. colorui 和 thorui 为第三方组件库；
-3. components 存放对应页面的组件；
-4. pages 存放页面的组件，pages 跟 pages.json 配套，使用方法查阅 uni-app 官方文档。
-
-注意：pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
 
 # 分支说明
 

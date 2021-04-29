@@ -12,6 +12,24 @@
                 />
             </view>
         </tui-navigation-bar>
+        <view class="tui-rolling-news">
+            <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
+            <swiper
+                vertical
+                autoplay
+                circular
+                interval="3000"
+                class="tui-swiper"
+            >
+                <swiper-item
+                    v-for="(item, index) in newsList"
+                    :key="index"
+                    class="tui-swiper-item"
+                >
+                    <view class="tui-news-item" @tap="detail">{{ item }}</view>
+                </swiper-item>
+            </swiper>
+        </view>
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
                 <swiper-item
@@ -28,6 +46,35 @@
         </view>
         <owl-fiche
             :iconPath="
+                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/news.png'
+            "
+            class="margin-top-sm"
+            :navigateTo="'/pages/more-item'"
+            :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
+            :title="'新闻 / 资讯'"
+        >
+            <view class="panel">
+                <template v-for="(item, index) in newsPanelList">
+                    <navigator
+                        :url="'/pages/post-detail?id=' + item.id"
+                        :key="index"
+                    >
+                        <view
+                            class="list-item flex align-center padding-lr-sm padding-tb-sm margin-bottom-xs"
+                        >
+                            <view class="num margin-right-sm">
+                                {{ index + 1 }}
+                            </view>
+                            <view class="brief text-cut">
+                                {{ item.title }}
+                            </view>
+                        </view>
+                    </navigator>
+                </template>
+            </view>
+        </owl-fiche>
+        <owl-fiche
+            :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
             "
             class="margin-top-sm"
@@ -39,8 +86,10 @@
                     v-for="(renderedCasketItem, index) in renderedCasketsData"
                     :key="index"
                     @click="
-                        navigateToClickedItem('/pages/index/classification', [
-                            'type=' + renderedCasketItem.type
+                        navigateToClickedItem('/pages/more-item', [
+                            'type=' + renderedCasketItem.type,
+                            'comName=owlBooks',
+                            'backNav=index/index'
                         ])
                     "
                 >
@@ -71,10 +120,15 @@
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
             "
-            :navigateTo="'/pages/index/more-recoveries'"
+            :navigateTo="'/pages/more-item'"
+            :URLAttrs="[
+                'maxSize=0',
+                'backNav=index/index',
+                'comName=owlRecoveries'
+            ]"
             :title="'回收点'"
         >
-            <recoveries @selected="chooseRecovery"></recoveries>
+            <owl-recoveries></owl-recoveries>
         </owl-fiche>
         <owl-fiche
             :iconPath="
@@ -84,18 +138,18 @@
             :title="'推荐'"
             class="margin-top-sm"
         >
-            <books @selected="chooseBook" :data="renderedBooksData"></books>
+            <owl-books :bookType="'all'"></owl-books>
         </owl-fiche>
     </view>
 </template>
 
 <script>
-import Recoveries from '@/components/index/recoveries.vue'
-import Books from '@/components/index/books.vue'
+// 导入mixins
+import { navigateToMixins } from '@/mixins/navigate-to.js'
 
 export default {
     name: 'Index',
-    components: { Recoveries, Books },
+    mixins: [navigateToMixins],
     data() {
         return {
             // 绑定输入框的输入值
@@ -177,17 +231,12 @@ export default {
                     enTitle: "Children's Books"
                 }
             ],
-            swiperTabs: [
-                { name: '全部', type: 'all' },
-                { name: '生活', type: 'living' },
-                { name: '科技', type: 'technology' },
-                { name: '社会', type: 'social' },
-                { name: '经管', type: 'business' },
-                { name: '文学', type: 'literature' },
-                { name: '艺术', type: 'art' },
-                { name: '辅教', type: 'education' },
-                { name: '童书', type: 'children' }
+            newsList: [
+                '致力发展负责任的人工智能 中国发布八大治理原则',
+                '格兰仕暗示拜访拼多多后遭天猫打压，拼多多高层赞其有勇气',
+                '阿里计划将每股普通股拆为8股，增加筹资灵活性'
             ],
+            newsPanelList: [],
             carouselMaps: [
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
@@ -195,53 +244,16 @@ export default {
             ]
         }
     },
-    methods: {
-        /**
-         * 导航到被点击项的页面
-         *
-         * @param url 类型：String。作用：跳转目标页URL地址
-         * @param params 类型：Array。作用：跳转页面可能需要携带必要的参数
-         * @param info 类型：Object。作用：接收被点击项的信息
-         */
-        navigateToClickedItem(url, params, info) {
-            // 判断是否传入参数，如果小于0则说明没有传入参数
-            if (params.length > 1) {
-                url += '?' + params[0]
-                for (let index = 1; index < params.length; index++) {
-                    url += '&' + params[index]
-                }
-            } else {
-                // 传递了一个参数值
-                url += '?' + params[0]
-            }
-            // 拼接url之后传递给此方法进行跳转
-            uni.navigateTo({
-                url: url
-            })
-        },
-        chooseRecovery(info) {
-            this.navigateToClickedItem('/pages/index/recovery-detail', [
-                'id=' + info.item.id
-            ])
-        },
-        chooseBook(info) {
-            this.navigateToClickedItem('/pages/index/book-detail', [
-                'id=' + info.id
-            ])
-        }
-    },
-    onLoad() {
+    mounted() {
         this.$axios
-            .get('/get/book', {
+            .get('/get/post', {
                 params: {
-                    type: 'all'
+                    tagType: 'news',
+                    limitNum: 4
                 }
             })
             .then(resp => {
-                this.renderedBooksData = resp.data
-            })
-            .catch(error => {
-                console.log(error)
+                this.newsPanelList = resp.data
             })
     }
 }
@@ -288,6 +300,34 @@ export default {
         }
     }
 
+    .tui-rolling-news {
+        background-color: white;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+
+        .tui-swiper {
+            font-size: 28rpx;
+            height: 50rpx;
+            flex: 1;
+        }
+
+        .tui-swiper-item {
+            display: flex;
+            align-items: center;
+
+            .tui-news-item {
+                line-height: 28rpx;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
     .slide-show {
         .slide-show-image {
             width: 100%;
@@ -295,9 +335,9 @@ export default {
         }
     }
 
-    .filter {
-        .other-tab {
-            flex-flow: row;
+    .panel {
+        .list-item {
+            border-bottom: 1rpx solid #f0f0f0 !important;
         }
     }
 }

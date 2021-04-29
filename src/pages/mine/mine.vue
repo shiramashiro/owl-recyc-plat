@@ -11,20 +11,19 @@
             <view class="user-brief">
                 <view class="brief-wrap">
                     <view v-if="!$store.state.isSignin" class="rows">
-                        <view
-                            class="row-1 text-center"
-                            @click="goToTargetPage('/pages/entry/signin')"
-                        >
-                            <image
-                                mode="aspectFill"
-                                :src="
-                                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png'
-                                "
-                            ></image>
-                            <view class="text-lg text-black margin-top-xs"
-                                >点击登录</view
-                            >
-                        </view>
+                        <navigator :url="'/pages/entry/signin'">
+                            <view class="row-1 text-center">
+                                <image
+                                    mode="aspectFill"
+                                    :src="
+                                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png'
+                                    "
+                                ></image>
+                                <view class="text-lg text-black margin-top-xs"
+                                    >点击登录</view
+                                >
+                            </view>
+                        </navigator>
                         <view class="row-2 text-center text-gray text-sm">
                             登陆解锁更多精彩内容哟
                         </view>
@@ -37,11 +36,11 @@
                             ></image>
                         </view>
                         <view class="row-2 flex justify-end text-gray text-sm">
-                            <view
-                                @click="goToTargetPage('/pages/mine/homepage')"
-                                class="homepage text-center padding-xs"
-                                >个人主页 ></view
-                            >
+                            <navigator :url="'/pages/mine/homepage'">
+                                <view class="homepage text-center padding-xs"
+                                    >个人主页 ></view
+                                >
+                            </navigator>
                         </view>
                     </view>
                 </view>
@@ -124,19 +123,12 @@ export default {
                 }
             ]
         }
-    },
-    methods: {
-        goToTargetPage(targetPage) {
-            uni.navigateTo({ url: targetPage })
-        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .mine {
-    background-color: #f8f8f8;
-
     .bg {
         .image {
             width: 100%;

@@ -24,6 +24,10 @@ export default {
                 Vue.prototype.StatusBar = e.statusBarHeight
                 Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight
                 // #endif
+
+                // 应用启动时将设备信息添加到Vue原形中
+                Vue.prototype.$systemInfo = e
+                console.log(e)
             }
         })
     }
@@ -33,6 +37,7 @@ export default {
 <style>
 /*每个页面公共css */
 @import 'colorui/main.css';
+@import '@/components/u-parse/u-parse.css';
 @import 'colorui/icon.css';
 
 body {

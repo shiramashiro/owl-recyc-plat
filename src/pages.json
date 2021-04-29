@@ -31,21 +31,21 @@
             }
         },
         {
-            "path": "pages/index/classification",
+            "path": "pages/more-item",
             "style": {
-                "navigationBarTitleText": "分类"
+                "navigationBarTitleText": "更多"
+            }
+        },
+        {
+            "path": "pages/post-detail",
+            "style": {
+                "navigationBarTitleText": "帖子详情"
             }
         },
         {
             "path": "pages/index/book-detail",
             "style": {
                 "navigationBarTitleText": "书籍详情"
-            }
-        },
-        {
-            "path": "pages/index/more-recoveries",
-            "style": {
-                "navigationBarTitleText": "更多回收点"
             }
         },
         {
@@ -79,24 +79,6 @@
             }
         },
         {
-            "path": "pages/community/post-detail",
-            "style": {
-                "navigationBarTitleText": "帖子详情"
-            }
-        },
-        {
-            "path": "pages/community/more",
-            "style": {
-                "navigationBarTitleText": "更多"
-            }
-        },
-        {
-            "path": "pages/community/make-post",
-            "style": {
-                "navigationBarTitleText": "新建帖子"
-            }
-        },
-        {
             "path": "pages/entry/signin",
             "style": {
                 "navigationBarTitleText": "登录"
@@ -112,6 +94,12 @@
             "path": "pages/mine/homepage",
             "style": {
                 "navigationBarTitleText": "个人主页"
+            }
+        },
+        {
+            "path": "pages/owl-editor",
+            "style": {
+                "navigationBarTitleText": "发表帖子"
             }
         }
     ],

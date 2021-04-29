@@ -1,7 +1,9 @@
 <template>
     <view class="book-detail">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator :url="'/pages/index/index'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg text-lg">二手书详细</view>
         </tui-navigation-bar>
         <view class="rows margin-lr-xs">
@@ -26,7 +28,7 @@
                 </swiper>
             </view>
             <view class="rows-content margin-lr-lg">
-                <view class="col-0">
+                <view class="col-0 text-bold text-lg">
                     {{ book.name }}
                 </view>
                 <view
@@ -43,7 +45,7 @@
                     </view>
                 </view>
                 <view class="row-3 text-gray">{{ book.originPrice }}</view>
-                <view class="row-4 margin-top-sm padding-bottom-sm text-bold">
+                <view class="row-4 margin-top-sm padding-bottom-sm">
                     {{ book.desc }}
                 </view>
             </view>
@@ -58,21 +60,17 @@
                 ></owl-make-comment>
                 <owl-comment
                     class="padding-lr-sm"
-                    @express="expressView"
+                    :belongedName="'book'"
                     :data="book.comment"
                 ></owl-comment>
             </owl-fiche>
         </view>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
-import { setView } from '@/mixins/set-view.js'
-
 export default {
     name: 'BookDetail',
-    mixins: [setView],
     data() {
         return {
             currentSwiper: 0,
@@ -114,16 +112,10 @@ export default {
                         }
                     }
                 ]
-            },
-            commentType: 'book'
+            }
         }
     },
     methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/index/index'
-            })
-        },
         setSwiperItem(index) {
             uni.createSelectorQuery()
                 .in(this)

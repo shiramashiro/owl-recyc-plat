@@ -1,11 +1,15 @@
 <template>
-    <view class="container flex justify-between">
+    <view class="owl-recoveries container flex justify-between">
         <template v-for="(item, index) in recoveries">
             <view
                 v-if="index < maxSize || maxSize === 0"
                 :key="index"
                 class="item margin-xs"
-                @click="clickItem(item, index)"
+                @click="
+                    navigateToClickedItem('/pages/index/recovery-detail', [
+                        'id=' + item.id
+                    ])
+                "
             >
                 <image mode="aspectFill" :src="item.url" />
                 <view class="detail padding-lr-xs padding-tb-sm">
@@ -25,8 +29,12 @@
 </template>
 
 <script>
+// 导入mixins
+import { navigateToMixins } from '@/mixins/navigate-to.js'
+
 export default {
     name: 'recoveries',
+    mixins: [navigateToMixins],
     props: {
         // maxSize为0时，代表无限制显示，规定默认显示6个
         maxSize: {
@@ -53,15 +61,6 @@ export default {
             .catch(error => {
                 console.log(error)
             })
-    },
-    methods: {
-        // 点击事件，回传每一项信息以及对应的索引值
-        clickItem(item, index) {
-            this.$emit('selected', {
-                item: item,
-                index: index
-            })
-        }
     }
 }
 </script>

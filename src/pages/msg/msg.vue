@@ -1,5 +1,5 @@
 <template>
-    <view class="msg">
+    <view class="msg" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <view class="top padding-lr-lg flex justify-between align-center">
             <template v-for="(navigator, index) in navigators">
                 <navigator :key="index" :url="navigator.url">
@@ -22,46 +22,49 @@
                     class="chat-list-item margin-bottom-sm padding-sm"
                     v-for="(item, index) in chats"
                     :key="index"
-                    @click="chooseChatItem(item)"
                 >
-                    <tui-swipe-action
-                        style="width: 100%"
-                        @selected="chooseSwipe"
-                        :content="item"
-                        :actions="actions"
-                    >
-                        <template v-slot:content>
-                            <view
-                                class="item flex align-center justify-between"
-                            >
-                                <owl-avatar
-                                    class="avatar"
-                                    :size="40"
-                                    :src="item.url"
-                                ></owl-avatar>
-                                <view class="content">
-                                    <view class="text-cut">
-                                        {{ item.name }}
-                                    </view>
-                                    <view class="text-gray text-sm text-cut">
-                                        {{ item.detail }}
-                                    </view>
-                                </view>
-                                <view class="tips text-center">
-                                    <view class="text-grey text-xs">
-                                        {{ item.time }}
-                                    </view>
-                                    <template v-if="item.new > 0">
-                                        <view
-                                            class="cu-tag round margin-top-sm bg-red sm"
-                                        >
-                                            {{ item.new }}
+                    <navigator :url="'/pages/msg/chat?id=' + item.id">
+                        <tui-swipe-action
+                            style="width: 100%"
+                            @selected="chooseSwipe"
+                            :content="item"
+                            :actions="actions"
+                        >
+                            <template v-slot:content>
+                                <view
+                                    class="item flex align-center justify-between"
+                                >
+                                    <owl-avatar
+                                        class="avatar"
+                                        :size="40"
+                                        :src="item.url"
+                                    ></owl-avatar>
+                                    <view class="content">
+                                        <view class="text-cut">
+                                            {{ item.name }}
                                         </view>
-                                    </template>
+                                        <view
+                                            class="text-gray text-sm text-cut"
+                                        >
+                                            {{ item.detail }}
+                                        </view>
+                                    </view>
+                                    <view class="tips text-center">
+                                        <view class="text-grey text-xs">
+                                            {{ item.time }}
+                                        </view>
+                                        <template v-if="item.new > 0">
+                                            <view
+                                                class="cu-tag round margin-top-sm bg-red sm"
+                                            >
+                                                {{ item.new }}
+                                            </view>
+                                        </template>
+                                    </view>
                                 </view>
-                            </view>
-                        </template>
-                    </tui-swipe-action>
+                            </template>
+                        </tui-swipe-action>
+                    </navigator>
                 </view>
             </view>
         </owl-fiche>
@@ -181,13 +184,6 @@ export default {
                     new: 10
                 }
             ]
-        }
-    },
-    methods: {
-        chooseChatItem(item) {
-            uni.navigateTo({
-                url: '/pages/msg/chat?id=' + item.id
-            })
         }
     }
 }

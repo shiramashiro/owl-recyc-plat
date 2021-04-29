@@ -1,7 +1,12 @@
 <template>
     <view class="post-detail">
         <tui-navigation-bar>
-            <i @click="backIntoIndex()" class="el-icon-third-fanhui"></i>
+            <navigator
+                :url="'/pages/community/community'"
+                open-type="switchTab"
+            >
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
             <view class="margin-left-lg">帖子详情</view>
         </tui-navigation-bar>
         <view class="post-panel margin-top-sm padding-top-sm padding-lr-sm">
@@ -38,7 +43,7 @@
                         >{{ post.tagName }}</owl-tag
                     >
                     <view
-                        class="title margin-left-xs text-lg"
+                        class="title margin-left-xs text-lg text-bold"
                         style="word-break: break-all"
                     >
                         {{ post.title }}
@@ -49,7 +54,7 @@
                 </view>
                 <view class="row-3">
                     <view class="content margin-bottom-sm">
-                        {{ post.content }}
+                        <u-parse :content="post.content"></u-parse>
                     </view>
                     <view class="imgs">
                         <image
@@ -85,21 +90,17 @@
                 :belongedId="post.id"
             ></owl-make-comment>
             <owl-comment
-                @express="expressView"
                 class="padding-lr-sm"
+                :belongedName="'post'"
                 :data="post.comment"
             ></owl-comment>
         </owl-fiche>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
 </template>
 
 <script>
-import { setView } from '@/mixins/set-view.js'
-
 export default {
     name: 'post-detail',
-    mixins: [setView],
     data() {
         return {
             post: {
@@ -120,16 +121,7 @@ export default {
                         }
                     }
                 ]
-            },
-            config: {
-                splitLine: false,
-                isFixed: false,
-                isOpacity: false,
-                isCustom: true,
-                tansparent: false,
-                isImmersive: false
-            },
-            commentType: 'post'
+            }
         }
     },
     onLoad(option) {
@@ -140,18 +132,12 @@ export default {
                 }
             })
             .then(resp => {
+                // issue 获取的data里面是一个数组，但是理想状态下不是数组，而是一个对象。
                 this.post = resp.data[0]
             })
             .catch(error => {
                 console.log(error)
             })
-    },
-    methods: {
-        backIntoIndex() {
-            uni.switchTab({
-                url: '/pages/community/community'
-            })
-        }
     }
 }
 </script>
