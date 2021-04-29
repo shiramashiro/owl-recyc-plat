@@ -121,7 +121,7 @@ export default {
                 .post('/signup', {
                     phone: this.phoneValue,
                     password: this.pwdValue,
-                    username: this.userNameValue
+                    username: this.usernameValue
                 })
                 .then(res => {
                     if (res.data.code === 400) {

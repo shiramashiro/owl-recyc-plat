@@ -4,8 +4,8 @@ import Vuex from './store/index'
 import './static/icon/iconfont.css'
 import Axios from 'axios'
 
-Axios.defaults.baseURL = 'http://120.77.245.208:8070/'
-// Axios.defaults.baseURL = 'http://localhost:8070'
+// Axios.defaults.baseURL = 'http://120.77.245.208:8070/'
+Axios.defaults.baseURL = 'http://localhost:8070'
 Axios.interceptors.request.use(config => {
     return config
 })
