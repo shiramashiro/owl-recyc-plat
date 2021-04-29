@@ -93,7 +93,7 @@
             </view>
         </view>
         <view class="make-post">
-            <navigator :url="'/pages/community/make-post'">
+            <navigator :url="'/pages/owl-editor'">
                 <view class="post-btn-wrap">
                     <image
                         mode="aspectFit"

@@ -27,6 +27,7 @@ export default {
 
                 // 应用启动时将设备信息添加到Vue原形中
                 Vue.prototype.$systemInfo = e
+                console.log(e)
             }
         })
     }
