@@ -52,7 +52,7 @@ export default {
     name: 'more-transfer',
     data() {
         return {
-            datas: [
+            dataslibrary: [
                 {
                     id: 1,
                     cover:
@@ -82,7 +82,30 @@ export default {
                     respect: 13,
                     type: 'library'
                 }
-            ]
+            ],
+            datasschool: [
+                {
+                    id: 1,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-school.png',
+                    name: '中心小学',
+                    area: '北京市朝阳区',
+                    receive: 453,
+                    respect: 131,
+                    type: 'shool'
+                },
+                {
+                    id: 1,
+                    cover:
+                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-school.png',
+                    name: '中心小学',
+                    area: '北京市朝阳区',
+                    receive: 222,
+                    respect: 174,
+                    type: 'shool'
+                }
+            ],
+            datas: []
         }
     },
     methods: {
@@ -93,7 +116,11 @@ export default {
         }
     },
     onLoad(options) {
-        console.log(options)
+        if (options.type == 'school') {
+            this.datas = this.datasschool
+        } else {
+            this.datas = this.dataslibrary
+        }
     }
 }
 </script>
