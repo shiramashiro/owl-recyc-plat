@@ -47,8 +47,8 @@ export default {
         }
     },
     onLoad(options) {
-        // options['userId'] = this.$store.state.userInfo.id
-        options['userId'] = 1
+        options['userId'] = this.$store.state.userInfo.id
+        // options['userId'] = 1
         this.$axios
             .post('/get/order', options)
             .then(resp => {
