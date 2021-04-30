@@ -6,7 +6,7 @@
         <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
                 <navigator
-                    :url="'/pages/community/community'"
+                    :url="'/pages/transfer/transfer'"
                     open-type="switchTab"
                 >
                     <i class="el-icon-third-fanhui"></i>

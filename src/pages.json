@@ -9,12 +9,6 @@
         {
             "path": "pages/transfer/transfer",
             "style": {
-                "navigationBarTitleText": "转让"
-            }
-        },
-        {
-            "path": "pages/community/community",
-            "style": {
                 "navigationBarTitleText": "社区"
             }
         },
@@ -30,18 +24,7 @@
                 "navigationBarTitleText": "我的"
             }
         },
-        {
-            "path": "pages/more-item",
-            "style": {
-                "navigationBarTitleText": "更多"
-            }
-        },
-        {
-            "path": "pages/post-detail",
-            "style": {
-                "navigationBarTitleText": "帖子详情"
-            }
-        },
+        // 首页相关的页面
         {
             "path": "pages/index/book-detail",
             "style": {
@@ -54,6 +37,7 @@
                 "navigationBarTitleText": "回收点详细"
             }
         },
+        // 消息相关的页面
         {
             "path": "pages/msg/notify",
             "style": {
@@ -78,6 +62,7 @@
                 "navigationBarTitleText": "聊天"
             }
         },
+        // 登陆相关的页面
         {
             "path": "pages/entry/signin",
             "style": {
@@ -90,6 +75,7 @@
                 "navigationBarTitleText": "注册"
             }
         },
+        // 我的相关页面
         {
             "path": "pages/mine/homepage",
             "style": {
@@ -97,15 +83,40 @@
             }
         },
         {
-            "path": "pages/owl-editor",
+            "path": "pages/mine/order",
             "style": {
-                "navigationBarTitleText": "发表帖子"
+                "navigationBarTitleText": "订单"
+            }
+        },
+        // 转让相关页面
+        {
+            "path": "pages/transfer/more-transfer",
+            "style": {
+                "navigationBarTitleText": "更多捐赠"
             }
         },
         {
-            "path": "pages/order",
+            "path": "pages/transfer/transfer-detail",
             "style": {
-                "navigationBarTitleText": "我的订单"
+                "navigationBarTitleText": "捐赠详细"
+            }
+        },
+        {
+            "path": "pages/transfer/post-detail",
+            "style": {
+                "navigationBarTitleText": "帖子详情"
+            }
+        },
+        {
+            "path": "pages/transfer/post-editor",
+            "style": {
+                "navigationBarTitleText": "发表"
+            }
+        },
+        {
+            "path": "pages/more",
+            "style": {
+                "navigationBarTitleText": "更多"
             }
         }
     ],
@@ -139,12 +150,6 @@
                 "iconPath": "static/tabbar/transfer.png",
                 "selectedIconPath": "static/tabbar/transfer.png",
                 "text": "转让"
-            },
-            {
-                "pagePath": "pages/community/community",
-                "iconPath": "static/tabbar/community.png",
-                "selectedIconPath": "static/tabbar/community.png",
-                "text": "社区"
             },
             {
                 "pagePath": "pages/msg/msg",

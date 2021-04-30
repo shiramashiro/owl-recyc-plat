@@ -1,7 +1,7 @@
 <template>
     <view class="posts">
         <view v-for="(item, index) in posts" :key="index" class="post">
-            <navigator :url="'/pages/post-detail?id=' + item.id">
+            <navigator :url="'/pages/transfer/post-detail?id=' + item.id">
                 <view class="margin-bottom-sm padding-sm">
                     <view class="row-1 flex align-center margin-bottom-sm">
                         <view class="col-1 margin-right-sm">

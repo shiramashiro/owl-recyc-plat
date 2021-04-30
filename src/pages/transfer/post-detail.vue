@@ -2,7 +2,7 @@
     <view class="post-detail">
         <tui-navigation-bar>
             <navigator
-                :url="'/pages/community/community'"
+                :url="'/pages/transfer/transfer'"
                 open-type="switchTab"
             >
                 <i class="el-icon-third-fanhui"></i>

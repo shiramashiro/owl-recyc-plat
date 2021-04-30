@@ -1,5 +1,5 @@
 <template>
-    <view class="more-item">
+    <view class="more">
         <tui-navigation-bar>
             <navigator :url="'/pages/' + params.backNav" open-type="switchTab">
                 <i class="el-icon-third-fanhui"></i>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    name: 'more-item',
+    name: 'more',
     data() {
         return {
             params: {}
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.more-item {
+.more {
     background-color: rgb(248, 248, 248);
 }
 </style>

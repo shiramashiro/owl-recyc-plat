@@ -49,14 +49,14 @@
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/news.png'
             "
             class="margin-top-sm"
-            :navigateTo="'/pages/more-item'"
+            :navigateTo="'/pages/more'"
             :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
             :title="'新闻 / 资讯'"
         >
             <view class="panel">
                 <template v-for="(item, index) in newsPanelList">
                     <navigator
-                        :url="'/pages/post-detail?id=' + item.id"
+                        :url="'/pages/transfer/post-detail?id=' + item.id"
                         :key="index"
                     >
                         <view
@@ -86,7 +86,7 @@
                     v-for="(renderedCasketItem, index) in renderedCasketsData"
                     :key="index"
                     @click="
-                        navigateToClickedItem('/pages/more-item', [
+                        navigateToClickedItem('/pages/more', [
                             'type=' + renderedCasketItem.type,
                             'comName=owlBooks',
                             'backNav=index/index'
@@ -120,7 +120,7 @@
             :iconPath="
                 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
             "
-            :navigateTo="'/pages/more-item'"
+            :navigateTo="'/pages/more'"
             :URLAttrs="[
                 'maxSize=0',
                 'backNav=index/index',
