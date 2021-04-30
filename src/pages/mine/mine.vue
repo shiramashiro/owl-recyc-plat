@@ -156,7 +156,7 @@ export default {
                     action: function() {
                         uni.navigateTo({
                             url:
-                                '/pages/order?tradeType=tentative&tradeContentType=recovery'
+                                '/pages/mine/order?tradeType=tentative&tradeContentType=recovery'
                         })
                     }
                 },
@@ -167,7 +167,7 @@ export default {
                     action: function() {
                         uni.navigateTo({
                             url:
-                                '/pages/order?tradeType=decide&tradeContentType=recovery'
+                                '/pages/mine/order?tradeType=decide&tradeContentType=recovery'
                         })
                     }
                 },
@@ -178,7 +178,7 @@ export default {
                     action: function() {
                         uni.navigateTo({
                             url:
-                                '/pages/order?tradeType=tentative&tradeContentType=book'
+                                '/pages/mine/order?tradeType=tentative&tradeContentType=book'
                         })
                     }
                 },
@@ -189,7 +189,7 @@ export default {
                     action: function() {
                         uni.navigateTo({
                             url:
-                                '/pages/order?tradeType=decide&tradeContentType=book'
+                                '/pages/mine/order?tradeType=decide&tradeContentType=book'
                         })
                     }
                 }

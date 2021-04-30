@@ -1,8 +1,40 @@
 <template>
-    <view class="order">
-        <!-- 任务：订单卡片UI，时间：2021年4月30日00:53:33 -->
-        <!-- 这里的 {{datas}} 可以删除，只是做一个调试用的 -->
-        {{ datas }}
+    <view class="order" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
+        <tui-navigation-bar style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;">
+            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+                <i class="el-icon-third-fanhui"></i>
+            </navigator>
+            <view class="margin-left-lg text-lg">订单详细</view>
+        </tui-navigation-bar>
+        <view
+            class="wrap padding-sm margin-lr-sm margin-tb-sm"
+            v-for="(item, index) in datas"
+            :key="index"
+        >
+            <view class="">地址：{{ item.address }}</view>
+            <view class="">时间：{{ item.dateTime }}</view>
+            <view class="">数量：{{ item.num }}</view>
+            <view class="footer margin-top-sm flex justify-end">
+                <button
+                    style="width: 200rpx; height: 50rpx; font-size: 24rpx"
+                    class="margin-right-sm"
+                >
+                    查看发票
+                </button>
+                <button
+                    style="width: 200rpx; height: 50rpx; font-size: 24rpx"
+                    class="margin-right-sm"
+                >
+                    追加评价
+                </button>
+                <button
+                    style="width: 200rpx; height: 50rpx; font-size: 24rpx"
+                    class="margin-right-sm"
+                >
+                    售后
+                </button>
+            </view>
+        </view>
     </view>
 </template>
 
@@ -14,21 +46,26 @@ export default {
             datas: []
         }
     },
-    /**
-     * 根据跳转页面的参数查询对应的订单类型。需登录才可以查询。
-     */
     onLoad(options) {
-        options['userId'] = this.$store.state.userInfo.id
+        // options['userId'] = this.$store.state.userInfo.id
+        options['userId'] = 1
         this.$axios
             .post('/get/order', options)
             .then(resp => {
                 this.datas = resp.data
             })
-            .catch(error => {
-                alert('没有登录！！！')
-            })
+            .catch(error => {})
     }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.order {
+    background-color: #f8f8f8;
+}
+
+.wrap {
+    background-color: white;
+    border-radius: 15rpx;
+}
+</style>
