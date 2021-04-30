@@ -1,10 +1,7 @@
 <template>
     <view class="post-detail">
         <tui-navigation-bar>
-            <navigator
-                :url="'/pages/transfer/transfer'"
-                open-type="switchTab"
-            >
+            <navigator :url="'/pages/transfer/transfer'" open-type="switchTab">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg">帖子详情</view>
@@ -12,7 +9,7 @@
         <view class="post-panel margin-top-sm padding-top-sm padding-lr-sm">
             <view class="row-1 flex align-center justify-between">
                 <view class="col-1 flex align-center">
-                    <view class="col-1-1">
+                    <view @click="navigateTo" class="col-1-1">
                         <owl-avatar
                             :size="30"
                             :src="post.user.avatar"
@@ -122,6 +119,13 @@ export default {
                     }
                 ]
             }
+        }
+    },
+    methods: {
+        navigateTo() {
+            uni.navigateTo({
+                url: '/pages/msg/chat'
+            })
         }
     },
     onLoad(option) {

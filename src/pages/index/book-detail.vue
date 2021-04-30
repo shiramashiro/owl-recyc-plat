@@ -73,7 +73,7 @@
             @rightBtn="notify"
             @leftBtn="notify"
         ></owl-action-bar>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
+        <tui-tips :backgroundColor="tipColor" ref="tips"></tui-tips>
     </view>
 </template>
 
@@ -137,15 +137,15 @@ export default {
         notify(e) {
             let indent = this.$refs.indent.getIndent()
             if (indent !== undefined) {
-                indent['tradeContentType'] = 'book'
-                if (e.type === 'rightBtn') {
-                    indent['tradeType'] = 'decide'
-                    this.$store.commit('setNowTrade', indent)
-                } else {
-                    indent['tradeType'] = 'tentative'
-                    this.$store.commit('setTentativeTrade', indent)
-                }
                 if (this.$store.state.isSignin) {
+                    indent['tradeContentType'] = 'book'
+                    if (e.type === 'rightBtn') {
+                        indent['tradeType'] = 'decide'
+                        this.$store.commit('setNowTrade', indent)
+                    } else {
+                        indent['tradeType'] = 'tentative'
+                        this.$store.commit('setTentativeTrade', indent)
+                    }
                     indent['userId'] = this.$store.state.userInfo.id
                     this.$axios
                         .post('/set/order', indent)
@@ -163,6 +163,13 @@ export default {
                     this.showTips('没有登录哦~', '#EB0909')
                 }
             }
+        },
+        showTips(msg, color) {
+            this.tipColor = color
+            this.$refs.tips.showTips({
+                msg: msg,
+                duration: 2000
+            })
         },
         setSwiperItem(index) {
             uni.createSelectorQuery()

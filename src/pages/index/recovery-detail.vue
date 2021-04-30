@@ -99,15 +99,15 @@ export default {
         notify(e) {
             let indent = this.$refs.indent.getIndent()
             if (indent !== undefined) {
-                indent['tradeContentType'] = 'recovery'
-                if (e.type === 'rightBtn') {
-                    indent['tradeType'] = 'decide'
-                    this.$store.commit('setNowTrade', indent)
-                } else {
-                    indent['tradeType'] = 'tentative'
-                    this.$store.commit('setTentativeTrade', indent)
-                }
                 if (this.$store.state.isSignin) {
+                    indent['tradeContentType'] = 'recovery'
+                    if (e.type === 'rightBtn') {
+                        indent['tradeType'] = 'decide'
+                        this.$store.commit('setNowTrade', indent)
+                    } else {
+                        indent['tradeType'] = 'tentative'
+                        this.$store.commit('setTentativeTrade', indent)
+                    }
                     indent['userId'] = this.$store.state.userInfo.id
                     this.$axios
                         .post('/set/order', indent)
