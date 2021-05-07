@@ -1,7 +1,7 @@
 <template>
     <view class="signup">
         <tui-navigation-bar :isFixed="true" :isOpacity="true">
-            <navigator :url="'/pages/entry/signin'">
+            <navigator :delta="1" open-type="navigateBack">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg text-lg">注册</view>

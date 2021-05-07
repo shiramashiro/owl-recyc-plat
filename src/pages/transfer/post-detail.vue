@@ -1,7 +1,7 @@
 <template>
     <view class="post-detail">
         <tui-navigation-bar>
-            <navigator :url="'/pages/transfer/transfer'" open-type="switchTab">
+            <navigator :delta="1" open-type="navigateBack">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg">帖子详情</view>

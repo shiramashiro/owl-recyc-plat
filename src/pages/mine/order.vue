@@ -1,7 +1,7 @@
 <template>
     <view class="order" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <tui-navigation-bar style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;">
-            <navigator :url="'/pages/mine/mine'" open-type="switchTab">
+            <navigator :delta="1" open-type="navigateBack">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg text-lg">订单详细</view>

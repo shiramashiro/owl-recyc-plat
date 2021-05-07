@@ -94,8 +94,7 @@
                     @click="
                         navigateToClickedItem('/pages/more', [
                             'type=' + casketItem.type,
-                            'comName=owlBooks',
-                            'backNav=index/index'
+                            'comName=owlBooks'
                         ])
                     "
                 >

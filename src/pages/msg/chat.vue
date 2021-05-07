@@ -1,7 +1,7 @@
 <template>
     <view class="container">
         <tui-navigation-bar style="box-shadow: 8rpx 8rpx 2rpx #f0f0f0;">
-            <navigator :url="'/pages/msg/msg'" open-type="switchTab">
+            <navigator :delta="1" open-type="navigateBack">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg text-lg">聊天</view>

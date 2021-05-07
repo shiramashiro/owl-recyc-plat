@@ -1,7 +1,7 @@
 <template>
     <view class="book-detail">
         <tui-navigation-bar>
-            <navigator :url="'/pages/index/index'" open-type="switchTab">
+            <navigator :delta="1" open-type="navigateBack">
                 <i class="el-icon-third-fanhui"></i>
             </navigator>
             <view class="margin-left-lg text-lg">二手书详细</view>
@@ -126,14 +126,6 @@ export default {
         }
     },
     methods: {
-        /**
-         * 通过refs对象获取组件的getIndent方法。
-         * 然后通过自定义函数得知，用户点击的哪一个按钮，
-         * 不同的按钮将不同的数据塞入Vuex数组中进行存储。
-         * 注意：只有当获取的ident对象存在时才可以设置comit。
-         *
-         * @param e owl-indent组件返回的indent对象。
-         */
         notify(e) {
             let indent = this.$refs.indent.getIndent()
             if (indent !== undefined) {

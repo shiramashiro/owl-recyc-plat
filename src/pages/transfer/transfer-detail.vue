@@ -5,7 +5,7 @@
     >
         <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
-                <navigator :url="'/pages/transfer/more-transfer'">
+                <navigator :delta="1" open-type="navigateBack">
                     <i class="el-icon-third-fanhui"></i>
                 </navigator>
                 <view class="margin-left-lg">
