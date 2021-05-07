@@ -141,26 +141,26 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "static/tabbar/index.png",
-                "selectedIconPath": "static/tabbar/index.png",
+                "iconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/index.png",
+                "selectedIconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/index.png",
                 "text": "首页"
             },
             {
                 "pagePath": "pages/transfer/transfer",
-                "iconPath": "static/tabbar/transfer.png",
-                "selectedIconPath": "static/tabbar/transfer.png",
+                "iconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/transfer.png",
+                "selectedIconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/transfer.png",
                 "text": "转让"
             },
             {
                 "pagePath": "pages/msg/msg",
-                "iconPath": "static/tabbar/msg.png",
-                "selectedIconPath": "static/tabbar/msg.png",
+                "iconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/msg.png",
+                "selectedIconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/msg.png",
                 "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",
-                "iconPath": "static/tabbar/mine.png",
-                "selectedIconPath": "static/tabbar/mine.png",
+                "iconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/mine.png",
+                "selectedIconPath": "https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/tabbar/mine.png",
                 "text": "我的"
             }
         ]

@@ -12,6 +12,7 @@
                 />
             </view>
         </tui-navigation-bar>
+
         <view class="tui-rolling-news">
             <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
             <swiper
@@ -22,60 +23,65 @@
                 class="tui-swiper"
             >
                 <swiper-item
-                    v-for="(item, index) in newsList"
+                    v-for="(newsItem, index) in newsList"
                     :key="index"
                     class="tui-swiper-item"
                 >
-                    <view class="tui-news-item" @tap="detail">{{ item }}</view>
+                    <view class="tui-news-item" @tap="detail">{{
+                        newsItem
+                    }}</view>
                 </swiper-item>
             </swiper>
         </view>
+
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
                 <swiper-item
-                    v-for="(carouselItem, index) in carouselMaps"
+                    v-for="(slideshowItem, index) in slideshowList"
                     :key="index"
                 >
                     <image
                         class="slide-show-image"
                         mode="aspectFit"
-                        :src="carouselItem"
+                        :src="slideshowItem"
                     ></image>
                 </swiper-item>
             </swiper>
         </view>
+
         <owl-fiche
             :iconPath="
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/news.png'
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/news.png'
             "
             class="margin-top-sm"
             :navigateTo="'/pages/more'"
             :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
             :title="'新闻 / 资讯'"
         >
-            <view class="panel">
-                <template v-for="(item, index) in newsPanelList">
+            <view class="news-panel">
+                <template v-for="(newsItem, index) in newsPanelList">
                     <navigator
-                        :url="'/pages/transfer/post-detail?id=' + item.id"
+                        :url="'/pages/transfer/post-detail?id=' + newsItem.id"
                         :key="index"
                     >
                         <view
-                            class="list-item flex align-center padding-lr-sm padding-tb-sm margin-bottom-xs"
+                            class="news-item align-center flex padding-lr-sm padding-tb-sm margin-bottom-xs"
                         >
-                            <view class="num margin-right-sm">
+                            <view class="news-num margin-right-sm">
                                 {{ index + 1 }}
                             </view>
-                            <view class="brief text-cut">
-                                {{ item.title }}
+                            <view class="news-brief text-cut">
+                                {{ newsItem.title }}
                             </view>
                         </view>
                     </navigator>
                 </template>
             </view>
         </owl-fiche>
+
         <owl-fiche
             :iconPath="
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/market.png'
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/market.png'
             "
             class="margin-top-sm"
             :title="'二手市场'"
@@ -83,43 +89,37 @@
             <view class="caskets flex justify-between padding-lr-sm">
                 <view
                     class="casket padding-lr-xs margin-tb-xs flex justify-between align-center"
-                    v-for="(renderedCasketItem, index) in renderedCasketsData"
+                    v-for="(casketItem, index) in casketList"
                     :key="index"
                     @click="
                         navigateToClickedItem('/pages/more', [
-                            'type=' + renderedCasketItem.type,
+                            'type=' + casketItem.type,
                             'comName=owlBooks',
                             'backNav=index/index'
                         ])
                     "
                 >
-                    <view class="col-1">
+                    <view class="text">
                         <view
-                            class="flex align-center row-1 text-black text-bold text-df"
-                            :class="renderedCasketItem.icon"
+                            class="flex align-center text-black text-bold text-df"
+                            :class="casketItem.icon"
                         >
-                            {{ renderedCasketItem.cnTitle }}
+                            {{ casketItem.cnTitle }}
                         </view>
-                        <view class="row-2 text-xs text-gray">
-                            {{ renderedCasketItem.enTitle }}
+                        <view class="text-xs text-gray">
+                            {{ casketItem.enTitle }}
                         </view>
                     </view>
-                    <view class="col-2">
-                        <image
-                            mode="aspectFit"
-                            class="image"
-                            :src="renderedCasketItem.cover"
-                        ></image>
-                    </view>
+                    <image mode="aspectFit" :src="casketItem.cover"></image>
                 </view>
             </view>
         </owl-fiche>
+
         <owl-fiche
-            :bgColor="'rgb(248, 248, 248)'"
-            class="margin-top-sm"
             :iconPath="
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recovery.png'
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/recovery.png'
             "
+            class="margin-top-sm"
             :navigateTo="'/pages/more'"
             :URLAttrs="[
                 'maxSize=0',
@@ -130,13 +130,13 @@
         >
             <owl-recoveries></owl-recoveries>
         </owl-fiche>
+
         <owl-fiche
             :iconPath="
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/recommendation.png'
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/recommendation.png'
             "
-            :bgColor="'rgb(248, 248, 248)'"
-            :title="'推荐'"
             class="margin-top-sm"
+            :title="'推荐'"
         >
             <owl-books :bookType="'all'"></owl-books>
         </owl-fiche>
@@ -152,12 +152,8 @@ export default {
     mixins: [navigateToMixins],
     data() {
         return {
-            // 绑定输入框的输入值
             searchValue: '',
-            // 被渲染的书籍数据
-            renderedBooksData: [],
-            // 被渲染的九宫格数据
-            renderedCasketsData: [
+            casketList: [
                 {
                     type: 'all',
                     cover:
@@ -236,12 +232,12 @@ export default {
                 '600万吨包装纸产能砸向市场',
                 '4月27日废纸价格最高上调50元/吨'
             ],
-            newsPanelList: [],
-            carouselMaps: [
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032611362390127.jpg',
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/20210326193508509.jpg',
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/2021032619353510220.jpg'
-            ]
+            slideshowList: [
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/2021032611362390127.jpg',
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/20210326193508509.jpg',
+                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/2021032619353510220.jpg'
+            ],
+            newsPanelList: []
         }
     },
     mounted() {
@@ -288,14 +284,10 @@ export default {
             height: 120rpx;
             width: 31.5%;
             background-color: white;
-            border-radius: 16rpx;
-            border: 1rpx solid #cccc;
 
-            .col-2 {
-                .image {
-                    width: 80rpx;
-                    height: 105rpx;
-                }
+            image {
+                width: 80rpx;
+                height: 105rpx;
             }
         }
     }
@@ -335,8 +327,8 @@ export default {
         }
     }
 
-    .panel {
-        .list-item {
+    .news-panel {
+        .news-item {
             border-bottom: 1rpx solid #f0f0f0 !important;
         }
     }
