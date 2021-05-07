@@ -23,7 +23,7 @@
                 发表
             </tui-button>
         </view>
-        <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
+        <tui-tips :backgroundColor="tipColor" ref="tips"></tui-tips>
     </view>
 </template>
 
@@ -34,11 +34,6 @@ export default {
         // 所属哪个页面下的评论的Id
         belongedId: {
             type: Number,
-            required: true
-        },
-        // 提交的请求地址
-        postUrl: {
-            type: String,
             required: true
         },
         // 提交的请求类型，如book的评论、recovery的评论或者post的评论
@@ -56,7 +51,7 @@ export default {
     methods: {
         showTips(msg, color) {
             this.tipColor = color
-            this.$refs.toast.showTips({
+            this.$refs.tips.showTips({
                 msg: msg,
                 duration: 2000
             })
@@ -67,12 +62,11 @@ export default {
                 return
             }
             if (JSON.stringify(this.$store.state.userInfo) === '{}') {
-                console.log('没有登录')
                 this.showTips('你还没有登陆哟~无法发表评论', '#EB0909')
                 return
             }
             this.$axios
-                .post(this.postUrl, {
+                .post('/set/comment', {
                     userId: this.$store.state.userInfo.id,
                     belongedId: this.belongedId,
                     content: this.inputValue,

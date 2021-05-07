@@ -1,5 +1,6 @@
 {
     "pages": [
+        // 主要页面
         {
             "path": "pages/index/index",
             "style": {
@@ -24,6 +25,7 @@
                 "navigationBarTitleText": "我的"
             }
         },
+
         // 首页相关的页面
         {
             "path": "pages/index/book-detail",
@@ -37,6 +39,7 @@
                 "navigationBarTitleText": "回收点详细"
             }
         },
+
         // 消息相关的页面
         {
             "path": "pages/msg/notify",
@@ -62,6 +65,7 @@
                 "navigationBarTitleText": "聊天"
             }
         },
+
         // 登陆相关的页面
         {
             "path": "pages/entry/signin",
@@ -75,6 +79,7 @@
                 "navigationBarTitleText": "注册"
             }
         },
+
         // 我的相关页面
         {
             "path": "pages/mine/homepage",
@@ -88,6 +93,13 @@
                 "navigationBarTitleText": "订单"
             }
         },
+        {
+            "path": "pages/mine/cart",
+            "style": {
+                "navigationBarTitleText": "购物车"
+            }
+        },
+
         // 转让相关页面
         {
             "path": "pages/transfer/more-transfer",

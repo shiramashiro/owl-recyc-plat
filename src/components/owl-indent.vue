@@ -94,6 +94,14 @@
 <script>
 export default {
     name: 'owl-indent',
+    props: {
+        tips: {
+            type: Array,
+            default() {
+                return ['7天无理由退货', '价格保证', '急速送达']
+            }
+        }
+    },
     data() {
         return {
             itemList: [
@@ -142,7 +150,6 @@ export default {
                     ]
                 }
             ],
-            tips: ['上门取件', '价格保证', '立马转账'],
             isOpenDrawer: false,
             numBoxValue: 0,
             addressValue: '',
@@ -224,5 +231,6 @@ export default {
 
 .tips {
     background-color: #fafafa;
+    flex-flow: wrap;
 }
 </style>

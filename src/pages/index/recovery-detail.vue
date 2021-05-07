@@ -47,7 +47,6 @@
             </owl-fiche>
             <owl-fiche class="margin-top-sm" :title="'评论区'">
                 <owl-make-comment
-                    :postUrl="'/set/comment'"
                     :urlType="'recovery'"
                     :belongedId="recovery.id"
                     class="padding-lr-sm"
@@ -58,10 +57,6 @@
                     :data="recovery.comment"
                 ></owl-comment>
             </owl-fiche>
-            <owl-action-bar
-                @rightBtn="notify"
-                @leftBtn="notify"
-            ></owl-action-bar>
         </view>
         <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
@@ -88,36 +83,6 @@ export default {
         }
     },
     methods: {
-        notify(e) {
-            let indent = this.$refs.indent.getIndent()
-            if (indent !== undefined) {
-                if (this.$store.state.isSignin) {
-                    indent['tradeContentType'] = 'recovery'
-                    if (e.type === 'rightBtn') {
-                        indent['tradeType'] = 'decide'
-                        this.$store.commit('setNowTrade', indent)
-                    } else {
-                        indent['tradeType'] = 'tentative'
-                        this.$store.commit('setTentativeTrade', indent)
-                    }
-                    indent['userId'] = this.$store.state.userInfo.id
-                    this.$axios
-                        .post('/set/order', indent)
-                        .then(resp => {
-                            if (resp.status !== 200) {
-                                this.showTips('操作失败！', '#EB0909')
-                                return
-                            }
-                            this.showTips('操作成功！', '#19BE6B')
-                        })
-                        .catch(error => {
-                            this.showTips('服务器错误', '#EB0909')
-                        })
-                } else {
-                    this.showTips('没有登录哦~', '#EB0909')
-                }
-            }
-        },
         showTips(msg, color) {
             this.tipColor = color
             this.$refs.toast.showTips({

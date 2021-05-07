@@ -25,7 +25,6 @@ import OwlBooks from '@/components/owl-books.vue'
 import OwlIndent from '@/components/owl-indent.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
-import OwlActionBar from '@/components/owl-action-bar.vue'
 import OwlRecoveries from '@/components/owl-recoveries.vue'
 import OwlMakeComment from '@/components/owl-make-comment.vue'
 
@@ -41,7 +40,6 @@ Vue.component('owl-books', OwlBooks)
 Vue.component('owl-indent', OwlIndent)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-comment', OwlComment)
-Vue.component('owl-action-bar', OwlActionBar)
 Vue.component('owl-recoveries', OwlRecoveries)
 Vue.component('owl-make-comment', OwlMakeComment)
 

@@ -6,8 +6,9 @@
             </navigator>
             <view class="margin-left-lg text-lg">二手书详细</view>
         </tui-navigation-bar>
-        <view class="rows margin-lr-xs">
-            <view class="row-1">
+
+        <view class="detail-wrap margin-lr-xs">
+            <view class="preview">
                 <swiper
                     :indicator-dots="true"
                     indicator-color="rgba(135, 206, 250, 0.3)"
@@ -18,21 +19,18 @@
                 >
                     <swiper-item v-for="(item, index) in book.img" :key="index">
                         <view :id="'swiper-item-' + index">
-                            <image
-                                mode="aspectFit"
-                                class="image"
-                                :src="item.imgUrl"
-                            ></image>
+                            <image mode="aspectFit" :src="item.imgUrl"></image>
                         </view>
                     </swiper-item>
                 </swiper>
             </view>
-            <view class="rows-content margin-lr-lg">
-                <view class="col-0 text-bold text-lg">
+
+            <view class="content margin-lr-lg">
+                <view class="name text-bold text-lg">
                     {{ book.name }}
                 </view>
                 <view
-                    class="row-2 margin-bottom-xs flex justify-between align-center"
+                    class="row-1 margin-bottom-xs flex justify-between align-center"
                 >
                     <view class="col-1 text-red">
                         <view class="col-1-1">{{ book.price }}</view>
@@ -44,19 +42,23 @@
                         <view class="col-2-2 text-xs">收藏</view>
                     </view>
                 </view>
-                <view class="row-3 text-gray">{{ book.originPrice }}</view>
-                <view class="row-4 margin-top-sm padding-bottom-sm">
+                <view class="row-2 text-gray">{{ book.originPrice }}</view>
+                <view class="desc margin-top-sm padding-bottom-sm">
                     {{ book.desc }}
                 </view>
             </view>
         </view>
+
         <owl-fiche class="margin-top-sm">
-            <owl-indent ref="indent"></owl-indent>
+            <owl-indent
+                :tips="['7天无理由退货', '价格保证', '急速送达', '官方直售']"
+                ref="indent"
+            ></owl-indent>
         </owl-fiche>
-        <view class="row-6 margin-lr-xs margin-top-sm">
+
+        <view class="comment-wrap margin-lr-xs margin-top-sm">
             <owl-fiche :title="'评论区'">
                 <owl-make-comment
-                    :postUrl="'/set/comment'"
                     :urlType="'book'"
                     :belongedId="book.id"
                     class="padding-lr-sm"
@@ -68,11 +70,70 @@
                 ></owl-comment>
             </owl-fiche>
         </view>
-        <owl-action-bar
-            :type="'bookTrade'"
-            @rightBtn="notify"
-            @leftBtn="notify"
-        ></owl-action-bar>
+
+        <view class="action-bar">
+            <view
+                class="container padding-xs flex align-center justify-between"
+            >
+                <view class="item flex">
+                    <navigator :url="'/pages/mine/order'">
+                        <view class="top flex align-center justify-center">
+                            <image
+                                src="https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/full-cart.png"
+                            />
+                            <tui-badge
+                                v-if="$store.state.cartList.length !== 0"
+                                type="danger"
+                            >
+                                {{ $store.state.cartList.length }}
+                            </tui-badge>
+                        </view>
+                        <view class="bottom text-sm">
+                            购物车
+                        </view>
+                    </navigator>
+                </view>
+
+                <view class="item flex">
+                    <navigator :url="'/pages/order'">
+                        <view class="top flex align-center justify-center">
+                            <image
+                                src="https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/custom-server.png"
+                            />
+                        </view>
+                        <view class="bottom text-sm">
+                            客服
+                        </view>
+                    </navigator>
+                </view>
+
+                <view class="item flex">
+                    <tui-button
+                        @click="setToCart"
+                        height="80rpx"
+                        :size="25"
+                        type="gray"
+                        shape="circle"
+                    >
+                        加入购物车
+                    </tui-button>
+                </view>
+
+                <view class="item flex recycle-btn">
+                    <tui-button
+                        @click="navigateTo"
+                        height="80rpx"
+                        type="primary"
+                        :size="25"
+                        shape="circle"
+                        background="#87cefa"
+                    >
+                        立即购买
+                    </tui-button>
+                </view>
+            </view>
+        </view>
+
         <tui-tips :backgroundColor="tipColor" ref="tips"></tui-tips>
     </view>
 </template>
@@ -84,12 +145,6 @@ export default {
         return {
             currentSwiper: 0,
             swiperHeight: 0,
-            swiperTabs: [
-                { name: '全部评论' },
-                { name: '好评' },
-                { name: '中评' },
-                { name: '差评' }
-            ],
             book: {
                 id: 0,
                 type: '',
@@ -126,36 +181,11 @@ export default {
         }
     },
     methods: {
-        notify(e) {
+        setToCart() {
             let indent = this.$refs.indent.getIndent()
-            if (indent !== undefined) {
-                if (this.$store.state.isSignin) {
-                    indent['tradeContentType'] = 'book'
-                    if (e.type === 'rightBtn') {
-                        indent['tradeType'] = 'decide'
-                        this.$store.commit('setNowTrade', indent)
-                    } else {
-                        indent['tradeType'] = 'tentative'
-                        this.$store.commit('setTentativeTrade', indent)
-                    }
-                    indent['userId'] = this.$store.state.userInfo.id
-                    this.$axios
-                        .post('/set/order', indent)
-                        .then(resp => {
-                            if (resp.status !== 200) {
-                                this.showTips('操作失败！', '#EB0909')
-                                return
-                            }
-                            this.showTips('操作成功！', '#19BE6B')
-                        })
-                        .catch(error => {
-                            this.showTips('服务器错误', '#EB0909')
-                        })
-                } else {
-                    this.showTips('没有登录哦~', '#EB0909')
-                }
-            }
+            this.$store.commit('setToCart', indent)
         },
+        navigateTo() {},
         showTips(msg, color) {
             this.tipColor = color
             this.$refs.tips.showTips({
@@ -187,7 +217,7 @@ export default {
                 }, 0)
             })
             .catch(error => {
-                console.log(error)
+                this.showTips('服务器错误！', '#EB0909')
             })
     }
 }
@@ -197,18 +227,18 @@ export default {
 .book-detail {
     background-color: rgb(248, 248, 248);
 
-    .rows {
+    .detail-wrap {
         background-color: white;
 
-        .row-1 {
-            .image {
+        .preview {
+            image {
                 height: 480rpx;
                 width: 100%;
             }
         }
 
-        .rows-content {
-            .row-2 {
+        .content {
+            .row-1 {
                 .col-1 {
                     .col-1-1::before {
                         content: '二手价¥';
@@ -222,17 +252,17 @@ export default {
                 }
             }
 
-            .row-3 {
+            .row-2 {
                 text-decoration: line-through;
             }
 
-            .row-3::before {
+            .row-2::before {
                 content: '原价¥';
                 font-size: 80%;
                 margin-right: 4rpx;
             }
 
-            .row-4 {
+            .desc {
                 display: -webkit-box;
                 word-break: break-all;
                 -webkit-box-orient: vertical;
@@ -240,6 +270,28 @@ export default {
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+        }
+    }
+
+    .action-bar {
+        .container {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #f8f6f6;
+        }
+
+        .item {
+            width: 23%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .top image {
+            width: 40rpx;
+            height: 40rpx;
         }
     }
 }

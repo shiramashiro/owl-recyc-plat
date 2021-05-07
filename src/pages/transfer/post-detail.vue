@@ -82,7 +82,6 @@
         <owl-fiche class="margin-top-sm" :title="'评论区'">
             <owl-make-comment
                 class="padding-lr-sm"
-                :postUrl="'/set/comment'"
                 :urlType="'post'"
                 :belongedId="post.id"
             ></owl-make-comment>
