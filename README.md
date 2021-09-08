@@ -2,9 +2,9 @@
 
 1. 主题颜色：rgb(135, 206, 250) 或 #87cefa
 2. 白色背景：rgb(248, 248, 248) 或 #f8f8f8
-3. 分割线颜色：rgb(240, 240, 240) 或 #f0f0f0
+3. 分割线：rgb(240, 240, 240) 或 #f0f0f0
 
-# 命名
+# 规范
 
 ## 组件
 
@@ -14,34 +14,14 @@
 
 class、id 的命名方式为单词与单词之间用`-`隔开。
 
-# 目录结构
-
-```json
--src
-    --colorui
-    --components
-        ---community
-        ---index
-        ---mine
-        ---msg
-        ---thorui
-    --minixs
-    --pages
-        ---community
-        ---index
-        ---mine
-        ---msg
-    --static
-        ---icon
-    --store
-```
+## 目录
 
 1. 静态资源都存放在 static 文件夹中；
 2. colorui 和 thorui 为第三方组件库；
 3. components 存放对应页面的组件；
 4. pages 存放页面的组件，pages 跟 pages.json 配套，使用方法查阅 uni-app 官方文档。
 
-> pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
+pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
 
 # 接口
 
