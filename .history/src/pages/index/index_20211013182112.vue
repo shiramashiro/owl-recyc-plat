@@ -132,7 +132,7 @@ export default {
                     title:'外语'
                 },
                  {
-                    type: 'audio',
+                    type: 'music',
                     icon:require('../../assets/icon/音像.png'),
                     title:'音像'
                 }

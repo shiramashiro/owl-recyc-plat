@@ -127,12 +127,12 @@ export default {
                     title:'小说'
                 },
                  {
-                    type: 'foreign',
+                    type: '',
                     icon:require('../../assets/icon/外语.png'),
                     title:'外语'
                 },
                  {
-                    type: 'audio',
+                    type: '音像',
                     icon:require('../../assets/icon/音像.png'),
                     title:'音像'
                 }

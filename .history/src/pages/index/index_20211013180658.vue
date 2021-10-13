@@ -120,21 +120,6 @@ export default {
                     type: 'children',
                     icon: require('../../assets/icon/童书.png'),
                     title: '童书'
-                },
-                {
-                    type: 'novel',
-                    icon:require('../../assets/icon/小说.png'),
-                    title:'小说'
-                },
-                 {
-                    type: 'foreign',
-                    icon:require('../../assets/icon/外语.png'),
-                    title:'外语'
-                },
-                 {
-                    type: 'audio',
-                    icon:require('../../assets/icon/音像.png'),
-                    title:'音像'
                 }
             ],
             broadcast: ['致力发展负责任的人工智能 中国发布八大治理原则', '600万吨包装纸产能砸向市场', '4月27日废纸价格最高上调50元/吨'],
@@ -198,7 +183,7 @@ export default {
 
         .casket-item {
             height: 120rpx;
-            width: 25.0%;
+            width: 31.5%;
             background-color: white;
 
             image {

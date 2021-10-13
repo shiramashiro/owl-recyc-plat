@@ -122,19 +122,14 @@ export default {
                     title: '童书'
                 },
                 {
-                    type: 'novel',
+                    type: '小说',
                     icon:require('../../assets/icon/小说.png'),
                     title:'小说'
                 },
                  {
-                    type: 'foreign',
-                    icon:require('../../assets/icon/外语.png'),
-                    title:'外语'
-                },
-                 {
-                    type: 'audio',
-                    icon:require('../../assets/icon/音像.png'),
-                    title:'音像'
+                    type: '漫画',
+                    icon:require('../../assets/icon'),
+                    title:'小说'
                 }
             ],
             broadcast: ['致力发展负责任的人工智能 中国发布八大治理原则', '600万吨包装纸产能砸向市场', '4月27日废纸价格最高上调50元/吨'],

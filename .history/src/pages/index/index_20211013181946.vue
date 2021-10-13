@@ -122,18 +122,18 @@ export default {
                     title: '童书'
                 },
                 {
-                    type: 'novel',
+                    type: '小说',
                     icon:require('../../assets/icon/小说.png'),
                     title:'小说'
                 },
                  {
-                    type: 'foreign',
+                    type: '外语',
                     icon:require('../../assets/icon/外语.png'),
                     title:'外语'
                 },
                  {
-                    type: 'audio',
-                    icon:require('../../assets/icon/音像.png'),
+                    type: '音像',
+                    icon:require('../../assets/icon/外语.png'),
                     title:'音像'
                 }
             ],
