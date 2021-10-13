@@ -1,14 +1,8 @@
 <template>
-    <view
-        class="more-transfer"
-        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
-    >
+    <view class="more-transfer" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
-                <navigator
-                    :url="'/pages/transfer/transfer'"
-                    open-type="switchTab"
-                >
+                <navigator :url="'/pages/transfer/transfer'" open-type="switchTab">
                     <i class="el-icon-third-fanhui"></i>
                 </navigator>
                 <view class="margin-left-lg">
@@ -17,12 +11,7 @@
             </view>
         </tui-navigation-bar>
         <view class="items">
-            <view
-                v-for="(item, index) in datas"
-                :key="index"
-                @click="navigateTo(item.id)"
-                class="item margin-lr-xs margin-sm padding-bottom-sm"
-            >
+            <view v-for="(item, index) in datas" :key="index" @click="navigateTo(item.id)" class="item margin-lr-xs margin-sm padding-bottom-sm">
                 <image mode="aspectFill" :src="item.cover"></image>
                 <view class="footer padding-lr-sm">
                     <view class="name margin-tb-sm text-lg">
@@ -31,15 +20,9 @@
                     <view class="area margin-bottom-sm">
                         {{ item.area }}
                     </view>
-                    <view
-                        class="total margin-bottom-sm flex justify-between align-center"
-                    >
-                        <view class="receive"
-                            >累计收书：{{ item.receive }} 本</view
-                        >
-                        <view class="respect"
-                            >预期收书：{{ item.respect }}本</view
-                        >
+                    <view class="total margin-bottom-sm flex justify-between align-center">
+                        <view class="receive">累计收书：{{ item.receive }} 本</view>
+                        <view class="respect">预期收书：{{ item.respect }}本</view>
                     </view>
                 </view>
             </view>
@@ -55,8 +38,7 @@ export default {
             dataslibrary: [
                 {
                     id: 1,
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
+                    cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
                     name: '图文信息中心图书馆',
                     area: '北京市朝阳区',
                     receive: 1283,
@@ -65,8 +47,7 @@ export default {
                 },
                 {
                     id: 2,
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
+                    cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
                     name: '图文信息中心图书馆',
                     area: '北京市朝阳区',
                     receive: 1283,
@@ -74,8 +55,7 @@ export default {
                 },
                 {
                     id: 3,
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
+                    cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
                     name: '图文信息中心图书馆',
                     area: '北京市朝阳区',
                     receive: 1283,
@@ -86,8 +66,7 @@ export default {
             datasschool: [
                 {
                     id: 1,
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-school.png',
+                    cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-school.png',
                     name: '中心小学',
                     area: '北京市朝阳区',
                     receive: 453,
@@ -96,8 +75,7 @@ export default {
                 },
                 {
                     id: 1,
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-school.png',
+                    cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-school.png',
                     name: '中心小学',
                     area: '北京市朝阳区',
                     receive: 222,

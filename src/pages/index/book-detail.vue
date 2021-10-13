@@ -18,11 +18,7 @@
                 >
                     <swiper-item v-for="(item, index) in book.img" :key="index">
                         <view :id="'swiper-item-' + index">
-                            <image
-                                mode="aspectFit"
-                                class="image"
-                                :src="item.imgUrl"
-                            ></image>
+                            <image mode="aspectFit" class="image" :src="item.imgUrl"></image>
                         </view>
                     </swiper-item>
                 </swiper>
@@ -31,9 +27,7 @@
                 <view class="col-0 text-bold text-lg">
                     {{ book.name }}
                 </view>
-                <view
-                    class="row-2 margin-bottom-xs flex justify-between align-center"
-                >
+                <view class="row-2 margin-bottom-xs flex justify-between align-center">
                     <view class="col-1 text-red">
                         <view class="col-1-1">{{ book.price }}</view>
                     </view>
@@ -55,24 +49,11 @@
         </owl-fiche>
         <view class="row-6 margin-lr-xs margin-top-sm">
             <owl-fiche :title="'评论区'">
-                <owl-make-comment
-                    :postUrl="'/set/comment'"
-                    :urlType="'book'"
-                    :belongedId="book.id"
-                    class="padding-lr-sm"
-                ></owl-make-comment>
-                <owl-comment
-                    class="padding-lr-sm"
-                    :belongedName="'book'"
-                    :data="book.comment"
-                ></owl-comment>
+                <owl-make-comment :postUrl="'/set/comment'" :urlType="'book'" :belongedId="book.id" class="padding-lr-sm"></owl-make-comment>
+                <owl-comment class="padding-lr-sm" :belongedName="'book'" :data="book.comment"></owl-comment>
             </owl-fiche>
         </view>
-        <owl-action-bar
-            :type="'bookTrade'"
-            @rightBtn="notify"
-            @leftBtn="notify"
-        ></owl-action-bar>
+        <owl-action-bar :type="'bookTrade'" @rightBtn="notify" @leftBtn="notify"></owl-action-bar>
         <tui-tips :backgroundColor="tipColor" ref="tips"></tui-tips>
     </view>
 </template>
@@ -84,12 +65,7 @@ export default {
         return {
             currentSwiper: 0,
             swiperHeight: 0,
-            swiperTabs: [
-                { name: '全部评论' },
-                { name: '好评' },
-                { name: '中评' },
-                { name: '差评' }
-            ],
+            swiperTabs: [{ name: '全部评论' }, { name: '好评' }, { name: '中评' }, { name: '差评' }],
             book: {
                 id: 0,
                 type: '',

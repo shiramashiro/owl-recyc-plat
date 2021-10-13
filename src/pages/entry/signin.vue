@@ -6,18 +6,12 @@
             </navigator>
             <view class="margin-left-lg text-lg">登录</view>
         </tui-navigation-bar>
-        <view
-            class="signin-wrap flex align-center justify-center"
-            :style="{ height: $systemInfo.windowHeight + 'px' }"
-        >
+        <view class="signin-wrap flex align-center justify-center" :style="{ height: $systemInfo.windowHeight + 'px' }">
             <view class="sigin-body">
                 <view class="avatar flex align-center justify-center">
                     <owl-avatar :size="80" :src="avatarUrl"></owl-avatar>
                 </view>
-                <view
-                    class="user-info margin-tb-xl"
-                    :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
-                >
+                <view class="user-info margin-tb-xl" :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }">
                     <input
                         :class="[onPhoneSelected ? 'selected' : 'signin-input']"
                         @input="onPhoneKeyInput"
@@ -40,23 +34,12 @@
                         placeholder="您的密码"
                     />
                 </view>
-                <view
-                    class="signin-btn"
-                    :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
-                >
-                    <tui-button
-                        :height="'75rpx'"
-                        :size="30"
-                        @click="signin"
-                        :disabled="!isInputedPhone || !isInputedPwd"
-                    >
+                <view class="signin-btn" :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }">
+                    <tui-button :height="'75rpx'" :size="30" @click="signin" :disabled="!isInputedPhone || !isInputedPwd">
                         登录
                     </tui-button>
                 </view>
-                <view
-                    class="help margin-top-sm flex align-center justify-between"
-                    :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
-                >
+                <view class="help margin-top-sm flex align-center justify-between" :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }">
                     <view class="forget-pwd" @click="forgetPwd">忘记密码?</view>
                     <navigator :url="'/pages/entry/signup'">
                         <view class="signup">新用户注册</view>
@@ -79,8 +62,7 @@ export default {
             pwdValue: '',
             isInputedPhone: false,
             isInputedPwd: false,
-            avatarUrl:
-                'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
+            avatarUrl: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
             tipColor: '#19BE6B'
         }
     },
@@ -123,10 +105,7 @@ export default {
                 })
                 .then(res => {
                     if (res.data.code !== 200) {
-                        this.showTips(
-                            '登陆失败~请检查密码是否错误！',
-                            '#EB0909'
-                        )
+                        this.showTips('登陆失败~请检查密码是否错误！', '#EB0909')
                         return
                     }
                     this.$store.commit('setUserInfo', res.data.object)

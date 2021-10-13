@@ -6,14 +6,8 @@
             </navigator>
             <view class="margin-left-lg text-lg">注册</view>
         </tui-navigation-bar>
-        <view
-            class="container flex align-center justify-center"
-            :style="{ height: $systemInfo.windowHeight + 'px' }"
-        >
-            <view
-                class="wrap"
-                :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }"
-            >
+        <view class="container flex align-center justify-center" :style="{ height: $systemInfo.windowHeight + 'px' }">
+            <view class="wrap" :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }">
                 <image
                     class="background"
                     mode="aspectFill "
@@ -23,9 +17,7 @@
                 <view class="list">
                     <view class="item margin-top-sm">
                         <input
-                            :class="[
-                                onPhoneSelected ? 'selected' : 'signup-input'
-                            ]"
+                            :class="[onPhoneSelected ? 'selected' : 'signup-input']"
                             @click="onPhoneSelected = true"
                             @blur="onPhoneSelected = false"
                             @input="onPhoneKeyInput"
@@ -37,9 +29,7 @@
                     </view>
                     <view class="item margin-top-sm">
                         <input
-                            :class="[
-                                onUsernameSelected ? 'selected' : 'signup-input'
-                            ]"
+                            :class="[onUsernameSelected ? 'selected' : 'signup-input']"
                             @blur="onUsernameSelected = false"
                             @click="onUsernameSelected = true"
                             @input="onUsernameKeyInput"
@@ -51,9 +41,7 @@
                     </view>
                     <view class="item margin-tb-sm">
                         <input
-                            :class="[
-                                onPwdSelected ? 'selected' : 'signup-input'
-                            ]"
+                            :class="[onPwdSelected ? 'selected' : 'signup-input']"
                             @click="onPwdSelected = true"
                             @blur="onPwdSelected = false"
                             @input="onPwdKeyInput"
@@ -64,15 +52,7 @@
                         />
                     </view>
                 </view>
-                <tui-button
-                    :height="'75rpx'"
-                    :size="30"
-                    :disabled="
-                        !isInputedPhone || !isInputedPwd || !isInputedUsername
-                    "
-                    @click="signup"
-                    >注册</tui-button
-                >
+                <tui-button :height="'75rpx'" :size="30" :disabled="!isInputedPhone || !isInputedPwd || !isInputedUsername" @click="signup">注册</tui-button>
             </view>
         </view>
         <tui-tips :backgroundColor="tipColor" :size="30" ref="toast"></tui-tips>

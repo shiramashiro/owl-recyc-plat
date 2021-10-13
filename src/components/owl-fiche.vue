@@ -1,10 +1,7 @@
 <template>
     <view class="owl-fiche" :class="[isLrMargin ? 'margin-lr-xs' : '']">
         <view class="owl-fiche-wrap">
-            <view
-                :class="[isLrPadding ? 'padding-lr-sm' : '']"
-                class="title text-black padding-tb-sm flex justify-between align-center"
-            >
+            <view :class="[isLrPadding ? 'padding-lr-sm' : '']" class="title text-black padding-tb-sm flex justify-between align-center">
                 <view class="rows flex align-center">
                     <view class="col-1 flex align-center text-lg">
                         <template v-if="iconPath !== ''">
@@ -22,25 +19,15 @@
                             {{ title }}
                         </view>
                     </view>
-                    <view
-                        v-if="subTitle"
-                        class="col-2 text-xs flex align-end margin-left-xs"
-                    >
+                    <view v-if="subTitle" class="col-2 text-xs flex align-end margin-left-xs">
                         {{ subTitle }}
                     </view>
                 </view>
-                <view
-                    v-if="navigateTo !== ''"
-                    @click="display"
-                    class="text-gray text-sm"
-                >
+                <view v-if="navigateTo !== ''" @click="display" class="text-gray text-sm">
                     更多 >
                 </view>
             </view>
-            <view
-                :style="{ backgroundColor: bgColor }"
-                class="content padding-bottom-xs"
-            >
+            <view :style="{ backgroundColor: bgColor }" class="content padding-tb-sm">
                 <slot></slot>
             </view>
         </view>

@@ -1,8 +1,5 @@
 <template>
-    <view
-        class="transfer-detail"
-        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
-    >
+    <view class="transfer-detail" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
                 <navigator :url="'/pages/transfer/more-transfer'">
@@ -31,21 +28,13 @@
         <view class="receive margin-top-sm">
             <owl-fiche :title="'收书情况'">
                 <view class="books flex justify-between">
-                    <view
-                        v-for="(item, index) in data.books"
-                        :key="index"
-                        class="book margin-bottom-sm"
-                    >
+                    <view v-for="(item, index) in data.books" :key="index" class="book margin-bottom-sm">
                         <image :src="item.cover" mode="aspectFill"></image>
                         <view class="name text-lg">{{ item.name }}</view>
                         <view class="num">已收：{{ item.received }}</view>
                         <view class="respect">预期：{{ item.respect }}</view>
                         <view class="select margin-top-sm flex align-center">
-                            <radio
-                                style="transform:scale(0.8)"
-                                class="margin-right-xs"
-                                color="#87cefa"
-                            ></radio>
+                            <radio style="transform:scale(0.8)" class="margin-right-xs" color="#87cefa"></radio>
                             <view>选择捐赠</view>
                         </view>
                     </view>
@@ -53,9 +42,7 @@
             </owl-fiche>
         </view>
         <view class="owl-action-bar">
-            <view
-                class="container padding-xs flex align-center justify-between"
-            >
+            <view class="container padding-xs flex align-center justify-between">
                 <view class="item flex">
                     <navigator :url="'/pages/order'">
                         <view class="top flex align-center justify-center">
@@ -67,23 +54,12 @@
                     </navigator>
                 </view>
                 <view class="item flex recycle-btn">
-                    <tui-button
-                        @click="handleClick"
-                        height="80rpx"
-                        type="primary"
-                        :size="25"
-                        shape="circle"
-                        background="#87cefa"
-                    >
+                    <tui-button @click="handleClick" height="80rpx" type="primary" :size="25" shape="circle" background="#87cefa">
                         确认捐赠
                     </tui-button>
                 </view>
             </view>
-            <tui-tips
-                backgroundColor="#19BE6B"
-                color="#ffffff"
-                ref="tips"
-            ></tui-tips>
+            <tui-tips backgroundColor="#19BE6B" color="#ffffff" ref="tips"></tui-tips>
         </view>
     </view>
 </template>
@@ -95,8 +71,7 @@ export default {
         return {
             data: {
                 id: 3,
-                cover:
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
+                cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/common/demo-library.png',
                 name: '图文信息中心图书馆',
                 area: '北京市朝阳区',
                 receive: 1283,
@@ -104,29 +79,25 @@ export default {
                 type: 'library',
                 books: [
                     {
-                        cover:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
+                        cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
                         name: '新华字典',
                         received: 11,
                         respect: 3
                     },
                     {
-                        cover:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
+                        cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28495225-1_w_3.jpg',
                         name: '深入理解Java虚拟机',
                         received: 23,
                         respect: 4
                     },
                     {
-                        cover:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29198330-1_w_3.jpg',
+                        cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29198330-1_w_3.jpg',
                         name: 'Spring5设计模式',
                         received: 3,
                         respect: 2
                     },
                     {
-                        cover:
-                            'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23745571-1_w_1.jpg',
+                        cover: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23745571-1_w_1.jpg',
                         name: 'Java并发编程的艺术',
                         received: 8,
                         respect: 4

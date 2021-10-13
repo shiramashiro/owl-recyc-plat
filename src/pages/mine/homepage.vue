@@ -1,32 +1,17 @@
 <template>
-    <view
-        class="homepage"
-        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
-    >
+    <view class="homepage" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <tui-navigation-bar :isFixed="true" :isOpacity="true">
             <navigator :url="'/pages/mine/mine'" open-type="switchTab">
-                <image
-                    class="margin-left-sm"
-                    style="width: 70rpx; height: 70rpx"
-                    src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"
-                ></image>
+                <image class="margin-left-sm" style="width: 70rpx; height: 70rpx" src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/fanhui.png"></image>
             </navigator>
         </tui-navigation-bar>
         <view class="row-1">
-            <image
-                class="image"
-                mode="aspectFill"
-                :src="$store.state.userInfo.bgImage"
-            ></image>
+            <image class="image" mode="aspectFill" :src="$store.state.userInfo.bgImage"></image>
         </view>
         <view class="row-2">
             <view class="row-2-1">
                 <view class="col-1">
-                    <image
-                        class="avatar"
-                        model="aspectFit"
-                        :src="$store.state.userInfo.avatar"
-                    ></image>
+                    <image class="avatar" model="aspectFit" :src="$store.state.userInfo.avatar"></image>
                 </view>
                 <view class="col-2">
                     <view class="row-1 flex justify-between align-center">
@@ -65,18 +50,9 @@
                 </view>
             </view>
             <view class="row-2-3">
-                <tui-tab
-                    :scroll="false"
-                    selectedColor="#87cefa"
-                    sliderBgColor="#87cefa"
-                    @slideTuiTab="slideTuiTab"
-                    :current="index"
-                    :swiperTabs="swiperTabs"
-                ></tui-tab>
+                <tui-tab :scroll="false" selectedColor="#87cefa" sliderBgColor="#87cefa" @slideTuiTab="slideTuiTab" :current="index" :swiperTabs="swiperTabs"></tui-tab>
                 <view class="components">
-                    <component
-                        :is="swiperTabs[index].componentName"
-                    ></component>
+                    <component :is="swiperTabs[index].componentName"></component>
                 </view>
             </view>
         </view>

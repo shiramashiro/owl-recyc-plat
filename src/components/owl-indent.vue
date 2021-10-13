@@ -15,14 +15,7 @@
                     <image src="@/static/more.png" />
                 </view>
             </view>
-            <tui-datetime
-                :startYear="new Date().getFullYear()"
-                :endYear="new Date().getFullYear()"
-                :setDateTime="initDateTime()"
-                ref="dateTime"
-                @confirm="confirmDateTime"
-            >
-            </tui-datetime>
+            <tui-datetime :startYear="new Date().getFullYear()" :endYear="new Date().getFullYear()" :setDateTime="initDateTime()" ref="dateTime" @confirm="confirmDateTime"> </tui-datetime>
             <view class="item flex align-center justify-between">
                 <view class="left">地区</view>
                 <view class="center">
@@ -33,24 +26,10 @@
                         {{ addressValue }}
                     </view>
                 </view>
-                <view
-                    class="right text-center"
-                    @click="isOpenDrawer = !isOpenDrawer"
-                    ><image src="@/static/more.png" />
-                </view>
+                <view class="right text-center" @click="isOpenDrawer = !isOpenDrawer"><image src="@/static/more.png" /> </view>
             </view>
-            <tui-drawer
-                @close="isOpenDrawer = !isOpenDrawer"
-                :mode="'bottom'"
-                :visible="isOpenDrawer"
-                ref="drawer"
-            >
-                <tui-cascade-selection
-                    :itemList="itemList"
-                    @complete="confirmAddress"
-                    :headerLine="true"
-                >
-                </tui-cascade-selection>
+            <tui-drawer @close="isOpenDrawer = !isOpenDrawer" :mode="'bottom'" :visible="isOpenDrawer" ref="drawer">
+                <tui-cascade-selection :itemList="itemList" @complete="confirmAddress" :headerLine="true"> </tui-cascade-selection>
             </tui-drawer>
             <view class="item flex align-center justify-between">
                 <view class="left">数量</view>
@@ -63,31 +42,17 @@
                     </view>
                 </view>
                 <view class="right">
-                    <tui-numberbox
-                        :value="numBoxValue"
-                        @change="confirmNum"
-                    ></tui-numberbox>
+                    <tui-numberbox :value="numBoxValue" @change="confirmNum"></tui-numberbox>
                 </view>
             </view>
         </view>
         <view class="tips flex padding-lr-sm padding-tb-sm">
-            <view
-                class="tip text-gray flex justify-center align-center margin-right-sm"
-                v-for="(item, index) in tips"
-                :key="index"
-            >
-                <image
-                    style="width: 38rpx; height: 38rpx"
-                    src="@/static/complete.png"
-                ></image>
+            <view class="tip text-gray flex justify-center align-center margin-right-sm" v-for="(item, index) in tips" :key="index">
+                <image style="width: 38rpx; height: 38rpx" src="@/static/complete.png"></image>
                 {{ item }}
             </view>
         </view>
-        <tui-tips
-            backgroundColor="#EB0909"
-            color="#ffffff"
-            ref="tips"
-        ></tui-tips>
+        <tui-tips backgroundColor="#EB0909" color="#ffffff" ref="tips"></tui-tips>
     </view>
 </template>
 
@@ -152,17 +117,7 @@ export default {
     methods: {
         initDateTime() {
             let date = new Date()
-            return (
-                date.getFullYear() +
-                '-' +
-                date.getMonth() +
-                '-' +
-                (date.getDate() + 1) +
-                ' ' +
-                date.getHours() +
-                ':' +
-                date.getMinutes()
-            )
+            return date.getFullYear() + '-' + date.getMonth() + '-' + (date.getDate() + 1) + ' ' + date.getHours() + ':' + date.getMinutes()
         },
         openDateTime() {
             this.$refs.dateTime.show()
@@ -181,11 +136,7 @@ export default {
          * 否则提示用户完善信息。
          */
         getIndent() {
-            if (
-                this.numBoxValue !== 0 &&
-                this.dateTimeValue !== '' &&
-                this.addressValue !== ''
-            ) {
+            if (this.numBoxValue !== 0 && this.dateTimeValue !== '' && this.addressValue !== '') {
                 return {
                     num: this.numBoxValue,
                     dateTime: this.dateTimeValue,

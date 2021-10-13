@@ -18,9 +18,7 @@
                     </view>
                     <view class="item margin-bottom-sm padding-bottom-sm">
                         <text class="text-bold margin-right-lg">营业时间</text>
-                        <text class="info">
-                            {{ recovery.openTime }} ~ {{ recovery.closeTime }}
-                        </text>
+                        <text class="info"> {{ recovery.openTime }} ~ {{ recovery.closeTime }} </text>
                     </view>
                     <view class="item margin-bottom-sm padding-bottom-sm">
                         <text class="text-bold margin-right-lg">休息时间</text>
@@ -46,22 +44,10 @@
                 <owl-indent ref="indent"></owl-indent>
             </owl-fiche>
             <owl-fiche class="margin-top-sm" :title="'评论区'">
-                <owl-make-comment
-                    :postUrl="'/set/comment'"
-                    :urlType="'recovery'"
-                    :belongedId="recovery.id"
-                    class="padding-lr-sm"
-                ></owl-make-comment>
-                <owl-comment
-                    class="padding-lr-sm"
-                    :belongedName="'recovery'"
-                    :data="recovery.comment"
-                ></owl-comment>
+                <owl-make-comment :postUrl="'/set/comment'" :urlType="'recovery'" :belongedId="recovery.id" class="padding-lr-sm"></owl-make-comment>
+                <owl-comment class="padding-lr-sm" :belongedName="'recovery'" :data="recovery.comment"></owl-comment>
             </owl-fiche>
-            <owl-action-bar
-                @rightBtn="notify"
-                @leftBtn="notify"
-            ></owl-action-bar>
+            <owl-action-bar @rightBtn="notify" @leftBtn="notify"></owl-action-bar>
         </view>
         <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>

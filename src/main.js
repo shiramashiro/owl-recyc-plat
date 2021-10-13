@@ -2,14 +2,13 @@ import Vue from 'vue'
 import App from './App'
 import Vuex from './store/index'
 import './static/icon/iconfont.css'
-import Axios from 'axios'
+import axios from 'axios'
 
-Axios.defaults.baseURL = 'http://120.77.245.208:8070/'
-// Axios.defaults.baseURL = 'http://localhost:8070'
-Axios.interceptors.request.use(config => {
+axios.defaults.baseURL = 'http://localhost:8070'
+axios.interceptors.request.use(config => {
     return config
 })
-Axios.interceptors.response.use(config => {
+axios.interceptors.response.use(config => {
     return config
 })
 
@@ -46,7 +45,7 @@ Vue.component('owl-recoveries', OwlRecoveries)
 Vue.component('owl-make-comment', OwlMakeComment)
 
 Vue.config.productionTip = false
-Vue.prototype.$axios = Axios
+Vue.prototype.$axios = axios
 Vue.prototype.$store = Vuex
 
 App.mpType = 'app'

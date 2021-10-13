@@ -5,9 +5,7 @@
                 <navigator :url="'/pages/order'">
                     <view class="top flex align-center justify-center">
                         <image src="@/static/cart.png" />
-                        <template
-                            v-if="$store.state.tentativeTrade.length !== 0"
-                        >
+                        <template v-if="$store.state.tentativeTrade.length !== 0">
                             <tui-badge type="danger">
                                 {{ $store.state.tentativeTrade.length }}
                             </tui-badge>
@@ -41,14 +39,7 @@
             </view>
 
             <view class="item flex recycle-btn">
-                <tui-button
-                    @click="handleClick('rightBtn')"
-                    height="80rpx"
-                    type="primary"
-                    :size="25"
-                    shape="circle"
-                    background="#87cefa"
-                >
+                <tui-button @click="handleClick('rightBtn')" height="80rpx" type="primary" :size="25" shape="circle" background="#87cefa">
                     <template v-if="type === 'bookTrade'">
                         立即购买
                     </template>
@@ -59,13 +50,7 @@
             </view>
 
             <view class="item flex">
-                <tui-button
-                    @click="handleClick('leftBtn')"
-                    height="80rpx"
-                    :size="25"
-                    type="gray"
-                    shape="circle"
-                >
+                <tui-button @click="handleClick('leftBtn')" height="80rpx" :size="25" type="gray" shape="circle">
                     <template v-if="type === 'bookTrade'">
                         加入购物车
                     </template>
@@ -76,11 +61,7 @@
             </view>
         </view>
 
-        <tui-tips
-            backgroundColor="#EB0909"
-            color="#ffffff"
-            ref="toast"
-        ></tui-tips>
+        <tui-tips backgroundColor="#EB0909" color="#ffffff" ref="toast"></tui-tips>
     </view>
 </template>
 

@@ -9,11 +9,7 @@
             </view>
         </tui-navigation-bar>
         <template v-if="params.comName === 'owlPosts'">
-            <owl-posts
-                class="margin-top-sm padding-lr-xs"
-                :requestURL="'/get/post'"
-                :URLAttrs="params"
-            ></owl-posts>
+            <owl-posts class="margin-top-sm padding-lr-xs" :requestURL="'/get/post'" :URLAttrs="params"></owl-posts>
         </template>
         <template v-else-if="params.comName === 'owlBooks'">
             <owl-books :bookType="params.type"></owl-books>

@@ -1,11 +1,7 @@
 <template>
     <view class="mine">
         <view class="bg">
-            <image
-                class="image"
-                mode="aspectFill"
-                src="https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg"
-            ></image>
+            <image class="image" mode="aspectFill" src="https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg"></image>
         </view>
         <view class="content padding-lr-sm">
             <view class="user-brief">
@@ -13,15 +9,8 @@
                     <view v-if="!$store.state.isSignin" class="rows">
                         <navigator :url="'/pages/entry/signin'">
                             <view class="row-1 text-center">
-                                <image
-                                    mode="aspectFill"
-                                    :src="
-                                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png'
-                                    "
-                                ></image>
-                                <view class="text-lg text-black margin-top-xs"
-                                    >点击登录</view
-                                >
+                                <image mode="aspectFill" :src="'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png'"></image>
+                                <view class="text-lg text-black margin-top-xs">点击登录</view>
                             </view>
                         </navigator>
                         <view class="row-2 text-center text-gray text-sm">
@@ -30,16 +19,11 @@
                     </view>
                     <view v-else class="rows">
                         <view class="row-1 text-center">
-                            <image
-                                mode="aspectFill"
-                                :src="$store.state.userInfo.avatar"
-                            ></image>
+                            <image mode="aspectFill" :src="$store.state.userInfo.avatar"></image>
                         </view>
                         <view class="row-2 flex justify-end text-gray text-sm">
                             <navigator :url="'/pages/mine/homepage'">
-                                <view class="homepage text-center padding-xs"
-                                    >个人主页 ></view
-                                >
+                                <view class="homepage text-center padding-xs">个人主页 ></view>
                             </navigator>
                         </view>
                     </view>
@@ -48,22 +32,10 @@
             <view class="margin-top-sm" v-if="$store.state.isSignin">
                 <owl-fiche :title="'我的'" :isLrMargin="false">
                     <tui-list-view color="#777">
-                        <tui-list-cell
-                            v-for="(cell, index) in userCells"
-                            :key="index"
-                            :hover="true"
-                            :arrow="true"
-                        >
-                            <view
-                                class="flex text-sm align-center"
-                                @click="cell.action"
-                            >
+                        <tui-list-cell v-for="(cell, index) in userCells" :key="index" :hover="true" :arrow="true">
+                            <view class="flex text-sm align-center" @click="cell.action">
                                 <view class="icon margin-right-xs">
-                                    <image
-                                        mode="aspectFit"
-                                        style="width: 30rpx; height: 30rpx"
-                                        :src="cell.icon"
-                                    ></image>
+                                    <image mode="aspectFit" style="width: 30rpx; height: 30rpx" :src="cell.icon"></image>
                                 </view>
                                 <view class="name">{{ cell.name }}</view>
                             </view>
@@ -74,22 +46,10 @@
             <view class="margin-top-sm">
                 <owl-fiche :title="'关于'" :isLrMargin="false">
                     <tui-list-view color="#777">
-                        <tui-list-cell
-                            v-for="(cell, index) in listCells"
-                            :key="index"
-                            :hover="true"
-                            :arrow="true"
-                        >
-                            <view
-                                class="flex text-sm align-center"
-                                @click="cell.action"
-                            >
+                        <tui-list-cell v-for="(cell, index) in listCells" :key="index" :hover="true" :arrow="true">
+                            <view class="flex text-sm align-center" @click="cell.action">
                                 <view class="icon margin-right-xs">
-                                    <image
-                                        mode="aspectFit"
-                                        style="width: 30rpx; height: 30rpx"
-                                        :src="cell.icon"
-                                    ></image>
+                                    <image mode="aspectFit" style="width: 30rpx; height: 30rpx" :src="cell.icon"></image>
                                 </view>
                                 <view class="name">{{ cell.name }}</view>
                             </view>
@@ -108,8 +68,7 @@ export default {
         return {
             listCells: [
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/customer-service.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/customer-service.png',
                     name: '联系客服',
                     action: function() {
                         uni.navigateTo({
@@ -118,8 +77,7 @@ export default {
                     }
                 },
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/update.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/update.png',
                     name: '检查更新',
                     action: function() {
                         uni.navigateTo({
@@ -128,8 +86,7 @@ export default {
                     }
                 },
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/advice.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/advice.png',
                     name: '建议与反馈',
                     action: function() {
                         uni.navigateTo({
@@ -138,8 +95,7 @@ export default {
                     }
                 },
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/about.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/about.png',
                     name: '关于猫头鹰',
                     action: function() {
                         uni.navigateTo({
@@ -150,46 +106,38 @@ export default {
             ],
             userCells: [
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/recovery.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/recovery.png',
                     name: '暂定回收',
                     action: function() {
                         uni.navigateTo({
-                            url:
-                                '/pages/mine/order?tradeType=tentative&tradeContentType=recovery'
+                            url: '/pages/mine/order?tradeType=tentative&tradeContentType=recovery'
                         })
                     }
                 },
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/history.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/history.png',
                     name: '历史回收',
                     action: function() {
                         uni.navigateTo({
-                            url:
-                                '/pages/mine/order?tradeType=decide&tradeContentType=recovery'
+                            url: '/pages/mine/order?tradeType=decide&tradeContentType=recovery'
                         })
                     }
                 },
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/cart.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/cart.png',
                     name: '暂定购书',
                     action: function() {
                         uni.navigateTo({
-                            url:
-                                '/pages/mine/order?tradeType=tentative&tradeContentType=book'
+                            url: '/pages/mine/order?tradeType=tentative&tradeContentType=book'
                         })
                     }
                 },
                 {
-                    icon:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/book.png',
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/book.png',
                     name: '书籍订单',
                     action: function() {
                         uni.navigateTo({
-                            url:
-                                '/pages/mine/order?tradeType=decide&tradeContentType=book'
+                            url: '/pages/mine/order?tradeType=decide&tradeContentType=book'
                         })
                     }
                 }

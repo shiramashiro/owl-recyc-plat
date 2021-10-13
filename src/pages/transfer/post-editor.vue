@@ -1,14 +1,8 @@
 <template>
-    <view
-        class="owl-editor"
-        :style="{ minHeight: $systemInfo.windowHeight + 'px' }"
-    >
+    <view class="owl-editor" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <tui-navigation-bar>
             <view class="navi-content flex align-center justify-between">
-                <navigator
-                    :url="'/pages/transfer/transfer'"
-                    open-type="switchTab"
-                >
+                <navigator :url="'/pages/transfer/transfer'" open-type="switchTab">
                     <i class="el-icon-third-fanhui"></i>
                 </navigator>
                 <view class="margin-left-lg text-gray">
@@ -17,13 +11,7 @@
             </view>
         </tui-navigation-bar>
         <view class="title padding-tb-sm margin-lr-sm">
-            <input
-                @input="onTitleKeyInput"
-                v-model="titleValue"
-                placeholder-style="font-size: 20rpx; color: #ccc"
-                maxlength="50"
-                placeholder="标题(必填)"
-            />
+            <input @input="onTitleKeyInput" v-model="titleValue" placeholder-style="font-size: 20rpx; color: #ccc" maxlength="50" placeholder="标题(必填)" />
         </view>
         <view class="content">
             <view
@@ -37,63 +25,25 @@
         </view>
         <view class="select-post-type padding-lr-sm">
             <radio-group class="flex" @change="radioChange">
-                <label
-                    class="flex margin-right-sm align-center"
-                    v-for="(item, index) in radios"
-                    :key="item.value"
-                >
+                <label class="flex margin-right-sm align-center" v-for="(item, index) in radios" :key="item.value">
                     <view class="margin-right-xs">
-                        <radio
-                            style="transform:scale(0.6)"
-                            color="#87cefa"
-                            :value="item.value"
-                            :checked="index === radioCurrent"
-                        />
+                        <radio style="transform:scale(0.6)" color="#87cefa" :value="item.value" :checked="index === radioCurrent" />
                     </view>
                     <view class="text-df">{{ item.name }}</view>
                 </label>
             </radio-group>
         </view>
         <view class="toolbar margin-top-sm">
-            <view
-                class="iconfont icon-bold"
-                @click="toolBarClick('bold')"
-            ></view>
-            <view
-                class="iconfont icon-italic"
-                @click="toolBarClick('italic')"
-            ></view>
-            <view
-                class="iconfont icon-xiahuaxian1"
-                @click="toolBarClick('header')"
-            ></view>
-            <view
-                class="iconfont icon-underline"
-                @click="toolBarClick('underline')"
-            ></view>
-            <view
-                class="iconfont icon-strike"
-                @click="toolBarClick('strike')"
-            ></view>
-            <view
-                class="iconfont icon-alignleft"
-                @click="toolBarClick('alignleft')"
-            ></view>
-            <view
-                class="iconfont icon-aligncenter"
-                @click="toolBarClick('aligncenter')"
-            ></view>
-            <view
-                class="iconfont icon-alignright"
-                @click="toolBarClick('alignright')"
-            ></view>
-            <view
-                class="iconfont icon-qingkong"
-                @click="toolBarClick('clear')"
-            ></view>
-            <view class="iconfont text-sm" @click="toolBarClick('submit')"
-                >保存</view
-            >
+            <view class="iconfont icon-bold" @click="toolBarClick('bold')"></view>
+            <view class="iconfont icon-italic" @click="toolBarClick('italic')"></view>
+            <view class="iconfont icon-xiahuaxian1" @click="toolBarClick('header')"></view>
+            <view class="iconfont icon-underline" @click="toolBarClick('underline')"></view>
+            <view class="iconfont icon-strike" @click="toolBarClick('strike')"></view>
+            <view class="iconfont icon-alignleft" @click="toolBarClick('alignleft')"></view>
+            <view class="iconfont icon-aligncenter" @click="toolBarClick('aligncenter')"></view>
+            <view class="iconfont icon-alignright" @click="toolBarClick('alignright')"></view>
+            <view class="iconfont icon-qingkong" @click="toolBarClick('clear')"></view>
+            <view class="iconfont text-sm" @click="toolBarClick('submit')">保存</view>
         </view>
         <tui-tips :backgroundColor="tipColor" ref="toast"></tui-tips>
     </view>
@@ -206,14 +156,7 @@ export default {
                 document.execCommand('italic', false, null)
             } else if (type == 'header') {
                 uni.showActionSheet({
-                    itemList: [
-                        '标题1',
-                        '标题2',
-                        '标题3',
-                        '标题4',
-                        '标题5',
-                        '标题6'
-                    ],
+                    itemList: ['标题1', '标题2', '标题3', '标题4', '标题5', '标题6'],
                     success: res => {
                         switch (res.tapIndex) {
                             case 0:
@@ -292,8 +235,7 @@ export default {
     align-items: center;
     align-content: center;
     justify-content: space-between;
-    box-shadow: 0 0upx 4upx rgba(0, 0, 0, 0.157),
-        0 0upx 4upx rgba(0, 0, 0, 0.227);
+    box-shadow: 0 0upx 4upx rgba(0, 0, 0, 0.157), 0 0upx 4upx rgba(0, 0, 0, 0.227);
 }
 
 .toolbar .iconfont {

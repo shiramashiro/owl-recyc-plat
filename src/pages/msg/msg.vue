@@ -1,51 +1,28 @@
 <template>
     <view class="msg" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
         <view class="top padding-lr-lg flex justify-between align-center">
-            <template v-for="(navigator, index) in navigators">
-                <navigator :key="index" :url="navigator.url">
-                    <view class="flex align-center justify-center">
-                        <image
-                            style="width: 70rpx; height: 70rpx"
-                            mode="aspectFill"
-                            :src="navigator.image"
-                        />
-                    </view>
-                    <view class="text-gray">
-                        {{ navigator.name }}
-                    </view>
-                </navigator>
-            </template>
+            <navigator v-for="(navigator, index) in navigators" :key="index" :url="navigator.url">
+                <view class="flex align-center justify-center">
+                    <image style="width: 70rpx; height: 70rpx" mode="aspectFill" :src="navigator.image" />
+                </view>
+                <view class="text-gray">
+                    {{ navigator.name }}
+                </view>
+            </navigator>
         </view>
         <owl-fiche class="margin-top-sm" :title="'聊天列表'">
             <view class="chat-panel">
-                <view
-                    class="chat-list-item margin-bottom-sm padding-sm"
-                    v-for="(item, index) in chats"
-                    :key="index"
-                >
+                <view class="chat-list-item margin-bottom-sm padding-sm" v-for="(item, index) in chats" :key="index">
                     <navigator :url="'/pages/msg/chat?id=' + item.id">
-                        <tui-swipe-action
-                            style="width: 100%"
-                            @selected="chooseSwipe"
-                            :content="item"
-                            :actions="actions"
-                        >
+                        <tui-swipe-action style="width: 100%" @selected="chooseSwipe" :content="item" :actions="actions">
                             <template v-slot:content>
-                                <view
-                                    class="item flex align-center justify-between"
-                                >
-                                    <owl-avatar
-                                        class="avatar"
-                                        :size="40"
-                                        :src="item.url"
-                                    ></owl-avatar>
+                                <view class="item flex align-center justify-between">
+                                    <owl-avatar class="avatar" :size="40" :src="item.url"></owl-avatar>
                                     <view class="content">
                                         <view class="text-cut">
                                             {{ item.name }}
                                         </view>
-                                        <view
-                                            class="text-gray text-sm text-cut"
-                                        >
+                                        <view class="text-gray text-sm text-cut">
                                             {{ item.detail }}
                                         </view>
                                     </view>
@@ -54,9 +31,7 @@
                                             {{ item.time }}
                                         </view>
                                         <template v-if="item.new > 0">
-                                            <view
-                                                class="cu-tag round margin-top-sm bg-red sm"
-                                            >
+                                            <view class="cu-tag round margin-top-sm bg-red sm">
                                                 {{ item.new }}
                                             </view>
                                         </template>
@@ -106,8 +81,7 @@ export default {
             chats: [
                 {
                     id: 1,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
                     detail: '数据存储进行了性能优化，它的具体sssssssssssss优',
@@ -115,72 +89,58 @@ export default {
                 },
                 {
                     id: 2,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 0
                 },
                 {
                     id: 3,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 0
                 },
                 {
                     id: 4,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 1
                 },
                 {
                     id: 5,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 20
                 },
                 {
                     id: 6,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 10
                 },
                 {
                     id: 7,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 10
                 },
                 {
                     id: 8,
-                    url:
-                        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
+                    url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621980968,324835243&fm=26&gp=0.jpg',
                     name: '创作中心',
                     time: '04-05',
-                    detail:
-                        '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
+                    detail: '数据存储进行了性能优化，它的具体优化方式和升级注意事项',
                     new: 10
                 }
             ]

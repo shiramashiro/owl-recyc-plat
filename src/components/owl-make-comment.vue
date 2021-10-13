@@ -2,24 +2,11 @@
     <view class="owl-make-comment flex justify-between">
         <view class="col-1 margin-right-xs">
             <view class="padding-xs input-wrap">
-                <textarea
-                    style="height: 120rpx; width: 100%"
-                    v-model="inputValue"
-                    type="text"
-                    maxlength="500"
-                    placeholder="发表你的看法..."
-                />
+                <textarea style="height: 120rpx; width: 100%" v-model="inputValue" type="text" maxlength="500" placeholder="发表你的看法..." />
             </view>
         </view>
         <view class="col-2 text-center">
-            <tui-button
-                plain
-                class="flex align-center justify-center"
-                style="height: 100%"
-                :type="'primary'"
-                :size="30"
-                @click="publishComment"
-            >
+            <tui-button plain class="flex align-center justify-center" style="height: 100%" :type="'primary'" :size="30" @click="publishComment">
                 发表
             </tui-button>
         </view>

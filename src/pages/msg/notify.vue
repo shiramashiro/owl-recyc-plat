@@ -7,17 +7,8 @@
             <view class="margin-left-lg text-lg">系统通知</view>
         </tui-navigation-bar>
         <view class="notify-panel">
-            <view
-                class="item margin-lr-xs margin-tb-sm padding-sm"
-                v-for="(item, index) in notifies"
-                :key="index"
-            >
-                <tui-swipe-action
-                    style="width: 100%"
-                    @selected="chooseSwipe"
-                    :content="item"
-                    :actions="actions"
-                >
+            <view class="item margin-lr-xs margin-tb-sm padding-sm" v-for="(item, index) in notifies" :key="index">
+                <tui-swipe-action style="width: 100%" @selected="chooseSwipe" :content="item" :actions="actions">
                     <template v-slot:content>
                         <view class="margin-tb-sm text-cut text-bold">
                             {{ item.title }}

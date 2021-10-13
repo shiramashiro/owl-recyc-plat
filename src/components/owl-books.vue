@@ -1,15 +1,6 @@
 <template>
     <view class="owl-books flex">
-        <view
-            v-for="(item, index) in books"
-            :key="index"
-            class="book flex-sub margin-xs"
-            @click="
-                navigateToClickedItem('/pages/index/book-detail', [
-                    'id=' + item.id
-                ])
-            "
-        >
+        <view v-for="(item, index) in books" :key="index" class="book flex-sub margin-xs" @click="navigateToClickedItem('/pages/index/book-detail', ['id=' + item.id])">
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
                     <image mode="aspectFill" :src="item.img[0].imgUrl"></image>

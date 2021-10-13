@@ -5,10 +5,7 @@
                 <view class="margin-bottom-sm padding-sm">
                     <view class="row-1 flex align-center margin-bottom-sm">
                         <view class="col-1 margin-right-sm">
-                            <owl-avatar
-                                :src="item.user.avatar"
-                                :size="33"
-                            ></owl-avatar>
+                            <owl-avatar :src="item.user.avatar" :size="33"></owl-avatar>
                         </view>
                         <view class="col-2">
                             <view class="col-2-1">
@@ -21,10 +18,7 @@
                     </view>
                     <view class="row-2 text-lg text-cut">{{ item.title }}</view>
                     <view class="row-5 margin-top-xs">
-                        <u-parse
-                            :className="'custom-style'"
-                            :content="item.content"
-                        ></u-parse>
+                        <u-parse :className="'custom-style'" :content="item.content"></u-parse>
                     </view>
                     <view class="row-3 margin-tb-sm">
                         <owl-imgs :imgs="item.img"></owl-imgs>
@@ -34,32 +28,16 @@
                             <owl-tag :type="'gray'">{{ item.tagName }}</owl-tag>
                         </view>
                         <view class="col-2 flex align-center text-gray text-xs">
-                            <view
-                                class="col-2-1 margin-right-sm flex align-center"
-                            >
-                                <image
-                                    class="margin-right-xs"
-                                    mode="aspectFill"
-                                    src="@/static/browse.png"
-                                ></image>
+                            <view class="col-2-1 margin-right-sm flex align-center">
+                                <image class="margin-right-xs" mode="aspectFill" src="@/static/browse.png"></image>
                                 {{ item.browseNum }}
                             </view>
-                            <view
-                                class="col-2-2 margin-right-sm flex align-center"
-                            >
-                                <image
-                                    class="margin-right-xs"
-                                    mode="aspectFill"
-                                    src="@/static/discussion.png"
-                                ></image>
+                            <view class="col-2-2 margin-right-sm flex align-center">
+                                <image class="margin-right-xs" mode="aspectFill" src="@/static/discussion.png"></image>
                                 {{ item.discussionNum }}
                             </view>
                             <view class="col-2-3 flex align-center">
-                                <image
-                                    class="margin-right-xs"
-                                    mode="aspectFill"
-                                    src="@/static/like.png"
-                                ></image>
+                                <image class="margin-right-xs" mode="aspectFill" src="@/static/like.png"></image>
                                 {{ item.praiseNum }}
                             </view>
                         </view>

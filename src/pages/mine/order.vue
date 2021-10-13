@@ -6,31 +6,18 @@
             </navigator>
             <view class="margin-left-lg text-lg">订单详细</view>
         </tui-navigation-bar>
-        <view
-            class="wrap padding-sm margin-lr-sm margin-tb-sm"
-            v-for="(item, index) in datas"
-            :key="index"
-        >
+        <view class="wrap padding-sm margin-lr-sm margin-tb-sm" v-for="(item, index) in datas" :key="index">
             <view class="">地址：{{ item.address }}</view>
             <view class="">时间：{{ item.dateTime }}</view>
             <view class="">数量：{{ item.num }}</view>
             <view class="footer margin-top-sm flex justify-end">
-                <button
-                    style="width: 200rpx; height: 50rpx; font-size: 24rpx"
-                    class="margin-right-sm"
-                >
+                <button style="width: 200rpx; height: 50rpx; font-size: 24rpx" class="margin-right-sm">
                     查看发票
                 </button>
-                <button
-                    style="width: 200rpx; height: 50rpx; font-size: 24rpx"
-                    class="margin-right-sm"
-                >
+                <button style="width: 200rpx; height: 50rpx; font-size: 24rpx" class="margin-right-sm">
                     追加评价
                 </button>
-                <button
-                    style="width: 200rpx; height: 50rpx; font-size: 24rpx"
-                    class="margin-right-sm"
-                >
+                <button style="width: 200rpx; height: 50rpx; font-size: 24rpx" class="margin-right-sm">
                     售后
                 </button>
             </view>

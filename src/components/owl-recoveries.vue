@@ -1,27 +1,12 @@
 <template>
     <view class="owl-recoveries container flex justify-between">
         <template v-for="(item, index) in recoveries">
-            <view
-                v-if="index < maxSize || maxSize === 0"
-                :key="index"
-                class="item margin-xs"
-                @click="
-                    navigateToClickedItem('/pages/index/recovery-detail', [
-                        'id=' + item.id
-                    ])
-                "
-            >
+            <view v-if="index < maxSize || maxSize === 0" :key="index" class="item margin-xs" @click="navigateToClickedItem('/pages/index/recovery-detail', ['id=' + item.id])">
                 <image mode="aspectFill" :src="item.url" />
                 <view class="detail padding-lr-xs padding-tb-sm">
-                    <view class="address text-lg">
-                        地址：{{ item.address }}
-                    </view>
-                    <view class="price text-gray text-xs">
-                        回收价：{{ item.price }}元 / 斤
-                    </view>
-                    <view class="once text-gray text-xs">
-                        回收次数：{{ item.once }}
-                    </view>
+                    <view class="address text-lg"> 地址：{{ item.address }} </view>
+                    <view class="price text-gray text-xs"> 回收价：{{ item.price }}元 / 斤 </view>
+                    <view class="once text-gray text-xs"> 回收次数：{{ item.once }} </view>
                 </view>
             </view>
         </template>

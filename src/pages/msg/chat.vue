@@ -13,22 +13,13 @@
             </view>
             <view class="center">
                 <view class="send">
-                    <input
-                        v-model="chatContentValue"
-                        type="text"
-                        placeholder="输入聊天内容"
-                    />
+                    <input v-model="chatContentValue" type="text" placeholder="输入聊天内容" />
                 </view>
                 <view class="smiling">
                     <image src="@/static/face.svg"></image>
                 </view>
             </view>
-            <tui-button
-                @click="send"
-                :size="20"
-                :width="'100rpx'"
-                :height="'70rpx'"
-            >
+            <tui-button @click="send" :size="20" :width="'100rpx'" :height="'70rpx'">
                 发送
             </tui-button>
         </view>

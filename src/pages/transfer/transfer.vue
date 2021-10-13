@@ -6,37 +6,17 @@
             </view>
         </view>
         <view class="body margin-lr-xs">
-            <owl-fiche
-                class="margin-top-sm"
-                :title="'捐赠'"
-                :iconPath="
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/donation.png'
-                "
-                :iconWidth="'45rpx'"
-                :iconHeight="'45rpx'"
-            >
+            <owl-fiche class="margin-top-sm" :title="'捐赠'" :iconPath="'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/donation.png'" :iconWidth="'45rpx'" :iconHeight="'45rpx'">
                 <view class="donation flex align-center justify-between">
                     <view class="school-donation">
-                        <navigator
-                            :url="'/pages/transfer/more-transfer?type=school'"
-                        >
-                            <image
-                                model="aspectFill"
-                                src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/school.png"
-                            ></image>
+                        <navigator :url="'/pages/transfer/more-transfer?type=school'">
+                            <image model="aspectFill" src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/school.png"></image>
                             <view class="text-center">学校</view>
                         </navigator>
                     </view>
                     <view class="library-donation">
-                        <navigator
-                            :url="
-                                '/pages/transfer/more-transfer?type=library'
-                            "
-                        >
-                            <image
-                                model="aspectFill"
-                                src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/library.png"
-                            ></image>
+                        <navigator :url="'/pages/transfer/more-transfer?type=library'">
+                            <image model="aspectFill" src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/icon/library.png"></image>
                             <view class="text-center">图书馆</view>
                         </navigator>
                     </view>
@@ -47,29 +27,15 @@
                 :title="'官方帖'"
                 :iconWidth="'45rpx'"
                 :iconHeight="'45rpx'"
-                :iconPath="
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'
-                "
+                :iconPath="'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/speaker.png'"
                 :navigateTo="'/pages/more'"
-                :URLAttrs="[
-                    'tagType=official',
-                    'backNav=transfer/transfer',
-                    'comName=owlPosts'
-                ]"
+                :URLAttrs="['tagType=official', 'backNav=transfer/transfer', 'comName=owlPosts']"
             >
                 <view class="activities padding-lr-sm">
-                    <view
-                        class="activity"
-                        v-for="(item, index) in renderedPostsData"
-                        :key="index"
-                    >
-                        <navigator
-                            :url="'/pages/transfer/post-detail?id=' + item.id"
-                        >
+                    <view class="activity" v-for="(item, index) in renderedPostsData" :key="index">
+                        <navigator :url="'/pages/transfer/post-detail?id=' + item.id">
                             <view class="padding-sm margin-tb-sm">
-                                <view
-                                    class="row-1 margin-bottom-xs text-cut text-sm"
-                                >
+                                <view class="row-1 margin-bottom-xs text-cut text-sm">
                                     {{ item.title }}
                                 </view>
                                 <view class="flex align-center justify-between">
@@ -89,43 +55,24 @@
                 class="margin-top-sm"
                 :iconWidth="'45rpx'"
                 :iconHeight="'45rpx'"
-                :iconPath="
-                    'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/hot.png'
-                "
+                :iconPath="'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/hot.png'"
                 :title="'全社热帖'"
                 :navigateTo="'/pages/more'"
-                :URLAttrs="[
-                    'browseNum=100',
-                    'backNav=transfer/transfer',
-                    'comName=owlPosts'
-                ]"
+                :URLAttrs="['browseNum=100', 'backNav=transfer/transfer', 'comName=owlPosts']"
             >
                 <view class="hot-posts padding-lr-sm">
-                    <view
-                        class="hot-post"
-                        v-for="(item, index) in renderedHotPostsData"
-                        :key="index"
-                    >
-                        <navigator
-                            :url="'/pages/transfer/post-detail?id=' + item.id"
-                        >
-                            <view
-                                class="padding-tb-sm flex align-center justify-between"
-                            >
+                    <view class="hot-post" v-for="(item, index) in renderedHotPostsData" :key="index">
+                        <navigator :url="'/pages/transfer/post-detail?id=' + item.id">
+                            <view class="padding-tb-sm flex align-center justify-between">
                                 <view class="col-1 text-sm text-center">
                                     {{ index + 1 }}
                                 </view>
                                 <view class="col-2 text-cut margin-left-xs">
                                     {{ item.title }}
                                 </view>
-                                <view
-                                    class="text-center text-cut col-3 flex align-center text-gray text-xs"
-                                >
+                                <view class="text-center text-cut col-3 flex align-center text-gray text-xs">
                                     <view class="col-3-1">
-                                        <image
-                                            mode="aspectFill"
-                                            src="@/static/hot.png"
-                                        ></image>
+                                        <image mode="aspectFill" src="@/static/hot.png"></image>
                                     </view>
                                     <view class="col-3-2">
                                         {{ item.browseNum }}
@@ -143,10 +90,7 @@
         <view class="make-post">
             <navigator :url="'/pages/transfer/post-editor'">
                 <view class="post-btn-wrap">
-                    <image
-                        mode="aspectFit"
-                        src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"
-                    ></image>
+                    <image mode="aspectFit" src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"></image>
                 </view>
             </navigator>
         </view>

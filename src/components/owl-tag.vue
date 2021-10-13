@@ -1,9 +1,5 @@
 <template>
-    <view
-        :style="{ width: width, height: height }"
-        :class="['owl-tag-' + type]"
-        class="owl-tag text-xs flex align-center justify-center"
-    >
+    <view :style="{ width: width, height: height }" :class="['owl-tag-' + type]" class="owl-tag text-xs flex align-center justify-center">
         <slot></slot>
     </view>
 </template>

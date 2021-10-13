@@ -21,6 +21,11 @@ export const navigateToMixins = {
             uni.navigateTo({
                 url: url
             })
+        },
+        navigateTo(url, params) {
+            uni.navigateTo({
+                url: url
+            })
         }
     }
 }

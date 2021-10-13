@@ -2,46 +2,27 @@
     <view class="owl-comments">
         <view v-if="data.length === 0">
             <tui-no-data imgUrl="/static/nocomment.png">
-                <text class="tui-color__black"
-                    >还没有任何评论哦~发表一个吧！</text
-                >
+                <text class="tui-color__black">还没有任何评论哦~发表一个吧！</text>
             </tui-no-data>
         </view>
-        <view
-            v-for="(item, index) in data"
-            :key="index"
-            class="owl-comment margin-tb-sm padding-top-sm"
-        >
+        <view v-for="(item, index) in data" :key="index" class="owl-comment margin-tb-sm padding-top-sm">
             <view class="comment-wrap">
                 <view class="flex">
                     <view class="col-1">
-                        <owl-avatar
-                            :src="item.user.avatar"
-                            mode="aspectFill"
-                            :size="40"
-                        ></owl-avatar>
+                        <owl-avatar :src="item.user.avatar" mode="aspectFill" :size="40"></owl-avatar>
                     </view>
                     <view class="col-2">
                         <view class="row-1">
                             <view class="margin-left-sm">
-                                <view
-                                    class="text-cut text-lg flex align-center margin-bottom-xs"
-                                >
+                                <view class="text-cut text-lg flex align-center margin-bottom-xs">
                                     <view class="margin-right-xs">
                                         {{ item.user.username }}
                                     </view>
                                     <view>
-                                        <owl-tag
-                                            :type="'gray'"
-                                            :height="'30rpx'"
-                                        >
-                                            lv{{ item.user.level }}
-                                        </owl-tag>
+                                        <owl-tag :type="'gray'" :height="'30rpx'"> lv{{ item.user.level }} </owl-tag>
                                     </view>
                                 </view>
-                                <view
-                                    class="col-2 text-xs text-gray margin-right-lg"
-                                >
+                                <view class="col-2 text-xs text-gray margin-right-lg">
                                     {{ item.postDate }}
                                 </view>
                             </view>
@@ -54,16 +35,10 @@
             </view>
             <view class="options flex justify-end">
                 <view class="options-wrap flex text-sm text-gray">
-                    <view
-                        @click="handleClick(item.id, index, 'disagree')"
-                        class="col-2 margin-right-lg el-icon-third-cai"
-                    >
+                    <view @click="handleClick(item.id, index, 'disagree')" class="col-2 margin-right-lg el-icon-third-cai">
                         {{ item.disagree }}
                     </view>
-                    <view
-                        @click="handleClick(item.id, index, 'agree')"
-                        class="col-1 el-icon-third-dianzan"
-                    >
+                    <view @click="handleClick(item.id, index, 'agree')" class="col-1 el-icon-third-dianzan">
                         {{ item.agree }}
                     </view>
                 </view>

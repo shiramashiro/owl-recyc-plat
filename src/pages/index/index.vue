@@ -1,150 +1,72 @@
 <template>
     <view class="index">
-        <tui-navigation-bar>
-            <view class="input-wrap flex align-center padding-lr-sm">
-                <input
-                    style="width: 100%"
-                    class="input text-sm"
-                    v-model="searchValue"
-                    placeholder="请输入搜索关键字"
-                    type="text"
-                    maxlength="50"
-                />
-            </view>
-        </tui-navigation-bar>
-
         <view class="tui-rolling-news">
             <tui-icon name="news-fill" :size="28" color="#5677fc"></tui-icon>
-            <swiper
-                vertical
-                autoplay
-                circular
-                interval="3000"
-                class="tui-swiper"
-            >
-                <swiper-item
-                    v-for="(newsItem, index) in newsList"
-                    :key="index"
-                    class="tui-swiper-item"
-                >
-                    <view class="tui-news-item" @tap="detail">{{
-                        newsItem
-                    }}</view>
+            <swiper vertical autoplay circular interval="3000" class="tui-swiper">
+                <swiper-item v-for="(item, index) in broadcast" :key="index" class="tui-swiper-item">
+                    <view class="tui-news-item" @tap="detail">{{ item }}</view>
                 </swiper-item>
             </swiper>
         </view>
 
+        <!-- 轮播图模块 -->
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
-                <swiper-item
-                    v-for="(slideshowItem, index) in slideshowList"
-                    :key="index"
-                >
-                    <image
-                        class="slide-show-image"
-                        mode="aspectFit"
-                        :src="slideshowItem"
-                    ></image>
+                <swiper-item v-for="(item, index) in carousels" :key="index">
+                    <image mode="aspectFit" :src="item"></image>
                 </swiper-item>
             </swiper>
         </view>
 
-        <owl-fiche
-            :iconPath="
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/news.png'
-            "
-            class="margin-top-sm"
-            :navigateTo="'/pages/more'"
-            :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
-            :title="'新闻 / 资讯'"
-        >
+        <!-- 新闻/资讯模块 -->
+        <owl-fiche class="margin-top-sm" :navigate-to="'/pages/more'" :URLAttrs="['backNav=index/index', 'comName=owlPosts']" :title="'新闻 / 资讯'">
             <view class="news-panel">
-                <template v-for="(newsItem, index) in newsPanelList">
-                    <navigator
-                        :url="'/pages/transfer/post-detail?id=' + newsItem.id"
-                        :key="index"
-                    >
-                        <view
-                            class="news-item align-center flex padding-lr-sm padding-tb-sm margin-bottom-xs"
-                        >
-                            <view class="news-num margin-right-sm">
-                                {{ index + 1 }}
-                            </view>
-                            <view class="news-brief text-cut">
-                                {{ newsItem.title }}
-                            </view>
-                        </view>
-                    </navigator>
-                </template>
-            </view>
-        </owl-fiche>
-
-        <owl-fiche
-            :iconPath="
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/market.png'
-            "
-            class="margin-top-sm"
-            :title="'二手市场'"
-        >
-            <view class="caskets flex justify-between padding-lr-sm">
                 <view
-                    class="casket padding-lr-xs margin-tb-xs flex justify-between align-center"
-                    v-for="(casketItem, index) in casketList"
+                    v-for="(item, index) in information"
                     :key="index"
-                    @click="
-                        navigateToClickedItem('/pages/more', [
-                            'type=' + casketItem.type,
-                            'comName=owlBooks',
-                            'backNav=index/index'
-                        ])
-                    "
+                    @click="navigateTo('/pages/transfer/post-detail?id=' + item.id)"
+                    class="news-item align-center flex padding-lr-sm padding-tb-sm margin-bottom-xs"
                 >
-                    <view class="text">
-                        <view
-                            class="flex align-center text-black text-bold text-df"
-                            :class="casketItem.icon"
-                        >
-                            {{ casketItem.cnTitle }}
-                        </view>
-                        <view class="text-xs text-gray">
-                            {{ casketItem.enTitle }}
-                        </view>
+                    <view class="news-num margin-right-sm">
+                        {{ index + 1 }}
                     </view>
-                    <image mode="aspectFit" :src="casketItem.cover"></image>
+                    <view class="news-brief text-cut">
+                        {{ item.title }}
+                    </view>
                 </view>
             </view>
         </owl-fiche>
 
-        <owl-fiche
-            :iconPath="
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/recovery.png'
-            "
-            class="margin-top-sm"
-            :navigateTo="'/pages/more'"
-            :URLAttrs="[
-                'maxSize=0',
-                'backNav=index/index',
-                'comName=owlRecoveries'
-            ]"
-            :title="'回收点'"
-        >
+        <!-- 二手市场分类模块 -->
+        <owl-fiche class="margin-top-sm" :title="'二手市场'">
+            <view class="caskets-panel flex justify-between padding-lr-sm">
+                <view
+                    class="casket-item padding-lr-xs margin-tb-xs text-center"
+                    v-for="(item, index) in caskets"
+                    :key="index"
+                    @click="navigateToClickedItem('/pages/more', ['type=' + item.type, 'comName=owlBooks', 'backNav=index/index'])"
+                >
+                    <image mode="aspectFit" :src="item.icon"></image>
+                    <view class="text-center text-black text-bold text-df">
+                        {{ item.title }}
+                    </view>
+                </view>
+            </view>
+        </owl-fiche>
+
+        <!-- 附近回收点模块 -->
+        <owl-fiche class="margin-top-sm" :navigate-to="'/pages/more'" :URLAttrs="['maxSize=0', 'backNav=index/index', 'comName=owlRecoveries']" :title="'附近回收点'">
             <owl-recoveries></owl-recoveries>
         </owl-fiche>
 
-        <owl-fiche
-            :iconPath="
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/icon/recommendation.png'
-            "
-            class="margin-top-sm"
-            :title="'推荐'"
-        >
-            <owl-books :bookType="'all'"></owl-books>
+        <!-- 优质二手书推荐模块 -->
+        <owl-fiche class="margin-top-sm" :title="'优质二手书推荐'">
+            <owl-books :book-type="'all'"></owl-books>
         </owl-fiche>
     </view>
 </template>
 
 <script>
-// 导入mixins
 import { navigateToMixins } from '@/mixins/navigate-to.js'
 
 export default {
@@ -153,91 +75,71 @@ export default {
     data() {
         return {
             searchValue: '',
-            casketList: [
+            caskets: [
                 {
                     type: 'all',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/22894393-1_w_1.jpg',
-                    icon: 'el-icon-third-guanjun',
-                    cnTitle: '全部',
-                    enTitle: 'General List'
+                    icon: '../../assets/icon/全部.png',
+                    title: '全部'
                 },
                 {
                     type: 'living',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/29197803-1_w_3.jpg',
-                    icon: 'el-icon-third-shiwu',
-                    cnTitle: '生活',
-                    enTitle: 'Living'
+                    icon: '../../assets/icon/生活.png',
+                    title: '生活'
                 },
                 {
                     type: 'technology',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27920509-1_w_26.jpg',
-                    icon: 'el-icon-third-keji',
-                    cnTitle: '科技',
-                    enTitle: 'Technology'
+                    icon: '../../assets/icon/科技.png',
+                    title: '科技'
                 },
                 {
                     type: 'social',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/25157989-1_u_5.jpg',
-                    icon: 'el-icon-third-shehui',
-                    cnTitle: '社会',
-                    enTitle: 'Social Sciences'
+                    icon: '../../assets/icon/社会.png',
+                    title: '社会'
                 },
                 {
                     type: 'business',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/27932536-1_u_3.jpg',
-                    icon: 'el-icon-third-qiandai',
-                    cnTitle: '经管',
-                    enTitle: 'Business'
+                    icon: '../../assets/icon/经营.png',
+                    title: '经管'
                 },
                 {
                     type: 'literature',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/1901258135_ii_cover.jpg',
-                    icon: 'el-icon-third-wenxue',
-                    cnTitle: '文学',
-                    enTitle: 'Literature'
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/1901258135_ii_cover.jpg',
+                    title: '文学'
                 },
                 {
                     type: 'art',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28470862-1_u_3.jpg',
-                    icon: 'el-icon-third-yishu',
-                    cnTitle: '艺术',
-                    enTitle: 'Art'
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/28470862-1_u_3.jpg',
+                    title: '艺术'
                 },
                 {
                     type: 'education',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
-                    icon: 'el-icon-third-xueshimaoxuexibiye',
-                    cnTitle: '辅教',
-                    enTitle: 'Education'
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/21114192-1_u_3.jpg',
+                    title: '辅教'
                 },
                 {
                     type: 'children',
-                    cover:
-                        'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23684605-1_w_1.jpg',
-                    icon: 'el-icon-third-ertong',
-                    cnTitle: '童书',
-                    enTitle: "Children's Books"
+                    icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/23684605-1_w_1.jpg',
+                    title: '童书'
                 }
             ],
-            newsList: [
-                '致力发展负责任的人工智能 中国发布八大治理原则',
-                '600万吨包装纸产能砸向市场',
-                '4月27日废纸价格最高上调50元/吨'
+            broadcast: ['致力发展负责任的人工智能 中国发布八大治理原则', '600万吨包装纸产能砸向市场', '4月27日废纸价格最高上调50元/吨'],
+            carousels: [
+                'https://p1.music.126.net/UZducXaYUzyukQuRxZ5rng==/109951166445121244.jpg?imageView&quality=89',
+                'https://p1.music.126.net/L6qUp1pk0CHe763ZWapSQQ==/109951166511220740.jpg?imageView&quality=89',
+                'https://p1.music.126.net/RdwUlDHKhfumKGerywHXew==/109951166511217995.jpg?imageView&quality=89',
+                'https://p1.music.126.net/1Z68-RH4zsT5cDxsXy56tw==/109951166511196968.jpg?imageView&quality=89'
             ],
-            slideshowList: [
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/2021032611362390127.jpg',
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/20210326193508509.jpg',
-                'https://owl-town.oss-cn-chengdu.aliyuncs.com/static/slideshow/2021032619353510220.jpg'
-            ],
-            newsPanelList: []
+            information: [
+                {
+                    title: '致力发展负责任的人工智能 中国发布八大治理原则'
+                },
+                {
+                    title: '600万吨包装纸产能砸向市场'
+                },
+                {
+                    title: '4月27日废纸价格最高上调50元/吨'
+                }
+            ]
         }
     },
     mounted() {
@@ -259,47 +161,46 @@ export default {
 .index {
     background-color: rgb(248, 248, 248);
 
-    .input-wrap {
-        width: 100%;
-        border-radius: 50rpx;
-        background-color: rgb(244, 244, 244);
-        padding: 0 20rpx;
-        height: 58rpx;
+    .slide-show {
+        image {
+            width: 100%;
+            height: 100%;
+        }
     }
 
-    .input-wrap::before {
-        content: '\e623';
-        margin-right: 14rpx;
-        font-family: 'iconfont' !important;
-        font-size: 25rpx;
-        font-style: normal;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    .news-panel {
+        .news-item {
+            border-bottom: 1rpx solid #f0f0f0;
+        }
+
+        .news-item:last-child {
+            border-bottom: 0 !important;
+        }
     }
 
-    .caskets {
+    .caskets-panel {
         flex-flow: wrap;
 
-        .casket {
+        .casket-item {
             height: 120rpx;
             width: 31.5%;
             background-color: white;
 
             image {
                 width: 80rpx;
-                height: 105rpx;
+                height: 80rpx;
             }
         }
     }
 
     .tui-rolling-news {
-        background-color: white;
         width: 100%;
-        box-sizing: border-box;
         display: flex;
-        align-items: center;
-        justify-content: center;
         flex-wrap: nowrap;
+        align-items: center;
+        box-sizing: border-box;
+        justify-content: center;
+        background-color: white;
 
         .tui-swiper {
             font-size: 28rpx;
@@ -312,24 +213,11 @@ export default {
             align-items: center;
 
             .tui-news-item {
+                overflow: hidden;
                 line-height: 28rpx;
                 white-space: nowrap;
-                overflow: hidden;
                 text-overflow: ellipsis;
             }
-        }
-    }
-
-    .slide-show {
-        .slide-show-image {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .news-panel {
-        .news-item {
-            border-bottom: 1rpx solid #f0f0f0 !important;
         }
     }
 }
