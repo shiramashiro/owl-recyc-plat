@@ -1,34 +1,42 @@
-# 颜色
+# 规范说明
+
+## 颜色
 
 1. 主题颜色：rgb(135, 206, 250) 或 #87cefa
 2. 白色背景：rgb(248, 248, 248) 或 #f8f8f8
 3. 分割线：rgb(240, 240, 240) 或 #f0f0f0
 
-# 规范
-
 ## 组件
 
-组件 name 属性值填入的值为单词与单词之间用`-`隔开；导入组件时的变量名使用大驼峰命名规则，即 AbcDef 的形式。
+组件的命名必须是单词与单词之间用`-`隔开；导入组件时的变量名使用大驼峰命名规则。
+
+比如：
+
+```js
+import OwlFiche from '@/components/owl-fiche.vue'
+
+export default {
+    components: { OwlFiche }
+}
+```
 
 ## CSS
 
-class、id 的命名方式为单词与单词之间用`-`隔开。
+class、id 的命名必须是单词与单词之间用`-`隔开。
 
 ## 目录
 
-1. 静态资源都存放在 static 文件夹中；
-2. colorui 和 thorui 为第三方组件库；
-3. components 存放对应页面的组件；
-4. pages 存放页面的组件，pages 跟 pages.json 配套，使用方法查阅 uni-app 官方文档。
-
-pages 文件夹和 components 文件夹对应，如 pages 中 index.vue 是首页，若首页需要创建组件，那么就在 components 文件夹下创建一个 index 文件夹，存放有关 index.vue 的组件。如果是所有 pages 都会用到的组件，则放在 components 文件夹根目录下。
+1. 图片、视频、音频等静态资源都放在 assets 中；
+2. colorui 和 thorui 为第三方组件库，非到必要时不可以动用；
+3. 开发的组件都放在 components 中；
+4. 页面都放在 pages 中，与 pages.json 配套。请查阅 uni-app 官方文档。
 
 # 接口
 
 ## 获取书籍
 
 ```http
-http://120.77.245.208:8070/get/book
+http://localhost:8070/get/book
 ```
 
 请求方式：GET
@@ -42,7 +50,7 @@ all | living | technology | social | business | literature | art | education | c
 ## 发表评论
 
 ```http
-http://120.77.245.208:8070/set/comment
+http://localhost:8070/set/comment
 ```
 
 请求方式：POST
@@ -63,7 +71,7 @@ http://120.77.245.208:8070/set/comment
 ## 获取帖子
 
 ```http
-http://120.77.245.208:8070/get/post
+http://localhost:8070/get/post
 ```
 
 请求方式：GET
@@ -77,7 +85,7 @@ http://120.77.245.208:8070/get/post
 ## 评论观点
 
 ```http
-http://120.77.245.208:8070/set/view
+http://localhost:8070/set/view
 ```
 
 请求方式：POST
@@ -101,7 +109,7 @@ http://120.77.245.208:8070/set/view
 ## 登陆
 
 ```http
-http://120.77.245.208:8070/signin
+http://localhost:8070/signin
 ```
 
 请求方式：POST
@@ -120,7 +128,7 @@ http://120.77.245.208:8070/signin
 ## 注册
 
 ```http
-http://120.77.245.208:8070/signup
+http://localhost:8070/signup
 ```
 
 请求方式：POST
@@ -142,7 +150,7 @@ http://120.77.245.208:8070/signup
 ## 获取头像
 
 ```http
-http://120.77.245.208:8070/get/signin/avatar?phone=
+http://localhost:8070/get/signin/avatar?phone=
 ```
 
 请求方式：GET
@@ -152,7 +160,7 @@ http://120.77.245.208:8070/get/signin/avatar?phone=
 ## 获取订单
 
 ```http
-http://120.77.245.208:8070/get/order
+http://localhost:8070/get/order
 ```
 
 请求方式：POST
@@ -170,7 +178,7 @@ http://120.77.245.208:8070/get/order
 ## 设置订单
 
 ```http
-http://120.77.245.208:8070/set/order
+http://localhost:8070/set/order
 ```
 
 请求方式：POST
