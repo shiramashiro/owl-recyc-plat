@@ -1,6 +1,6 @@
 <template>
     <view class="owl-books flex">
-        <view v-for="(item, index) in books" :key="index" class="book flex-sub margin-xs" @click="navigateToClickedItem('/pages/index/book-detail', ['id=' + item.id])">
+        <view v-for="(item, index) in container" :key="index" class="book flex-sub margin-xs" @click="navigateToClickedItem('/pages/index/book-detail', ['id=' + item.id])">
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
                     <image mode="aspectFill" :src="item.img[0].imgUrl"></image>
@@ -25,36 +25,51 @@
 </template>
 
 <script>
-// 导入mixins
 import { navigateToMixins } from '@/mixins/navigate-to.js'
+import { books } from '@/assests/data/books.js'
 
 export default {
     name: 'books',
     mixins: [navigateToMixins],
     props: {
-        bookType: {
+        type: {
             type: String,
             required: true
         }
     },
     data() {
         return {
-            books: []
+            container: []
         }
     },
     mounted() {
-        this.$axios
-            .get('/get/book', {
-                params: {
-                    type: this.bookType
-                }
-            })
-            .then(resp => {
-                this.books = resp.data
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        /**
+         * index.vue传入书籍类型 type，你要根据bookType查询books里面的书籍。
+         * index.vue 使用了owl-books.vue组件，并且给该子组件传递了一个 type（一个 props），type 代表了书籍的类别，与 books 中每一个对象中的 type 对等。
+         * 如果 index.vue 给子组件 owl-books.vue 组件传递的 type 为 living，则需要“生活类”的书籍。
+         * 所以，你需要把 books 中 type 为 living 的书籍全部放进 data 中 container 数组里。
+         */
+
+
+
+
+
+
+
+
+        /* 这里的代码你不需要管，也不需要去理解。这是后期连接数据库时用到的发起网络请求的代码。 */
+        // this.$axios
+        //     .get('/get/book', {
+        //         params: {
+        //             type: this.type
+        //         }
+        //     })
+        //     .then(resp => {
+        //         this.container = resp.data
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
     }
 }
 </script>

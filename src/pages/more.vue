@@ -12,7 +12,7 @@
             <owl-posts class="margin-top-sm padding-lr-xs" :requestURL="'/get/post'" :URLAttrs="params"></owl-posts>
         </template>
         <template v-else-if="params.comName === 'owlBooks'">
-            <owl-books :bookType="params.type"></owl-books>
+            <owl-books :type="params.type"></owl-books>
         </template>
         <template v-else-if="params.comName === 'owlRecoveries'">
             <owl-recoveries :maxSize="Number(params.maxSize)"></owl-recoveries>
