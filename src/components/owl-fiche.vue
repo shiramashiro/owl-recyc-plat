@@ -1,35 +1,21 @@
 <template>
-    <view class="owl-fiche" :class="[isLrMargin ? 'margin-lr-xs' : '']">
-        <view class="owl-fiche-wrap">
-            <view :class="[isLrPadding ? 'padding-lr-sm' : '']" class="title text-black padding-tb-sm flex justify-between align-center">
-                <view class="rows flex align-center">
-                    <view class="col-1 flex align-center text-lg">
-                        <template v-if="iconPath !== ''">
-                            <image
-                                :style="{
-                                    height: iconHeight,
-                                    width: iconWidth
-                                }"
-                                class="margin-right-sm"
-                                mode="aspectFit"
-                                :src="iconPath"
-                            ></image>
-                        </template>
-                        <view :style="{ fontSize: titleFontSize }">
-                            {{ title }}
-                        </view>
-                    </view>
-                    <view v-if="subTitle" class="col-2 text-xs flex align-end margin-left-xs">
-                        {{ subTitle }}
-                    </view>
+    <view class="owl-fiche margin-lr-xs">
+        <view class="header text-black padding-sm flex justify-between align-center">
+            <view class="title-box flex align-center">
+                <image class="icon" mode="aspectFit" v-if="iconPath !== ''" :src="iconPath"></image>
+                <view class="main-title text-bold text-lg margin-left-sm">
+                    {{ title }}
                 </view>
-                <view v-if="navigateTo !== ''" @click="display" class="text-gray text-sm">
-                    更多 >
+                <view v-if="subTitle" class="sub-title text-gray text-xs margin-left-xs">
+                    {{ subTitle }}
                 </view>
             </view>
-            <view :style="{ backgroundColor: bgColor }" class="content padding-tb-sm">
-                <slot></slot>
+            <view v-if="navigateTo !== ''" @click="display" class="more text-gray text-sm">
+                更多 >
             </view>
+        </view>
+        <view class="content padding-tb-sm" :style="{ backgroundColor: bgColor }">
+            <slot></slot>
         </view>
     </view>
 </template>
@@ -48,52 +34,27 @@ export default {
             type: String,
             required: false
         },
-        // 点击更多，跳转的页面URL
+        // 跳转
         navigateTo: {
             type: String,
             default: ''
         },
-        // 是否携带参数？不携带不传入即可
+        // 参数
         URLAttrs: {
             type: Array,
             default() {
                 return []
             }
         },
-        // 背景颜色
+        // 背景
         bgColor: {
             type: String,
             default: 'white'
         },
-        // icon图标URL地址
+        // icon
         iconPath: {
             type: String,
             default: ''
-        },
-        // icon图标宽度
-        iconWidth: {
-            type: String,
-            default: '45rpx'
-        },
-        // icon图标高度
-        iconHeight: {
-            type: String,
-            default: '45rpx'
-        },
-        // 是否开启左右的margin
-        isLrMargin: {
-            type: Boolean,
-            default: true
-        },
-        // 是否开启左右padding
-        isLrPadding: {
-            type: Boolean,
-            default: true
-        },
-        // 标题字体大小，默认30rpx
-        titleFontSize: {
-            type: String,
-            default: '30rpx'
         }
     },
     methods: {
@@ -130,5 +91,17 @@ export default {
 .owl-fiche {
     border-radius: 24rpx;
     background-color: white;
+
+    .header {
+        .title-box {
+            .icon {
+                width: 40rpx;
+                height: 40rpx;
+            }
+            .main-title {
+                font-size: 30rpx;
+            }
+        }
+    }
 }
 </style>

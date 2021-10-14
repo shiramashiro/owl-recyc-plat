@@ -26,7 +26,7 @@
 
 <script>
 import { navigateToMixins } from '@/mixins/navigate-to.js'
-import { books } from '@/assests/data/books.js'
+import { books } from '@/assets/data/books.js'
 
 export default {
     name: 'books',

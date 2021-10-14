@@ -19,7 +19,14 @@
         </view>
 
         <!-- 新闻/资讯模块 -->
-        <owl-fiche class="margin-top-sm" :navigate-to="'/pages/more'" :URLAttrs="['backNav=index/index', 'comName=owlPosts']" :title="'新闻 / 资讯'">
+        <owl-fiche
+            class="margin-top-sm"
+            :sub-title="'二手回收行业资讯'"
+            :icon-path="'http://p1.music.126.net/l81wKgnHwl3n0ayI7iVVXA==/109951163322560971.png'"
+            :navigate-to="'/pages/more'"
+            :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
+            :title="'新闻 / 资讯'"
+        >
             <view class="news-panel">
                 <view
                     v-for="(item, index) in information"
@@ -123,18 +130,18 @@ export default {
                 },
                 {
                     type: 'novel',
-                    icon:require('../../assets/icon/小说.png'),
-                    title:'小说'
+                    icon: require('../../assets/icon/小说.png'),
+                    title: '小说'
                 },
-                 {
+                {
                     type: 'foreign',
-                    icon:require('../../assets/icon/外语.png'),
-                    title:'外语'
+                    icon: require('../../assets/icon/外语.png'),
+                    title: '外语'
                 },
-                 {
+                {
                     type: 'audio',
-                    icon:require('../../assets/icon/音像.png'),
-                    title:'音像'
+                    icon: require('../../assets/icon/音像.png'),
+                    title: '音像'
                 }
             ],
             broadcast: ['致力发展负责任的人工智能 中国发布八大治理原则', '600万吨包装纸产能砸向市场', '4月27日废纸价格最高上调50元/吨'],
@@ -198,7 +205,7 @@ export default {
 
         .casket-item {
             height: 120rpx;
-            width: 25.0%;
+            width: 25%;
             background-color: white;
 
             image {
