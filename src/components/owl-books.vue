@@ -1,9 +1,9 @@
 <template>
     <view class="owl-books flex">
-        <view v-for="(item, index) in container" :key="index" class="book flex-sub margin-xs" @click="navigateToClickedItem('/pages/index/book-detail', ['id=' + item.id])">
+        <view v-for="(item, index) in container" :key="index" class="book flex-sub margin-xs">
             <view class="row-1 margin-tb-xs">
                 <view class="col-1">
-                    <image mode="aspectFill" :src="item.img[0].imgUrl"></image>
+                    <image mode="aspectFill" :src="item.cover"></image>
                 </view>
             </view>
             <view class="row-2 padding-sm">
@@ -16,9 +16,9 @@
                 <view class="row-2-3 text-red text-lg margin-bottom-xs">
                     {{ item.price }}
                 </view>
-                <view class="row-2-4 text-gray text-lg">
+                <!-- <view class="row-2-4 text-gray text-lg">
                     {{ item.originPrice }}
-                </view>
+                </view> -->
             </view>
         </view>
     </view>
@@ -29,12 +29,16 @@ import { navigateToMixins } from '@/mixins/navigate-to.js'
 import { books } from '@/assets/data/books.js'
 
 export default {
-    name: 'books',
+    name: 'owl-books',
     mixins: [navigateToMixins],
     props: {
         type: {
             type: String,
             required: true
+        },
+        commondation:{
+            type:Boolean,
+            required:false
         }
     },
     data() {
@@ -49,8 +53,13 @@ export default {
          * 如果 index.vue 给子组件 owl-books.vue 组件传递的 type 为 living，则需要“生活类”的书籍。
          * 所以，你需要把 books 中 type 为 living 的书籍全部放进 data 中 container 数组里。
          */
+        console.log(this.type)
 
-
+        for (let index = 0; index < books.length; index++) {
+            if (books[index].isCommondation === this.commondation) {
+                this.container.push(books[index])
+            }
+        }
 
 
 

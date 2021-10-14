@@ -67,7 +67,7 @@
 
         <!-- 优质二手书推荐模块 -->
         <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'">
-            <owl-books :type="'all'"></owl-books>
+            <owl-books :commondation="true" :type="'living'"></owl-books>
         </owl-fiche>
     </view>
 </template>
