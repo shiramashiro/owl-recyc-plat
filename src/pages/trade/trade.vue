@@ -1,5 +1,5 @@
 <template>
-    <view class="transfer">
+    <view class="trade">
         <!-- 爱心捐赠服务窗口 -->
         <owl-fiche :title="'捐赠'" :sub-title="'捐赠书籍的公益'" :icon-path="require('../../assets/icon/公益捐赠.png')">
             <view class="donation flex align-center justify-between">
@@ -80,7 +80,7 @@
 
 <script>
 export default {
-    name: 'transfer',
+    name: 'trade',
     data() {
         return {}
     },
@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.transfer {
+.trade {
     background-color: rgb(248, 248, 248);
     .donation {
         padding: 45rpx 140rpx;

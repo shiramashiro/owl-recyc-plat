@@ -1,10 +1,10 @@
 <template>
-    <view class="community"></view>
+    <view class="society"></view>
 </template>
 
 <script>
 export default {
-    name: 'community',
+    name: 'society',
     data() {
         return {}
     }

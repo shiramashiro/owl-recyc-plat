@@ -7,13 +7,13 @@
             }
         },
         {
-            "path": "pages/community/community",
+            "path": "pages/society/society",
             "style": {
                 "navigationBarTitleText": "社区"
             }
         },
         {
-            "path": "pages/transfer/transfer",
+            "path": "pages/trade/trade",
             "style": {
                 "navigationBarTitleText": "转让"
             }
@@ -91,25 +91,25 @@
             }
         },
         {
-            "path": "pages/transfer/more-transfer",
+            "path": "pages/trade/more-transfer",
             "style": {
                 "navigationBarTitleText": "更多捐赠"
             }
         },
         {
-            "path": "pages/transfer/transfer-detail",
+            "path": "pages/trade/transfer-detail",
             "style": {
                 "navigationBarTitleText": "捐赠详细"
             }
         },
         {
-            "path": "pages/transfer/post-detail",
+            "path": "pages/trade/post-detail",
             "style": {
                 "navigationBarTitleText": "帖子详情"
             }
         },
         {
-            "path": "pages/transfer/post-editor",
+            "path": "pages/trade/post-editor",
             "style": {
                 "navigationBarTitleText": "发表"
             }
@@ -147,16 +147,16 @@
                 "text": "首页"
             },
             {
-                "pagePath": "pages/community/community",
+                "pagePath": "pages/society/society",
                 "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/社区.png",
                 "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/社区.png",
                 "text": "社区"
             },
             {
-                "pagePath": "pages/transfer/transfer",
-                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/转让.png",
-                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/转让.png",
-                "text": "转让"
+                "pagePath": "pages/trade/trade",
+                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/交易.png",
+                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/交易.png",
+                "text": "交易"
             },
             {
                 "pagePath": "pages/msg/msg",

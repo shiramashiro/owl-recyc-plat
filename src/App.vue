@@ -34,8 +34,8 @@ export default {
 
 <style>
 @import '@/colorui/main.css';
-@import '@/components/u-parse/u-parse.css';
 @import '@/colorui/icon.css';
+@import '@/components/u-parse/u-parse.css';
 
 body {
     background-color: white;
