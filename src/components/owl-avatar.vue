@@ -1,6 +1,6 @@
 <template>
     <view class="avatar-wrap flex align-center">
-        <image :mode="mode" class="avatar" :style="{ '--size': size + 'px' }" :src="src"></image>
+        <image class="avatar" :mode="mode" :style="{ '--size': size + 'px' }" :src="src"></image>
     </view>
 </template>
 

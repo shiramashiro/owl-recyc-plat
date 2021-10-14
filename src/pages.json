@@ -7,9 +7,15 @@
             }
         },
         {
-            "path": "pages/transfer/transfer",
+            "path": "pages/community/community",
             "style": {
                 "navigationBarTitleText": "社区"
+            }
+        },
+        {
+            "path": "pages/transfer/transfer",
+            "style": {
+                "navigationBarTitleText": "转让"
             }
         },
         {
@@ -139,6 +145,12 @@
                 "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/首页.png",
                 "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/首页.png",
                 "text": "首页"
+            },
+            {
+                "pagePath": "pages/community/community",
+                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/社区.png",
+                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/社区.png",
+                "text": "社区"
             },
             {
                 "pagePath": "pages/transfer/transfer",

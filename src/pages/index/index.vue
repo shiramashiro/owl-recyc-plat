@@ -20,8 +20,7 @@
 
         <!-- 新闻/资讯模块 -->
         <owl-fiche
-            class="margin-top-sm"
-            :sub-title="'二手回收行业资讯'"
+            :sub-title="'废纸行业相关资讯'"
             :icon-path="'http://p1.music.126.net/l81wKgnHwl3n0ayI7iVVXA==/109951163322560971.png'"
             :navigate-to="'/pages/more'"
             :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
@@ -45,7 +44,7 @@
         </owl-fiche>
 
         <!-- 二手市场分类模块 -->
-        <owl-fiche class="margin-top-sm" :title="'二手市场'">
+        <owl-fiche :title="'二手市场'" :sub-title="'货源于官方渠道'">
             <view class="caskets-panel flex justify-between padding-lr-sm">
                 <view
                     class="casket-item padding-lr-xs margin-tb-xs text-center"
@@ -62,12 +61,12 @@
         </owl-fiche>
 
         <!-- 附近回收点模块 -->
-        <owl-fiche class="margin-top-sm" :navigate-to="'/pages/more'" :URLAttrs="['maxSize=0', 'backNav=index/index', 'comName=owlRecoveries']" :title="'附近回收点'">
+        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'">
             <owl-recoveries></owl-recoveries>
         </owl-fiche>
 
         <!-- 优质二手书推荐模块 -->
-        <owl-fiche class="margin-top-sm" :title="'优质二手书推荐'">
+        <owl-fiche :title="'书籍推荐'">
             <owl-books :type="'all'"></owl-books>
         </owl-fiche>
     </view>
