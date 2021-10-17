@@ -1,5 +1,5 @@
 <template>
-    <view class="book-detail">
+    <view class="detail">
         <tui-navigation-bar>
             <navigator :url="'/pages/index/index'" open-type="switchTab">
                 <i class="el-icon-third-fanhui"></i>
@@ -12,24 +12,24 @@
                     :indicator-dots="true"
                     indicator-color="rgba(135, 206, 250, 0.3)"
                     indicator-active-color="#87cefa"
-                    :style="{ height: swiperHeight + 'px' }"
                     :current="currentSwiper"
                     :duration="360"
+                    :style="{ height: swiperHeight + 'px' }"
                 >
-                    <swiper-item v-for="(item, index) in book.img" :key="index">
+                    <swiper-item v-for="(item, index) in books[0].coverGroup" :key="index">
                         <view :id="'swiper-item-' + index">
-                            <image mode="aspectFit" class="image" :src="item.imgUrl"></image>
+                            <image mode="aspectFit" class="image" :src="item"></image>
                         </view>
                     </swiper-item>
                 </swiper>
             </view>
             <view class="rows-content margin-lr-lg">
                 <view class="col-0 text-bold text-lg">
-                    {{ book.name }}
+                    {{ books[0].name }}
                 </view>
                 <view class="row-2 margin-bottom-xs flex justify-between align-center">
                     <view class="col-1 text-red">
-                        <view class="col-1-1">{{ book.price }}</view>
+                        <view class="col-1-1">{{ books[0].price }}</view>
                     </view>
                     <view class="col-2">
                         <view class="col-2-1 text-center">
@@ -38,66 +38,69 @@
                         <view class="col-2-2 text-xs">收藏</view>
                     </view>
                 </view>
-                <view class="row-3 text-gray">{{ book.originPrice }}</view>
+                <view class="row-3 text-gray">{{ books[0].price }}</view>
                 <view class="row-4 margin-top-sm padding-bottom-sm">
-                    {{ book.desc }}
+                    {{ books[0].description }}
                 </view>
             </view>
         </view>
         <owl-fiche class="margin-top-sm">
             <owl-indent ref="indent"></owl-indent>
         </owl-fiche>
-        <view class="row-6 margin-lr-xs margin-top-sm">
+        <!-- <view class="row-6 margin-lr-xs margin-top-sm">
             <owl-fiche :title="'评论区'">
                 <owl-make-comment :postUrl="'/set/comment'" :urlType="'book'" :belongedId="book.id" class="padding-lr-sm"></owl-make-comment>
                 <owl-comment class="padding-lr-sm" :belongedName="'book'" :data="book.comment"></owl-comment>
             </owl-fiche>
-        </view>
+        </view> -->
         <owl-action-bar :type="'bookTrade'" @rightBtn="notify" @leftBtn="notify"></owl-action-bar>
         <tui-tips :backgroundColor="tipColor" ref="tips"></tui-tips>
     </view>
 </template>
 
 <script>
+import { books } from '@/assets/data/books.js'
+
 export default {
-    name: 'BookDetail',
+    name: 'detail',
     data() {
         return {
             currentSwiper: 0,
             swiperHeight: 0,
             swiperTabs: [{ name: '全部评论' }, { name: '好评' }, { name: '中评' }, { name: '差评' }],
-            book: {
-                id: 0,
-                type: '',
-                name: '',
-                author: '',
-                price: 0,
-                originPrice: 0,
-                desc: '',
-                img: [
-                    {
-                        id: 0,
-                        belongedId: 0,
-                        imgUrl: ''
-                    }
-                ],
-                comment: [
-                    {
-                        id: 0,
-                        userId: 0,
-                        belongedId: 0,
-                        content: '',
-                        postDate: '',
-                        agree: 0,
-                        disagree: 0,
-                        user: {
-                            id: 0,
-                            username: '',
-                            avatar: ''
-                        }
-                    }
-                ]
-            },
+            books,
+            // book: {
+            //     id: 0,
+            //     type: '',
+            //     name: '',
+            //     author: '',
+            //     price: 0,
+            //     originPrice: 0,
+            //     desc: '',
+            //     img: [
+            //         {
+            //             id: 0,
+            //             belongedId: 0,
+            //             imgUrl: ''
+            //         }
+            //     ],
+            //     comment: [
+            //         {
+            //             id: 0,
+            //             userId: 0,
+            //             belongedId: 0,
+            //             content: '',
+            //             postDate: '',
+            //             agree: 0,
+            //             disagree: 0,
+            //             user: {
+            //                 id: 0,
+            //                 username: '',
+            //                 avatar: ''
+            //             }
+            //         }
+            //     ]
+            // },
             tipColor: '#19BE6B'
         }
     },
@@ -148,8 +151,8 @@ export default {
             })
         },
         setSwiperItem(index) {
-            uni.createSelectorQuery()
-                .in(this)
+            const query = uni.createSelectorQuery().in(this)
+            query
                 .select('#swiper-item-' + index)
                 .boundingClientRect(data => {
                     this.swiperHeight = data.height + 25
@@ -157,28 +160,29 @@ export default {
                 .exec()
         }
     },
-    onLoad(option) {
-        this.$axios
-            .get('/get/detail/book', {
-                params: {
-                    id: option.id
-                }
-            })
-            .then(resp => {
-                this.book = resp.data
-                setTimeout(() => {
-                    this.setSwiperItem(0)
-                }, 0)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    onLoad(options) {
+        //     this.$axios
+        //         .get('/get/detail/book', {
+        //             params: {
+        //                 id: option.id
+        //             }
+        //         })
+        //         .then(resp => {
+        //             this.book = resp.data
+        //             setTimeout(() => {
+        //             }, 0)
+        //         })
+        //         .catch(error => {
+        //             console.log(error)
+    },
+    mounted() {
+        this.setSwiperItem(0)
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.book-detail {
+.detail {
     background-color: rgb(248, 248, 248);
 
     .rows {

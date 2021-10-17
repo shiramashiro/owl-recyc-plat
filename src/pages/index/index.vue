@@ -13,7 +13,7 @@
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
                 <swiper-item v-for="(item, index) in carousels" :key="index">
-                    <image mode="aspectFit" :src="item"></image>
+                    <image mode="aspectFit" :src="item"></image>                                                   
                 </swiper-item>
             </swiper>
         </view>
@@ -96,7 +96,7 @@ import { books } from '@/assets/data/books.js'
 import { caskets, broadcast, carousels } from '@/assets/data/index.js'
 
 export default {
-    name: 'Index',
+    name: 'index',
     mixins: [navigateToMixins],
     data() {
         return {
