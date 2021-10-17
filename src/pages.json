@@ -31,7 +31,7 @@
             }
         },
         {
-            "path": "pages/index/book-detail",
+            "path": "pages/index/detail",
             "style": {
                 "navigationBarTitleText": "书籍详情"
             }
