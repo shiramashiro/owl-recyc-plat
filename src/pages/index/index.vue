@@ -69,7 +69,7 @@
         <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'">
             <view class="books-panel flex">
                 <view class="book-item padding-sm" v-for="(item, index) in books" :key="index">
-                    <image mode="aspectFill" :src="item.cover"></image>
+                    <image mode="aspectFill" :src="item.cover"></image> 
                     <view class="content">
                         <view class="name text-bold">
                             {{ item.name }}
@@ -118,9 +118,9 @@ export default {
         }
     },
     mounted() {
-        // this.$axios
+        // 注释：this.$axios
         //     .get('/get/post', {
-        //         params: {
+        //         params: {   
         //             tagType: 'news',
         //             limitNum: 4
         //         }
