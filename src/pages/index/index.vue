@@ -66,90 +66,44 @@
         </owl-fiche>
 
         <!-- 优质二手书推荐模块 -->
-        <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'"  :icon-path="require('../../assets/icon/书籍.png')">
-            <owl-books :commondation="true" :type="'living'"></owl-books>
+        <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'">
+            <view class="books-panel flex">
+                <view class="book-item padding-sm" v-for="(item, index) in books" :key="index">
+                    <image mode="aspectFill" :src="item.cover"></image>
+                    <view class="content">
+                        <view class="name text-bold">
+                            {{ item.name }}
+                        </view>
+                        <view class="author">
+                            {{ item.author }}
+                        </view>
+                        <view class="discount text-red text-lg">
+                            {{ item.discount }}
+                        </view>
+                        <view class="price text-gray">
+                            {{ item.price }}
+                        </view>
+                    </view>
+                </view>
+            </view>
         </owl-fiche>
     </view>
 </template>
 
 <script>
 import { navigateToMixins } from '@/mixins/navigate-to.js'
+import { books } from '@/assets/data/books.js'
+import { caskets, broadcast, carousels } from '@/assets/data/index.js'
 
 export default {
     name: 'Index',
     mixins: [navigateToMixins],
     data() {
         return {
-            searchValue: '',
-            caskets: [
-                {
-                    type: 'all',
-                    icon: require('../../assets/icon/全部.png'),
-                    title: '全部'
-                },
-                {
-                    type: 'living',
-                    icon: require('../../assets/icon/生活.png'),
-                    title: '生活'
-                },
-                {
-                    type: 'technology',
-                    icon: require('../../assets/icon/科技.png'),
-                    title: '科技'
-                },
-                {
-                    type: 'social',
-                    icon: require('../../assets/icon/社会.png'),
-                    title: '社会'
-                },
-                {
-                    type: 'business',
-                    icon: require('../../assets/icon/经营.png'),
-                    title: '经管'
-                },
-                {
-                    type: 'literature',
-                    icon: require('../../assets/icon/文学.png'),
-                    title: '文学'
-                },
-                {
-                    type: 'art',
-                    icon: require('../../assets/icon/艺术.png'),
-                    title: '艺术'
-                },
-                {
-                    type: 'education',
-                    icon: require('../../assets/icon/辅教.png'),
-                    title: '辅教'
-                },
-                {
-                    type: 'children',
-                    icon: require('../../assets/icon/童书.png'),
-                    title: '童书'
-                },
-                {
-                    type: 'novel',
-                    icon: require('../../assets/icon/小说.png'),
-                    title: '小说'
-                },
-                {
-                    type: 'foreign',
-                    icon: require('../../assets/icon/外语.png'),
-                    title: '外语'
-                },
-                {
-                    type: 'audio',
-                    icon: require('../../assets/icon/音像.png'),
-                    title: '音像'
-                }
-            ],
-            broadcast: ['致力发展负责任的人工智能 中国发布八大治理原则', '600万吨包装纸产能砸向市场', '4月27日废纸价格最高上调50元/吨'],
-            carousels: [
-                'https://p1.music.126.net/UZducXaYUzyukQuRxZ5rng==/109951166445121244.jpg?imageView&quality=89',
-                'https://p1.music.126.net/L6qUp1pk0CHe763ZWapSQQ==/109951166511220740.jpg?imageView&quality=89',
-                'https://p1.music.126.net/RdwUlDHKhfumKGerywHXew==/109951166511217995.jpg?imageView&quality=89',
-                'https://p1.music.126.net/1Z68-RH4zsT5cDxsXy56tw==/109951166511196968.jpg?imageView&quality=89'
-            ],
+            books,
+            caskets,
+            broadcast,
+            carousels,
             information: [
                 {
                     title: '致力发展负责任的人工智能 中国发布八大治理原则'
@@ -164,16 +118,16 @@ export default {
         }
     },
     mounted() {
-        this.$axios
-            .get('/get/post', {
-                params: {
-                    tagType: 'news',
-                    limitNum: 4
-                }
-            })
-            .then(resp => {
-                this.newsPanelList = resp.data
-            })
+        // this.$axios
+        //     .get('/get/post', {
+        //         params: {
+        //             tagType: 'news',
+        //             limitNum: 4
+        //         }
+        //     })
+        //     .then(resp => {
+        //         this.newsPanelList = resp.data
+        //     })
     }
 }
 </script>
@@ -195,7 +149,8 @@ export default {
         }
 
         .news-item:last-child {
-            border-bottom: 0 !important;
+            border-bottom: 0;
+            padding-bottom: 0;
         }
     }
 
@@ -210,6 +165,62 @@ export default {
             image {
                 width: 60rpx;
                 height: 60rpx;
+            }
+        }
+    }
+
+    .books-panel {
+        flex-flow: wrap;
+
+        .book-item {
+            background-color: white;
+            width: 50%;
+
+            /* content 元素下的子元素 */
+            .content > view {
+                margin-bottom: 10rpx;
+            }
+
+            .content {
+                /* 匹配最后一个元素 */
+                view:last-child {
+                    margin-bottom: 0;
+                }
+
+                /* 匹配前两个元素 */
+                view:nth-child(-n + 2) {
+                    display: -webkit-box;
+                    word-break: break-all;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                /* 匹配后两个元素 */
+                view:nth-child(n - 2)::before {
+                    font-size: 80%;
+                    margin-right: 4rpx;
+                }
+
+                .name {
+                    -webkit-line-clamp: 2;
+                }
+
+                .author {
+                    -webkit-line-clamp: 1;
+                }
+
+                .price {
+                    text-decoration: line-through;
+                }
+
+                .price::before {
+                    content: '原价¥';
+                }
+
+                .discount::before {
+                    content: '二手价¥';
+                }
             }
         }
     }

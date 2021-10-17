@@ -20,7 +20,6 @@ import OwlTag from '@/components/owl-tag.vue'
 import OWlImgs from '@/components/owl-imgs.vue'
 import OwlPosts from '@/components/owl-posts.vue'
 import OwlFiche from '@/components/owl-fiche.vue'
-import OwlBooks from '@/components/owl-books.vue'
 import OwlIndent from '@/components/owl-indent.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlComment from '@/components/owl-comment.vue'
@@ -36,7 +35,6 @@ Vue.component('owl-tag', OwlTag)
 Vue.component('owl-imgs', OWlImgs)
 Vue.component('owl-posts', OwlPosts)
 Vue.component('owl-fiche', OwlFiche)
-Vue.component('owl-books', OwlBooks)
 Vue.component('owl-indent', OwlIndent)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-comment', OwlComment)
