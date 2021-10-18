@@ -9,16 +9,16 @@
             </swiper>
         </view>
 
-        <!-- 轮播图模块 -->
+        <!-- 轮播图 -->
         <view class="slide-show margin-lr-xs">
             <swiper autoplay>
                 <swiper-item v-for="(item, index) in carousels" :key="index">
-                    <image mode="aspectFit" :src="item"></image>                                                   
+                    <image mode="aspectFit" :src="item"></image>
                 </swiper-item>
             </swiper>
         </view>
 
-        <!-- 新闻/资讯模块 -->
+        <!-- 新闻/资讯 -->
         <owl-fiche
             :sub-title="'废纸行业相关资讯'"
             :icon-path="require('../../assets/icon/新闻.png')"
@@ -43,8 +43,8 @@
             </view>
         </owl-fiche>
 
-        <!-- 二手市场分类模块 -->
-        <owl-fiche :title="'二手市场'" :sub-title="'货源于官方渠道'"   :icon-path="require('../../assets/icon/市场.png')">
+        <!-- 二手市场分类 -->
+        <owl-fiche :title="'二手市场'" :sub-title="'货源于官方渠道'" :icon-path="require('../../assets/icon/购物袋.png')">
             <view class="caskets-panel flex justify-between padding-lr-sm">
                 <view
                     class="casket-item padding-lr-xs margin-tb-xs text-center"
@@ -60,16 +60,16 @@
             </view>
         </owl-fiche>
 
-        <!-- 附近回收点模块 -->
-        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'"   :icon-path="require('../../assets/icon/回收.png')">
+        <!-- 附近回收点 -->
+        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'" :icon-path="require('../../assets/icon/回收.png')">
             <owl-recoveries></owl-recoveries>
         </owl-fiche>
 
-        <!-- 优质二手书推荐模块 -->
-        <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'">
+        <!-- 优质二手书推荐 -->
+        <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/优质.png')">
             <view class="books-panel flex">
                 <view class="book-item padding-sm" v-for="(item, index) in books" :key="index">
-                    <image mode="aspectFill" :src="item.cover"></image> 
+                    <image mode="aspectFill" :src="item.cover"></image>
                     <view class="content">
                         <view class="name text-bold">
                             {{ item.name }}
@@ -118,9 +118,9 @@ export default {
         }
     },
     mounted() {
-        // 注释：this.$axios
+        // this.$axios
         //     .get('/get/post', {
-        //         params: {   
+        //         params: {
         //             tagType: 'news',
         //             limitNum: 4
         //         }
