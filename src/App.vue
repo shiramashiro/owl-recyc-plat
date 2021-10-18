@@ -17,8 +17,7 @@ export default {
                 Vue.prototype.StatusBar = e.statusBarHeight
                 let custom = wx.getMenuButtonBoundingClientRect()
                 Vue.prototype.Custom = custom
-                Vue.prototype.CustomBar =
-                    custom.bottom + custom.top - e.statusBarHeight
+                Vue.prototype.CustomBar = custom.bottom + custom.top - e.statusBarHeight
                 // #endif
                 // #ifdef MP-ALIPAY
                 Vue.prototype.StatusBar = e.statusBarHeight
@@ -36,8 +35,5 @@ export default {
 @import '@/colorui/main.css';
 @import '@/colorui/icon.css';
 @import '@/components/u-parse/u-parse.css';
-
-body {
-    background-color: white;
-}
+@import '@/assets/css/main.css';
 </style>
