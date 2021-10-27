@@ -16,7 +16,7 @@
             :current="currentSwiper"
             :duration="360"
         >
-            <swiper-item class="swiper-container" v-for="(item, index) in books[0].coverGroup" :key="index">
+            <swiper-item class="swiper-container" v-for="(item, index) in officialBooks[0].coverGroup" :key="index">
                 <image mode="aspectFill" :src="item"></image>
             </swiper-item>
         </swiper>
@@ -24,18 +24,18 @@
         <!-- 商品信息 -->
         <view class="goods-info card padding-sm margin-sm">
             <view class="name text-bold text-lg">
-                {{ books[0].name }}
+                {{ officialBooks[0].name }}
             </view>
             <view class="price margin-top-sm">
                 <view class="current text-red">
-                    {{ books[0].price * 0.9 }}
+                    {{ officialBooks[0].price * 0.9 }}
                 </view>
                 <view class="original text-gray margin-top-sm">
-                    {{ books[0].price }}
+                    {{ officialBooks[0].price }}
                 </view>
             </view>
             <view class="description margin-top-sm">
-                {{ books[0].description }}
+                {{ officialBooks[0].description }}
             </view>
         </view>
         <owl-fiche class="margin-top-sm">
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { books } from '@/assets/data/books.js'
+import officialBooks from '@/assets/data/official-books.js'
 
 export default {
     name: 'detail',
@@ -62,7 +62,7 @@ export default {
             currentSwiper: 0,
             swiperHeight: 0,
             swiperTabs: [{ name: '全部评论' }, { name: '好评' }, { name: '中评' }, { name: '差评' }],
-            books,
+            officialBooks,
             // comment: [
             //     {
             //         id: 0,

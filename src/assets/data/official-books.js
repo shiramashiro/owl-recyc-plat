@@ -1,7 +1,4 @@
-/**
- * 请把不同类别的书籍添加到数组中，每种类型的书籍添加至少5种。
- */
-export const books = [
+const officialBooks = [
     {
         id: 10000,
         type: 'living',
@@ -520,3 +517,5 @@ export const books = [
         cover: 'http://img3m3.ddimg.cn/13/29/678890533-1_b_3.jpg'
     }
 ]
+
+export default officialBooks

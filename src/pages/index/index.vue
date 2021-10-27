@@ -68,7 +68,7 @@
         <!-- 优质二手书推荐 -->
         <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/优质.png')">
             <view class="books-panel flex">
-                <view class="book-item padding-sm" v-for="(item, index) in books" :key="index">
+                <view class="book-item padding-sm" v-for="(item, index) in officialBooks" :key="index">
                     <image mode="aspectFill" :src="item.cover"></image>
                     <view class="content">
                         <view class="name text-bold">
@@ -92,7 +92,7 @@
 
 <script>
 import { navigateToMixins } from '@/mixins/navigate-to.js'
-import { books } from '@/assets/data/books.js'
+import officialBooks from '@/assets/data/official-books.js'
 import { caskets, broadcast, carousels } from '@/assets/data/index.js'
 
 export default {
@@ -100,7 +100,7 @@ export default {
     mixins: [navigateToMixins],
     data() {
         return {
-            books,
+            officialBooks,
             caskets,
             broadcast,
             carousels,
@@ -176,18 +176,15 @@ export default {
             background-color: white;
             width: 50%;
 
-            /* content 元素下的子元素 */
             .content > view {
                 margin-bottom: 10rpx;
             }
 
             .content {
-                /* 匹配最后一个元素 */
                 view:last-child {
                     margin-bottom: 0;
                 }
 
-                /* 匹配前两个元素 */
                 view:nth-child(-n + 2) {
                     display: -webkit-box;
                     word-break: break-all;
@@ -196,7 +193,6 @@ export default {
                     text-overflow: ellipsis;
                 }
 
-                /* 匹配后两个元素 */
                 view:nth-child(n - 2)::before {
                     font-size: 80%;
                     margin-right: 4rpx;

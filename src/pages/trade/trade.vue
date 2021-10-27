@@ -1,6 +1,6 @@
 <template>
     <view class="trade">
-        <!-- 爱心捐赠服务窗口 -->
+        <!-- 爱心捐赠服务 -->
         <owl-fiche :title="'捐赠'" :sub-title="'捐赠书籍的公益'" :icon-path="require('../../assets/icon/公益捐赠.png')">
             <view class="donation flex align-center justify-between">
                 <view class="school-donation">
@@ -18,52 +18,34 @@
             </view>
         </owl-fiche>
 
-        <!-- 已上架的二手书籍 -->
+        <!-- 可交易的书籍 -->
         <owl-fiche :title="'书籍'" :sub-title="'优质的二手书籍'" :icon-path="require('../../assets/icon/交易.png')">
             <view class="shelves flex align-center">
-                <view class="item">
-                    <view class="item-wrapper margin-xs padding-xs">
-                        <image model="aspectFit" src="https://p1.music.126.net/UZducXaYUzyukQuRxZ5rng==/109951166445121244.jpg?imageView&quality=89" />
-                        <view class="content">
-                            <view class="row-1 margin-top-xs flex align-center">
-                                <owl-tag>包邮</owl-tag>
-                                <view class="title text-lg">9成新，进口机芯</view>
-                            </view>
-                            <view class="row-2 margin-top-xs flex align-center">
-                                <view class="price">¥50</view>
-                                <view class="text-sm text-gray">9人想要</view>
-                            </view>
-                            <view class="row-3 margin-top-xs flex align-center">
-                                <owl-avatar :size="25" :src="'https://p1.music.126.net/UZducXaYUzyukQuRxZ5rng==/109951166445121244.jpg?imageView&quality=89'"></owl-avatar>
-                                <view class="margin-left-sm">shiramashiro</view>
-                            </view>
-                            <view class="row-4 margin-top-xs">
-                                <owl-tag :radius="10" :type="'hollow'" :width="70">信用极好</owl-tag>
-                            </view>
+                <!-- 交易 -->
+                <view class="item padding-sm" v-for="(item, index) in tradableBooks" :key="index">
+                    <!-- 书籍封面 -->
+                    <image model="aspectFit" :src="item.book.cover" />
+                    <view class="content">
+                        <!-- 标签 -->
+                        <view class="row-1 margin-top-sm flex align-center">
+                            <owl-tag class="margin-right-xs" v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex">{{ tagItem }}</owl-tag>
                         </view>
-                    </view>
-                </view>
-
-                <view class="item">
-                    <view class="item-wrapper margin-xs padding-xs">
-                        <image model="aspectFit" src="https://p1.music.126.net/UZducXaYUzyukQuRxZ5rng==/109951166445121244.jpg?imageView&quality=89" />
-                        <view class="content">
-                            <view class="row-1 margin-top-xs flex align-center">
-                                <owl-tag>包邮</owl-tag>
-                                <view class="title text-lg">9成新，进口机芯</view>
-                            </view>
-                            <view class="row-2 margin-top-xs flex align-center">
-                                <view class="price">¥50</view>
-                                <view class="text-sm text-gray">9人想要</view>
-                            </view>
-                            <view class="row-3 margin-top-xs flex align-center">
-                                <owl-avatar :size="25" :src="'https://p1.music.126.net/UZducXaYUzyukQuRxZ5rng==/109951166445121244.jpg?imageView&quality=89'"></owl-avatar>
-                                <view class="margin-left-sm">shiramashiro</view>
-                            </view>
-                            <view class="row-4 margin-top-xs">
-                                <owl-tag :radius="10" :type="'hollow'" :width="70">信用极好</owl-tag>
-                            </view>
+                        <!-- 交易标题 -->
+                        <view class="row-2 text-lg">{{ item.title }}</view>
+                        <view class="row-3 margin-top-sm flex align-center">
+                            <!-- 交易价格 -->
+                            <view class="price text-red text-lg margin-right-sm">¥{{ item.book.price }}</view>
+                            <!-- 喜欢此交易的人数 -->
+                            <view class="text-sm text-gray">{{ item.like }}人想要</view>
                         </view>
+                        <view class="row-4 margin-top-sm flex align-center">
+                            <!-- 用户头像 -->
+                            <owl-avatar :size="25" :src="item.user.avatar"></owl-avatar>
+                            <!-- 用户名称 -->
+                            <view class="margin-left-sm">{{ item.user.username }}</view>
+                        </view>
+                        <!-- 信用 -->
+                        <owl-tag class="row-5 margin-top-sm" :radius="10" :type="'hollow'" :width="70">信用{{ item.user.credit }}</owl-tag>
                     </view>
                 </view>
             </view>
@@ -79,10 +61,14 @@
 </template>
 
 <script>
+import tradableBooks from '@/assets/data/tradable-books.js'
+
 export default {
     name: 'trade',
     data() {
-        return {}
+        return {
+            tradableBooks
+        }
     },
     mounted() {}
 }
@@ -105,15 +91,25 @@ export default {
 
         .item {
             width: 50%;
+            background-color: white;
 
-            .item-wrapper {
-                border-radius: 10rpx;
-                background-color: white;
+            image {
+                width: 100%;
+                height: 350rpx;
+            }
 
-                image {
-                    width: 100%;
-                    height: 350rpx;
-                    border-radius: 10rpx;
+            .content {
+                .row-1 {
+                    flex-wrap: wrap;
+                }
+
+                .row-3,
+                .row-4,
+                .row-2 {
+                    word-break: break-all;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-line-clamp: 1;
                 }
             }
         }
