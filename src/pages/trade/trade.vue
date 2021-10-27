@@ -21,32 +21,21 @@
         <!-- 可交易的书籍 -->
         <owl-fiche :title="'书籍'" :sub-title="'优质的二手书籍'" :icon-path="require('../../assets/icon/交易.png')">
             <view class="shelves flex align-center">
-                <!-- 交易 -->
                 <view class="item padding-sm" v-for="(item, index) in tradableBooks" :key="index">
-                    <!-- 书籍封面 -->
                     <image model="aspectFit" :src="item.book.cover" />
-                    <view class="content">
-                        <!-- 标签 -->
-                        <view class="row-1 margin-top-sm flex align-center">
-                            <owl-tag class="margin-right-xs" v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex">{{ tagItem }}</owl-tag>
-                        </view>
-                        <!-- 交易标题 -->
-                        <view class="row-2 text-lg">{{ item.title }}</view>
-                        <view class="row-3 margin-top-sm flex align-center">
-                            <!-- 交易价格 -->
-                            <view class="price text-red text-lg margin-right-sm">¥{{ item.book.price }}</view>
-                            <!-- 喜欢此交易的人数 -->
-                            <view class="text-sm text-gray">{{ item.like }}人想要</view>
-                        </view>
-                        <view class="row-4 margin-top-sm flex align-center">
-                            <!-- 用户头像 -->
-                            <owl-avatar :size="25" :src="item.user.avatar"></owl-avatar>
-                            <!-- 用户名称 -->
-                            <view class="margin-left-sm">{{ item.user.username }}</view>
-                        </view>
-                        <!-- 信用 -->
-                        <owl-tag class="row-5 margin-top-sm" :radius="10" :type="'hollow'" :width="70">信用{{ item.user.credit }}</owl-tag>
+                    <view class="tags margin-top-sm flex align-center">
+                        <owl-tag class="tag-item margin-right-xs" v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex">{{ tagItem }}</owl-tag>
                     </view>
+                    <view class="title margin-top-sm text-lg">{{ item.title }}</view>
+                    <view class="dynamic margin-top-sm flex align-center">
+                        <view class="price margin-right-sm text-red text-lg">¥{{ item.book.price }}</view>
+                        <view class="like text-sm text-gray">{{ item.like }}人想要</view>
+                    </view>
+                    <view class="initiator margin-top-sm flex align-center">
+                        <owl-avatar :size="25" :src="item.user.avatar"></owl-avatar>
+                        <view class="username margin-left-sm">{{ item.user.username }}</view>
+                    </view>
+                    <owl-tag class="credit margin-top-sm" :radius="10" :type="'hollow'" :width="70">信用{{ item.user.credit }}</owl-tag>
                 </view>
             </view>
         </owl-fiche>
@@ -98,19 +87,17 @@ export default {
                 height: 350rpx;
             }
 
-            .content {
-                .row-1 {
-                    flex-wrap: wrap;
-                }
+            .tags {
+                flex-wrap: wrap;
+            }
 
-                .row-3,
-                .row-4,
-                .row-2 {
-                    word-break: break-all;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    -webkit-line-clamp: 1;
-                }
+            .title,
+            .dynamic,
+            .initiator {
+                word-break: break-all;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 1;
             }
         }
     }

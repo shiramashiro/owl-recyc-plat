@@ -1,14 +1,116 @@
 <template>
-    <view class="society"></view>
+    <view class="society">
+        <view class="posts card padding-sm">
+            <view class="item padding-bottom-sm" v-for="(item, index) in posts" :key="index">
+                <view class="user-info flex align-center">
+                    <owl-avatar :src="item.user.avatar" :size="45"></owl-avatar>
+                    <view class="margin-left-sm">
+                        <view class="username text-bold text-lg">{{ item.user.username }}</view>
+                        <view class="post-date text-gray text-sm">发布于 {{ item.postDate }}</view>
+                    </view>
+                </view>
+                <view class="brief-content margin-top-sm text-lg">{{ item.content }}</view>
+                <view class="covers sort-by-one margin-top-sm" v-if="item.covers.length == 1">
+                    <image :src="item.covers[0]"></image>
+                </view>
+                <view class="covers sort-by-two margin-top-sm" v-else-if="item.covers.length == 2">
+                    <image :src="item.covers[0]"></image>
+                    <image :src="item.covers[1]"></image>
+                </view>
+                <view class="covers sort-by-three margin-top-sm" v-else>
+                    <view class="col-1">
+                        <image :src="item.covers[0]"></image>
+                    </view>
+                    <view class="col-2">
+                        <image :src="item.covers[1]"></image>
+                        <image :src="item.covers[2]"></image>
+                    </view>
+                </view>
+                <view class="dynamic-data margin-top-sm flex align-center">
+                    <view class="comment flex align-center text-gray margin-right-sm">
+                        <image class="comment-icon" mode="aspectFit" src="../../assets/icon/评论.png"></image>
+                        <view class="num">{{ item.comments.length }}</view>
+                    </view>
+                    <view class="like flex align-center text-gray">
+                        <image class="like-icon" mode="aspectFit" src="../../assets/icon/点赞.png"></image>
+                        <view class="num">{{ item.like }}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
 </template>
 
 <script>
+import posts from '@/assets/data/posts.js'
+
 export default {
     name: 'society',
     data() {
-        return {}
+        return {
+            posts
+        }
     }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.society {
+    .posts {
+        .item {
+            border-bottom: 1rpx solid #cccc;
+
+            .covers {
+                height: 450rpx;
+
+                image {
+                    border-radius: 20rpx;
+                }
+            }
+
+            .sort-by-one {
+                image {
+                    width: 400rpx;
+                    height: 100%;
+                }
+            }
+
+            .sort-by-two {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                image {
+                    width: 49%;
+                    height: 100%;
+                }
+            }
+
+            .sort-by-three {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .col-1 {
+                    width: 68%;
+                }
+
+                .col-2 {
+                    width: 30%;
+
+                    image {
+                        height: 225rpx;
+                    }
+                }
+            }
+
+            .dynamic-data {
+                image {
+                    width: 45rpx;
+                    height: 45rpx;
+                }
+            }
+        }
+    }
+}
+</style>

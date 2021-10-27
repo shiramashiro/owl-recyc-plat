@@ -20,7 +20,7 @@ export default {
         mode: {
             type: String,
             required: false,
-            default: 'aspectFill'
+            default: 'aspectFit'
         }
     }
 }
