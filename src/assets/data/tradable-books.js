@@ -240,7 +240,7 @@ const tradableBooks = [
         tags: ['包邮', '包退'], // 此交易是否可以包邮、包退？
         title: '全新，佐野洋子', // 交易标题
         like: 10 // 此交易想要的人数
-    }
+    },
 ]
 
 export default tradableBooks
