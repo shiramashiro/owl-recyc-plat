@@ -61,8 +61,7 @@ export default {
             border-bottom: 1rpx solid #cccc;
 
             .covers {
-                height: 450rpx;
-
+                height: 380rpx;
                 image {
                     border-radius: 20rpx;
                 }
@@ -93,13 +92,16 @@ export default {
 
                 .col-1 {
                     width: 68%;
+                    image{
+                        height: 380rpx;
+                    }
                 }
 
                 .col-2 {
                     width: 30%;
 
                     image {
-                        height: 225rpx;
+                        height: 190rpx;
                     }
                 }
             }

@@ -26,7 +26,7 @@ const posts = [
         ],
         postDate: '2021-10-28', // 帖子发送日期
         content: '这本书好耶！9成新哦，谁需要呢？这本书好耶！9成新哦，谁需要呢？', // 帖子内容
-        covers: ['http://img3m9.ddimg.cn/42/7/9125169-1_b_1.jpg', 'http://img3m0.ddimg.cn/46/24/28477000-1_b_6.jpg'], // 封面，最多为3个，最少为1个
+        covers: ['http://img3m5.ddimg.cn/6/32/29161545-1_l_14.jpg', 'http://img3m0.ddimg.cn/46/24/28477000-1_b_6.jpg'], // 封面，最多为3个，最少为1个
         like: 110 // 点赞次数
     },
     // 下面的信息都需要修改
@@ -41,7 +41,7 @@ const posts = [
                     username: 'hello',
                     avatar: 'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'
                 },
-                content: '这个好耶！！！',
+                content: '',
                 postDate: '2021-10-28 00:20:03',
                 like: 10
             },
@@ -65,8 +65,8 @@ const posts = [
             }
         ],
         postDate: '2021-10-28',
-        content: '这本书好耶！9成新哦，谁需要呢？这本书好耶！9成新哦，谁需要呢？这本书好耶！9成新哦，谁需要呢？这本书好耶！9成新哦，谁需要呢？',
-        covers: ['http://img3m9.ddimg.cn/42/7/9125169-1_b_1.jpg', 'http://img3m5.ddimg.cn/95/19/23472005-1_l_2.jpg', 'http://img3m0.ddimg.cn/46/24/28477000-1_b_6.jpg'],
+        content: '佐野洋子套装，看不见的春天，插花艺术，8成新，一起感受自然与人情的魅力吧~',
+        covers: ['http://img3m6.ddimg.cn/17/6/29271446-1_l_17.jpg', 'http://img3m5.ddimg.cn/95/19/23472005-1_l_2.jpg', 'http://img3m0.ddimg.cn/46/24/28477000-1_b_6.jpg'],
         like: 110
     }
 ]
