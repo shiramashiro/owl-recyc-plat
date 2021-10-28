@@ -1,6 +1,25 @@
 <template>
     <view class="society">
-        <view class="posts card padding-sm">
+        <!-- 爱心捐赠服务 -->
+        <owl-fiche :title="'捐赠'" :sub-title="'捐赠书籍的公益'" :icon-path="require('../../assets/icon/公益捐赠.png')">
+            <view class="donation flex align-center justify-between">
+                <view class="school-donation">
+                    <navigator :url="'/pages/transfer/more-transfer?type=school'">
+                        <image model="aspectFill" src="../../assets/icon/学校.png"></image>
+                        <view class="text-center">学校</view>
+                    </navigator>
+                </view>
+                <view class="library-donation">
+                    <navigator :url="'/pages/transfer/more-transfer?type=library'">
+                        <image model="aspectFill" src="../../assets/icon/图书馆.png"></image>
+                        <view class="text-center">图书馆</view>
+                    </navigator>
+                </view>
+            </view>
+        </owl-fiche>
+
+        <!-- 社区帖子 -->
+        <view class="posts card margin-sm padding-sm">
             <view class="item padding-bottom-sm" v-for="(item, index) in posts" :key="index">
                 <view class="user-info flex align-center">
                     <owl-avatar :src="item.user.avatar" :size="45"></owl-avatar>
@@ -26,14 +45,24 @@
                         <image :src="item.covers[2]"></image>
                     </view>
                 </view>
-                <view class="dynamic-data margin-top-sm flex align-center">
+                <view class="dynamic-data margin-top-sm flex align-center justify-end">
                     <view class="comment flex align-center text-gray margin-right-sm">
                         <image class="comment-icon" mode="aspectFit" src="../../assets/icon/评论.png"></image>
-                        <view class="num">{{ item.comments.length }}</view>
+                        <view class="num">
+                            <span v-if="item.comments.length < 999">
+                                {{ item.comments.length }}
+                            </span>
+                            <span v-else>999+</span>
+                        </view>
                     </view>
                     <view class="like flex align-center text-gray">
                         <image class="like-icon" mode="aspectFit" src="../../assets/icon/点赞.png"></image>
-                        <view class="num">{{ item.like }}</view>
+                        <view class="num">
+                            <span v-if="item.like < 999">
+                                {{ item.like }}
+                            </span>
+                            <span v-else>999+</span>
+                        </view>
                     </view>
                 </view>
             </view>
@@ -56,12 +85,36 @@ export default {
 
 <style lang="scss" scoped>
 .society {
+    .donation {
+        padding: 45rpx 140rpx;
+
+        image {
+            width: 120rpx;
+            height: 120rpx;
+        }
+    }
+
     .posts {
+        .item:first-child {
+            margin-top: 0;
+        }
+
         .item {
-            border-bottom: 1rpx solid #cccc;
+            margin-top: 20rpx;
+            border-bottom: 1rpx solid #e5e5e5cc;
+
+            .brief-content {
+                display: -webkit-box;
+                overflow: hidden;
+                word-break: break-all;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+            }
 
             .covers {
                 height: 380rpx;
+
                 image {
                     border-radius: 20rpx;
                 }
@@ -69,7 +122,7 @@ export default {
 
             .sort-by-one {
                 image {
-                    width: 400rpx;
+                    width: 380rpx;
                     height: 100%;
                 }
             }
@@ -91,14 +144,15 @@ export default {
                 justify-content: space-between;
 
                 .col-1 {
-                    width: 68%;
-                    image{
+                    width: 55%;
+
+                    image {
                         height: 380rpx;
                     }
                 }
 
                 .col-2 {
-                    width: 30%;
+                    width: 43%;
 
                     image {
                         height: 190rpx;

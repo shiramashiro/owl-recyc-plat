@@ -1,23 +1,5 @@
 <template>
     <view class="trade">
-        <!-- 爱心捐赠服务 -->
-        <owl-fiche :title="'捐赠'" :sub-title="'捐赠书籍的公益'" :icon-path="require('../../assets/icon/公益捐赠.png')">
-            <view class="donation flex align-center justify-between">
-                <view class="school-donation">
-                    <navigator :url="'/pages/transfer/more-transfer?type=school'">
-                        <image model="aspectFill" src="../../assets/icon/学校.png"></image>
-                        <view class="text-center">学校</view>
-                    </navigator>
-                </view>
-                <view class="library-donation">
-                    <navigator :url="'/pages/transfer/more-transfer?type=library'">
-                        <image model="aspectFill" src="../../assets/icon/图书馆.png"></image>
-                        <view class="text-center">图书馆</view>
-                    </navigator>
-                </view>
-            </view>
-        </owl-fiche>
-
         <!-- 可交易的书籍 -->
         <owl-fiche :title="'书籍'" :sub-title="'优质的二手书籍'" :icon-path="require('../../assets/icon/交易.png')">
             <view class="shelves flex align-center">
@@ -66,14 +48,6 @@ export default {
 <style lang="scss" scoped>
 .trade {
     background-color: rgb(248, 248, 248);
-    .donation {
-        padding: 45rpx 140rpx;
-
-        image {
-            width: 120rpx;
-            height: 120rpx;
-        }
-    }
 
     .shelves {
         flex-wrap: wrap;

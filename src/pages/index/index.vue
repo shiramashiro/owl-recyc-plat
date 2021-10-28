@@ -187,10 +187,10 @@ export default {
 
                 view:nth-child(-n + 2) {
                     display: -webkit-box;
-                    word-break: break-all;
-                    -webkit-box-orient: vertical;
                     overflow: hidden;
+                    word-break: break-all;
                     text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
                 }
 
                 view:nth-child(n - 2)::before {
