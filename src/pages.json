@@ -119,6 +119,12 @@
             "style": {
                 "navigationBarTitleText": "更多"
             }
+        },
+        {
+            "path": "pages/society/detail",
+            "style": {
+                "navigationBarTitleText": "详情"
+            }
         }
     ],
     "easycom": {
