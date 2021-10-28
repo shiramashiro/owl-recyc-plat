@@ -1,5 +1,3 @@
-// 写 10个 数据，结构照着下面的来就行。
-
 const tradableBooks = [
     {
         book: {
@@ -39,7 +37,7 @@ const tradableBooks = [
         },
         tags: ['包邮', '包退'], // 此交易是否可以包邮、包退？
         title: '8成新，时间简史', // 交易标题
-        like: 12// 此交易想要的人数
+        like: 12 // 此交易想要的人数
     },
     {
         book: {
@@ -68,8 +66,7 @@ const tradableBooks = [
             name: '彼得·林奇的成功投资(典藏版)',
             price: 49.3,
             author: '（美）彼得·林奇（Peter Lynch）,（美）约翰·罗瑟查尔德（John Rothchild）,刘建位,徐晓杰  ',
-            description:
-                'Python编程快速上手零基础入门实践教程，用Python处理Excel、Word、PPT、PDF、图像文件，提升职场办公效率，解决办公难题，附赠学习资源和教学视频。。 ',
+            description: 'Python编程快速上手零基础入门实践教程，用Python处理Excel、Word、PPT、PDF、图像文件，提升职场办公效率，解决办公难题，附赠学习资源和教学视频。。 ',
             cover: 'http://img3m0.ddimg.cn/46/24/28477000-1_b_6.jpg'
         },
         user: {
@@ -88,8 +85,7 @@ const tradableBooks = [
             name: '花间世：中式古典插花（汉竹）',
             price: 36.15,
             author: '吴永刚 ',
-            description:
-                '中式插花入门教程，东方花道守艺人历时七年，遍访山野与文人空间，700多天拍摄，实景还原《瓶花谱》古典花事，传统花材花器，茶席插花、禅意清供……一日一花呈现花艺生活之美。 ',
+            description: '中式插花入门教程，东方花道守艺人历时七年，遍访山野与文人空间，700多天拍摄，实景还原《瓶花谱》古典花事，传统花材花器，茶席插花、禅意清供……一日一花呈现花艺生活之美。 ',
             cover: 'http://img3m8.ddimg.cn/43/35/28521448-1_b_3.jpg'
         },
         user: {
@@ -108,8 +104,7 @@ const tradableBooks = [
             name: ' 古代人的日常生活',
             price: 15,
             author: '讲历史的王老师 ',
-            description:
-                'Python编程快速上手零基础入门实践教程，用Python处理Excel、Word、PPT、PDF、图像文件，提升职场办公效率，解决办公难题，附赠学习资源和教学视频。 ',
+            description: 'Python编程快速上手零基础入门实践教程，用Python处理Excel、Word、PPT、PDF、图像文件，提升职场办公效率，解决办公难题，附赠学习资源和教学视频。 ',
             cover: 'http://img3m2.ddimg.cn/80/26/29288042-1_l_10.jpg'
         },
         user: {
@@ -128,8 +123,7 @@ const tradableBooks = [
             name: '学Python 不加班 轻松实现办公自动化',
             price: 44.66,
             author: '何华平 ',
-            description:
-                'Python编程快速上手零基础入门实践教程，用Python处理Excel、Word、PPT、PDF、图像文件，提升职场办公效率，解决办公难题，附赠学习资源和教学视频。 ',
+            description: 'Python编程快速上手零基础入门实践教程，用Python处理Excel、Word、PPT、PDF、图像文件，提升职场办公效率，解决办公难题，附赠学习资源和教学视频。 ',
             cover: 'http://img3m8.ddimg.cn/57/12/29261388-1_b_6.jpg'
         },
         user: {
@@ -208,8 +202,7 @@ const tradableBooks = [
             name: ' 鲁迅全集（全20卷）',
             price: 200,
             author: '鲁迅 ',
-            description:
-                '鲁迅全集 ',
+            description: '鲁迅全集 ',
             cover: 'http://img3m5.ddimg.cn/6/32/29161545-1_l_14.jpg'
         },
         user: {
@@ -228,8 +221,7 @@ const tradableBooks = [
             name: '  佐野洋子作品集（全4册）',
             price: 100,
             author: '[日]佐野洋子  ',
-            description:
-                '日本知名女性作家、《活了100万次的猫》作者佐野洋子 三部早期随笔集+一部晚年代表作， 二十余年的创作集锦，凝结一辈子的从容与睿智。 ',
+            description: '日本知名女性作家、《活了100万次的猫》作者佐野洋子 三部早期随笔集+一部晚年代表作， 二十余年的创作集锦，凝结一辈子的从容与睿智。 ',
             cover: 'http://img3m6.ddimg.cn/17/6/29271446-1_l_17.jpg'
         },
         user: {
@@ -240,7 +232,7 @@ const tradableBooks = [
         tags: ['包邮', '包退'], // 此交易是否可以包邮、包退？
         title: '全新，佐野洋子', // 交易标题
         like: 10 // 此交易想要的人数
-    },
+    }
 ]
 
 export default tradableBooks
