@@ -1,5 +1,6 @@
 {
     "pages": [
+        // start--
         {
             "path": "pages/index/index",
             "style": {
@@ -30,18 +31,15 @@
                 "navigationBarTitleText": "我的"
             }
         },
+        // end--
+        // index/
         {
             "path": "pages/index/detail",
             "style": {
                 "navigationBarTitleText": "书籍详情"
             }
         },
-        {
-            "path": "pages/index/recovery-detail",
-            "style": {
-                "navigationBarTitleText": "回收点详细"
-            }
-        },
+        // msg/
         {
             "path": "pages/msg/notify",
             "style": {
@@ -66,6 +64,7 @@
                 "navigationBarTitleText": "聊天"
             }
         },
+        // entry/
         {
             "path": "pages/entry/signin",
             "style": {
@@ -78,6 +77,7 @@
                 "navigationBarTitleText": "注册"
             }
         },
+        // mine/
         {
             "path": "pages/mine/homepage",
             "style": {
@@ -90,18 +90,7 @@
                 "navigationBarTitleText": "订单"
             }
         },
-        {
-            "path": "pages/trade/more-transfer",
-            "style": {
-                "navigationBarTitleText": "更多捐赠"
-            }
-        },
-        {
-            "path": "pages/trade/transfer-detail",
-            "style": {
-                "navigationBarTitleText": "捐赠详细"
-            }
-        },
+        // trade/
         {
             "path": "pages/trade/post-detail",
             "style": {
@@ -114,12 +103,7 @@
                 "navigationBarTitleText": "发表"
             }
         },
-        {
-            "path": "pages/more",
-            "style": {
-                "navigationBarTitleText": "更多"
-            }
-        },
+        // society/
         {
             "path": "pages/society/detail",
             "style": {
