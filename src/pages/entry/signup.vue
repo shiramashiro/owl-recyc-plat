@@ -13,7 +13,7 @@
                 <image
                     class="background"
                     mode="aspectFill "
-                    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F7cf333adcb1562190d5be0b57803e37dfb26627615ad9c-kXca6I_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621423255&t=c3943783d9744feb3c4837a4e2e475a6"
+                    src="https://tse2-mm.cn.bing.net/th/id/OIP-C.nT2leSchjxsqoIdUIWk3SgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=3&pid=1.7"
                 >
                 </image>
 
