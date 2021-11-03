@@ -200,11 +200,11 @@
 	}
 
 	.tui-primary-outline::after {
-		border: 1px solid #5677fc !important;
+		border: 1px solid #87cefa !important;
 	}
 
 	.tui-primary-outline {
-		color: #5677fc !important;
+		color: #87cefa !important;
 		background-color: none;
 	}
 

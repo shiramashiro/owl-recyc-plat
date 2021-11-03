@@ -8,7 +8,7 @@
                     <tui-tag class="user-level" plain size="10rpx">Lv: 6</tui-tag>
                 </view>
                 <view class="follow">
-                    <tui-button plain :size="10" height="40rpx" width="100rpx">关注+</tui-button>
+                    <tui-button :size="10" height="40rpx" width="100rpx">关注+</tui-button>
                 </view>
             </view>
 

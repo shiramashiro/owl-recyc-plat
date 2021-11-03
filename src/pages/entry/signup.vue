@@ -8,12 +8,15 @@
         </tui-navigation-bar>
         <view class="container flex align-center justify-center" :style="{ height: $systemInfo.windowHeight + 'px' }">
             <view class="wrap" :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }">
+                <!-- 1. 修改合适的背景图片 -->
+
                 <image
                     class="background"
                     mode="aspectFill "
                     src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F7cf333adcb1562190d5be0b57803e37dfb26627615ad9c-kXca6I_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621423255&t=c3943783d9744feb3c4837a4e2e475a6"
                 >
                 </image>
+
                 <view class="list">
                     <view class="item margin-top-sm">
                         <input

@@ -62,6 +62,7 @@ export default {
             pwdValue: '',
             isInputedPhone: false,
             isInputedPwd: false,
+            // 1. 把这里的地址也修改了，就是你之前找的那个默认用户头像
             avatarUrl: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png',
             tipColor: '#19BE6B'
         }

@@ -1,6 +1,7 @@
 <template>
     <view class="mine">
         <view class="bg">
+            <!-- 3. 第三个：找一个背景图片，然后修改背景图片 -->
             <image class="image" mode="aspectFill" src="https://interweave.oss-cn-chengdu.aliyuncs.com/imgs/photos/86097313_p0.jpg"></image>
         </view>
         <view class="content padding-lr-sm">
@@ -9,6 +10,7 @@
                     <view v-if="!$store.state.isSignin" class="rows">
                         <navigator :url="'/pages/entry/signin'">
                             <view class="row-1 text-center">
+                                <!-- 2. 第二个：没有登录的时候，这个用户头像，默认用户头像，你需要去找一个默认用户头像，放在这里。 -->
                                 <image mode="aspectFill" :src="'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/default-avatar.png'"></image>
                                 <view class="text-lg text-black margin-top-xs">点击登录</view>
                             </view>
@@ -66,6 +68,7 @@ export default {
     name: 'mine',
     data() {
         return {
+            // 1. 第一个：把listCells里面的每一个对象的icon，也就是图标地址全部修改了。
             listCells: [
                 {
                     icon: 'https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/customer-service.png',
