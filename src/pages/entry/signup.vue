@@ -12,7 +12,7 @@
 
                 <image
                     class="background"
-                    mode="aspectFill "
+                    mode="aspectFill " 
                     src="https://tse2-mm.cn.bing.net/th/id/OIP-C.nT2leSchjxsqoIdUIWk3SgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=3&pid=1.7"
                 >
                 </image>
