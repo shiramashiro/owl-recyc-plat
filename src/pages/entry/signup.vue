@@ -8,14 +8,7 @@
         </tui-navigation-bar>
         <view class="container flex align-center justify-center" :style="{ height: $systemInfo.windowHeight + 'px' }">
             <view class="wrap" :style="{ width: $systemInfo.windowWidth * 0.7 + 'px' }">
-                <!-- 1. 修改合适的背景图片 -->
-
-                <image
-                    class="background"
-                    mode="aspectFill " 
-                    src="https://tse2-mm.cn.bing.net/th/id/OIP-C.nT2leSchjxsqoIdUIWk3SgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=3&pid=1.7"
-                >
-                </image>
+                <image class="background" mode="aspectFill " src="https://tse2-mm.cn.bing.net/th/id/OIP-C.nT2leSchjxsqoIdUIWk3SgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=3&pid=1.7"> </image>
 
                 <view class="list">
                     <view class="item margin-top-sm">
