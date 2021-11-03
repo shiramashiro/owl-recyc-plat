@@ -92,7 +92,7 @@
 	/* color start*/
 
 	.tui-primary {
-		background-color: #5677fc !important;
+		background-color: #87cefa !important;
 		color: #fff;
 	}
 

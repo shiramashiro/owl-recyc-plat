@@ -19,7 +19,7 @@
         </owl-fiche>
 
         <!-- 社区帖子 -->
-        <view class="posts card margin-sm padding-sm">
+        <view class="posts card margin-xs padding-sm">
             <view class="item padding-bottom-sm" v-for="(item, index) in posts" :key="index">
                 <view class="user-info flex align-center">
                     <owl-avatar :src="item.user.avatar" :size="45"></owl-avatar>

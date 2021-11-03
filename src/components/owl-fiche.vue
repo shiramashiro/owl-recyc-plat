@@ -1,5 +1,5 @@
 <template>
-    <view class="owl-fiche margin-sm">
+    <view class="owl-fiche margin-xs">
         <view class="header text-black padding-sm flex justify-between align-center">
             <view class="title-box flex align-center">
                 <image class="icon" mode="aspectFit" v-if="iconPath !== ''" :src="iconPath"></image>
