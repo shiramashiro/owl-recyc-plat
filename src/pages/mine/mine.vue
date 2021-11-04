@@ -11,8 +11,8 @@
                 >
                 </owl-avatar>
                 <view class="text-lg text-black margin-left-lg">
-                    <view class="margin-bottom-sm">点击登录</view>
-                    <view class="text-gray text-sm">
+                    <view class="text-white margin-bottom-sm">点击登录</view>
+                    <view class="text-white text-sm">
                         登陆解锁更多精彩内容
                     </view>
                 </view>
@@ -30,13 +30,13 @@
         <view class="content margin-lr-xs">
             <view v-if="$store.state.isSignin" class="haslogin-service">
                 <!-- 完成的交易 -->
-                <owl-fiche :title="'完成的交易'" :sub-title="'与卖家达成的交易历史'"> </owl-fiche>
+                <owl-fiche :title="'完成的交易'" :sub-title="'与卖家达成的交易历史'"  :icon-path="require('../../assets/icon/完成交易.png')"> </owl-fiche>
 
                 <!-- 购买的书籍 -->
-                <owl-fiche :title="'完成的书籍'" :sub-title="'在官方渠道购买的书籍'"> </owl-fiche>
+                <owl-fiche :title="'完成的书籍'" :sub-title="'在官方渠道购买的书籍'"  :icon-path="require('../../assets/icon/完成书籍.png')"> </owl-fiche>
 
                 <!-- 发表的帖子 -->
-                <owl-fiche :title="'完成的帖子'" :sub-title="'在社区发表的帖子'"> </owl-fiche>
+                <owl-fiche :title="'完成的帖子'" :sub-title="'在社区发表的帖子'" :icon-path="require('../../assets/icon/完成帖子.png')"> </owl-fiche>
             </view>
 
             <!-- 关于 -->
@@ -73,7 +73,7 @@ export default {
                     }
                 },
                 {
-                    icon: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.4lKcAj7qoBV-qsDU0PCB4QHaHa?w=175&h=180&c=7&r=0&o=5&pid=1.7',
+                    icon: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.zw6qVczn0LAOm86S-1nvWQAAAA?w=177&h=180&c=7&r=0&o=5&pid=1.7',
                     name: '检查更新',
                     action: function() {
                         uni.navigateTo({
@@ -82,7 +82,7 @@ export default {
                     }
                 },
                 {
-                    icon: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.MGAfLD139XCezpD1xZFsIQHaHa?w=167&h=180&c=7&r=0&o=5&pid=1.7',
+                    icon: 'https://tse3-mm.cn.bing.net/th/id/OIP-C.lkWnRGRI0V79iJcny5QnzAHaHa?w=189&h=189&c=7&r=0&o=5&pid=1.7',
                     name: '建议与反馈',
                     action: function() {
                         uni.navigateTo({
@@ -154,7 +154,7 @@ export default {
         }
 
         .notlogin {
-            background-image: url('https://tse1-mm.cn.bing.net/th/id/R-C.066f6e476e7500752d2d4079cf552248?rik=kG2nn2uYJS9gwg&riu=http%3a%2f%2fimage.qianye88.com%2fpic%2f58bdafff649da2748deba9c33523b541&ehk=AJHje9nuje4uo6h0bEvmylFnfYAmWeUphxGWLDtTZN4%3d&risl=&pid=ImgRaw&r=0');
+            background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP-C.BCxSgBx-4GSdJzd--TbOyQHaEA?w=299&h=180&c=7&r=0&o=5&pid=1.7');
         }
 
         .haslogin {
