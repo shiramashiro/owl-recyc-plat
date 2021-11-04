@@ -21,8 +21,8 @@
                 <!-- <owl-avatar :mode="'aspectFill'" :size="'90'" :src="$store.state.userInfo.avatar"></owl-avatar> -->
                 <owl-avatar :mode="'aspectFill'" :size="'90'" :src="'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'"></owl-avatar>
                 <view class="user-info margin-left-lg">
-                    <view class="username text-lg">shiramashiro</view>
-                    <view class="signature text-gray margin-top-sm">Time tick away, dream faded away!</view>
+                    <view class="text-white username text-lg">shiramashiro</view>
+                    <view class="text-white signature text-gray margin-top-sm">Time tick away, dream faded away!</view>
                 </view>
             </view>
         </view>

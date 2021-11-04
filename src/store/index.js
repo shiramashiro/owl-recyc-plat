@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        isSignin: false,
+        isSignin: true,
         userInfo: {},
         tentativeTrade: [],
         decideTrade: []
