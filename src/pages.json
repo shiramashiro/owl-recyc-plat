@@ -1,6 +1,5 @@
 {
     "pages": [
-        // start--
         {
             "path": "pages/index/index",
             "style": {
@@ -31,7 +30,6 @@
                 "navigationBarTitleText": "我的"
             }
         },
-        // end--
         // index/
         {
             "path": "pages/index/detail",
@@ -91,18 +89,6 @@
             }
         },
         // trade/
-        {
-            "path": "pages/trade/post-detail",
-            "style": {
-                "navigationBarTitleText": "帖子详情"
-            }
-        },
-        {
-            "path": "pages/trade/post-editor",
-            "style": {
-                "navigationBarTitleText": "发表"
-            }
-        },
         // society/
         {
             "path": "pages/society/detail",

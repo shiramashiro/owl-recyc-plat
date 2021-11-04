@@ -6,7 +6,9 @@
                 <view class="item padding-sm" v-for="(item, index) in tradableBooks" :key="index">
                     <image model="aspectFit" :src="item.book.cover" />
                     <view class="tags margin-top-sm flex align-center">
-                        <owl-tag class="tag-item margin-right-xs" v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex">{{ tagItem }}</owl-tag>
+                        <view class="margin-right-xs" v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex">
+                            <tui-tag size="10rpx" plain>{{ tagItem }}</tui-tag>
+                        </view>
                     </view>
                     <view class="title margin-top-sm text-lg">{{ item.title }}</view>
                     <view class="dynamic margin-top-sm flex align-center">
@@ -17,17 +19,9 @@
                         <owl-avatar :size="25" :src="item.user.avatar"></owl-avatar>
                         <view class="username margin-left-sm">{{ item.user.username }}</view>
                     </view>
-                    <owl-tag class="credit margin-top-sm" :radius="10" :type="'hollow'" :width="70">信用{{ item.user.credit }}</owl-tag>
                 </view>
             </view>
         </owl-fiche>
-        <!-- <view class="make-post">
-            <navigator :url="'/pages/transfer/post-editor'">
-                <view class="post-btn-wrap">
-                    <image mode="aspectFit" src="https://interweave.oss-cn-chengdu.aliyuncs.com/static/img/make-new-post.png"></image>
-                </view>
-            </navigator>
-        </view> -->
     </view>
 </template>
 
@@ -75,24 +69,5 @@ export default {
             }
         }
     }
-
-    // .make-post {
-    //     .post-btn-wrap {
-    //         opacity: 0.75;
-    //         position: fixed;
-    //         bottom: 400rpx;
-    //         z-index: 998;
-    //         right: 20rpx;
-
-    //         image {
-    //             border-radius: 100%;
-    //             width: 70rpx;
-    //             height: 70rpx;
-    //             padding: 14rpx;
-    //             background-color: white;
-    //             box-shadow: 5rpx 5rpx 10rpx #87cefa;
-    //         }
-    //     }
-    // }
 }
 </style>

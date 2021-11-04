@@ -1,15 +1,7 @@
 <template>
     <view class="detail">
-        <!-- <tui-navigation-bar>
-            <navigator :url="'/pages/index/index'" open-type="switchTab">
-                <i class="el-icon-third-fanhui"></i>
-            </navigator>
-            <view class="margin-left-lg text-lg">二手书详细</view>
-        </tui-navigation-bar> -->
-
-        <!-- 轮播图 -->
         <swiper
-            class="swiper card padding-sm margin-sm"
+            class="swiper card padding-sm margin-xs"
             :indicator-dots="true"
             :indicator-color="'rgba(135, 206, 250, 0.3)'"
             :indicator-active-color="'#87cefa'"
@@ -22,33 +14,81 @@
         </swiper>
 
         <!-- 商品信息 -->
-        <view class="goods-info card padding-sm margin-sm">
-            <view class="name text-bold text-lg">
-                {{ officialBooks[0].name }}
-            </view>
-            <view class="price margin-top-sm">
-                <view class="current text-red">
-                    {{ officialBooks[0].price * 0.9 }}
+        <owl-fiche :title="'商品信息'">
+            <view class="goods-info margin-lr-lg">
+                <view class="name text-bold text-lg">
+                    {{ officialBooks[0].name }}
                 </view>
-                <view class="original text-gray margin-top-sm">
-                    {{ officialBooks[0].price }}
+                <view class="price margin-top-sm">
+                    <view class="current text-red">
+                        {{ officialBooks[0].price * 0.9 }}
+                    </view>
+                    <view class="original text-gray margin-top-sm">
+                        {{ officialBooks[0].price }}
+                    </view>
+                </view>
+                <view class="description margin-top-sm">
+                    {{ officialBooks[0].description }}
                 </view>
             </view>
-            <view class="description margin-top-sm">
-                {{ officialBooks[0].description }}
+        </owl-fiche>
+
+        <owl-fiche :title="'商品介绍'">
+            <view class="show-goods margin-lr-lg text-center">
+                <image v-for="(item, index) in officialBooks[0].coverGroup" :key="index" :src="item"></image>
+            </view>
+        </owl-fiche>
+
+        <!-- 底部栏 -->
+        <view class="bottom-bar flex align-center justify-between padding-sm">
+            <view class="left flex justify-between align-center">
+                <view class="item">
+                    <view class="row-1 flex align-center justify-center">
+                        <image class="icon" src="@/static/cart.png" />
+                        <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
+                            {{ $store.state.tentativeTrade.length }}
+                        </tui-badge>
+                    </view>
+                    <view class="row-2 text-sm">
+                        客服
+                    </view>
+                </view>
+
+                <view class="item">
+                    <view class="row-1 flex align-center justify-center">
+                        <image class="icon" src="@/static/cart.png" />
+                        <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
+                            {{ $store.state.tentativeTrade.length }}
+                        </tui-badge>
+                    </view>
+                    <view class="row-2 text-sm">
+                        客服
+                    </view>
+                </view>
+
+                <view class="item">
+                    <view class="row-1 flex align-center justify-center">
+                        <image class="icon" src="@/static/cart.png" />
+                        <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
+                            {{ $store.state.tentativeTrade.length }}
+                        </tui-badge>
+                    </view>
+                    <view class="row-2 text-sm">
+                        购物车
+                    </view>
+                </view>
+            </view>
+
+            <view class="right flex justify-between align-center">
+                <tui-button height="80rpx" width="160rpx" type="primary" :size="25" shape="circle" background="#87cefa">
+                    立即购买
+                </tui-button>
+
+                <tui-button height="80rpx" width="180rpx" type="gray" :size="25" shape="circle">
+                    加入购物车
+                </tui-button>
             </view>
         </view>
-        <owl-fiche class="margin-top-sm">
-            <owl-indent ref="indent"></owl-indent>
-        </owl-fiche>
-        <!-- <view class="row-6 margin-lr-xs margin-top-sm">
-            <owl-fiche :title="'评论区'">
-                <owl-make-comment :postUrl="'/set/comment'" :urlType="'book'" :belongedId="book.id" class="padding-lr-sm"></owl-make-comment>
-                <owl-comment class="padding-lr-sm" :belongedName="'book'" :data="book.comment"></owl-comment>
-            </owl-fiche>
-        </view> -->
-        <owl-action-bar :type="'bookTrade'" @rightBtn="notify" @leftBtn="notify"></owl-action-bar>
-        <tui-tips :backgroundColor="tipColor" ref="tips"></tui-tips>
     </view>
 </template>
 
@@ -60,75 +100,10 @@ export default {
     data() {
         return {
             currentSwiper: 0,
-            swiperHeight: 0,
-            swiperTabs: [{ name: '全部评论' }, { name: '好评' }, { name: '中评' }, { name: '差评' }],
-            officialBooks,
-            // comment: [
-            //     {
-            //         id: 0,
-            //         userId: 0,
-            //         belongedId: 0,
-            //         content: '',
-            //         postDate: '',
-            //         agree: 0,
-            //         disagree: 0,
-            //         user: {
-            //             id: 0,
-            //             username: '',
-            //             avatar: ''
-            //         }
-            //     }
-            // ],
-            tipColor: '#19BE6B'
+            officialBooks
         }
     },
-    methods: {
-        /**
-         * 通过refs对象获取组件的getIndent方法。
-         * 然后通过自定义函数得知，用户点击的哪一个按钮，
-         * 不同的按钮将不同的数据塞入Vuex数组中进行存储。
-         * 注意：只有当获取的ident对象存在时才可以设置comit。
-         *
-         * @param e owl-indent组件返回的indent对象。
-         */
-        notify(e) {
-            let indent = this.$refs.indent.getIndent()
-            if (indent !== undefined) {
-                if (this.$store.state.isSignin) {
-                    indent['tradeContentType'] = 'book'
-                    if (e.type === 'rightBtn') {
-                        indent['tradeType'] = 'decide'
-                        this.$store.commit('setNowTrade', indent)
-                    } else {
-                        indent['tradeType'] = 'tentative'
-                        this.$store.commit('setTentativeTrade', indent)
-                    }
-                    indent['userId'] = this.$store.state.userInfo.id
-                    this.$axios
-                        .post('/set/order', indent)
-                        .then(resp => {
-                            if (resp.status !== 200) {
-                                this.showTips('操作失败！', '#EB0909')
-                                return
-                            }
-                            this.showTips('操作成功！', '#19BE6B')
-                        })
-                        .catch(error => {
-                            this.showTips('服务器错误', '#EB0909')
-                        })
-                } else {
-                    this.showTips('没有登录哦~', '#EB0909')
-                }
-            }
-        },
-        showTips(msg, color) {
-            this.tipColor = color
-            this.$refs.tips.showTips({
-                msg: msg,
-                duration: 2000
-            })
-        }
-    },
+    methods: {},
     onLoad(options) {
         //     this.$axios
         //         .get('/get/detail/book', {
@@ -192,6 +167,27 @@ export default {
             -webkit-line-clamp: 4;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+    }
+
+    .bottom-bar {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+
+        .left {
+            width: 40%;
+
+            .icon {
+                width: 40rpx;
+                height: 40rpx;
+            }
+        }
+
+        .right {
+            width: 50%;
         }
     }
 }
