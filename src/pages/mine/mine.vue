@@ -3,44 +3,64 @@
         <view class="header">
             <view class="notlogin padding-lr-sm flex align-center" v-if="!$store.state.isSignin">
                 <owl-avatar
-                    :mode="'aspectFill'"
-                    :size="'90'"
+                    mode="aspectFill"
+                    size="90"
                     :src="
                         'data:image/jpeg;base64,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'
                     "
                 >
                 </owl-avatar>
-                <view class="text-lg text-black margin-left-lg">
-                    <view class="text-white margin-bottom-sm">点击登录</view>
-                    <view class="text-white text-sm">
+                <view class="text-lg margin-left-lg">
+                    <view class="text-white">点击登录</view>
+                    <view class="text-white margin-top-sm text-sm">
                         登陆解锁更多精彩内容
                     </view>
                 </view>
             </view>
             <view class="haslogin padding-lr-sm flex align-center" v-else>
                 <!-- <owl-avatar :mode="'aspectFill'" :size="'90'" :src="$store.state.userInfo.avatar"></owl-avatar> -->
-                <owl-avatar :mode="'aspectFill'" :size="'90'" :src="'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'"></owl-avatar>
-                <view class="user-info margin-left-lg">
-                    <view class="text-white username text-lg">shiramashiro</view>
-                    <view class="text-white signature text-gray margin-top-sm">Time tick away, dream faded away!</view>
+                <owl-avatar mode="aspectFill" size="90" :src="'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'"></owl-avatar>
+                <view class="margin-left-lg">
+                    <view class="username text-white text-lg">shiramashiro</view>
+                    <view class="signature text-white margin-top-sm">Time tick away, dream faded away!</view>
                 </view>
             </view>
         </view>
 
-        <view class="content margin-lr-xs">
-            <view v-if="$store.state.isSignin" class="haslogin-service">
+        <view class="content margin-lr-xs margin-top-sm">
+            <view v-if="$store.state.isSignin">
                 <!-- 完成的交易 -->
-                <owl-fiche :title="'完成的交易'" :sub-title="'与卖家达成的交易历史'"  :icon-path="require('../../assets/icon/完成交易.png')"> </owl-fiche>
+                <owl-fiche title="完成的交易" sub-title="在交易达成的记录" :icon-path="require('../../assets/icon/完成交易.png')">
+                    <view class="padding-lr-sm">
+                        <!-- ！！请在这里面添加内容！！ -->
+                        <!-- 任务描述：参考京东，我的，在最顶部有“待收货”，“售后”，“我的订单”。所以，在这里你也需要实现一个一样的内容。 -->
+                        <!-- 第一个是：待收货，第二个是：售后，第三个是：我的订单。UI可以参考京东的来设计，图标可以采用多彩图标，也可以采用黑色纯色图标。 -->
+                        <!-- **注意：完成任务之后，删除注释！** -->
+                    </view>
+                </owl-fiche>
 
                 <!-- 购买的书籍 -->
-                <owl-fiche :title="'完成的书籍'" :sub-title="'在官方渠道购买的书籍'"  :icon-path="require('../../assets/icon/完成书籍.png')"> </owl-fiche>
+                <owl-fiche title="发表的交易" sub-title="在交易发表的帖子" :icon-path="require('../../assets/icon/完成书籍.png')">
+                    <view class="padding-lr-sm">
+                        <!-- ！！请在这里面添加内容！！ -->
+                        <!-- @ 小任务：将图标替换为帖子相关的图片，与下方的帖子图片不一致即可。 @ -->
+                        <!-- 任务描述：展示四篇用户发表过的交易帖子，左边为封面，右边为简略信息，右边分上下部分，上边是标题，下边是简略内容。 -->
+                        <!-- **注意：完成任务之后，删除注释！** -->
+                    </view>
+                </owl-fiche>
 
                 <!-- 发表的帖子 -->
-                <owl-fiche :title="'完成的帖子'" :sub-title="'在社区发表的帖子'" :icon-path="require('../../assets/icon/完成帖子.png')"> </owl-fiche>
+                <owl-fiche title="发表的帖子" sub-title="在社区发表的帖子" :icon-path="require('../../assets/icon/发表帖子.png')">
+                    <view class="padding-lr-sm">
+                        <!-- ！！请在这里面添加内容！！ -->
+                        <!-- 任务描述：由于都是帖子，所以与上一个的内容一致，只不过展示的数据不一致。 -->
+                        <!-- **注意：完成任务之后，删除注释！** -->
+                    </view>
+                </owl-fiche>
             </view>
 
             <!-- 关于 -->
-            <owl-fiche :title="'关于'" :sub-title="'关于软件相关的选项'">
+            <owl-fiche title="关于应用" sub-title="应用相关的选项">
                 <tui-list-view color="#777">
                     <tui-list-cell v-for="(cell, index) in listCells" :key="index" :hover="true" :arrow="true">
                         <view class="flex text-sm align-center" @click="cell.action">
@@ -148,16 +168,29 @@ export default {
     .header {
         .notlogin,
         .haslogin {
+            position: relative;
             padding-top: 40rpx;
             padding-bottom: 40rpx;
+        }
+
+        .notlogin::after,
+        .haslogin::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(8rpx);
+            z-index: -1;
             background-size: 100% 100%;
         }
 
-        .notlogin {
+        .notlogin::after {
             background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP-C.BCxSgBx-4GSdJzd--TbOyQHaEA?w=299&h=180&c=7&r=0&o=5&pid=1.7');
         }
 
-        .haslogin {
+        .haslogin::after {
             background-image: url('https://tse1-mm.cn.bing.net/th/id/R-C.066f6e476e7500752d2d4079cf552248?rik=kG2nn2uYJS9gwg&riu=http%3a%2f%2fimage.qianye88.com%2fpic%2f58bdafff649da2748deba9c33523b541&ehk=AJHje9nuje4uo6h0bEvmylFnfYAmWeUphxGWLDtTZN4%3d&risl=&pid=ImgRaw&r=0');
         }
     }

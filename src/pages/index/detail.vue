@@ -14,30 +14,26 @@
         </swiper>
 
         <!-- 商品信息 -->
-        <owl-fiche :title="'商品信息'">
-            <view class="goods-info margin-lr-lg">
-                <view class="name text-bold text-lg">
-                    {{ officialBooks[0].name }}
+        <view class="goods-info card margin-xs padding-sm">
+            <view class="name text-bold text-lg">
+                {{ book.name }}
+            </view>
+            <view class="price margin-top-sm">
+                <view class="current text-red">
+                    {{ book.price * 0.9 }}
                 </view>
-                <view class="price margin-top-sm">
-                    <view class="current text-red">
-                        {{ officialBooks[0].price * 0.9 }}
-                    </view>
-                    <view class="original text-gray margin-top-sm">
-                        {{ officialBooks[0].price }}
-                    </view>
-                </view>
-                <view class="description margin-top-sm">
-                    {{ officialBooks[0].description }}
+                <view class="original text-gray margin-top-sm">
+                    {{ book.price }}
                 </view>
             </view>
-        </owl-fiche>
+            <view class="description margin-top-sm">
+                {{ book.desc }}
+            </view>
+        </view>
 
-        <owl-fiche :title="'商品介绍'">
-            <view class="show-goods margin-lr-lg text-center">
-                <image v-for="(item, index) in officialBooks[0].coverGroup" :key="index" :src="item"></image>
-            </view>
-        </owl-fiche>
+        <view class="show-goods card margin-xs padding-sm text-center">
+            <image v-for="(item, index) in officialBooks[0].coverGroup" :key="index" :src="item"></image>
+        </view>
 
         <!-- 底部栏 -->
         <view class="bottom-bar flex align-center justify-between padding-sm">
@@ -100,24 +96,15 @@ export default {
     data() {
         return {
             currentSwiper: 0,
-            officialBooks
+            officialBooks,
+            book: {}
         }
     },
     methods: {},
     onLoad(options) {
-        //     this.$axios
-        //         .get('/get/detail/book', {
-        //             params: {
-        //                 id: option.id
-        //             }
-        //         })
-        //         .then(resp => {
-        //             this.book = resp.data
-        //             setTimeout(() => {
-        //             }, 0)
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
+        this.$axios.get(`/get/book/by/id/${options.id}`).then(response => {
+            this.book = response.data[0]
+        })
     }
 }
 </script>

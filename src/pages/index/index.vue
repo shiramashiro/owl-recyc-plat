@@ -33,12 +33,8 @@
                     @click="navigateTo('/pages/transfer/post-detail?id=' + item.id)"
                     class="news-item align-center flex padding-lr-sm padding-tb-sm margin-bottom-xs"
                 >
-                    <view class="news-num margin-right-sm">
-                        {{ index + 1 }}
-                    </view>
-                    <view class="news-brief text-cut">
-                        {{ item.title }}
-                    </view>
+                    <view class="news-num margin-right-sm">{{ index + 1 }}</view>
+                    <view class="news-brief text-cut">{{ item.title }}</view>
                 </view>
             </view>
         </owl-fiche>
@@ -53,36 +49,24 @@
                     @click="navigateToClickedItem('/pages/more', ['type=' + item.type, 'comName=owlBooks', 'backNav=index/index'])"
                 >
                     <image mode="aspectFit" :src="item.icon"></image>
-                    <view class="text-center text-black text-bold text-df">
-                        {{ item.title }}
-                    </view>
+                    <view class="text-center text-black text-bold text-df">{{ item.title }}</view>
                 </view>
             </view>
         </owl-fiche>
 
         <!-- 附近回收点 -->
-        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'" :icon-path="require('../../assets/icon/回收.png')">
-            <owl-recoveries></owl-recoveries>
-        </owl-fiche>
+        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'" :icon-path="require('../../assets/icon/回收.png')"> </owl-fiche>
 
         <!-- 优质二手书推荐 -->
         <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/优质.png')">
             <view class="books-panel flex">
-                <view class="book-item padding-sm" v-for="(item, index) in officialBooks" :key="index">
+                <view @click="guide(item.id)" class="book-item padding-sm" v-for="(item, index) in commBooks" :key="index">
                     <image mode="aspectFill" :src="item.cover"></image>
                     <view class="content">
-                        <view class="name text-bold">
-                            {{ item.name }}
-                        </view>
-                        <view class="author">
-                            {{ item.author }}
-                        </view>
-                        <view class="discount text-red text-lg">
-                            {{ item.discount }}
-                        </view>
-                        <view class="price text-gray">
-                            {{ item.price }}
-                        </view>
+                        <view class="name text-bold">{{ item.name }}</view>
+                        <view class="author">{{ item.author }}</view>
+                        <view class="discount text-red text-lg">{{ (item.price * item.discount).toFixed(2) }}</view>
+                        <view class="price text-gray">{{ item.price }}</view>
                     </view>
                 </view>
             </view>
@@ -92,7 +76,6 @@
 
 <script>
 import { navigateToMixins } from '@/mixins/navigate-to.js'
-import officialBooks from '@/assets/data/official-books.js'
 import { caskets, broadcast, carousels } from '@/assets/data/index.js'
 
 export default {
@@ -100,7 +83,7 @@ export default {
     mixins: [navigateToMixins],
     data() {
         return {
-            officialBooks,
+            commBooks: [{}],
             caskets,
             broadcast,
             carousels,
@@ -117,17 +100,17 @@ export default {
             ]
         }
     },
+    methods: {
+        guide(id) {
+            uni.navigateTo({
+                url: '/pages/index/detail?id=' + id
+            })
+        }
+    },
     mounted() {
-        // this.$axios
-        //     .get('/get/post', {
-        //         params: {
-        //             tagType: 'news',
-        //             limitNum: 4
-        //         }
-        //     })
-        //     .then(resp => {
-        //         this.newsPanelList = resp.data
-        //     })
+        this.$axios.get(`/get/books/by/comm/1`).then(response => {
+            this.commBooks = response.data
+        })
     }
 }
 </script>
