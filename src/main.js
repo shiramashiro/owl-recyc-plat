@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 import Vuex from './store/index'
-import './static/icon/iconfont.css'
 import axios from 'axios'
+import './assets/css/iconfont.css'
 
 axios.defaults.baseURL = 'http://localhost:3000'
 axios.interceptors.request.use(config => {

@@ -77,26 +77,14 @@ export default {
     },
     computed: {
         nodes() {
-            const {
-                content,
-                noData,
-                imageProp,
-                startHandler,
-                endHandler,
-                charsHandler
-            } = this
+            const { content, noData, imageProp, startHandler, endHandler, charsHandler } = this
             const parseData = content || noData
             const customHandler = {
                 start: startHandler,
                 end: endHandler,
                 chars: charsHandler
             }
-            const results = HtmlToJson(
-                parseData,
-                customHandler,
-                imageProp,
-                this
-            )
+            const results = HtmlToJson(parseData, customHandler, imageProp, this)
             this.imageUrls = results.imageUrls
             return results.nodes
         }

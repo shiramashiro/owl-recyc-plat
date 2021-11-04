@@ -40,7 +40,7 @@
             <view class="left flex justify-between align-center">
                 <view class="item">
                     <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="@/static/cart.png" />
+                        <image class="icon" src="../../assets/icon/购物车.png" />
                         <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
                             {{ $store.state.tentativeTrade.length }}
                         </tui-badge>
@@ -52,7 +52,7 @@
 
                 <view class="item">
                     <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="@/static/cart.png" />
+                        <image class="icon" src="../../assets/icon/购物车.png" />
                         <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
                             {{ $store.state.tentativeTrade.length }}
                         </tui-badge>
@@ -64,7 +64,7 @@
 
                 <view class="item">
                     <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="@/static/cart.png" />
+                        <image class="icon" src="../../assets/icon/购物车.png" />
                         <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
                             {{ $store.state.tentativeTrade.length }}
                         </tui-badge>

@@ -38,30 +38,6 @@
             }
         },
         // msg/
-        {
-            "path": "pages/msg/notify",
-            "style": {
-                "navigationBarTitleText": "系统通知"
-            }
-        },
-        {
-            "path": "pages/msg/praise",
-            "style": {
-                "navigationBarTitleText": "收到的赞"
-            }
-        },
-        {
-            "path": "pages/msg/reply",
-            "style": {
-                "navigationBarTitleText": "回复我的"
-            }
-        },
-        {
-            "path": "pages/msg/chat",
-            "style": {
-                "navigationBarTitleText": "聊天"
-            }
-        },
         // entry/
         {
             "path": "pages/entry/signin",
