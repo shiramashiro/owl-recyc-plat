@@ -1,5 +1,6 @@
 const tradableBooks = [
     {
+        id: 1,
         book: {
             id: 10049,
             type: 'audio',
@@ -20,6 +21,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 2,
         book: {
             id: 10050,
             type: 'audio',
@@ -40,6 +42,7 @@ const tradableBooks = [
         like: 12 // 此交易想要的人数
     },
     {
+        id: 3,
         book: {
             id: 10051,
             type: 'audio',
@@ -60,6 +63,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 4,
         book: {
             id: 10052,
             type: 'audio',
@@ -79,6 +83,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 5,
         book: {
             id: 10053,
             type: 'audio',
@@ -98,6 +103,7 @@ const tradableBooks = [
         like: 14 // 此交易想要的人数
     },
     {
+        id: 6,
         book: {
             id: 10054,
             type: 'audio',
@@ -117,6 +123,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 7,
         book: {
             id: 10055,
             type: 'audio',
@@ -136,6 +143,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 8,
         book: {
             id: 10056,
             type: 'audio',
@@ -156,6 +164,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 9,
         book: {
             id: 10057,
             type: 'audio',
@@ -176,6 +185,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 10,
         book: {
             id: 10058,
             type: 'audio',
@@ -196,6 +206,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 11,
         book: {
             id: 10059,
             type: 'audio',
@@ -215,6 +226,7 @@ const tradableBooks = [
         like: 10 // 此交易想要的人数
     },
     {
+        id: 12,
         book: {
             id: 10059,
             type: 'audio',

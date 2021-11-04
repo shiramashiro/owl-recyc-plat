@@ -75,12 +75,10 @@
 </template>
 
 <script>
-import { navigateToMixins } from '@/mixins/navigate-to.js'
 import { caskets, broadcast, carousels } from '@/assets/data/index.js'
 
 export default {
     name: 'index',
-    mixins: [navigateToMixins],
     data() {
         return {
             commBooks: [{}],

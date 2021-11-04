@@ -1,5 +1,6 @@
 const posts = [
     {
+        id: 1,
         user: {
             username: 'shiramashiro',
             avatar: 'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'
@@ -22,6 +23,7 @@ const posts = [
     },
     // 第二条
     {
+        id: 2,
         user: {
             username: 'shiramashiro',
             avatar: 'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'
@@ -62,6 +64,7 @@ const posts = [
     },
     //第三条
     {
+        id: 3,
         user: {
             username: 'shiramashiro',
             avatar: 'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'
@@ -84,6 +87,7 @@ const posts = [
     },
     //第四条
     {
+        id: 4,
         user: {
             username: 'shiramashiro',
             avatar: 'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'
@@ -124,6 +128,7 @@ const posts = [
     },
     //第五条
     {
+        id: 5,
         user: {
             // 用户信息
             username: 'shiramashiro', // 用户名称
@@ -149,6 +154,7 @@ const posts = [
     },
     //第六条
     {
+        id: 6,
         user: {
             // 用户信息
             username: 'shiramashiro', // 用户名称
@@ -174,6 +180,7 @@ const posts = [
     },
     //第七条
     {
+        id: 7,
         user: {
             // 用户信息
             username: 'shiramashiro', // 用户名称
@@ -199,6 +206,7 @@ const posts = [
     },
     //第八条
     {
+        id: 8,
         user: {
             // 用户信息
             username: 'shiramashiro', // 用户名称
@@ -224,6 +232,7 @@ const posts = [
     },
     //第九条
     {
+        id: 9,
         user: {
             // 用户信息
             username: 'shiramashiro', // 用户名称
@@ -249,6 +258,7 @@ const posts = [
     },
     //第十条
     {
+        id: 10,
         user: {
             username: 'shiramashiro',
             avatar: 'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'

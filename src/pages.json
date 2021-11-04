@@ -34,7 +34,7 @@
         {
             "path": "pages/index/detail",
             "style": {
-                "navigationBarTitleText": "书籍详情"
+                "navigationBarTitleText": "详情"
             }
         },
         // msg/
@@ -77,11 +77,17 @@
         },
         // mine/
         // trade/
+        {
+            "path": "pages/trade/detail",
+            "style": {
+                "navigationBarTitleText": "详细"
+            }
+        },
         // society/
         {
             "path": "pages/society/detail",
             "style": {
-                "navigationBarTitleText": "详情"
+                "navigationBarTitleText": "详细"
             }
         }
     ],

@@ -20,7 +20,7 @@
 
         <!-- 社区帖子 -->
         <view class="posts card margin-xs padding-sm">
-            <view class="item padding-bottom-sm" v-for="(item, index) in posts" :key="index">
+            <view class="item padding-bottom-sm" v-for="(item, index) in posts" :key="index" @click="guid(item.id)">
                 <view class="user-info flex align-center">
                     <owl-avatar :src="item.user.avatar" :size="45"></owl-avatar>
                     <view class="margin-left-sm">
@@ -78,6 +78,13 @@ export default {
     data() {
         return {
             posts
+        }
+    },
+    methods: {
+        guid(id) {
+            uni.navigateTo({
+                url: `/pages/society/detail?id=${id}`
+            })
         }
     }
 }
