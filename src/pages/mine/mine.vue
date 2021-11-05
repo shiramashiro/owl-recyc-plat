@@ -30,12 +30,25 @@
         <view class="content margin-lr-xs margin-top-sm">
             <view v-if="$store.state.isSignin">
                 <!-- 完成的交易 -->
-                <owl-fiche title="完成的交易" sub-title="在交易达成的记录" :icon-path="require('../../assets/icon/完成交易.png')">
+                <owl-fiche title="完成的交易" sub-="在交易达成的记录" :icon-path="require('../../assets/icon/完成交易.png')">
                     <view class="padding-lr-sm">
-                        <!-- ！！请在这里面添加内容！！ -->
-                        <!-- 任务描述：参考京东，我的，在最顶部有“待收货”，“售后”，“我的订单”。所以，在这里你也需要实现一个一样的内容。 -->
-                        <!-- 第一个是：待收货，第二个是：售后，第三个是：我的订单。UI可以参考京东的来设计，图标可以采用多彩图标，也可以采用黑色纯色图标。 -->
-                        <!-- **注意：完成任务之后，删除注释！** -->
+                        <view>
+                            <!-- 功能-->
+                            <view class="flex justify-between">
+                                <view class="text-center ">
+                                    <owl-icon :size="70" :src="require('../../assets/icon/待收货.png')"></owl-icon>
+                                    <view>待收货</view>
+                                </view>
+                                <view class="text-center">
+                                    <owl-icon :size="70" :src="require('../../assets/icon/售后.png')"></owl-icon>
+                                    <view>售后</view>
+                                </view>
+                                <view class="text-center ">
+                                    <owl-icon :size="70" :src="require('../../assets/icon/订单.png')"></owl-icon>
+                                    <view>我的订单</view>
+                                </view>
+                            </view>
+                        </view>
                     </view>
                 </owl-fiche>
 
@@ -46,6 +59,41 @@
                         <!-- @ 小任务：将图标替换为帖子相关的图片，与下方的帖子图片不一致即可。 @ -->
                         <!-- 任务描述：展示四篇用户发表过的交易帖子，左边为封面，右边为简略信息，右边分上下部分，上边是标题，下边是简略内容。 -->
                         <!-- **注意：完成任务之后，删除注释！** -->
+                        <view class="flex  justify-between" style="overflow-x: scroll;">
+                            <view class="flex" style="border:1rpx gray solid;">
+                                <view >
+                                    <image style="width:140rpx;height:160rpx;" src="http://img3m0.ddimg.cn/46/24/28477000-1_b_6.jpg"></image>
+                                </view>
+                                <view class="text-gray">
+                                    插花的艺术
+                                </view>
+                                <view>ature 初音未来_Crypton 4.3万 播放 · 470 弹幕 樱花树下的约定（原版）MV 不可回收的大老师 ...</view>
+                            </view>
+                             <view class="flex" style="border:1rpx gray solid;">
+                                <view>
+                                    <image style="width:140rpx;height:160rpx;" src="http://img3m3.ddimg.cn/73/25/26916193-1_l_13.jpg"></image>
+                                </view>
+                                <view class="text-gray">
+                                    能力陷阱
+                                </view>
+                            </view>
+                             <view class="flex" style="border:1rpx gray solid;">
+                                <view >
+                                    <image style="width:140rpx;height:160rpx;" src="http://img3m5.ddimg.cn/9/0/23634675-1_l_1.jpg"></image>
+                                </view>
+                                <view class="text-gray">
+                                    肖申克的救赎
+                                </view>
+                            </view>
+                             <view class="flex" style="border:1rpx gray solid;">
+                                <view >
+                                    <image style="width:140rpx;height:160rpx;" src="http://img3m5.ddimg.cn/9/0/23634675-1_l_1.jpg"></image>
+                                </view>
+                                <view class="text-gray">
+                                    狼图腾
+                                </view>
+                            </view>
+                        </view>
                     </view>
                 </owl-fiche>
 
