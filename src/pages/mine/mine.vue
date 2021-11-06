@@ -30,84 +30,71 @@
         <view class="content margin-lr-xs margin-top-sm">
             <view v-if="$store.state.isSignin">
                 <!-- 完成的交易 -->
-                <owl-fiche title="完成的交易" sub-="在交易达成的记录" :icon-path="require('../../assets/icon/完成交易.png')">
+                <owl-fiche title="完成的交易" sub-="在交易达成的记录" :icon-path="require('../../assets/icon/mine/完成交易.png')">
                     <view class="padding-lr-sm">
-                            <!-- 功能-->
-                            <view class="flex justify-between">
-                                <view class="text-center ">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/待收货.png')"></owl-icon>
-                                    <view>待收货</view>
-                                </view>
-                                <view class="text-center">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/售后1.png')"></owl-icon>
-                                    <view>售后服务</view>
-                                </view>
-                                <view class="text-center ">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/订单.png')"></owl-icon>
-                                    <view>我的订单</view>
-                                </view>
+                        <!-- 功能-->
+                        <view class="flex justify-between">
+                            <view class="text-center ">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/待收货.png')"></owl-icon>
+                                <view>待收货</view>
                             </view>
+                            <view class="text-center">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/售后.png')"></owl-icon>
+                                <view>售后服务</view>
+                            </view>
+                            <view class="text-center ">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/订单.png')"></owl-icon>
+                                <view>我的订单</view>
+                            </view>
+                        </view>
                     </view>
                 </owl-fiche>
 
                 <!-- 购买的书籍 -->
-                <owl-fiche title="发表的交易" sub-title="在交易发表的帖子" :icon-path="require('../../assets/icon/完成书籍.png')">
+                <owl-fiche title="发表的交易" sub-title="在交易发表的帖子" :icon-path="require('../../assets/icon/mine/完成书籍.png')">
                     <view class="padding-lr-sm">
-                        <!-- ！！请在这里面添加内容！！ -->
-                        <!-- @ 小任务：将图标替换为帖子相关的图片，与下方的帖子图片不一致即可。 @ -->
-                        <!-- 任务描述：展示四篇用户发表过的交易帖子，左边为封面，右边为简略信息，右边分上下部分，上边是标题，下边是简略内容。 -->
-                        <!-- **注意：完成任务之后，删除注释！** -->
-                        <!-- 功能-->
-                            <view class="flex justify-between">
-                                <view class="text-center ">
-                                    <owl-icon :size="55" :src="require('../../assets/icon/交易信息.png')"></owl-icon>
-                                    <view>发表管理</view>
-                                </view>
-                                <view class="text-center">
-                                    <owl-icon :size="55" :src="require('../../assets/icon/订单处理.png')"></owl-icon>
-                                    <view>交易状态</view>
-                                </view>
-                                 <view class="text-center">
-                                    <owl-icon :size="55" :src="require('../../assets/icon/协商.png')"></owl-icon>
-                                    <view>客户协商</view>
-                                </view>
-                                <view class="text-center ">
-                                    <owl-icon :size="55" :src="require('../../assets/icon/历史发布.png')"></owl-icon>
-                                    <view>历史发布</view>
-                                </view>
+                        <view class="flex justify-between">
+                            <view class="text-center ">
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/交易信息.png')"></owl-icon>
+                                <view>投稿管理</view>
                             </view>
+                            <view class="text-center">
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/交易状态.png')"></owl-icon>
+                                <view>交易状态</view>
+                            </view>
+                            <view class="text-center">
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/交易数据.png')"></owl-icon>
+                                <view>交易数据</view>
+                            </view>
+                            <view class="text-center ">
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/历史发布.png')"></owl-icon>
+                                <view>历史发布</view>
+                            </view>
+                        </view>
                     </view>
                 </owl-fiche>
 
                 <!-- 发表的帖子 -->
-                <owl-fiche title="发表的帖子" sub-title="在社区发表的帖子" :icon-path="require('../../assets/icon/发表帖子.png')">
+                <owl-fiche title="发表的帖子" sub-title="在社区发表的帖子" :icon-path="require('../../assets/icon/mine/发表帖子.png')">
                     <view class="padding-lr-sm">
-                        <!-- ！！请在这里面添加内容！！ -->
-                        <!-- 任务描述：由于都是帖子，所以与上一个的内容一致，只不过展示的数据不一致。 -->
-                        <!-- **注意：完成任务之后，删除注释！** -->    
-                        <!-- 功能-->
-                            <view class="flex justify-between">
-                                <view class="text-center ">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/管理.png')"></owl-icon>
-                                    <view>管理</view>
-                                </view>
-                                <view class="text-center">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/获赞.png')"></owl-icon>
-                                    <view>获赞</view>
-                                </view>
-                                <view class="text-center ">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/回复.png')"></owl-icon>
-                                    <view>评论</view>
-                                </view>
-                                <view class="text-center ">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/推精.png')"></owl-icon>
-                                    <view>推精</view>
-                                </view>
-                                <view class="text-center ">
-                                    <owl-icon :size="65" :src="require('../../assets/icon/相关.png')"></owl-icon>
-                                    <view>版权</view>
-                                </view>
-                            </view> 
+                        <view class="flex justify-between">
+                            <view class="text-center ">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/管理.png')"></owl-icon>
+                                <view>投稿管理</view>
+                            </view>
+                            <view class="text-center">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/获赞.png')"></owl-icon>
+                                <view>帖子获赞</view>
+                            </view>
+                            <view class="text-center ">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/回复.png')"></owl-icon>
+                                <view>评论/回复</view>
+                            </view>
+                            <view class="text-center ">
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/推精.png')"></owl-icon>
+                                <view>帖子推精</view>
+                            </view>
+                        </view>
                     </view>
                 </owl-fiche>
             </view>

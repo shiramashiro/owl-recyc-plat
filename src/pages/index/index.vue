@@ -21,7 +21,7 @@
         <!-- 新闻/资讯 -->
         <owl-fiche
             :sub-title="'废纸行业相关资讯'"
-            :icon-path="require('../../assets/icon/新闻.png')"
+            :icon-path="require('../../assets/icon/index/新闻.png')"
             :navigate-to="'/pages/more'"
             :URLAttrs="['backNav=index/index', 'comName=owlPosts']"
             :title="'新闻 / 资讯'"
@@ -40,7 +40,7 @@
         </owl-fiche>
 
         <!-- 二手市场分类 -->
-        <owl-fiche :title="'二手市场'" :sub-title="'货源于官方渠道'" :icon-path="require('../../assets/icon/购物袋.png')">
+        <owl-fiche :title="'二手市场'" :sub-title="'货源于官方渠道'" :icon-path="require('../../assets/icon/index/购物袋.png')">
             <view class="caskets-panel flex justify-between padding-lr-sm">
                 <view
                     class="casket-item padding-lr-xs margin-tb-xs text-center"
@@ -55,10 +55,10 @@
         </owl-fiche>
 
         <!-- 附近回收点 -->
-        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'" :icon-path="require('../../assets/icon/回收.png')"> </owl-fiche>
+        <owl-fiche :title="'回收废纸'" :sub-title="'出售废纸到回收站'" :icon-path="require('../../assets/icon/index/回收.png')"> </owl-fiche>
 
         <!-- 优质二手书推荐 -->
-        <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/优质.png')">
+        <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/index/优质.png')">
             <view class="books-panel flex">
                 <view @click="guide(item.id)" class="book-item padding-sm" v-for="(item, index) in nomination" :key="index">
                     <image mode="aspectFill" :src="item.cover_url"></image>
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { caskets, broadcast, carousels } from '@/assets/data/index.js'
+import { caskets, broadcast, carousels, information } from '@/assets/data/index.js'
 
 export default {
     name: 'index',
@@ -85,17 +85,7 @@ export default {
             caskets,
             broadcast,
             carousels,
-            information: [
-                {
-                    title: '致力发展负责任的人工智能 中国发布八大治理原则'
-                },
-                {
-                    title: '600万吨包装纸产能砸向市场'
-                },
-                {
-                    title: '4月27日废纸价格最高上调50元/吨'
-                }
-            ]
+            information
         }
     },
     methods: {
@@ -106,14 +96,11 @@ export default {
         }
     },
     mounted() {
-        // 1. 发起 HTTP 请求，获取远程数据库数据。请查阅接口文档，READAPI.md。
-        // 提示：axios 用法，请查阅https://www.axios-http.cn/docs/api_intro
         this.$axios({
             method: 'get',
-            url: '/index/find/nomination',
-        }).then( (response) =>{
-            console.log(response.data)
-            this.nomination=response.data
+            url: '/index/find/nomination'
+        }).then(response => {
+            this.nomination = response.data
         })
     }
 }

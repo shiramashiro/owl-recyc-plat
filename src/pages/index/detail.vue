@@ -8,16 +8,16 @@
             :current="currentSwiper"
             :duration="360"
         >
-            <template v-if="book.covers">
+            <!-- <template v-if="book.covers">
                 <swiper-item class="swiper-container">
-                    <image mode="aspectFill" :src="book.cover"></image>
+                    <image mode="aspectFill" :src="book.cover_url"></image>
                 </swiper-item>
             </template>
-            <template v-else>
+            <template v-else> -->
                 <swiper-item class="swiper-container" v-for="(item, index) in book.covers" :key="index">
-                    <image mode="aspectFill" :src="item.cover"></image>
+                    <image mode="aspectFill" :src="item.url"></image>
                 </swiper-item>
-            </template>
+            <!-- </template> -->
         </swiper>
 
         <!-- 商品信息 -->
@@ -108,6 +108,7 @@ export default {
     onLoad(options) {
         this.$axios.get(`/index/find/by/id?id=${options.id}`).then(response => {
             this.book = response.data
+            console.log(response.data)
         })
     }
 }

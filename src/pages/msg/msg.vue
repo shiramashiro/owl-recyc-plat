@@ -65,17 +65,17 @@ export default {
                 {
                     url: '/pages/msg/reply',
                     name: '回复我的',
-                    image: require('@/assets/icon/回复我的.png')
+                    image: require('@/assets/icon/msg/回复我的.png')
                 },
                 {
                     url: '/pages/msg/praise',
                     name: '收到的赞',
-                    image: require('@/assets/icon/收到的赞.png')
+                    image: require('@/assets/icon/msg/收到的赞.png')
                 },
                 {
                     url: '/pages/msg/notify',
                     name: '系统通知',
-                    image: require('@/assets/icon/系统通知.png')
+                    image: require('@/assets/icon/msg/系统通知.png')
                 }
             ],
             chats: [
