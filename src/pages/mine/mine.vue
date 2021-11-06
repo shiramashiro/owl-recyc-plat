@@ -34,42 +34,42 @@
                     <!-- 功能-->
                     <view class="flex justify-between">
                         <view class="text-center ">
-                            <owl-icon :size="65" :src="require('../../assets/icon/mine/待收货.png')"></owl-icon>
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/wait-goods.png')"></owl-icon>
                             <view>待收货</view>
                         </view>
                         <view class="text-center">
-                            <owl-icon :size="65" :src="require('../../assets/icon/mine/售后服务.png')"></owl-icon>
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/after-service.png')"></owl-icon>
                             <view>退换/售后</view>
                         </view>
                         <view class="text-center">
-                            <owl-icon :size="65" :src="require('../../assets/icon/mine/收藏.png')"></owl-icon>
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/favourite.png')"></owl-icon>
                             <view>商品收藏</view>
                         </view>
                         <view class="text-center ">
-                            <owl-icon :size="65" :src="require('../../assets/icon/mine/订单.png')"></owl-icon>
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/order.png')"></owl-icon>
                             <view>我的订单</view>
                         </view>
                     </view>
                 </view>
 
                 <!-- 购买的书籍 -->
-                <owl-fiche title="发表的交易" sub-title="在交易发表的帖子" :icon-path="require('../../assets/icon/mine/完成书籍.png')">
+                <owl-fiche title="发表的交易" sub-title="在交易发表的帖子" :icon-path="require('../../assets/icon/mine/completed-book.png')">
                     <view class="padding-lr-sm">
                         <view class="flex justify-between">
                             <view class="text-center ">
-                                <owl-icon :size="55" :src="require('../../assets/icon/mine/投稿管理.png')"></owl-icon>
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/manage-data.png')"></owl-icon>
                                 <view>投稿管理</view>
                             </view>
                             <view class="text-center">
-                                <owl-icon :size="55" :src="require('../../assets/icon/mine/交易状态.png')"></owl-icon>
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/trade-status.png')"></owl-icon>
                                 <view>交易状态</view>
                             </view>
                             <view class="text-center">
-                                <owl-icon :size="55" :src="require('../../assets/icon/mine/交易数据.png')"></owl-icon>
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/trade-data.png')"></owl-icon>
                                 <view>交易数据</view>
                             </view>
                             <view class="text-center ">
-                                <owl-icon :size="55" :src="require('../../assets/icon/mine/历史发布.png')"></owl-icon>
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/history-posted.png')"></owl-icon>
                                 <view>历史发布</view>
                             </view>
                         </view>
@@ -77,23 +77,23 @@
                 </owl-fiche>
 
                 <!-- 发表的帖子 -->
-                <owl-fiche title="发表的帖子" sub-title="在社区发表的帖子" :icon-path="require('../../assets/icon/mine/发表帖子.png')">
+                <owl-fiche title="发表的帖子" sub-title="在社区发表的帖子" :icon-path="require('../../assets/icon/mine/post.png')">
                     <view class="padding-lr-sm">
                         <view class="flex justify-between">
                             <view class="text-center ">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/管理.png')"></owl-icon>
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/management.png')"></owl-icon>
                                 <view>投稿管理</view>
                             </view>
                             <view class="text-center">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/获赞.png')"></owl-icon>
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/get-like.png')"></owl-icon>
                                 <view>帖子获赞</view>
                             </view>
                             <view class="text-center ">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/回复.png')"></owl-icon>
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/reply.png')"></owl-icon>
                                 <view>评论/回复</view>
                             </view>
                             <view class="text-center ">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/推精.png')"></owl-icon>
+                                <owl-icon :size="65" :src="require('../../assets/icon/mine/nomination.png')"></owl-icon>
                                 <view>帖子推精</view>
                             </view>
                         </view>
@@ -102,7 +102,7 @@
             </view>
 
             <!-- 关于 -->
-            <owl-fiche title="关于应用" sub-title="应用相关的选项" :icon-path="require('../../assets/icon/mine/关于.png')">
+            <owl-fiche title="关于应用" sub-title="应用相关的选项" :icon-path="require('../../assets/icon/mine/about.png')">
                 <tui-list-view color="#777">
                     <tui-list-cell v-for="(cell, index) in listCells" :key="index" :hover="true" :arrow="true">
                         <view class="flex text-sm align-center" @click="cell.action">

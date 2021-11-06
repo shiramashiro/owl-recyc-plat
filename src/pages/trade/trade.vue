@@ -1,7 +1,7 @@
 <template>
     <view class="trade">
         <!-- 可交易的书籍 -->
-        <owl-fiche :title="'书籍'" :sub-title="'优质的二手书籍'" :icon-path="require('../../assets/icon/trade/交易.png')">
+        <owl-fiche :title="'书籍'" :sub-title="'优质的二手书籍'" :icon-path="require('../../assets/icon/trade/trade.png')">
             <view class="shelves flex align-center">
                 <view class="item padding-sm" v-for="(item, index) in tradableBooks" :key="index" @click="guid(item.id)">
                     <image model="aspectFit" :src="item.book.cover" />

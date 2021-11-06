@@ -1,62 +1,62 @@
 const caskets = [
     {
         type: 'all',
-        icon: require('../../assets/icon/index/全部.png'),
+        icon: require('../../assets/icon/index/entire.png'),
         title: '全部'
     },
     {
         type: 'living',
-        icon: require('../../assets/icon/index/生活.png'),
+        icon: require('../../assets/icon/index/living.png'),
         title: '生活'
     },
     {
         type: 'technology',
-        icon: require('../../assets/icon/index/科技.png'),
+        icon: require('../../assets/icon/index/technology.png'),
         title: '科技'
     },
     {
         type: 'social',
-        icon: require('../../assets/icon/index/社会.png'),
+        icon: require('../../assets/icon/index/social.png'),
         title: '社会'
     },
     {
         type: 'business',
-        icon: require('../../assets/icon/index/经营.png'),
+        icon: require('../../assets/icon/index/business.png'),
         title: '经管'
     },
     {
         type: 'literature',
-        icon: require('../../assets/icon/index/文学.png'),
+        icon: require('../../assets/icon/index/literature.png'),
         title: '文学'
     },
     {
         type: 'art',
-        icon: require('../../assets/icon/index/艺术.png'),
+        icon: require('../../assets/icon/index/art.png'),
         title: '艺术'
     },
     {
         type: 'education',
-        icon: require('../../assets/icon/index/辅教.png'),
+        icon: require('../../assets/icon/index/education.png'),
         title: '辅教'
     },
     {
         type: 'children',
-        icon: require('../../assets/icon/index/童书.png'),
+        icon: require('../../assets/icon/index/children.png'),
         title: '童书'
     },
     {
         type: 'novel',
-        icon: require('../../assets/icon/index/小说.png'),
+        icon: require('../../assets/icon/index/novel.png'),
         title: '小说'
     },
     {
         type: 'foreign',
-        icon: require('../../assets/icon/index/外语.png'),
+        icon: require('../../assets/icon/index/foreign.png'),
         title: '外语'
     },
     {
         type: 'audio',
-        icon: require('../../assets/icon/index/音像.png'),
+        icon: require('../../assets/icon/index/audio.png'),
         title: '音像'
     }
 ]
