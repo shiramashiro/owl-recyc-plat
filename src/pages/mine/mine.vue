@@ -30,32 +30,34 @@
         <view class="content margin-lr-xs margin-top-sm">
             <view v-if="$store.state.isSignin">
                 <!-- 完成的交易 -->
-                <owl-fiche title="完成的交易" sub-="在交易达成的记录" :icon-path="require('../../assets/icon/mine/完成交易.png')">
-                    <view class="padding-lr-sm">
-                        <!-- 功能-->
-                        <view class="flex justify-between">
-                            <view class="text-center ">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/待收货.png')"></owl-icon>
-                                <view>待收货</view>
-                            </view>
-                            <view class="text-center">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/售后.png')"></owl-icon>
-                                <view>售后服务</view>
-                            </view>
-                            <view class="text-center ">
-                                <owl-icon :size="65" :src="require('../../assets/icon/mine/订单.png')"></owl-icon>
-                                <view>我的订单</view>
-                            </view>
+                <view class="margin-xs padding-sm card">
+                    <!-- 功能-->
+                    <view class="flex justify-between">
+                        <view class="text-center ">
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/待收货.png')"></owl-icon>
+                            <view>待收货</view>
+                        </view>
+                        <view class="text-center">
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/售后服务.png')"></owl-icon>
+                            <view>退换/售后</view>
+                        </view>
+                        <view class="text-center">
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/收藏.png')"></owl-icon>
+                            <view>商品收藏</view>
+                        </view>
+                        <view class="text-center ">
+                            <owl-icon :size="65" :src="require('../../assets/icon/mine/订单.png')"></owl-icon>
+                            <view>我的订单</view>
                         </view>
                     </view>
-                </owl-fiche>
+                </view>
 
                 <!-- 购买的书籍 -->
                 <owl-fiche title="发表的交易" sub-title="在交易发表的帖子" :icon-path="require('../../assets/icon/mine/完成书籍.png')">
                     <view class="padding-lr-sm">
                         <view class="flex justify-between">
                             <view class="text-center ">
-                                <owl-icon :size="55" :src="require('../../assets/icon/mine/交易信息.png')"></owl-icon>
+                                <owl-icon :size="55" :src="require('../../assets/icon/mine/投稿管理.png')"></owl-icon>
                                 <view>投稿管理</view>
                             </view>
                             <view class="text-center">
@@ -100,7 +102,7 @@
             </view>
 
             <!-- 关于 -->
-            <owl-fiche title="关于应用" sub-title="应用相关的选项">
+            <owl-fiche title="关于应用" sub-title="应用相关的选项" :icon-path="require('../../assets/icon/mine/关于.png')">
                 <tui-list-view color="#777">
                     <tui-list-cell v-for="(cell, index) in listCells" :key="index" :hover="true" :arrow="true">
                         <view class="flex text-sm align-center" @click="cell.action">
