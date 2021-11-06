@@ -20,7 +20,6 @@ Vue.component('u-parse', UParse)
 Vue.component('owl-fiche', OwlFiche)
 Vue.component('owl-avatar', OwlAvatar)
 Vue.component('owl-icon', OwlIcon)
-Vue.component('owl-show', OwlShow)
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
