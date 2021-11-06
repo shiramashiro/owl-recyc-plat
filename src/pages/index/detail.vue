@@ -96,14 +96,11 @@
 </template>
 
 <script>
-import officialBooks from '@/assets/data/official-books.js'
-
 export default {
     name: 'detail',
     data() {
         return {
             currentSwiper: 0,
-            officialBooks,
             book: {}
         }
     },

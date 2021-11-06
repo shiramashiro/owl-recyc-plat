@@ -106,9 +106,8 @@ export default {
         }
     },
     mounted() {
-        this.$axios.get(`/index/find/nomination`).then(response => {
-            this.nomination = response.data
-        })
+        // 1. 发起 HTTP 请求，获取远程数据库数据。请查阅接口文档，READAPI.md。
+        // 提示：axios 用法，请查阅https://www.axios-http.cn/docs/api_intro
     }
 }
 </script>
