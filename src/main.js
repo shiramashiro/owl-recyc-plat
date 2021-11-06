@@ -15,7 +15,6 @@ import UParse from '@/components/u-parse/u-parse.vue'
 import OwlFiche from '@/components/owl-fiche.vue'
 import OwlAvatar from '@/components/owl-avatar.vue'
 import OwlIcon from '@/components/owl-icon.vue'
-import OwlShow from '@/components/owl-show.vue'
 
 Vue.component('u-parse', UParse)
 Vue.component('owl-fiche', OwlFiche)
