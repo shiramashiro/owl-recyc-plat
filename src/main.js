@@ -3,8 +3,8 @@ import App from './App'
 import Vuex from './store/index'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:8000'
-// axios.defaults.baseURL = 'http://1.116.123.44:8000'
+// axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = 'http://1.116.123.44:8000'
 axios.interceptors.request.use(config => {
     return config
 })

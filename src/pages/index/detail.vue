@@ -38,57 +38,35 @@
             </view>
         </view>
 
-        <view class="comments card padding-lr-sm margin-top-sm">
-            <view class="item padding-tb-sm flex">
-                <view class="left">
-                    <owl-avatar src="https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto" size="35"></owl-avatar>
-                </view>
-                <view class="right margin-left-sm">
-                    <view class="header flex justify-between align-center">
-                        <view class="userinfo">
-                            <view class="username">shiramashiro</view>
-                            <view class="floor">1F</view>
+        <view class="comments card padding-lr-sm margin-top-sm margin-lr-xs">
+            <template v-if="book.comments.length > 0">
+                <view class="item padding-tb-sm flex" v-for="(item, index) in book.comments" :key="index">
+                    <view class="left">
+                        <owl-avatar :src="item.user.avatar_url" size="35"></owl-avatar>
+                    </view>
+                    <view class="right margin-left-sm">
+                        <view class="header flex justify-between align-center">
+                            <view class="userinfo">
+                                <view class="username text-lg">{{ item.user.username }}</view>
+                                <view class="floor text-gray">{{ index + 1 }}F</view>
+                            </view>
+                            <view class="replay text-gray">回复</view>
                         </view>
-                        <view class="more">...</view>
-                    </view>
-                    <view class="content margin-top-sm text-bold text-lg">
-                        胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃
-                    </view>
-                    <view class="footer flex align-center justify-between margin-top-sm text-gray">
-                        <view class="posteddate">20小时前</view>
-                        <view class="actions flex align-center justify-between">
-                            <view class="replay">回复</view>
-                            <view class="like margin-left-sm">100</view>
-                            <view class="dislike margin-left-sm">0</view>
+                        <view class="content margin-top-sm text-lg">
+                            {{ item.content }}
                         </view>
-                    </view>
-                </view>
-            </view>
-            <view class="item padding-tb-sm flex">
-                <view class="left">
-                    <owl-avatar src="https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto" size="35"></owl-avatar>
-                </view>
-                <view class="right margin-left-sm">
-                    <view class="header flex justify-between align-center">
-                        <view class="userinfo">
-                            <view class="username">shiramashiro</view>
-                            <view class="floor">1F</view>
-                        </view>
-                        <view class="more">...</view>
-                    </view>
-                    <view class="content margin-top-sm text-bold text-lg">
-                        胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃
-                    </view>
-                    <view class="footer flex align-center justify-between margin-top-sm text-gray">
-                        <view class="posteddate">20小时前</view>
-                        <view class="actions flex align-center justify-between">
-                            <view class="replay">回复</view>
-                            <view class="like margin-left-sm">100</view>
-                            <view class="dislike margin-left-sm">0</view>
+                        <view class="footer flex align-center justify-between margin-top-sm text-gray"> 发表于：{{ item.create_date }} </view>
+                        <view class="actions flex align-center margin-top-xs text-gray">
+                            <view class="like">赞成 100</view>
+                            <view class="dislike margin-left-sm">反对 0</view>
                         </view>
                     </view>
                 </view>
-            </view>
+            </template>
+            <template v-else>
+                <!-- 任务：如果书籍没有评论数据时，这里会显示没有数据的图片，请让图片显示完美。或者添加一些文字提示。一 -->
+                <image src="../../assets/icon/没有数据.png"></image>
+            </template>
         </view>
 
         <view class="card padding-sm margin-lr-xs margin-top-sm text-gray">
@@ -160,7 +138,14 @@ export default {
         return {
             currentSwiper: 0,
             book: {
-                covers: []
+                covers: [{}],
+                comments: [
+                    {
+                        user: {
+                            avatar_url: ''
+                        }
+                    }
+                ]
             }
         }
     },
@@ -190,6 +175,14 @@ export default {
     .comments {
         .item {
             border-bottom: 1rpx solid #cccc;
+
+            .left {
+                width: 15%;
+            }
+
+            .right {
+                width: 85%;
+            }
         }
 
         .item:last-child {
