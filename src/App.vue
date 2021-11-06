@@ -36,4 +36,5 @@ export default {
 @import '@/colorui/icon.css';
 @import '@/assets/css/owlmain.css';
 @import '@/components/u-parse/u-parse.css';
+@import '@/assets/css/iconfont.css';
 </style>

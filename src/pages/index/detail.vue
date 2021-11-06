@@ -8,9 +8,16 @@
             :current="currentSwiper"
             :duration="360"
         >
-            <swiper-item class="swiper-container" v-for="(item, index) in officialBooks[0].coverGroup" :key="index">
-                <image mode="aspectFill" :src="item"></image>
-            </swiper-item>
+            <template v-if="book.covers">
+                <swiper-item class="swiper-container">
+                    <image mode="aspectFill" :src="book.cover"></image>
+                </swiper-item>
+            </template>
+            <template v-else>
+                <swiper-item class="swiper-container" v-for="(item, index) in book.covers" :key="index">
+                    <image mode="aspectFill" :src="item.cover"></image>
+                </swiper-item>
+            </template>
         </swiper>
 
         <!-- 商品信息 -->
@@ -27,12 +34,12 @@
                 </view>
             </view>
             <view class="description margin-top-sm">
-                {{ book.desc }}
+                {{ book.description }}
             </view>
         </view>
 
         <view class="show-goods card margin-xs padding-sm text-center">
-            <image v-for="(item, index) in officialBooks[0].coverGroup" :key="index" :src="item"></image>
+            <image v-for="(item, index) in book.covers" :key="index" :src="item.cover"></image>
         </view>
 
         <!-- 底部栏 -->
@@ -102,8 +109,8 @@ export default {
     },
     methods: {},
     onLoad(options) {
-        this.$axios.get(`/get/book/by/id/${options.id}`).then(response => {
-            this.book = response.data[0]
+        this.$axios.get(`/index/find/by/id?id=${options.id}`).then(response => {
+            this.book = response.data
         })
     }
 }
