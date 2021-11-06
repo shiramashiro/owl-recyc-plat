@@ -8,16 +8,16 @@
             :current="currentSwiper"
             :duration="360"
         >
-            <!-- <template v-if="book.covers">
+            <template v-if="book.covers.length > 0">
+                <swiper-item class="swiper-container" v-for="(item, index) in book.covers" :key="index">
+                    <image mode="aspectFill" :src="item.url"></image>
+                </swiper-item>
+            </template>
+            <template v-else>
                 <swiper-item class="swiper-container">
                     <image mode="aspectFill" :src="book.cover_url"></image>
                 </swiper-item>
             </template>
-            <template v-else> -->
-                <swiper-item class="swiper-container" v-for="(item, index) in book.covers" :key="index">
-                    <image mode="aspectFill" :src="item.url"></image>
-                </swiper-item>
-            <!-- </template> -->
         </swiper>
 
         <!-- 商品信息 -->
@@ -38,8 +38,66 @@
             </view>
         </view>
 
-        <view class="show-goods card margin-xs padding-sm text-center">
-            <image v-for="(item, index) in book.covers" :key="index" :src="item.cover"></image>
+        <view class="comments card padding-lr-sm margin-top-sm">
+            <view class="item padding-tb-sm flex">
+                <view class="left">
+                    <owl-avatar src="https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto" size="35"></owl-avatar>
+                </view>
+                <view class="right margin-left-sm">
+                    <view class="header flex justify-between align-center">
+                        <view class="userinfo">
+                            <view class="username">shiramashiro</view>
+                            <view class="floor">1F</view>
+                        </view>
+                        <view class="more">...</view>
+                    </view>
+                    <view class="content margin-top-sm text-bold text-lg">
+                        胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃
+                    </view>
+                    <view class="footer flex align-center justify-between margin-top-sm text-gray">
+                        <view class="posteddate">20小时前</view>
+                        <view class="actions flex align-center justify-between">
+                            <view class="replay">回复</view>
+                            <view class="like margin-left-sm">100</view>
+                            <view class="dislike margin-left-sm">0</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="item padding-tb-sm flex">
+                <view class="left">
+                    <owl-avatar src="https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto" size="35"></owl-avatar>
+                </view>
+                <view class="right margin-left-sm">
+                    <view class="header flex justify-between align-center">
+                        <view class="userinfo">
+                            <view class="username">shiramashiro</view>
+                            <view class="floor">1F</view>
+                        </view>
+                        <view class="more">...</view>
+                    </view>
+                    <view class="content margin-top-sm text-bold text-lg">
+                        胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃胡桃
+                    </view>
+                    <view class="footer flex align-center justify-between margin-top-sm text-gray">
+                        <view class="posteddate">20小时前</view>
+                        <view class="actions flex align-center justify-between">
+                            <view class="replay">回复</view>
+                            <view class="like margin-left-sm">100</view>
+                            <view class="dislike margin-left-sm">0</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="card padding-sm margin-lr-xs margin-top-sm text-gray">
+            <view class="text-center margin-bottom-sm">
+                —— 价格说明 ——
+            </view>
+            1、原价：原价为商品的销售价，是您最终决定是否购买商品的依据。<br />
+            2、划线价：商品展示的划横线价格为参考价，并非原价，该价格可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价或其他真实有依据的价格。该价格仅供您参考。<br />
+            4、异常问题：商品促销信息以商品详情页“促销”栏中的信息为准;如您发现商品售价或信息有异常,建议购买前先联系销售商咨询。
         </view>
 
         <!-- 底部栏 -->
@@ -101,14 +159,14 @@ export default {
     data() {
         return {
             currentSwiper: 0,
-            book: {}
+            book: {
+                covers: []
+            }
         }
     },
-    methods: {},
     onLoad(options) {
         this.$axios.get(`/index/find/by/id?id=${options.id}`).then(response => {
             this.book = response.data
-            console.log(response.data)
         })
     }
 }
@@ -119,13 +177,23 @@ export default {
     background-color: rgb(248, 248, 248);
 
     .swiper {
-        height: 400rpx;
+        height: 650rpx;
 
         .swiper-container {
             image {
                 height: 100%;
                 width: 100%;
             }
+        }
+    }
+
+    .comments {
+        .item {
+            border-bottom: 1rpx solid #cccc;
+        }
+
+        .item:last-child {
+            border-bottom: 0 !important;
         }
     }
 

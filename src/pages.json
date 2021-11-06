@@ -37,6 +37,12 @@
                 "navigationBarTitleText": "详情"
             }
         },
+        {
+            "path": "pages/index/casket",
+            "style": {
+                "navigationBarTitleText": "分类"
+            }
+        },
         // msg/
         // entry/
         {

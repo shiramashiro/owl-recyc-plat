@@ -42,12 +42,7 @@
         <!-- 二手市场分类 -->
         <owl-fiche :title="'二手市场'" :sub-title="'货源于官方渠道'" :icon-path="require('../../assets/icon/index/购物袋.png')">
             <view class="caskets-panel flex justify-between padding-lr-sm">
-                <view
-                    class="casket-item padding-lr-xs margin-tb-xs text-center"
-                    v-for="(item, index) in caskets"
-                    :key="index"
-                    @click="navigateToClickedItem('/pages/more', ['type=' + item.type, 'comName=owlBooks', 'backNav=index/index'])"
-                >
+                <view class="casket-item padding-lr-xs margin-tb-xs text-center" v-for="(item, index) in caskets" :key="index" @click="guide(`/pages/index/casket?type=${item.type}`)">
                     <image mode="aspectFit" :src="item.icon"></image>
                     <view class="text-center text-black text-bold text-df">{{ item.title }}</view>
                 </view>
@@ -60,7 +55,7 @@
         <!-- 优质二手书推荐 -->
         <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/index/优质.png')">
             <view class="books-panel flex">
-                <view @click="guide(item.id)" class="book-item padding-sm" v-for="(item, index) in nomination" :key="index">
+                <view @click="guide(`/pages/index/detail?id=${item.id}`)" class="book-item padding-sm" v-for="(item, index) in nomination" :key="index">
                     <image mode="aspectFill" :src="item.cover_url"></image>
                     <view class="content">
                         <view class="name text-bold">{{ item.name }}</view>
@@ -89,9 +84,9 @@ export default {
         }
     },
     methods: {
-        guide(id) {
+        guide(url) {
             uni.navigateTo({
-                url: '/pages/index/detail?id=' + id
+                url: url
             })
         }
     },
