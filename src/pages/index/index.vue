@@ -61,7 +61,7 @@
         <owl-fiche :title="'书籍推荐'" :sub-title="'官方推荐优质书籍'" :icon-path="require('../../assets/icon/优质.png')">
             <view class="books-panel flex">
                 <view @click="guide(item.id)" class="book-item padding-sm" v-for="(item, index) in nomination" :key="index">
-                    <image mode="aspectFill" :src="item.cover"></image>
+                    <image mode="aspectFill" :src="item.cover_url"></image>
                     <view class="content">
                         <view class="name text-bold">{{ item.name }}</view>
                         <view class="author">{{ item.author }}</view>
@@ -108,6 +108,13 @@ export default {
     mounted() {
         // 1. 发起 HTTP 请求，获取远程数据库数据。请查阅接口文档，READAPI.md。
         // 提示：axios 用法，请查阅https://www.axios-http.cn/docs/api_intro
+        this.$axios({
+            method: 'get',
+            url: '/index/find/nomination',
+        }).then( (response) =>{
+            console.log(response.data)
+            this.nomination=response.data
+        })
     }
 }
 </script>
