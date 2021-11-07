@@ -64,8 +64,9 @@
                 </view>
             </template>
             <template v-else>
-                <!-- 任务：如果书籍没有评论数据时，这里会显示没有数据的图片，请让图片显示完美。或者添加一些文字提示。一 -->
-                <image src="../../static/icon/notdata.png"></image>
+                <view class="null-show">
+                    <view class="tips">-没有更多评论-</view>
+                </view>
             </template>
         </view>
 
@@ -247,6 +248,13 @@ export default {
 
         .right {
             width: 50%;
+        }
+    }
+    .null-show{
+        .tips{
+        color: rgb(255, 255, 255);
+        transform: translate(250rpx, -5%);
+        text-shadow: 1px 1px 2px black;
         }
     }
 }
