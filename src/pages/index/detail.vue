@@ -39,7 +39,14 @@
         </view>
 
         <!-- 后期任务：将 sponsor-id 改成灵活地 -->
-        <owl-comment :url="'http://1.116.123.44:8000/index/publish/comment'" :source-id="book.id" :sponsor-id="1" :comments="book.comments"></owl-comment>
+        <owl-comment
+            :url="'http://1.116.123.44:8000/index/publish/comment'"
+            :agree-url="'http://1.116.123.44:8000/index/publish/agree'"
+            :oppose-url="'http://1.116.123.44:8000/index/publish/oppose'"
+            :source-id="book.id"
+            :sponsor-id="1"
+            :comments="book.comments"
+        ></owl-comment>
 
         <view class="card padding-sm margin-lr-xs margin-top-sm text-gray">
             <view class="text-center margin-bottom-sm">
