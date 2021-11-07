@@ -32,9 +32,7 @@ export default {
 </script>
 
 <style>
-@import '@/colorui/main.css';
-@import '@/colorui/icon.css';
-@import '@/assets/css/owlmain.css';
-@import '@/components/u-parse/u-parse.css';
-@import '@/assets/css/iconfont.css';
+@import '@/components/colorui/main.css';
+@import '@/components/colorui/icon.css';
+@import '@/static/css/main.css';
 </style>

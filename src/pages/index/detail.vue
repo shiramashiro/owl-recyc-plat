@@ -65,7 +65,7 @@
             </template>
             <template v-else>
                 <!-- 任务：如果书籍没有评论数据时，这里会显示没有数据的图片，请让图片显示完美。或者添加一些文字提示。一 -->
-                <image src="../../assets/icon/notdata.png"></image>
+                <image src="../../static/icon/notdata.png"></image>
             </template>
         </view>
 
@@ -83,7 +83,7 @@
             <view class="left flex justify-between align-center">
                 <view class="item">
                     <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="../../assets/icon/cart.png" />
+                        <image class="icon" src="../../static/icon/cart.png" />
                         <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
                             {{ $store.state.tentativeTrade.length }}
                         </tui-badge>
@@ -95,7 +95,7 @@
 
                 <view class="item">
                     <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="../../assets/icon/cart.png" />
+                        <image class="icon" src="../../static/icon/cart.png" />
                         <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
                             {{ $store.state.tentativeTrade.length }}
                         </tui-badge>
@@ -107,7 +107,7 @@
 
                 <view class="item">
                     <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="../../assets/icon/cart.png" />
+                        <image class="icon" src="../../static/icon/cart.png" />
                         <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
                             {{ $store.state.tentativeTrade.length }}
                         </tui-badge>
@@ -150,8 +150,14 @@ export default {
         }
     },
     onLoad(options) {
-        this.$axios.get(`/index/find/by/id?id=${options.id}`).then(response => {
-            this.book = response.data
+        uni.request({
+            url: 'http://1.116.123.44:8000/index/find/by/id',
+            data: {
+                id: options.id
+            },
+            success: res => {
+                this.book = res.data
+            }
         })
     }
 }

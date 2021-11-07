@@ -1,17 +1,17 @@
 <template>
     <view class="society">
         <!-- 爱心捐赠服务 -->
-        <owl-fiche :title="'捐赠'" :sub-title="'捐赠书籍的公益'" :icon-path="require('../../assets/icon/society/donation.png')">
+        <owl-fiche :title="'捐赠'" :sub-title="'捐赠书籍的公益'" :icon-path="require('../../static/icon/society/donation.png')">
             <view class="donation flex align-center justify-between">
                 <view class="school-donation">
                     <navigator :url="'/pages/transfer/more-transfer?type=school'">
-                        <image model="aspectFill" src="../../assets/icon/society/school.png"></image>
+                        <image model="aspectFill" src="../../static/icon/society/school.png"></image>
                         <view class="text-center">学校</view>
                     </navigator>
                 </view>
                 <view class="library-donation">
                     <navigator :url="'/pages/transfer/more-transfer?type=library'">
-                        <image model="aspectFill" src="../../assets/icon/society/library.png"></image>
+                        <image model="aspectFill" src="../../static/icon/society/library.png"></image>
                         <view class="text-center">图书馆</view>
                     </navigator>
                 </view>
@@ -47,7 +47,7 @@
                 </view>
                 <view class="dynamic-data margin-top-sm flex align-center justify-end">
                     <view class="comment flex align-center text-gray margin-right-sm">
-                        <image class="comment-icon" mode="aspectFit" src="../../assets/icon/society/comment.png"></image>
+                        <image class="comment-icon" mode="aspectFit" src="../../static/icon/society/comment.png"></image>
                         <view class="num">
                             <span v-if="item.comments.length < 999">
                                 {{ item.comments.length }}
@@ -56,7 +56,7 @@
                         </view>
                     </view>
                     <view class="like flex align-center text-gray">
-                        <image class="like-icon" mode="aspectFit" src="../../assets/icon/society/like.png"></image>
+                        <image class="like-icon" mode="aspectFit" src="../../static/icon/society/like.png"></image>
                         <view class="num">
                             <span v-if="item.like < 999">
                                 {{ item.like }}
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import posts from '@/assets/data/posts.js'
+import posts from '@/static/data/posts.js'
 
 export default {
     name: 'society',

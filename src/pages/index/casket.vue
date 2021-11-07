@@ -30,8 +30,14 @@ export default {
         }
     },
     onLoad(options) {
-        this.$axios.get(`/index/find/by/type?type=${options.type}`).then(response => {
-            this.books = response.data
+        uni.request({
+            url: 'http://1.116.123.44:8000/index/find/by/type',
+            data: {
+                type: options.type
+            },
+            success: res => {
+                this.books = res.data
+            }
         })
     }
 }

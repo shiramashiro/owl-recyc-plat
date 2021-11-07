@@ -15,7 +15,7 @@
         {
             "path": "pages/trade/trade",
             "style": {
-                "navigationBarTitleText": "转让"
+                "navigationBarTitleText": "交易"
             }
         },
         {
@@ -80,46 +80,42 @@
         }
     },
     "globalStyle": {
-        // #ifdef H5
-        "navigationStyle": "custom",
-        // #endif
         "navigationBarBackgroundColor": "#87cefa",
         "navigationBarTextStyle": "white"
     },
     "tabBar": {
         "color": "#7A7E83",
         "selectedColor": "#87cefa",
-        "borderStyle": "black",
         "backgroundColor": "#ffffff",
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/首页.png",
-                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/首页.png",
+                "iconPath": "static/icon/index.png",
+                "selectedIconPath": "static/icon/index.png",
                 "text": "首页"
             },
             {
                 "pagePath": "pages/society/society",
-                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/社区.png",
-                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/社区.png",
+                "iconPath": "static/icon/society.png",
+                "selectedIconPath": "static/icon/society.png",
                 "text": "社区"
             },
             {
                 "pagePath": "pages/trade/trade",
-                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/交易.png",
-                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/交易.png",
+                "iconPath": "static/icon/trade.png",
+                "selectedIconPath": "static/icon/trade.png",
                 "text": "交易"
             },
             {
                 "pagePath": "pages/msg/msg",
-                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/消息.png",
-                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/消息.png",
+                "iconPath": "static/icon/msg.png",
+                "selectedIconPath": "static/icon/msg.png",
                 "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",
-                "iconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/我的.png",
-                "selectedIconPath": "https://generic-data.oss-cn-chengdu.aliyuncs.com/owl-recyc-plat/img/icon/tabbar/我的.png",
+                "iconPath": "static/icon/mine.png",
+                "selectedIconPath": "static/icon/mine.png",
                 "text": "我的"
             }
         ]
