@@ -90,32 +90,62 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "static/icon/index.png",
-                "selectedIconPath": "static/icon/index.png",
+				// #ifdef H5
+                "iconPath": "static/icon/h5/tabbar_index.png",
+                "selectedIconPath": "static/icon/h5/tabbar_index.png",
+				// #endif
+				// #ifdef APP-PLUS
+				"iconPath": "static/icon/app-plus/tabbar_index.png",
+				"selectedIconPath": "static/icon/app-plus/tabbar_index.png",
+				// #endif
                 "text": "首页"
             },
             {
                 "pagePath": "pages/society/society",
-                "iconPath": "static/icon/society.png",
-                "selectedIconPath": "static/icon/society.png",
+				// #ifdef H5
+                "iconPath": "static/icon/h5/tabbar_society.png",
+                "selectedIconPath": "static/icon/h5/tabbar_society.png",
+				// #endif
+				// #ifdef APP-PLUS
+				"iconPath":"static/icon/app-plus/tabbar_society.png",
+				"selectedIconPath": "static/icon/app-plus/tabbar_society.png",
+				// #endif
                 "text": "社区"
             },
             {
                 "pagePath": "pages/trade/trade",
-                "iconPath": "static/icon/trade.png",
-                "selectedIconPath": "static/icon/trade.png",
+				// #ifdef H5
+                "iconPath": "static/icon/h5/tabbar_trade.png",
+                "selectedIconPath": "static/icon/h5/tabbar_trade.png",
+				// #endif
+				// #ifdef APP-PLUS
+				"iconPath":"static/icon/app-plus/tabbar_trade.png",
+				"selectedIconPath":"static/icon/app-plus/tabbar_trade.png",
+				// #endif
                 "text": "交易"
             },
             {
                 "pagePath": "pages/msg/msg",
-                "iconPath": "static/icon/msg.png",
-                "selectedIconPath": "static/icon/msg.png",
+				// #ifdef H5
+                "iconPath": "static/icon/h5/tabbar_msg.png",
+                "selectedIconPath": "static/icon/h5/tabbar_msg.png",
+				// #endif
+				// #ifdef APP-PLUS
+				"iconPath":"static/icon/app-plus/tabbar_msg.png",
+				"selectedIconPath":"static/icon/app-plus/tabbar_msg.png",
+				// #endif
                 "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",
-                "iconPath": "static/icon/mine.png",
-                "selectedIconPath": "static/icon/mine.png",
+				// #ifdef H5
+                "iconPath": "static/icon/h5/tabbar_mine.png",
+                "selectedIconPath": "static/icon/h5/tabbar_mine.png",
+				// #endif
+				// #ifdef APP-PLUS
+				"iconPath":"static/icon/app-plus/tabbar_mine.png",
+				"selectedIconPath":"static/icon/app-plus/tabbar_mine.png",
+				// #endif
                 "text": "我的"
             }
         ]
