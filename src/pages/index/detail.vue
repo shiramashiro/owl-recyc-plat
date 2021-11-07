@@ -21,7 +21,7 @@
         </swiper>
 
         <!-- 商品信息 -->
-        <view class="goods-info card margin-xs padding-sm">
+        <view class="goods-info card margin-top-sm margin-lr-xs padding-sm">
             <view class="name text-bold text-lg">
                 {{ book.name }}
             </view>
@@ -38,37 +38,8 @@
             </view>
         </view>
 
-        <view class="comments card padding-lr-sm margin-top-sm margin-lr-xs">
-            <template v-if="book.comments.length > 0">
-                <view class="item padding-tb-sm flex" v-for="(item, index) in book.comments" :key="index">
-                    <view class="left">
-                        <owl-avatar :src="item.user.avatar_url" size="35"></owl-avatar>
-                    </view>
-                    <view class="right margin-left-sm">
-                        <view class="header flex justify-between align-center">
-                            <view class="userinfo">
-                                <view class="username text-lg">{{ item.user.username }}</view>
-                                <view class="floor text-gray">{{ index + 1 }}F</view>
-                            </view>
-                            <view class="replay text-gray">回复</view>
-                        </view>
-                        <view class="content margin-top-sm text-lg">
-                            {{ item.content }}
-                        </view>
-                        <view class="footer flex align-center justify-between margin-top-sm text-gray"> 发表于：{{ item.create_date }} </view>
-                        <view class="actions flex align-center margin-top-xs text-gray">
-                            <view class="like">赞成 100</view>
-                            <view class="dislike margin-left-sm">反对 0</view>
-                        </view>
-                    </view>
-                </view>
-            </template>
-            <template v-else>
-                <view class="null-show">
-                    <view class="tips">-没有更多评论-</view>
-                </view>
-            </template>
-        </view>
+        <!-- 后期任务：将 sponsor-id 改成灵活地 -->
+        <owl-comment :url="'http://1.116.123.44:8000/index/publish/comment'" :source-id="book.id" :sponsor-id="1" :comments="book.comments"></owl-comment>
 
         <view class="card padding-sm margin-lr-xs margin-top-sm text-gray">
             <view class="text-center margin-bottom-sm">
@@ -139,6 +110,7 @@ export default {
         return {
             currentSwiper: 0,
             book: {
+                id: 1,
                 covers: [{}],
                 comments: [
                     {
@@ -190,6 +162,10 @@ export default {
             .right {
                 width: 85%;
             }
+        }
+
+        .notdata {
+            padding: 100rpx 0;
         }
 
         .item:last-child {
@@ -248,13 +224,6 @@ export default {
 
         .right {
             width: 50%;
-        }
-    }
-    .null-show{
-        .tips{
-        color: rgb(255, 255, 255);
-        transform: translate(250rpx, -5%);
-        text-shadow: 1px 1px 2px black;
         }
     }
 }

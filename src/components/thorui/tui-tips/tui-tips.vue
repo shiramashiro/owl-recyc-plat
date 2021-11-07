@@ -12,13 +12,7 @@
         >
     </block>
     <block v-else>
-        <view
-            class="tui-tips-class tui-toast"
-            :class="[
-                position == 'center' ? 'tui-centertips' : 'tui-bottomtips',
-                show ? 'tui-toast-show' : ''
-            ]"
-        >
+        <view class="tui-tips-class tui-toast" :class="[position == 'center' ? 'tui-centertips' : 'tui-bottomtips', show ? 'tui-toast-show' : '']">
             <view
                 class="tui-tips-content"
                 :style="{
