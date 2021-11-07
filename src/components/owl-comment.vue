@@ -127,7 +127,7 @@ export default {
         oppose(id, index) {
             uni.request({
                 method: 'POST',
-                url: this.agreeUrl,
+                url: this.opposeUrl,
                 data: {
                     id: id
                 },
@@ -144,7 +144,7 @@ export default {
         agree(id, index) {
             uni.request({
                 method: 'POST',
-                url: this.opposeUrl,
+                url: this.agreeUrl,
                 data: {
                     id: id
                 },
