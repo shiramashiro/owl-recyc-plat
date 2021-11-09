@@ -1,5 +1,5 @@
 <template>
-    <view class="owl-icon flex align-center text-center">
+    <view class="owl-icon text-center">
         <image :src="src" :style="{ height: size + 'rpx', width: size + 'rpx', margin: margin + 'rpx' }"></image>
     </view>
 </template>

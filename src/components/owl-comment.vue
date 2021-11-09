@@ -1,8 +1,8 @@
 <template>
     <view class="owl-comment">
         <view class="editor card flex align-center justify-between padding-sm margin-top-sm margin-lr-xs">
-            <input @input="onInput" type="text" placeholder="请一段输入友好的评论" />
-            <tui-button @click="publish" width="130rpx" height="50rpx" :size="10">发表</tui-button>
+            <input @input="onInput" type="text" placeholder-style="font-size: 12rpx;" :maxlength="500" placeholder="请一段输入友好的评论" />
+            <tui-button @click="publish" width="130rpx" height="50rpx" :size="12">发表</tui-button>
         </view>
         <view class="comments card padding-lr-sm margin-top-sm margin-lr-xs">
             <template v-if="comments.length > 0">
@@ -63,6 +63,16 @@ export default {
             type: String,
             required: true
         },
+        // 点击同意的请求地址
+        agreeUrl: {
+            type: String,
+            required: true
+        },
+        // 点击反对的请求地址
+        opposeUrl: {
+            type: String,
+            required: true
+        },
         // 发送评论的用户Id
         sponsorId: {
             type: [Number, String],
@@ -73,15 +83,10 @@ export default {
             type: [Number, String],
             required: true
         },
-        // 点击同意的请求地址
-        agreeUrl: {
-            type: String,
-            required: true
-        },
-        // 点击反对的请求地址
-        opposeUrl: {
-            type: String,
-            required: true
+        // 评论输入框最小可容纳默认10个字符
+        inputMinLength: {
+            type: Number,
+            default: 10
         }
     },
     data() {
@@ -103,7 +108,7 @@ export default {
         },
         // 发表评论
         publish() {
-            if (this.inputValue.length > 10) {
+            if (this.inputValue.length >= this.inputMinLength) {
                 uni.request({
                     method: 'POST',
                     url: this.url,

@@ -24,7 +24,7 @@ export default {
                 Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight
                 // #endif
                 // 设备信息
-                Vue.prototype.$systemInfo = e
+                Vue.prototype.$deviceInfo = e
             }
         })
     }

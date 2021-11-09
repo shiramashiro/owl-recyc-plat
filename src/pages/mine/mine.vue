@@ -42,8 +42,8 @@
                             <view>退换/售后</view>
                         </view>
                         <view class="text-center">
-                            <owl-icon :size="65" :src="require('../../static/icon/mine/favourite.png')"></owl-icon>
-                            <view>商品收藏</view>
+                            <owl-icon :size="65" :src="require('../../static/icon/mine/cart.png')"></owl-icon>
+                            <view>购物车</view>
                         </view>
                         <view class="text-center ">
                             <owl-icon :size="65" :src="require('../../static/icon/mine/order.png')"></owl-icon>

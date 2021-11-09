@@ -14,6 +14,8 @@ Vue.component('owl-icon', OwlIcon)
 
 Vue.config.productionTip = false
 Vue.prototype.$store = Vuex
+// Vue.prototype.$baseURL = 'http://1.116.123.44:8000'
+Vue.prototype.$baseURL = 'http://localhost:8000'
 
 App.mpType = 'app'
 

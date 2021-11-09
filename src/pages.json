@@ -43,6 +43,12 @@
                 "navigationBarTitleText": "分类"
             }
         },
+        {
+            "path": "pages/index/pay",
+            "style": {
+                "navigationBarTitleText": "支付"
+            }
+        },
         // msg/
         // entry/
         {
@@ -58,6 +64,12 @@
             }
         },
         // mine/
+        {
+            "path": "pages/mine/cart",
+            "style": {
+                "navigationBarTitleText": "购物车"
+            }
+        },
         // trade/
         {
             "path": "pages/trade/detail",
@@ -90,62 +102,62 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-				// #ifdef H5
+                // #ifdef H5
                 "iconPath": "static/icon/h5/tabbar_index.png",
                 "selectedIconPath": "static/icon/h5/tabbar_index.png",
-				// #endif
-				// #ifdef APP-PLUS
-				"iconPath": "static/icon/app-plus/tabbar_index.png",
-				"selectedIconPath": "static/icon/app-plus/tabbar_index.png",
-				// #endif
+                // #endif
+                // #ifdef APP-PLUS
+                "iconPath": "static/icon/app-plus/tabbar_index.png",
+                "selectedIconPath": "static/icon/app-plus/tabbar_index.png",
+                // #endif
                 "text": "首页"
             },
             {
                 "pagePath": "pages/society/society",
-				// #ifdef H5
+                // #ifdef H5
                 "iconPath": "static/icon/h5/tabbar_society.png",
                 "selectedIconPath": "static/icon/h5/tabbar_society.png",
-				// #endif
-				// #ifdef APP-PLUS
-				"iconPath":"static/icon/app-plus/tabbar_society.png",
-				"selectedIconPath": "static/icon/app-plus/tabbar_society.png",
-				// #endif
+                // #endif
+                // #ifdef APP-PLUS
+                "iconPath": "static/icon/app-plus/tabbar_society.png",
+                "selectedIconPath": "static/icon/app-plus/tabbar_society.png",
+                // #endif
                 "text": "社区"
             },
             {
                 "pagePath": "pages/trade/trade",
-				// #ifdef H5
+                // #ifdef H5
                 "iconPath": "static/icon/h5/tabbar_trade.png",
                 "selectedIconPath": "static/icon/h5/tabbar_trade.png",
-				// #endif
-				// #ifdef APP-PLUS
-				"iconPath":"static/icon/app-plus/tabbar_trade.png",
-				"selectedIconPath":"static/icon/app-plus/tabbar_trade.png",
-				// #endif
+                // #endif
+                // #ifdef APP-PLUS
+                "iconPath": "static/icon/app-plus/tabbar_trade.png",
+                "selectedIconPath": "static/icon/app-plus/tabbar_trade.png",
+                // #endif
                 "text": "交易"
             },
             {
                 "pagePath": "pages/msg/msg",
-				// #ifdef H5
+                // #ifdef H5
                 "iconPath": "static/icon/h5/tabbar_msg.png",
                 "selectedIconPath": "static/icon/h5/tabbar_msg.png",
-				// #endif
-				// #ifdef APP-PLUS
-				"iconPath":"static/icon/app-plus/tabbar_msg.png",
-				"selectedIconPath":"static/icon/app-plus/tabbar_msg.png",
-				// #endif
+                // #endif
+                // #ifdef APP-PLUS
+                "iconPath": "static/icon/app-plus/tabbar_msg.png",
+                "selectedIconPath": "static/icon/app-plus/tabbar_msg.png",
+                // #endif
                 "text": "消息"
             },
             {
                 "pagePath": "pages/mine/mine",
-				// #ifdef H5
+                // #ifdef H5
                 "iconPath": "static/icon/h5/tabbar_mine.png",
                 "selectedIconPath": "static/icon/h5/tabbar_mine.png",
-				// #endif
-				// #ifdef APP-PLUS
-				"iconPath":"static/icon/app-plus/tabbar_mine.png",
-				"selectedIconPath":"static/icon/app-plus/tabbar_mine.png",
-				// #endif
+                // #endif
+                // #ifdef APP-PLUS
+                "iconPath": "static/icon/app-plus/tabbar_mine.png",
+                "selectedIconPath": "static/icon/app-plus/tabbar_mine.png",
+                // #endif
                 "text": "我的"
             }
         ]

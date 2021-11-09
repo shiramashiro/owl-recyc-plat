@@ -92,7 +92,7 @@ export default {
     },
     mounted() {
         uni.request({
-            url: 'http://1.116.123.44:8000/index/find/nomination',
+            url: this.$baseURL + '/index/find/books/by/nomination',
             success: res => {
                 this.nomination = res.data
             }

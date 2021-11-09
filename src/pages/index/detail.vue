@@ -40,12 +40,12 @@
 
         <!-- 后期任务：将 sponsor-id 改成灵活地 -->
         <owl-comment
-            :url="'http://1.116.123.44:8000/index/publish/comment'"
-            :agree-url="'http://1.116.123.44:8000/index/publish/agree'"
-            :oppose-url="'http://1.116.123.44:8000/index/publish/oppose'"
+            :comments="book.comments"
+            :url="$baseURL + '/index/insert/comment'"
+            :agree-url="$baseURL + '/index/update/comment/agree'"
+            :oppose-url="$baseURL + '/index/update/comment/oppose'"
             :source-id="book.id"
             :sponsor-id="1"
-            :comments="book.comments"
         ></owl-comment>
 
         <view class="card padding-sm margin-lr-xs margin-top-sm text-gray">
@@ -61,36 +61,38 @@
         <view class="bottom-bar flex align-center justify-between padding-sm">
             <view class="left flex justify-between align-center">
                 <view class="item">
-                    <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="../../static/icon/cart.png" />
-                        <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
-                            {{ $store.state.tentativeTrade.length }}
-                        </tui-badge>
-                    </view>
+                    <owl-icon :size="40" :src="require('../../static/icon/cart.png')"></owl-icon>
                     <view class="row-2 text-sm">
                         客服
                     </view>
                 </view>
 
                 <view class="item">
-                    <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="../../static/icon/cart.png" />
-                        <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
-                            {{ $store.state.tentativeTrade.length }}
-                        </tui-badge>
-                    </view>
+                    <owl-icon :size="40" :src="require('../../static/icon/cart.png')"></owl-icon>
                     <view class="row-2 text-sm">
                         客服
                     </view>
                 </view>
 
-                <view class="item">
-                    <view class="row-1 flex align-center justify-center">
-                        <image class="icon" src="../../static/icon/cart.png" />
-                        <tui-badge v-if="$store.state.tentativeTrade.length !== 0" type="danger">
-                            {{ $store.state.tentativeTrade.length }}
-                        </tui-badge>
+                <tui-bottom-popup :height="400" :radius="false" :zIndex="1002" :maskZIndex="1001" :show="popupShow" @close="controlPopup">
+                    <view class="wrapper">
+                        <view class="header margin-sm">
+                            <h3>我的购物车</h3>
+                        </view>
+                        <view class="carts">
+                            <view class="item padding-tb-sm margin-sm flex justify-between align-center" v-for="(item, index) in book.carts" :key="index">
+                                <owl-icon :src="item.book.cover_url" :size="150"></owl-icon>
+                                <view class="name text-cut">{{ item.book.name }}</view>
+                                <view class="text-red">¥ {{ item.book.price * item.book.discount }}</view>
+                                <view class="num">{{ item.num }}</view>
+                                <tui-button plain :width="'40rpx'" shape="circle" :height="'50rpx'">x</tui-button>
+                            </view>
+                        </view>
                     </view>
+                </tui-bottom-popup>
+                <view class="item cart" @click="controlPopup">
+                    <view class="budget" v-show="book.carts.length > 0">{{ book.carts.length }}</view>
+                    <owl-icon :size="40" :src="require('../../static/icon/cart.png')"></owl-icon>
                     <view class="row-2 text-sm">
                         购物车
                     </view>
@@ -98,15 +100,15 @@
             </view>
 
             <view class="right flex justify-between align-center">
-                <tui-button height="80rpx" width="160rpx" type="primary" :size="25" shape="circle" background="#87cefa">
+                <tui-button @click="guide('/pages/index/pay')" height="80rpx" width="160rpx" type="primary" :size="25" shape="circle" background="#87cefa">
                     立即购买
                 </tui-button>
-
-                <tui-button height="80rpx" width="180rpx" type="gray" :size="25" shape="circle">
+                <tui-button @click="insertCart" height="80rpx" width="180rpx" type="gray" :size="25" shape="circle">
                     加入购物车
                 </tui-button>
             </view>
         </view>
+        <tui-tips :backgroundColor="tipsColor" position="center" ref="toast"></tui-tips>
     </view>
 </template>
 
@@ -125,15 +127,50 @@ export default {
                             avatar_url: ''
                         }
                     }
+                ],
+                carts: [
+                    {
+                        book: {
+                            cover_url: ''
+                        }
+                    }
                 ]
-            }
+            },
+            // 提示消息的背景颜色
+            tipsColor: '',
+            popupShow: false
+        }
+    },
+    methods: {
+        controlPopup() {
+            this.popupShow = !this.popupShow
+        },
+        // 提示消息
+        showTips(options) {
+            this.tipsColor = options.tipsColor
+            this.$refs.toast.showTips({
+                msg: options.msg,
+                duration: 2000
+            })
+        },
+        // 页面导航
+        guide(url) {
+            uni.navigateTo({
+                url: url
+            })
+        },
+        // 加入购物车
+        insertCart() {
+            // 1. 对购物车图标上方加一个徽标
+            // 2. 将本书籍的id加入到数据库的表中保存
         }
     },
     onLoad(options) {
         uni.request({
-            url: 'http://1.116.123.44:8000/index/find/by/id',
+            url: this.$baseURL + '/index/find/book/by/id',
             data: {
-                id: options.id
+                id: options.id,
+                userId: 1
             },
             success: res => {
                 this.book = res.data
@@ -223,9 +260,38 @@ export default {
         .left {
             width: 40%;
 
-            .icon {
-                width: 40rpx;
-                height: 40rpx;
+            .cart {
+                position: relative;
+
+                .budget {
+                    position: absolute;
+                    right: -32rpx;
+                    top: -12rpx;
+                    color: white;
+                    border-radius: 100%;
+                    background: #e54d42;
+                    width: 42rpx;
+                    height: 42rpx;
+                    font-size: 25rpx;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .wrapper {
+                overflow-x: hidden;
+                overflow-y: scroll;
+
+                .carts {
+                    .item {
+                        border-bottom: 1rpx solid #f3ececcc;
+
+                        .name {
+                            width: 35%;
+                        }
+                    }
+                }
             }
         }
 
