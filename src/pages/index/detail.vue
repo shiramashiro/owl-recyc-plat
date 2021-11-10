@@ -370,7 +370,7 @@ export default {
           }
 
           .notdata {
-            font-size: 24rpx;
+            font-size: 34rpx;
             margin: 122rpx;
           }
         }
