@@ -20,6 +20,6 @@ Vue.prototype.$baseURL = 'http://localhost:8000'
 App.mpType = 'app'
 
 new Vue({
-    ...App,
-    Vuex
+  ...App,
+  Vuex
 }).$mount()

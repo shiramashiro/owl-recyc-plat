@@ -30,7 +30,6 @@
       </view>
     </view>
 
-    <!-- 后期任务：将 sponsor-id 改成灵活地 -->
     <owl-comment
       :comments="book.comments"
       :url="$baseURL + '/index/insert/comment'"
@@ -52,31 +51,35 @@
     <view class="bottom-bar flex align-center justify-between padding-sm">
       <view class="left-section flex justify-between align-center">
         <tui-modal :show="isShowModal" @click="handleModalClick" title="提示" content="确定要结算购物车吗？"></tui-modal>
-        <tui-bottom-popup :height="900" :radius="false" :zIndex="1002" :maskZIndex="1001" :show="isShowPopup" @close="isShowPopup = !isShowPopup">
+        <tui-bottom-popup :height="900" :radius="false" :zIndex="1002" :maskZIndex="1001" :show="isShowPopup" @close="handleModalAndPopupDisplay('popup')">
           <view class="cart-popup">
             <h3 class="header margin-sm">我的购物车</h3>
-            <view class="content">
-              <view class="item padding-tb-sm margin-sm flex justify-between align-center" v-for="(item, index) in book.carts" :key="index">
-                <owl-icon :src="item.book.cover_url" :size="150"></owl-icon>
-                <view class="name text-cut">
-                  {{ item.book.name }}
+            <view class="products">
+              <view v-if="book.carts[0].book.id != 0">
+                <view class="item padding-tb-sm margin-sm flex justify-between align-center" v-for="(item, index) in book.carts" :key="index">
+                  <owl-icon :src="item.book.cover_url" :size="150"></owl-icon>
+                  <view class="name text-cut">
+                    {{ item.book.name }}
+                  </view>
+                  <view class="price text-red">
+                    <text>¥</text>
+                    {{ (item.book.price * item.book.discount).toFixed(2) }}
+                  </view>
+                  <view class="number">
+                    {{ item.num }}
+                  </view>
+                  <tui-button @click="delProduct(item.id, index)" plain :width="'40rpx'" shape="circle" :height="'50rpx'">x</tui-button>
                 </view>
-                <view class="price text-red">
-                  <text>¥</text>
-                  {{ (item.book.price * item.book.discount).toFixed(2) }}
-                </view>
-                <view class="number">
-                  {{ item.num }}
-                </view>
-                <tui-button @click="delProduct" plain :width="'40rpx'" shape="circle" :height="'50rpx'">x</tui-button>
               </view>
+              <view class="notdata flex align-center justify-center text-gray" v-else>你的购物车还没有商品哦~</view>
             </view>
+
             <view class="flex justify-center">
-              <tui-button @click="isShowModal = !isShowModal" plain shape="circle" :size="20" height="60rpx" width="300rpx">结算</tui-button>
+              <tui-button :disabled="isDisabled" @click="handleModalAndPopupDisplay('modal')" plain shape="circle" :size="20" height="60rpx" width="300rpx">结算</tui-button>
             </view>
           </view>
         </tui-bottom-popup>
-        <view class="item cart" @click="isShowPopup = !isShowPopup">
+        <view class="item cart" @click="handleModalAndPopupDisplay('popup')">
           <view class="budget" v-show="book.carts[0].book.cover_url">{{ book.carts.length }}</view>
           <owl-icon :size="40" :src="require('../../static/icon/cart.png')"></owl-icon>
           <view class="row-2 text-sm">
@@ -86,10 +89,10 @@
       </view>
 
       <view class="right-section flex justify-between align-center">
-        <tui-button @click="purchaseProductNow" height="80rpx" width="160rpx" type="primary" :size="25" shape="circle" background="#87cefa">
+        <tui-button @click="buyNow" height="80rpx" width="160rpx" type="primary" :size="25" shape="circle" background="#87cefa">
           立即购买
         </tui-button>
-        <tui-button @click="insertProductIntoCarts" height="80rpx" width="180rpx" type="gray" :size="25" shape="circle">
+        <tui-button @click="addToCart" height="80rpx" width="180rpx" type="gray" :size="25" shape="circle">
           加入购物车
         </tui-button>
       </view>
@@ -122,10 +125,10 @@ export default {
           }
         ]
       },
-      // 提示消息的背景颜色
       tipsColor: '',
       isShowModal: false,
-      isShowPopup: false
+      isShowPopup: false,
+      isDisabled: false
     }
   },
   methods: {
@@ -137,41 +140,72 @@ export default {
         duration: 2000
       })
     },
-    // 处理点击模态框事件
-    handleModalClick(e) {
-      // 0 为取消按钮，1 为确定按钮
-      if (e.index == 0) {
-        this.isShowModal = !this.isShowModal
-      } else {
-        this.isShowModal = !this.isShowModal
-        this.isShowPopup = !this.isShowPopup
-        this.$store.commit('setCarts', this.book.carts)
-        this.guide('/pages/index/pay')
-      }
-    },
-    // 立即购买
-    purchaseProductNow() {
-      this.$store.commit('setCarts', [
-        {
-          book: {
-            cover_url: this.book.cover_url,
-            id: this.book.id,
-            name: this.book.name,
-            price: this.book.price,
-            discount: this.book.discount
-          }
-        }
-      ])
-      this.guide('/pages/index/pay')
-    },
     // 页面导航
     guide(url) {
       uni.navigateTo({
         url: url
       })
     },
+    // 处理模态框或弹出框的显示
+    handleModalAndPopupDisplay(species) {
+      if (species == 'modal') {
+        this.isShowModal = !this.isShowModal
+      } else if (species == 'popup') {
+        this.isShowPopup = !this.isShowPopup
+      } else if (species == undefined || species == null || species == '') {
+        this.isShowModal = !this.isShowModal
+        this.isShowPopup = !this.isShowPopup
+      }
+    },
+    // 处理点击模态框事件
+    handleModalClick(e) {
+      if (e.index == 1) {
+        this.$store.commit('setCarts', this.book.carts)
+        this.guide('/pages/index/pay')
+      }
+      this.handleModalAndPopupDisplay('modal')
+    },
+    delProduct(id, index) {
+      uni.request({
+        method: 'POST',
+        url: this.$baseURL + '/index/del/product/from/carts',
+        data: {
+          id: id
+        },
+        success: res => {
+          this.showTips({ tipsColor: '#19BE6B', msg: '删除商品成功~' })
+          this.book.carts.splice(index, 1)
+          if (this.book.carts.length == 0) {
+            this.book.carts.push({
+              book: {
+                id: 0
+              }
+            })
+            this.isDisabled = true
+          }
+        },
+        fail: res => {
+          this.showTips({ tipsColor: '#EB0909', msg: '删除商品失败！' })
+        }
+      })
+    },
+    // 立即购买
+    buyNow() {
+      this.$store.commit('setCarts', [
+        {
+          book: {
+            id: this.book.id,
+            name: this.book.name,
+            price: this.book.price,
+            discount: this.book.discount,
+            cover_url: this.book.cover_url
+          }
+        }
+      ])
+      this.guide('/pages/index/pay')
+    },
     // 加入购物车
-    insertProductIntoCarts() {
+    addToCart() {
       uni.request({
         method: 'POST',
         url: this.$baseURL + '/index/insert/product/into/carts',
@@ -182,13 +216,14 @@ export default {
         success: res => {
           this.book.carts.push({
             book: {
-              cover_url: this.book.cover_url,
               id: this.book.id,
               name: this.book.name,
               price: this.book.price,
-              discount: this.book.discount
+              discount: this.book.discount,
+              cover_url: this.book.cover_url
             }
           })
+          this.isDisabled = false
           this.showTips({ tipsColor: '#19BE6B', msg: '加入购物车成功~' })
         },
         fail: res => {
@@ -205,6 +240,16 @@ export default {
         userId: 1
       },
       success: res => {
+        if (res.data.carts == null) {
+          this.isDisabled = true
+          res.data.carts = [
+            {
+              book: {
+                id: 0
+              }
+            }
+          ]
+        }
         this.book = res.data
       }
     })
@@ -315,13 +360,18 @@ export default {
         overflow-x: hidden;
         overflow-y: scroll;
 
-        .content {
+        .products {
           .item {
             border-bottom: 1rpx solid #f3ececcc;
 
             .name {
               width: 35%;
             }
+          }
+
+          .notdata {
+            font-size: 24rpx;
+            margin: 122rpx;
           }
         }
       }
