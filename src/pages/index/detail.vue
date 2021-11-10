@@ -51,20 +51,6 @@
 
     <view class="bottom-bar flex align-center justify-between padding-sm">
       <view class="left-section flex justify-between align-center">
-        <view class="item">
-          <owl-icon :size="40" :src="require('../../static/icon/cart.png')" />
-          <view class="text-sm">
-            客服
-          </view>
-        </view>
-
-        <view class="item">
-          <owl-icon :size="40" :src="require('../../static/icon/cart.png')" />
-          <view class="text-sm">
-            客服
-          </view>
-        </view>
-
         <tui-modal :show="isShowModal" @click="handleModalClick" title="提示" content="确定要结算购物车吗？"></tui-modal>
         <tui-bottom-popup :height="900" :radius="false" :zIndex="1002" :maskZIndex="1001" :show="isShowPopup" @close="isShowPopup = !isShowPopup">
           <view class="cart-popup">
