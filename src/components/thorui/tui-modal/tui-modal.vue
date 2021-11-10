@@ -89,12 +89,12 @@ export default {
         return [
           {
             text: '取消',
-            type: 'red',
+            type: 'blue',
             plain: true //是否空心
           },
           {
             text: '确定',
-            type: 'red',
+            type: 'blue',
             plain: false
           }
         ]
@@ -315,6 +315,25 @@ export default {
 
 .tui-red-outline::after {
   border: 1px solid #e41f19;
+}
+
+.tui-blue {
+  background: #87cefa;
+  color: #fff;
+}
+
+.tui-blue-hover {
+  background: #87cefa;
+  color: #e5e5e5;
+}
+
+.tui-blue-outline {
+  color: #87cefa;
+  background: transparent;
+}
+
+.tui-blue-outline::after {
+  border: 1px solid #87cefa;
 }
 
 .tui-warning {
