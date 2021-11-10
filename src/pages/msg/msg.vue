@@ -1,5 +1,5 @@
 <template>
-    <view class="msg" :style="{ minHeight: $systemInfo.windowHeight + 'px' }">
+    <view class="msg" :style="{ minHeight: $deviceInfo.windowHeight + 'px' }">
         <view class="top padding-lr-lg flex justify-between align-center">
             <navigator v-for="(navigator, index) in navigators" :key="index" :url="navigator.url">
                 <view class="flex align-center justify-center">

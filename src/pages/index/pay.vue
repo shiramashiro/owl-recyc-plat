@@ -90,21 +90,21 @@ export default {
       if (e.index == 0) {
         this.isShowModal = !this.isShowModal
       } else {
-        let productsId = []
+        let products = []
         this.$store.state.carts.forEach((item, index) => {
-          productsId.push(item.book.id)
+          products.push({
+            id: item.book.id
+          })
         })
         uni.request({
           method: 'POST',
           url: this.$baseURL + '/index/insert/products/into/orders',
           data: {
-            products: productsId,
-            recive: {
-              user_id: 1,
-              phone: this.receiveInfo.phone,
-              address: this.receiveInfo.address,
-              receiver: this.receiveInfo.receiver
-            }
+            products: products,
+            user_id: 1,
+            phone: this.receiveInfo.phone,
+            address: this.receiveInfo.address,
+            receiver: this.receiveInfo.receiver
           },
           success: res => {
             this.showTips({ tipsColor: '#19BE6B', msg: '支付成功~' })
