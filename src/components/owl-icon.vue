@@ -1,6 +1,6 @@
 <template>
     <view class="owl-icon text-center">
-        <image :src="src" :style="{ height: size + 'rpx', width: size + 'rpx', margin: margin + 'rpx' }"></image>
+        <image mode="aspectFill" :src="src" :style="{ height: size + 'rpx', width: size + 'rpx', margin: margin + 'rpx' }"></image>
     </view>
 </template>
 <script>

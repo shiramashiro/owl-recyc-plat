@@ -38,7 +38,20 @@
     </owl-fiche>
 
     <owl-fiche title="支付方式" sub-title="请选择支付方式">
-      <button @click="defray">支付</button>
+      <view class="payment-way padding-lr-lg">
+        <view class="wechat flex align-center">
+          <owl-icon :size="100" :src="require('../../static/icon/index/wechatpay.png')"></owl-icon>
+          <view>选择微信支付</view>
+        </view>
+        <view class="alipay margin-top-sm flex align-center">
+          <owl-icon :size="100" :src="require('../../static/icon/index/alipay.png')"></owl-icon>
+          <view>选择支付宝支付</view>
+        </view>
+        <view class="text-gray">这只是一个暂时，功能未开放，默认为微信支付。</view>
+        <view class="margin-top-sm pay-box flex justify-center">
+          <tui-button width="250rpx" height="65rpx" :size="20" shape="circle" plain @click="defray">支付</tui-button>
+        </view>
+      </view>
     </owl-fiche>
     <tui-modal :show="isShowModal" @click="handleModalClick" title="提示" content="确定要结算购物车吗？"></tui-modal>
     <tui-tips :backgroundColor="tipsColor" position="center" ref="toast"></tui-tips>
