@@ -1,7 +1,7 @@
 <template>
   <view class="mine">
     <view class="header">
-      <view class="notlogin padding-lr-sm flex align-center" v-if="!$store.state.isSignin">
+      <view @click="guide('/pages/entry/signin')" class="notlogin padding-lr-sm flex align-center" v-if="!$store.state.isSignin">
         <owl-avatar
           mode="aspectFill"
           size="90"
@@ -18,11 +18,13 @@
         </view>
       </view>
       <view class="haslogin padding-lr-sm flex align-center" v-else>
-        <!-- <owl-avatar :mode="'aspectFill'" :size="'90'" :src="$store.state.userInfo.avatar"></owl-avatar> -->
-        <owl-avatar mode="aspectFill" size="90" :src="'https://img0.baidu.com/it/u=1205920287,1484241911&fm=26&fmt=auto'"></owl-avatar>
+        <view @click="guide('/pages/mine/userinfo')">
+          <owl-icon class="edit" :src="'../../static/icon/mine/edit.png'"></owl-icon>
+        </view>
+        <owl-avatar :mode="'aspectFill'" :size="'90'" :src="$store.state.userInfo.avatar_url"></owl-avatar>
         <view class="margin-left-lg">
-          <view class="username text-white text-lg">shiramashiro</view>
-          <view class="signature text-white margin-top-sm">Time tick away, dream faded away!</view>
+          <view class="username text-white text-lg">{{ $store.state.userInfo.username }}</view>
+          <view class="signature text-white margin-top-sm">{{ $store.state.userInfo.signature }}</view>
         </view>
       </view>
     </view>
@@ -132,6 +134,17 @@ export default {
       position: relative;
       padding-top: 40rpx;
       padding-bottom: 40rpx;
+    }
+
+    .haslogin {
+      position: relative;
+
+      .edit {
+        position: absolute;
+        top: 22rpx;
+        right: 22rpx;
+        z-index: 998;
+      }
     }
 
     .notlogin::after,

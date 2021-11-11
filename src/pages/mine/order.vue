@@ -93,7 +93,7 @@ export default {
       url: this.$baseURL + '/index/find/orders/by/userId',
       method: 'GET',
       data: {
-        userId: 1
+        userId: this.$store.state.userInfo.id
       },
       success: res => {
         this.orders = res.data

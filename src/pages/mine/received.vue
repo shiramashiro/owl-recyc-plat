@@ -75,7 +75,7 @@ export default {
       url: this.$baseURL + '/index/find/orders/by/status/and/userId',
       method: 'POST',
       data: {
-        user_id: 1,
+        user_id: this.$store.state.userInfo.id,
         status: 1
       },
       success: res => {

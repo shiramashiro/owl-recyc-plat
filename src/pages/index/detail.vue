@@ -191,6 +191,10 @@ export default {
     },
     // 立即购买
     buyNow() {
+      if (!this.$store.state.isSignin) {
+        this.showTips({ tipsColor: '#EB0909', msg: '你还没有登陆哦！' })
+        return
+      }
       this.$store.commit('setCarts', [
         {
           book: {
@@ -206,12 +210,16 @@ export default {
     },
     // 加入购物车
     addToCart() {
+      if (!this.$store.state.isSignin) {
+        this.showTips({ tipsColor: '#EB0909', msg: '你还没有登陆哦！' })
+        return
+      }
       uni.request({
         method: 'POST',
         url: this.$baseURL + '/index/insert/product/into/carts',
         data: {
           book_id: this.book.id,
-          user_id: 1
+          user_id: this.$store.state.userInfo.id
         },
         success: res => {
           this.book.carts.push({
@@ -237,7 +245,7 @@ export default {
       url: this.$baseURL + '/index/find/book/by/id',
       data: {
         id: options.id,
-        userId: 1
+        userId: this.$store.state.userInfo.id
       },
       success: res => {
         if (res.data.carts == null) {

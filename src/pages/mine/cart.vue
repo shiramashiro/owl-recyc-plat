@@ -75,7 +75,7 @@ export default {
       method: 'GET',
       url: this.$baseURL + '/index/find/carts/by/userId',
       data: {
-        userId: 1
+        userId: this.$store.state.userInfo.id
       },
       success: res => {
         this.products = res.data

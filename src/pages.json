@@ -88,6 +88,12 @@
                 "navigationBarTitleText": "我的订单"
             }
         },
+        {
+            "path": "pages/mine/userinfo",
+            "style": {
+                "navigationBarTitleText": "我的信息"
+            }
+        },
         // trade/
         {
             "path": "pages/trade/detail",

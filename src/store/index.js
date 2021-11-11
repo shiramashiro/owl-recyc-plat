@@ -5,9 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isSignin: true,
+    isSignin: false,
     userInfo: {},
-    // 购物车商品
     carts: []
   },
   mutations: {
@@ -17,12 +16,6 @@ export default new Vuex.Store({
     setUserInfo(state, data) {
       state.isSignin = true
       state.userInfo = data
-    },
-    setTentativeTrade(state, data) {
-      state.tentativeTrade.push(data)
-    },
-    setNowTrade(state, data) {
-      state.decideTrade.push(data)
     }
   },
   actions: {}

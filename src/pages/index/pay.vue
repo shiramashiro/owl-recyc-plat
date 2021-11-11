@@ -92,6 +92,10 @@ export default {
       if (e.index == 0) {
         this.isShowModal = !this.isShowModal
       } else {
+        if (!this.$store.state.isSignin) {
+          this.showTips({ tipsColor: '#EB0909', msg: '你还没有登陆哦！' })
+          return
+        }
         let products = []
         this.$store.state.carts.forEach((item, index) => {
           products.push({
@@ -103,7 +107,7 @@ export default {
           url: this.$baseURL + '/index/insert/products/into/orders',
           data: {
             products: products,
-            user_id: 1,
+            user_id: this.$store.state.userInfo.id,
             id: uuidv4(),
             phone: this.receiveInfo.phone,
             address: this.receiveInfo.address,
@@ -121,7 +125,7 @@ export default {
                 method: 'POST',
                 url: that.$baseURL + '/index/del/all/products/from/carts',
                 data: {
-                  user_id: 1
+                  user_id: this.$store.state.userInfo.id
                 }
               })
             }, 1000)
@@ -160,8 +164,7 @@ export default {
         }
       })
     }
-  },
-  onLoad() {}
+  }
 }
 </script>
 
