@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid'
+
 export default {
   name: 'pay',
   data() {
@@ -102,12 +104,27 @@ export default {
           data: {
             products: products,
             user_id: 1,
+            id: uuidv4(),
             phone: this.receiveInfo.phone,
             address: this.receiveInfo.address,
             receiver: this.receiveInfo.receiver
           },
           success: res => {
             this.showTips({ tipsColor: '#19BE6B', msg: '支付成功~' })
+            this.isShowModal = !this.isShowModal
+            let that = this
+            setTimeout(function() {
+              uni.switchTab({
+                url: '/pages/mine/mine'
+              })
+              uni.request({
+                method: 'POST',
+                url: that.$baseURL + '/index/del/all/products/from/carts',
+                data: {
+                  user_id: 1
+                }
+              })
+            }, 1000)
           },
           fail: res => {
             this.showTips({ tipsColor: '#EB0909', msg: '支付失败！' })
