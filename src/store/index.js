@@ -7,9 +7,6 @@ export default new Vuex.Store({
   state: {
     isSignin: true,
     userInfo: {},
-    tentativeTrade: [],
-    decideTrade: [],
-
     // 购物车商品
     carts: []
   },

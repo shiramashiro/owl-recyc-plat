@@ -70,6 +70,24 @@
                 "navigationBarTitleText": "购物车"
             }
         },
+        {
+            "path": "pages/mine/received",
+            "style": {
+                "navigationBarTitleText": "已收货"
+            }
+        },
+        {
+            "path": "pages/mine/receiving",
+            "style": {
+                "navigationBarTitleText": "待收货"
+            }
+        },
+        {
+            "path": "pages/mine/order",
+            "style": {
+                "navigationBarTitleText": "我的订单"
+            }
+        },
         // trade/
         {
             "path": "pages/trade/detail",
